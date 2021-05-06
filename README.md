@@ -1,6 +1,17 @@
 # umee-v1-contracts
 Implementation of the Umee Smart Contracts
 
+## TODO:
+- [] 
+
+## Retain:
+
+
+## Discard:
+Flash Loans  
+Native Credit Delegation 
+Interest Rate Strategy (for now, will implement later, but for now just focus on stable interest rate) 
+ 
 ## Usage
 
 ### Pre Requisites

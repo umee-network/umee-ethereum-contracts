@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.6.12;
 
-import {ILendingPool} from './ILendingPool.sol';
-import {IAaveIncentivesController} from './IAaveIncentivesController.sol';
+import {ILendingPool} from "./ILendingPool.sol";
+import {IAaveIncentivesController} from "./IAaveIncentivesController.sol";
 
 /**
  * @title IInitializableDebtToken
@@ -35,7 +35,7 @@ interface IInitializableDebtToken {
    * @param pool The address of the lending pool where this aToken will be used
    * @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)
    * @param incentivesController The smart contract managing potential incentives distribution
-   * @param debtTokenDecimals The decimals of the debtToken, same as the underlying asset's
+   * @param debtTokenDecimals The decimals of the debtToken, same as the underlying asset"s
    * @param debtTokenName The name of the token
    * @param debtTokenSymbol The symbol of the token
    */

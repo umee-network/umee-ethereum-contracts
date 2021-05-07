@@ -67,7 +67,7 @@ contract FlashLiquidationAdapter is BaseUniswapAdapter {
     uint256[] calldata premiums,
     address initiator,
     bytes calldata params
-  ) external override returns (bool) {
+  ) external returns (bool) {
     require(msg.sender == address(LENDING_POOL), 'CALLER_MUST_BE_LENDING_POOL');
 
     LiquidationParams memory decodedParams = _decodeParams(params);

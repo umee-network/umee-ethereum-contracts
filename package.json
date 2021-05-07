@@ -9,7 +9,8 @@
   "scripts": {
     "clean": "hardhat clean",
     "commit": "git-cz",
-    "compile": "hardhat compile",
+    "compile": "SKIP_LOAD=true hardhat compile",
+    "clean-compile": "hardhat clean && hardhat compile --verbose",
     "coverage": "hardhat coverage --solcoverjs ./.solcover.js --temp artifacts --testfiles \"./test/**/*.ts\"",
     "deploy": "hardhat run scripts/deploy.ts",
     "deploy:network": "hardhat run scripts/deploy.ts --network",
@@ -19,7 +20,11 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,sol,ts}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,md,sol,ts}\"",
     "test": "TS_NODE_TRANSPILE_ONLY=1 npx hardhat test",
-    "typechain": "hardhat typechain"
+    "typechain": "hardhat typechain",
+    "hardhat": "hardhat",
+    "hardhat:kovan": "hardhat --network kovan",
+    "hardhat:ropsten": "hardhat --network ropsten",
+    "hardhat:main": "hardhat --network main"
   },
   "files": [
     "/contracts"
@@ -29,6 +34,7 @@
     "@ethersproject/bignumber": "^5.1.1",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/contracts": "^4.1.0",
     "@typechain/ethers-v5": "^6.0.5",
     "@typechain/hardhat": "^1.0.1",
     "@types/chai": "^4.2.17",
@@ -39,7 +45,6 @@
     "@typescript-eslint/parser": "^4.22.0",
     "chai": "^4.3.4",
     "dotenv": "^8.2.0",
-    "eslint": "^7.25.0",
     "ethereum-waffle": "^3.3.0",
     "ethers": "^5.1.4",
     "fs-extra": "^9.1.0",
@@ -48,8 +53,6 @@
     "mocha": "^8.3.2",
     "prettier": "^2.2.1",
     "prettier-plugin-solidity": "^1.0.0-beta.10",
-    "solhint": "^3.3.4",
-    "solhint-plugin-prettier": "^0.0.5",
     "solidity-coverage": "^0.7.16",
     "ts-generator": "^0.1.1",
     "ts-node": "^9.1.1",

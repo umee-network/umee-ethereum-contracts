@@ -13,7 +13,6 @@ import {DataTypes} from '../protocol/libraries/types/DataTypes.sol';
 import {IUniswapV2Router02} from '../interfaces/IUniswapV2Router02.sol';
 import {IPriceOracleGetter} from '../interfaces/IPriceOracleGetter.sol';
 import {IERC20WithPermit} from '../interfaces/IERC20WithPermit.sol';
-import {FlashLoanReceiverBase} from '../flashloan/base/FlashLoanReceiverBase.sol';
 import {IBaseUniswapAdapter} from './interfaces/IBaseUniswapAdapter.sol';
 
 /**

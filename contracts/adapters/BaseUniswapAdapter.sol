@@ -14,6 +14,7 @@ import {IUniswapV2Router02} from "../interfaces/IUniswapV2Router02.sol";
 import {IPriceOracleGetter} from "../interfaces/IPriceOracleGetter.sol";
 import {IERC20WithPermit} from "../interfaces/IERC20WithPermit.sol";
 import {IBaseUniswapAdapter} from "./interfaces/IBaseUniswapAdapter.sol";
+import {ILendingPool} from "../interfaces/ILendingPool.sol";
 
 /**
  * @title BaseUniswapAdapter
@@ -33,6 +34,7 @@ abstract contract BaseUniswapAdapter is IBaseUniswapAdapter, Ownable {
   address public constant override USD_ADDRESS = 0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96;
 
   address public immutable override WETH_ADDRESS;
+  ILendingPool public immutable LENDING_POOL;
   IPriceOracleGetter public immutable override ORACLE;
   IUniswapV2Router02 public immutable override UNISWAP_ROUTER;
 
@@ -42,6 +44,7 @@ abstract contract BaseUniswapAdapter is IBaseUniswapAdapter, Ownable {
     address wethAddress
   ) public {
     ORACLE = IPriceOracleGetter(addressesProvider.getPriceOracle());
+    LENDING_POOL = ILendingPool(addressesProvider.getLendingPool());
     UNISWAP_ROUTER = uniswapRouter;
     WETH_ADDRESS = wethAddress;
   }

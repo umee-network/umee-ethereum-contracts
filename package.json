@@ -10,7 +10,7 @@
     "clean": "hardhat clean",
     "commit": "git-cz",
     "compile": "SKIP_LOAD=true hardhat compile",
-    "clean-compile": "hardhat clean && hardhat compile",
+    "clean-compile": "hardhat clean && hardhat compile --verbose",
     "coverage": "hardhat coverage --solcoverjs ./.solcover.js --temp artifacts --testfiles \"./test/**/*.ts\"",
     "deploy": "hardhat run scripts/deploy.ts",
     "deploy:network": "hardhat run scripts/deploy.ts --network",

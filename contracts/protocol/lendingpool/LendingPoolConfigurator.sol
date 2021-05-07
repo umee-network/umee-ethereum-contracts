@@ -61,13 +61,15 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
    * @dev Initializes reserves in batch
    **/
   function batchInitReserve(InitReserveInput[] calldata input) external onlyPoolAdmin {
-    ILendingPool cachedPool = pool;
+    require(pool == ILendingPool(addressesProvider.getLendingPool()), "This is not the correct instance of pool");
+    //ILendingPool cachedPool = pool;
     for (uint256 i = 0; i < input.length; i++) {
-      _initReserve(cachedPool, input[i]);
+      //_initReserve(cachedPool, input[i]);
+      _initReserve(input[i]);
     }
   }
 
-  function _initReserve(ILendingPool pool, InitReserveInput calldata input) internal {
+  function _initReserve(InitReserveInput calldata input) internal {
     address aTokenProxyAddress =
       _initTokenWithProxy(
         input.aTokenImpl,

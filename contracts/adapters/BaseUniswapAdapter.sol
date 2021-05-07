@@ -2,25 +2,25 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import {PercentageMath} from '../protocol/libraries/math/PercentageMath.sol';
-import {SafeMath} from '../dependencies/openzeppelin/contracts/SafeMath.sol';
-import {IERC20} from '../dependencies/openzeppelin/contracts/IERC20.sol';
-import {IERC20Detailed} from '../dependencies/openzeppelin/contracts/IERC20Detailed.sol';
-import {SafeERC20} from '../dependencies/openzeppelin/contracts/SafeERC20.sol';
-import {Ownable} from '../dependencies/openzeppelin/contracts/Ownable.sol';
-import {ILendingPoolAddressesProvider} from '../interfaces/ILendingPoolAddressesProvider.sol';
-import {DataTypes} from '../protocol/libraries/types/DataTypes.sol';
-import {IUniswapV2Router02} from '../interfaces/IUniswapV2Router02.sol';
-import {IPriceOracleGetter} from '../interfaces/IPriceOracleGetter.sol';
-import {IERC20WithPermit} from '../interfaces/IERC20WithPermit.sol';
-import {IBaseUniswapAdapter} from './interfaces/IBaseUniswapAdapter.sol';
+import {PercentageMath} from "../protocol/libraries/math/PercentageMath.sol";
+import {SafeMath} from "../dependencies/openzeppelin/contracts/SafeMath.sol";
+import {IERC20} from "../dependencies/openzeppelin/contracts/IERC20.sol";
+import {IERC20Detailed} from "../dependencies/openzeppelin/contracts/IERC20Detailed.sol";
+import {SafeERC20} from "../dependencies/openzeppelin/contracts/SafeERC20.sol";
+import {Ownable} from "../dependencies/openzeppelin/contracts/Ownable.sol";
+import {ILendingPoolAddressesProvider} from "../interfaces/ILendingPoolAddressesProvider.sol";
+import {DataTypes} from "../protocol/libraries/types/DataTypes.sol";
+import {IUniswapV2Router02} from "../interfaces/IUniswapV2Router02.sol";
+import {IPriceOracleGetter} from "../interfaces/IPriceOracleGetter.sol";
+import {IERC20WithPermit} from "../interfaces/IERC20WithPermit.sol";
+import {IBaseUniswapAdapter} from "./interfaces/IBaseUniswapAdapter.sol";
 
 /**
  * @title BaseUniswapAdapter
  * @notice Implements the logic for performing assets swaps in Uniswap V2
  * @author Aave
  **/
-abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapter, Ownable {
+abstract contract BaseUniswapAdapter is IBaseUniswapAdapter, Ownable {
   using SafeMath for uint256;
   using PercentageMath for uint256;
   using SafeERC20 for IERC20;
@@ -40,7 +40,7 @@ abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapt
     ILendingPoolAddressesProvider addressesProvider,
     IUniswapV2Router02 uniswapRouter,
     address wethAddress
-  ) public FlashLoanReceiverBase(addressesProvider) {
+  ) public {
     ORACLE = IPriceOracleGetter(addressesProvider.getPriceOracle());
     UNISWAP_ROUTER = uniswapRouter;
     WETH_ADDRESS = wethAddress;
@@ -147,7 +147,7 @@ abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapt
         .div(toAssetPrice.mul(10**fromAssetDecimals))
         .percentMul(PercentageMath.PERCENTAGE_FACTOR.sub(MAX_SLIPPAGE_PERCENT));
 
-    require(expectedMinAmountOut < minAmountOut, 'minAmountOut exceed max slippage');
+    require(expectedMinAmountOut < minAmountOut, "minAmountOut exceed max slippage");
 
     // Approves the transfer for the swap. Approves for 0 first to comply with tokens that implement the anti frontrunning approval fix.
     IERC20(assetToSwapFrom).safeApprove(address(UNISWAP_ROUTER), 0);
@@ -206,7 +206,7 @@ abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapt
         .div(fromAssetPrice.mul(10**toAssetDecimals))
         .percentMul(PercentageMath.PERCENTAGE_FACTOR.add(MAX_SLIPPAGE_PERCENT));
 
-    require(maxAmountToSwap < expectedMaxAmountToSwap, 'maxAmountToSwap exceed max slippage');
+    require(maxAmountToSwap < expectedMaxAmountToSwap, "maxAmountToSwap exceed max slippage");
 
     // Approves the transfer for the swap. Approves for 0 first to comply with tokens that implement the anti frontrunning approval fix.
     IERC20(assetToSwapFrom).safeApprove(address(UNISWAP_ROUTER), 0);
@@ -299,7 +299,7 @@ abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapt
 
   /**
    * @dev Tells if the permit method should be called by inspecting if there is a valid signature.
-   * If signature params are set to 0, then permit won't be called.
+   * If signature params are set to 0, then permit won"t be called.
    * @param signature struct containing the permit signature
    * @return whether or not permit should be called
    */

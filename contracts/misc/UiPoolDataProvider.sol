@@ -2,22 +2,22 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import {IERC20Detailed} from '../dependencies/openzeppelin/contracts/IERC20Detailed.sol';
-import {ILendingPoolAddressesProvider} from '../interfaces/ILendingPoolAddressesProvider.sol';
-import {IAaveIncentivesController} from '../interfaces/IAaveIncentivesController.sol';
-import {IUiPoolDataProvider} from './interfaces/IUiPoolDataProvider.sol';
-import {ILendingPool} from '../interfaces/ILendingPool.sol';
-import {IPriceOracleGetter} from '../interfaces/IPriceOracleGetter.sol';
-import {IAToken} from '../interfaces/IAToken.sol';
-import {IVariableDebtToken} from '../interfaces/IVariableDebtToken.sol';
-import {IStableDebtToken} from '../interfaces/IStableDebtToken.sol';
-import {WadRayMath} from '../protocol/libraries/math/WadRayMath.sol';
-import {ReserveConfiguration} from '../protocol/libraries/configuration/ReserveConfiguration.sol';
-import {UserConfiguration} from '../protocol/libraries/configuration/UserConfiguration.sol';
-import {DataTypes} from '../protocol/libraries/types/DataTypes.sol';
+import {IERC20Detailed} from "../dependencies/openzeppelin/contracts/IERC20Detailed.sol";
+import {ILendingPoolAddressesProvider} from "../interfaces/ILendingPoolAddressesProvider.sol";
+import {IAaveIncentivesController} from "../interfaces/IAaveIncentivesController.sol";
+import {IUiPoolDataProvider} from "./interfaces/IUiPoolDataProvider.sol";
+import {ILendingPool} from "../interfaces/ILendingPool.sol";
+import {IPriceOracleGetter} from "../interfaces/IPriceOracleGetter.sol";
+import {IAToken} from "../interfaces/IAToken.sol";
+import {IVariableDebtToken} from "../interfaces/IVariableDebtToken.sol";
+import {IStableDebtToken} from "../interfaces/IStableDebtToken.sol";
+import {WadRayMath} from "../protocol/libraries/math/WadRayMath.sol";
+import {ReserveConfiguration} from "../protocol/libraries/configuration/ReserveConfiguration.sol";
+import {UserConfiguration} from "../protocol/libraries/configuration/UserConfiguration.sol";
+import {DataTypes} from "../protocol/libraries/types/DataTypes.sol";
 import {
   DefaultReserveInterestRateStrategy
-} from '../protocol/lendingpool/DefaultReserveInterestRateStrategy.sol';
+} from "../protocol/lendingpool/DefaultReserveInterestRateStrategy.sol";
 
 contract UiPoolDataProvider is IUiPoolDataProvider {
   using WadRayMath for uint256;
@@ -103,9 +103,9 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
 
       // reserve configuration
 
-      // we're getting this info from the aToken, because some of assets can be not compliant with ETC20Detailed
+      // we"re getting this info from the aToken, because some of assets can be not compliant with ETC20Detailed
       reserveData.symbol = IERC20Detailed(reserveData.aTokenAddress).symbol();
-      reserveData.name = '';
+      reserveData.name = "";
 
       (
         reserveData.baseLTVasCollateral,

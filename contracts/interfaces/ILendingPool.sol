@@ -2,8 +2,8 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import {ILendingPoolAddressesProvider} from './ILendingPoolAddressesProvider.sol';
-import {DataTypes} from '../protocol/libraries/types/DataTypes.sol';
+import {ILendingPoolAddressesProvider} from "./ILendingPoolAddressesProvider.sol";
+import {DataTypes} from "../protocol/libraries/types/DataTypes.sol";
 
 interface ILendingPool {
   /**
@@ -297,7 +297,7 @@ interface ILendingPool {
    * @param assets The addresses of the assets being flash-borrowed
    * @param amounts The amounts amounts being flash-borrowed
    * @param modes Types of the debt to open if the flash loan is not returned:
-   *   0 -> Don't open any debt, just revert if funds can't be transferred from the receiver
+   *   0 -> Don"t open any debt, just revert if funds can"t be transferred from the receiver
    *   1 -> Open debt at stable rate for the value of the amount flash-borrowed to the `onBehalfOf` address
    *   2 -> Open debt at variable rate for the value of the amount flash-borrowed to the `onBehalfOf` address
    * @param onBehalfOf The address  that will receive the debt in the case of using on `modes` 1 or 2
@@ -373,7 +373,7 @@ interface ILendingPool {
   /**
    * @dev Returns the normalized income normalized income of the reserve
    * @param asset The address of the underlying asset of the reserve
-   * @return The reserve's normalized income
+   * @return The reserve"s normalized income
    */
   function getReserveNormalizedIncome(address asset) external view returns (uint256);
 

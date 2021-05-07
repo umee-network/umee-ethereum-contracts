@@ -33,7 +33,7 @@ abstract contract VersionedInitializable {
     uint256 revision = getRevision();
     require(
       initializing || isConstructor() || revision > lastInitializedRevision,
-      'Contract instance has already been initialized'
+      "Contract instance has already been initialized"
     );
 
     bool isTopLevelCall = !initializing;

@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.6.12;
 
-import {ILendingPool} from '../../../interfaces/ILendingPool.sol';
-import {ICreditDelegationToken} from '../../../interfaces/ICreditDelegationToken.sol';
+import {ILendingPool} from "../../../interfaces/ILendingPool.sol";
+import {ICreditDelegationToken} from "../../../interfaces/ICreditDelegationToken.sol";
 import {
   VersionedInitializable
-} from '../../libraries/aave-upgradeability/VersionedInitializable.sol';
-import {IncentivizedERC20} from '../IncentivizedERC20.sol';
-import {Errors} from '../../libraries/helpers/Errors.sol';
+} from "../../libraries/aave-upgradeability/VersionedInitializable.sol";
+import {IncentivizedERC20} from "../IncentivizedERC20.sol";
+import {Errors} from "../../libraries/helpers/Errors.sol";
 
 /**
  * @title DebtTokenBase
@@ -16,7 +16,7 @@ import {Errors} from '../../libraries/helpers/Errors.sol';
  */
 
 abstract contract DebtTokenBase is
-  IncentivizedERC20('DEBTTOKEN_IMPL', 'DEBTTOKEN_IMPL', 0),
+  IncentivizedERC20("DEBTTOKEN_IMPL", "DEBTTOKEN_IMPL", 0),
   VersionedInitializable,
   ICreditDelegationToken
 {
@@ -64,7 +64,7 @@ abstract contract DebtTokenBase is
   function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
     recipient;
     amount;
-    revert('TRANSFER_NOT_SUPPORTED');
+    revert("TRANSFER_NOT_SUPPORTED");
   }
 
   function allowance(address owner, address spender)
@@ -76,13 +76,13 @@ abstract contract DebtTokenBase is
   {
     owner;
     spender;
-    revert('ALLOWANCE_NOT_SUPPORTED');
+    revert("ALLOWANCE_NOT_SUPPORTED");
   }
 
   function approve(address spender, uint256 amount) public virtual override returns (bool) {
     spender;
     amount;
-    revert('APPROVAL_NOT_SUPPORTED');
+    revert("APPROVAL_NOT_SUPPORTED");
   }
 
   function transferFrom(
@@ -93,7 +93,7 @@ abstract contract DebtTokenBase is
     sender;
     recipient;
     amount;
-    revert('TRANSFER_NOT_SUPPORTED');
+    revert("TRANSFER_NOT_SUPPORTED");
   }
 
   function increaseAllowance(address spender, uint256 addedValue)
@@ -104,7 +104,7 @@ abstract contract DebtTokenBase is
   {
     spender;
     addedValue;
-    revert('ALLOWANCE_NOT_SUPPORTED');
+    revert("ALLOWANCE_NOT_SUPPORTED");
   }
 
   function decreaseAllowance(address spender, uint256 subtractedValue)
@@ -115,7 +115,7 @@ abstract contract DebtTokenBase is
   {
     spender;
     subtractedValue;
-    revert('ALLOWANCE_NOT_SUPPORTED');
+    revert("ALLOWANCE_NOT_SUPPORTED");
   }
 
   function _decreaseBorrowAllowance(

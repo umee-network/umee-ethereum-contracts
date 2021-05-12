@@ -2,6 +2,7 @@ import { task } from 'hardhat/config';
 import { checkVerification } from '../../helpers/etherscan-verification';
 import { ConfigNames } from '../../helpers/configuration';
 import { printContracts } from '../../helpers/misc-utils';
+import { usingTenderly } from '../../helpers/tenderly-utils';
 
 task('aave:mainnet', 'Deploy development enviroment')
   .addFlag('verify', 'Verify contracts at Etherscan')
@@ -43,6 +44,13 @@ task('aave:mainnet', 'Deploy development enviroment')
       await DRE.run('verify:tokens', { pool: POOL_NAME });
     }
 
+    if (usingTenderly()) {
+      const postDeployHead = DRE.tenderlyRPC.getHead();
+      const postDeployFork = DRE.tenderlyRPC.getFork();
+      console.log('Tenderly Info');
+      console.log('- Head', postDeployHead);
+      console.log('- Fork', postDeployFork);
+    }
     console.log('\nFinished migrations');
     printContracts();
   });

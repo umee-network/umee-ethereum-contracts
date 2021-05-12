@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.6.12;
 
-import {IERC20} from "../../dependencies/openzeppelin/contracts/IERC20.sol";
-import {SafeERC20} from "../../dependencies/openzeppelin/contracts/SafeERC20.sol";
-import {ILendingPool} from "../../interfaces/ILendingPool.sol";
-import {IAToken} from "../../interfaces/IAToken.sol";
-import {WadRayMath} from "../libraries/math/WadRayMath.sol";
-import {Errors} from "../libraries/helpers/Errors.sol";
-import {VersionedInitializable} from "../libraries/aave-upgradeability/VersionedInitializable.sol";
-import {IncentivizedERC20} from "./IncentivizedERC20.sol";
-import {IAaveIncentivesController} from "../../interfaces/IAaveIncentivesController.sol";
+import {IERC20} from '../../dependencies/openzeppelin/contracts/IERC20.sol';
+import {SafeERC20} from '../../dependencies/openzeppelin/contracts/SafeERC20.sol';
+import {ILendingPool} from '../../interfaces/ILendingPool.sol';
+import {IAToken} from '../../interfaces/IAToken.sol';
+import {WadRayMath} from '../libraries/math/WadRayMath.sol';
+import {Errors} from '../libraries/helpers/Errors.sol';
+import {VersionedInitializable} from '../libraries/aave-upgradeability/VersionedInitializable.sol';
+import {IncentivizedERC20} from './IncentivizedERC20.sol';
+import {IAaveIncentivesController} from '../../interfaces/IAaveIncentivesController.sol';
 
 /**
  * @title Aave ERC20 AToken
@@ -18,17 +18,17 @@ import {IAaveIncentivesController} from "../../interfaces/IAaveIncentivesControl
  */
 contract AToken is
   VersionedInitializable,
-  IncentivizedERC20("ATOKEN_IMPL", "ATOKEN_IMPL", 0),
+  IncentivizedERC20('ATOKEN_IMPL', 'ATOKEN_IMPL', 0),
   IAToken
 {
   using WadRayMath for uint256;
   using SafeERC20 for IERC20;
 
-  bytes public constant EIP712_REVISION = bytes("1");
+  bytes public constant EIP712_REVISION = bytes('1');
   bytes32 internal constant EIP712_DOMAIN =
-    keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
+    keccak256('EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)');
   bytes32 public constant PERMIT_TYPEHASH =
-    keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
+    keccak256('Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)');
 
   uint256 public constant ATOKEN_REVISION = 0x1;
 
@@ -57,7 +57,7 @@ contract AToken is
    * @param treasury The address of the Aave treasury, receiving the fees on this aToken
    * @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)
    * @param incentivesController The smart contract managing potential incentives distribution
-   * @param aTokenDecimals The decimals of the aToken, same as the underlying asset"s
+   * @param aTokenDecimals The decimals of the aToken, same as the underlying asset's
    * @param aTokenName The name of the aToken
    * @param aTokenSymbol The symbol of the aToken
    */
@@ -171,7 +171,7 @@ contract AToken is
 
     address treasury = _treasury;
 
-    // Compared to the normal mint, we don"t check for rounding errors.
+    // Compared to the normal mint, we don't check for rounding errors.
     // The amount to mint can easily be very small since it is a fraction of the interest ccrued.
     // In that case, the treasury will experience a (very small) loss, but it
     // wont cause potentially valid transactions to fail.
@@ -216,7 +216,7 @@ contract AToken is
 
   /**
    * @dev Returns the scaled balance of the user. The scaled balance is the sum of all the
-   * updated stored balance divided by the reserve"s liquidity index at the moment of the update
+   * updated stored balance divided by the reserve's liquidity index at the moment of the update
    * @param user The user whose balance is calculated
    * @return The scaled balance of the user
    **/
@@ -342,19 +342,19 @@ contract AToken is
     bytes32 r,
     bytes32 s
   ) external {
-    require(owner != address(0), "INVALID_OWNER");
+    require(owner != address(0), 'INVALID_OWNER');
     //solium-disable-next-line
-    require(block.timestamp <= deadline, "INVALID_EXPIRATION");
+    require(block.timestamp <= deadline, 'INVALID_EXPIRATION');
     uint256 currentValidNonce = _nonces[owner];
     bytes32 digest =
       keccak256(
         abi.encodePacked(
-          "\x19\x01",
+          '\x19\x01',
           DOMAIN_SEPARATOR,
           keccak256(abi.encode(PERMIT_TYPEHASH, owner, spender, value, currentValidNonce, deadline))
         )
       );
-    require(owner == ecrecover(digest, v, r, s), "INVALID_SIGNATURE");
+    require(owner == ecrecover(digest, v, r, s), 'INVALID_SIGNATURE');
     _nonces[owner] = currentValidNonce.add(1);
     _approve(owner, spender, value);
   }

@@ -2,19 +2,19 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import {SafeMath} from "../../../dependencies/openzeppelin/contracts/SafeMath.sol";
-import {IERC20} from "../../../dependencies/openzeppelin/contracts/IERC20.sol";
-import {ReserveLogic} from "./ReserveLogic.sol";
-import {GenericLogic} from "./GenericLogic.sol";
-import {WadRayMath} from "../math/WadRayMath.sol";
-import {PercentageMath} from "../math/PercentageMath.sol";
-import {SafeERC20} from "../../../dependencies/openzeppelin/contracts/SafeERC20.sol";
-import {ReserveConfiguration} from "../configuration/ReserveConfiguration.sol";
-import {UserConfiguration} from "../configuration/UserConfiguration.sol";
-import {Errors} from "../helpers/Errors.sol";
-import {Helpers} from "../helpers/Helpers.sol";
-import {IReserveInterestRateStrategy} from "../../../interfaces/IReserveInterestRateStrategy.sol";
-import {DataTypes} from "../types/DataTypes.sol";
+import {SafeMath} from '../../../dependencies/openzeppelin/contracts/SafeMath.sol';
+import {IERC20} from '../../../dependencies/openzeppelin/contracts/IERC20.sol';
+import {ReserveLogic} from './ReserveLogic.sol';
+import {GenericLogic} from './GenericLogic.sol';
+import {WadRayMath} from '../math/WadRayMath.sol';
+import {PercentageMath} from '../math/PercentageMath.sol';
+import {SafeERC20} from '../../../dependencies/openzeppelin/contracts/SafeERC20.sol';
+import {ReserveConfiguration} from '../configuration/ReserveConfiguration.sol';
+import {UserConfiguration} from '../configuration/UserConfiguration.sol';
+import {Errors} from '../helpers/Errors.sol';
+import {Helpers} from '../helpers/Helpers.sol';
+import {IReserveInterestRateStrategy} from '../../../interfaces/IReserveInterestRateStrategy.sol';
+import {DataTypes} from '../types/DataTypes.sol';
 
 /**
  * @title ReserveLogic library
@@ -385,7 +385,7 @@ library ValidationLogic {
    * @param collateralReserve The reserve data of the collateral
    * @param principalReserve The reserve data of the principal
    * @param userConfig The user configuration
-   * @param userHealthFactor The user"s health factor
+   * @param userHealthFactor The user's health factor
    * @param userStableDebt Total stable debt balance of the user
    * @param userVariableDebt Total variable debt balance of the user
    **/
@@ -417,7 +417,7 @@ library ValidationLogic {
       collateralReserve.configuration.getLiquidationThreshold() > 0 &&
         userConfig.isUsingAsCollateral(collateralReserve.id);
 
-    //if collateral isn"t enabled as collateral by user, it cannot be liquidated
+    //if collateral isn't enabled as collateral by user, it cannot be liquidated
     if (!isCollateralEnabled) {
       return (
         uint256(Errors.CollateralManagerErrors.COLLATERAL_CANNOT_BE_LIQUIDATED),

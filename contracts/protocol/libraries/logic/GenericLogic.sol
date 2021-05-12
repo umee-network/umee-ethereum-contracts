@@ -2,15 +2,15 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import {SafeMath} from "../../../dependencies/openzeppelin/contracts/SafeMath.sol";
-import {IERC20} from "../../../dependencies/openzeppelin/contracts/IERC20.sol";
-import {ReserveLogic} from "./ReserveLogic.sol";
-import {ReserveConfiguration} from "../configuration/ReserveConfiguration.sol";
-import {UserConfiguration} from "../configuration/UserConfiguration.sol";
-import {WadRayMath} from "../math/WadRayMath.sol";
-import {PercentageMath} from "../math/PercentageMath.sol";
-import {IPriceOracleGetter} from "../../../interfaces/IPriceOracleGetter.sol";
-import {DataTypes} from "../types/DataTypes.sol";
+import {SafeMath} from '../../../dependencies/openzeppelin/contracts/SafeMath.sol';
+import {IERC20} from '../../../dependencies/openzeppelin/contracts/IERC20.sol';
+import {ReserveLogic} from './ReserveLogic.sol';
+import {ReserveConfiguration} from '../configuration/ReserveConfiguration.sol';
+import {UserConfiguration} from '../configuration/UserConfiguration.sol';
+import {WadRayMath} from '../math/WadRayMath.sol';
+import {PercentageMath} from '../math/PercentageMath.sol';
+import {IPriceOracleGetter} from '../../../interfaces/IPriceOracleGetter.sol';
+import {DataTypes} from '../types/DataTypes.sol';
 
 /**
  * @title GenericLogic library
@@ -42,7 +42,7 @@ library GenericLogic {
 
   /**
    * @dev Checks if a specific balance decrease is allowed
-   * (i.e. doesn"t bring the user borrow position health factor under HEALTH_FACTOR_LIQUIDATION_THRESHOLD)
+   * (i.e. doesn't bring the user borrow position health factor under HEALTH_FACTOR_LIQUIDATION_THRESHOLD)
    * @param asset The address of the underlying asset of the reserve
    * @param user The address of the user
    * @param amount The amount to decrease
@@ -94,7 +94,7 @@ library GenericLogic {
 
     vars.collateralBalanceAfterDecrease = vars.totalCollateralInETH.sub(vars.amountToDecreaseInETH);
 
-    //if there is a borrow, there can"t be 0 collateral
+    //if there is a borrow, there can't be 0 collateral
     if (vars.collateralBalanceAfterDecrease == 0) {
       return false;
     }

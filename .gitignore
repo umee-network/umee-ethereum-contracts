@@ -1,21 +1,17 @@
-# folders
-.coverage_artifacts/
-.coverage_cache/
-.coverage_contracts/
-artifacts/
-build/
-cache/
-coverage/
+.env
+#Buidler files
+cache
+artifacts
+node_modules
 dist/
-lib/
-node_modules/
-typechain/
+build/
+.vscode
+.idea
+./types
+deployed-contracts.json
 
-# files
-*.env
-*.log
-*.tsbuildinfo
-coverage.json
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+coverage
+.coverage_artifacts
+.coverage_cache
+.coverage_contracts
+

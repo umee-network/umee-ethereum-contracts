@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.6.12;
 
-import "../../../dependencies/openzeppelin/upgradeability/BaseUpgradeabilityProxy.sol";
+import '../../../dependencies/openzeppelin/upgradeability/BaseUpgradeabilityProxy.sol';
 
 /**
  * @title BaseImmutableAdminUpgradeabilityProxy
@@ -74,7 +74,7 @@ contract BaseImmutableAdminUpgradeabilityProxy is BaseUpgradeabilityProxy {
    * @dev Only fall back when the sender is not the admin.
    */
   function _willFallback() internal virtual override {
-    require(msg.sender != ADMIN, "Cannot call fallback function from the proxy admin");
+    require(msg.sender != ADMIN, 'Cannot call fallback function from the proxy admin');
     super._willFallback();
   }
 }

@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.6.12;
 
-import {Context} from "../../dependencies/openzeppelin/contracts/Context.sol";
-import {IERC20} from "../../dependencies/openzeppelin/contracts/IERC20.sol";
-import {IERC20Detailed} from "../../dependencies/openzeppelin/contracts/IERC20Detailed.sol";
-import {SafeMath} from "../../dependencies/openzeppelin/contracts/SafeMath.sol";
-import {IAaveIncentivesController} from "../../interfaces/IAaveIncentivesController.sol";
+import {Context} from '../../dependencies/openzeppelin/contracts/Context.sol';
+import {IERC20} from '../../dependencies/openzeppelin/contracts/IERC20.sol';
+import {IERC20Detailed} from '../../dependencies/openzeppelin/contracts/IERC20Detailed.sol';
+import {SafeMath} from '../../dependencies/openzeppelin/contracts/SafeMath.sol';
+import {IAaveIncentivesController} from '../../interfaces/IAaveIncentivesController.sol';
 
 /**
  * @title ERC20
@@ -89,8 +89,8 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
   /**
    * @dev Returns the allowance of spender on the tokens owned by owner
    * @param owner The owner of the tokens
-   * @param spender The user allowed to spend the owner"s tokens
-   * @return The amount of owner"s tokens spender is allowed to spend
+   * @param spender The user allowed to spend the owner's tokens
+   * @return The amount of owner's tokens spender is allowed to spend
    **/
   function allowance(address owner, address spender)
     public
@@ -128,7 +128,7 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
     _approve(
       sender,
       _msgSender(),
-      _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance")
+      _allowances[sender][_msgSender()].sub(amount, 'ERC20: transfer amount exceeds allowance')
     );
     emit Transfer(sender, recipient, amount);
     return true;
@@ -161,7 +161,7 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
       spender,
       _allowances[_msgSender()][spender].sub(
         subtractedValue,
-        "ERC20: decreased allowance below zero"
+        'ERC20: decreased allowance below zero'
       )
     );
     return true;
@@ -172,13 +172,13 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
     address recipient,
     uint256 amount
   ) internal virtual {
-    require(sender != address(0), "ERC20: transfer from the zero address");
-    require(recipient != address(0), "ERC20: transfer to the zero address");
+    require(sender != address(0), 'ERC20: transfer from the zero address');
+    require(recipient != address(0), 'ERC20: transfer to the zero address');
 
     _beforeTokenTransfer(sender, recipient, amount);
 
     uint256 oldSenderBalance = _balances[sender];
-    _balances[sender] = oldSenderBalance.sub(amount, "ERC20: transfer amount exceeds balance");
+    _balances[sender] = oldSenderBalance.sub(amount, 'ERC20: transfer amount exceeds balance');
     uint256 oldRecipientBalance = _balances[recipient];
     _balances[recipient] = _balances[recipient].add(amount);
 
@@ -192,7 +192,7 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
   }
 
   function _mint(address account, uint256 amount) internal virtual {
-    require(account != address(0), "ERC20: mint to the zero address");
+    require(account != address(0), 'ERC20: mint to the zero address');
 
     _beforeTokenTransfer(address(0), account, amount);
 
@@ -208,7 +208,7 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
   }
 
   function _burn(address account, uint256 amount) internal virtual {
-    require(account != address(0), "ERC20: burn from the zero address");
+    require(account != address(0), 'ERC20: burn from the zero address');
 
     _beforeTokenTransfer(account, address(0), amount);
 
@@ -216,7 +216,7 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
     _totalSupply = oldTotalSupply.sub(amount);
 
     uint256 oldAccountBalance = _balances[account];
-    _balances[account] = oldAccountBalance.sub(amount, "ERC20: burn amount exceeds balance");
+    _balances[account] = oldAccountBalance.sub(amount, 'ERC20: burn amount exceeds balance');
 
     if (address(_getIncentivesController()) != address(0)) {
       _getIncentivesController().handleAction(account, oldTotalSupply, oldAccountBalance);
@@ -228,8 +228,8 @@ abstract contract IncentivizedERC20 is Context, IERC20, IERC20Detailed {
     address spender,
     uint256 amount
   ) internal virtual {
-    require(owner != address(0), "ERC20: approve from the zero address");
-    require(spender != address(0), "ERC20: approve to the zero address");
+    require(owner != address(0), 'ERC20: approve from the zero address');
+    require(spender != address(0), 'ERC20: approve to the zero address');
 
     _allowances[owner][spender] = amount;
     emit Approval(owner, spender, amount);

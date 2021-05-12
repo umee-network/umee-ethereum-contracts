@@ -1,110 +1,138 @@
-import "@nomiclabs/hardhat-waffle";
-import "@typechain/hardhat";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
+import path from 'path';
+import fs from 'fs';
+import { HardhatUserConfig } from 'hardhat/types';
+// @ts-ignore
+import { accounts } from './test-wallets.js';
+import { eEthereumNetwork, eNetwork, ePolygonNetwork, eXDaiNetwork } from './helpers/types';
+import { BUIDLEREVM_CHAINID, COVERAGE_CHAINID } from './helpers/buidler-constants';
+import { NETWORKS_RPC_URL, NETWORKS_DEFAULT_GAS } from './helper-hardhat-config';
 
-import "./tasks/accounts";
-import "./tasks/clean";
+require('dotenv').config();
 
-import { resolve } from "path";
+import '@nomiclabs/hardhat-ethers';
+import '@nomiclabs/hardhat-waffle';
+import 'temp-hardhat-etherscan';
+import 'hardhat-gas-reporter';
+import 'hardhat-typechain';
+import '@tenderly/hardhat-tenderly';
+import 'solidity-coverage';
 
-import { config as dotenvConfig } from "dotenv";
-import { HardhatUserConfig } from "hardhat/config";
-import { NetworkUserConfig } from "hardhat/types";
+const SKIP_LOAD = process.env.SKIP_LOAD === 'true';
+const DEFAULT_BLOCK_GAS_LIMIT = 12450000;
+const DEFAULT_GAS_MUL = 5;
+const HARDFORK = 'istanbul';
+const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY || '';
+const MNEMONIC_PATH = "m/44'/60'/0'/0";
+const MNEMONIC = process.env.MNEMONIC || '';
+const MAINNET_FORK = process.env.MAINNET_FORK === 'true';
 
-dotenvConfig({ path: resolve(__dirname, "./.env") });
-
-const chainIds = {
-  ganache: 1337,
-  goerli: 5,
-  hardhat: 31337,
-  kovan: 42,
-  mainnet: 1,
-  rinkeby: 4,
-  ropsten: 3,
-};
-
-// Ensure that we have all the environment variables we need.
-let mnemonic: string;
-if (!process.env.MNEMONIC) {
-  throw new Error("Please set your MNEMONIC in a .env file");
-} else {
-  mnemonic = process.env.MNEMONIC;
+// Prevent to load scripts before compilation and typechain
+if (!SKIP_LOAD) {
+  ['misc', 'migrations', 'dev', 'full', 'verifications', 'deployments', 'helpers'].forEach(
+    (folder) => {
+      const tasksPath = path.join(__dirname, 'tasks', folder);
+      fs.readdirSync(tasksPath)
+        .filter((pth) => pth.includes('.ts'))
+        .forEach((task) => {
+          require(`${tasksPath}/${task}`);
+        });
+    }
+  );
 }
 
-let infuraApiKey: string;
-if (!process.env.INFURA_API_KEY) {
-  throw new Error("Please set your INFURA_API_KEY in a .env file");
-} else {
-  infuraApiKey = process.env.INFURA_API_KEY;
-}
+require(`${path.join(__dirname, 'tasks/misc')}/set-bre.ts`);
 
-function createTestnetConfig(network: keyof typeof chainIds): NetworkUserConfig {
-  const url: string = "https://" + network + ".infura.io/v3/" + infuraApiKey;
-  return {
-    accounts: {
-      count: 10,
-      initialIndex: 0,
-      mnemonic,
-      path: "m/44'/60'/0'/0",
-    },
-    chainId: chainIds[network],
-    url,
-  };
-}
+const getCommonNetworkConfig = (networkName: eNetwork, networkId: number) => ({
+  url: NETWORKS_RPC_URL[networkName],
+  hardfork: HARDFORK,
+  blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
+  gasMultiplier: DEFAULT_GAS_MUL,
+  gasPrice: NETWORKS_DEFAULT_GAS[networkName],
+  chainId: networkId,
+  accounts: {
+    mnemonic: MNEMONIC,
+    path: MNEMONIC_PATH,
+    initialIndex: 0,
+    count: 20,
+  },
+});
 
-const config: HardhatUserConfig = {
-  defaultNetwork: "hardhat",
-  gasReporter: {
-    currency: "USD",
-    enabled: process.env.REPORT_GAS ? true : false,
-    excludeContracts: [],
-    src: "./contracts",
-  },
-  networks: {
-    hardhat: {
-      accounts: {
-        mnemonic,
-      },
-      chainId: chainIds.hardhat,
-    },
-    goerli: createTestnetConfig("goerli"),
-    kovan: createTestnetConfig("kovan"),
-    rinkeby: createTestnetConfig("rinkeby"),
-    ropsten: createTestnetConfig("ropsten"),
-  },
-  paths: {
-    artifacts: "./artifacts",
-    cache: "./cache",
-    sources: "./contracts",
-    tests: "./test",
-  },
+const mainnetFork = MAINNET_FORK
+  ? {
+      blockNumber: 12012081,
+      url: NETWORKS_RPC_URL['main'],
+    }
+  : undefined;
+
+const buidlerConfig: HardhatUserConfig = {
   solidity: {
-    compilers: [
-      {
-        version: "0.8.0",
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 200
-          }
-        }
-      },
-      {
-        version: "0.6.12",
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 200
-          }
-        }
-      }
-    ]
+    version: '0.6.12',
+    settings: {
+      optimizer: { enabled: true, runs: 200 },
+      evmVersion: 'istanbul',
+    },
   },
   typechain: {
-    outDir: "typechain",
-    target: "ethers-v5",
+    outDir: 'types',
+    target: 'ethers-v5',
+  },
+  etherscan: {
+    apiKey: ETHERSCAN_KEY,
+  },
+  mocha: {
+    timeout: 0,
+  },
+  tenderly: {
+    project: process.env.TENDERLY_PROJECT || '',
+    username: process.env.TENDERLY_USERNAME || '',
+    forkNetwork: '1', //Network id of the network we want to fork
+  },
+  networks: {
+    coverage: {
+      url: 'http://localhost:8555',
+      chainId: COVERAGE_CHAINID,
+    },
+    kovan: getCommonNetworkConfig(eEthereumNetwork.kovan, 42),
+    ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
+    main: getCommonNetworkConfig(eEthereumNetwork.main, 1),
+    tenderlyMain: getCommonNetworkConfig(eEthereumNetwork.tenderlyMain, 3030),
+    matic: getCommonNetworkConfig(ePolygonNetwork.matic, 137),
+    mumbai: getCommonNetworkConfig(ePolygonNetwork.mumbai, 80001),
+    xdai: getCommonNetworkConfig(eXDaiNetwork.xdai, 100),
+    hardhat: {
+      hardfork: 'berlin',
+      blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
+      gas: DEFAULT_BLOCK_GAS_LIMIT,
+      gasPrice: 8000000000,
+      chainId: BUIDLEREVM_CHAINID,
+      throwOnTransactionFailures: true,
+      throwOnCallFailures: true,
+      accounts: accounts.map(({ secretKey, balance }: { secretKey: string; balance: string }) => ({
+        privateKey: secretKey,
+        balance,
+      })),
+      forking: mainnetFork,
+    },
+    buidlerevm_docker: {
+      hardfork: 'berlin',
+      blockGasLimit: 9500000,
+      gas: 9500000,
+      gasPrice: 8000000000,
+      chainId: BUIDLEREVM_CHAINID,
+      throwOnTransactionFailures: true,
+      throwOnCallFailures: true,
+      url: 'http://localhost:8545',
+    },
+    ganache: {
+      url: 'http://ganache:8545',
+      accounts: {
+        mnemonic: 'fox sight canyon orphan hotel grow hedgehog build bless august weather swarm',
+        path: "m/44'/60'/0'/0",
+        initialIndex: 0,
+        count: 20,
+      },
+    },
   },
 };
 
-export default config;
+export default buidlerConfig;

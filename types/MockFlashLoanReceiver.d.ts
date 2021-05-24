@@ -121,39 +121,27 @@ export class MockFlashLoanReceiver extends Contract {
   interface: MockFlashLoanReceiverInterface;
 
   functions: {
-    ADDRESSES_PROVIDER(
-      overrides?: CallOverrides
-    ): Promise<{
+    ADDRESSES_PROVIDER(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "ADDRESSES_PROVIDER()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "ADDRESSES_PROVIDER()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LENDING_POOL(
-      overrides?: CallOverrides
-    ): Promise<{
+    LENDING_POOL(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LENDING_POOL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LENDING_POOL()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    amountToApprove(
-      overrides?: CallOverrides
-    ): Promise<{
+    amountToApprove(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "amountToApprove()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "amountToApprove()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
@@ -205,15 +193,11 @@ export class MockFlashLoanReceiver extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    simulateEOA(
-      overrides?: CallOverrides
-    ): Promise<{
+    simulateEOA(overrides?: CallOverrides): Promise<{
       0: boolean;
     }>;
 
-    "simulateEOA()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "simulateEOA()"(overrides?: CallOverrides): Promise<{
       0: boolean;
     }>;
   };

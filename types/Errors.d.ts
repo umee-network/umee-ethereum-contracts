@@ -762,45 +762,31 @@ export class Errors extends Contract {
   interface: ErrorsInterface;
 
   functions: {
-    BORROW_ALLOWANCE_NOT_ENOUGH(
-      overrides?: CallOverrides
-    ): Promise<{
+    BORROW_ALLOWANCE_NOT_ENOUGH(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "BORROW_ALLOWANCE_NOT_ENOUGH()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "BORROW_ALLOWANCE_NOT_ENOUGH()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    CALLER_NOT_POOL_ADMIN(
-      overrides?: CallOverrides
-    ): Promise<{
+    CALLER_NOT_POOL_ADMIN(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "CALLER_NOT_POOL_ADMIN()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "CALLER_NOT_POOL_ADMIN()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    CT_CALLER_MUST_BE_LENDING_POOL(
-      overrides?: CallOverrides
-    ): Promise<{
+    CT_CALLER_MUST_BE_LENDING_POOL(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "CT_CALLER_MUST_BE_LENDING_POOL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "CT_CALLER_MUST_BE_LENDING_POOL()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    CT_CANNOT_GIVE_ALLOWANCE_TO_HIMSELF(
-      overrides?: CallOverrides
-    ): Promise<{
+    CT_CANNOT_GIVE_ALLOWANCE_TO_HIMSELF(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -810,45 +796,31 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    CT_INVALID_BURN_AMOUNT(
-      overrides?: CallOverrides
-    ): Promise<{
+    CT_INVALID_BURN_AMOUNT(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "CT_INVALID_BURN_AMOUNT()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "CT_INVALID_BURN_AMOUNT()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    CT_INVALID_MINT_AMOUNT(
-      overrides?: CallOverrides
-    ): Promise<{
+    CT_INVALID_MINT_AMOUNT(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "CT_INVALID_MINT_AMOUNT()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "CT_INVALID_MINT_AMOUNT()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    CT_TRANSFER_AMOUNT_NOT_GT_0(
-      overrides?: CallOverrides
-    ): Promise<{
+    CT_TRANSFER_AMOUNT_NOT_GT_0(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "CT_TRANSFER_AMOUNT_NOT_GT_0()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "CT_TRANSFER_AMOUNT_NOT_GT_0()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LPAPR_INVALID_ADDRESSES_PROVIDER_ID(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPAPR_INVALID_ADDRESSES_PROVIDER_ID(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -858,21 +830,15 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LPAPR_PROVIDER_NOT_REGISTERED(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPAPR_PROVIDER_NOT_REGISTERED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LPAPR_PROVIDER_NOT_REGISTERED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LPAPR_PROVIDER_NOT_REGISTERED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LPCM_COLLATERAL_CANNOT_BE_LIQUIDATED(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPCM_COLLATERAL_CANNOT_BE_LIQUIDATED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -882,9 +848,7 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LPCM_HEALTH_FACTOR_NOT_BELOW_THRESHOLD(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPCM_HEALTH_FACTOR_NOT_BELOW_THRESHOLD(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -894,9 +858,7 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LPCM_NOT_ENOUGH_LIQUIDITY_TO_LIQUIDATE(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPCM_NOT_ENOUGH_LIQUIDITY_TO_LIQUIDATE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -906,15 +868,11 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LPCM_NO_ERRORS(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPCM_NO_ERRORS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LPCM_NO_ERRORS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LPCM_NO_ERRORS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -930,51 +888,35 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LPC_CALLER_NOT_EMERGENCY_ADMIN(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPC_CALLER_NOT_EMERGENCY_ADMIN(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LPC_CALLER_NOT_EMERGENCY_ADMIN()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LPC_CALLER_NOT_EMERGENCY_ADMIN()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LPC_INVALID_ADDRESSES_PROVIDER_ID(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPC_INVALID_ADDRESSES_PROVIDER_ID(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LPC_INVALID_ADDRESSES_PROVIDER_ID()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LPC_INVALID_ADDRESSES_PROVIDER_ID()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LPC_INVALID_ATOKEN_POOL_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPC_INVALID_ATOKEN_POOL_ADDRESS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LPC_INVALID_ATOKEN_POOL_ADDRESS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LPC_INVALID_ATOKEN_POOL_ADDRESS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LPC_INVALID_CONFIGURATION(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPC_INVALID_CONFIGURATION(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LPC_INVALID_CONFIGURATION()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LPC_INVALID_CONFIGURATION()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1026,27 +968,19 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LPC_RESERVE_LIQUIDITY_NOT_0(
-      overrides?: CallOverrides
-    ): Promise<{
+    LPC_RESERVE_LIQUIDITY_NOT_0(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LPC_RESERVE_LIQUIDITY_NOT_0()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LPC_RESERVE_LIQUIDITY_NOT_0()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_CALLER_MUST_BE_AN_ATOKEN(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_CALLER_MUST_BE_AN_ATOKEN(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_CALLER_MUST_BE_AN_ATOKEN()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_CALLER_MUST_BE_AN_ATOKEN()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1062,51 +996,35 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LP_FAILED_COLLATERAL_SWAP(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_FAILED_COLLATERAL_SWAP(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_FAILED_COLLATERAL_SWAP()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_FAILED_COLLATERAL_SWAP()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_FAILED_REPAY_WITH_COLLATERAL(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_FAILED_REPAY_WITH_COLLATERAL(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_FAILED_REPAY_WITH_COLLATERAL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_FAILED_REPAY_WITH_COLLATERAL()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_INCONSISTENT_FLASHLOAN_PARAMS(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_INCONSISTENT_FLASHLOAN_PARAMS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_INCONSISTENT_FLASHLOAN_PARAMS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_INCONSISTENT_FLASHLOAN_PARAMS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_INCONSISTENT_PARAMS_LENGTH(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_INCONSISTENT_PARAMS_LENGTH(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_INCONSISTENT_PARAMS_LENGTH()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_INCONSISTENT_PARAMS_LENGTH()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1134,33 +1052,23 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LP_INVALID_EQUAL_ASSETS_TO_SWAP(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_INVALID_EQUAL_ASSETS_TO_SWAP(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_INVALID_EQUAL_ASSETS_TO_SWAP()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_INVALID_EQUAL_ASSETS_TO_SWAP()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_INVALID_FLASHLOAN_MODE(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_INVALID_FLASHLOAN_MODE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_INVALID_FLASHLOAN_MODE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_INVALID_FLASHLOAN_MODE()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_INVALID_FLASH_LOAN_EXECUTOR_RETURN(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_INVALID_FLASH_LOAN_EXECUTOR_RETURN(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1170,57 +1078,39 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LP_IS_PAUSED(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_IS_PAUSED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_IS_PAUSED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_IS_PAUSED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_LIQUIDATION_CALL_FAILED(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_LIQUIDATION_CALL_FAILED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_LIQUIDATION_CALL_FAILED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_LIQUIDATION_CALL_FAILED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_NOT_CONTRACT(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_NOT_CONTRACT(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_NOT_CONTRACT()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_NOT_CONTRACT()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_NOT_ENOUGH_LIQUIDITY_TO_BORROW(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_NOT_ENOUGH_LIQUIDITY_TO_BORROW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_NOT_ENOUGH_LIQUIDITY_TO_BORROW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_NOT_ENOUGH_LIQUIDITY_TO_BORROW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_NOT_ENOUGH_STABLE_BORROW_BALANCE(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_NOT_ENOUGH_STABLE_BORROW_BALANCE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1230,243 +1120,163 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    LP_NO_MORE_RESERVES_ALLOWED(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_NO_MORE_RESERVES_ALLOWED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_NO_MORE_RESERVES_ALLOWED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_NO_MORE_RESERVES_ALLOWED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_REENTRANCY_NOT_ALLOWED(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_REENTRANCY_NOT_ALLOWED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_REENTRANCY_NOT_ALLOWED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_REENTRANCY_NOT_ALLOWED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LP_REQUESTED_AMOUNT_TOO_SMALL(
-      overrides?: CallOverrides
-    ): Promise<{
+    LP_REQUESTED_AMOUNT_TOO_SMALL(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LP_REQUESTED_AMOUNT_TOO_SMALL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LP_REQUESTED_AMOUNT_TOO_SMALL()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    MATH_ADDITION_OVERFLOW(
-      overrides?: CallOverrides
-    ): Promise<{
+    MATH_ADDITION_OVERFLOW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "MATH_ADDITION_OVERFLOW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "MATH_ADDITION_OVERFLOW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    MATH_DIVISION_BY_ZERO(
-      overrides?: CallOverrides
-    ): Promise<{
+    MATH_DIVISION_BY_ZERO(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "MATH_DIVISION_BY_ZERO()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "MATH_DIVISION_BY_ZERO()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    MATH_MULTIPLICATION_OVERFLOW(
-      overrides?: CallOverrides
-    ): Promise<{
+    MATH_MULTIPLICATION_OVERFLOW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "MATH_MULTIPLICATION_OVERFLOW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "MATH_MULTIPLICATION_OVERFLOW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RC_INVALID_DECIMALS(
-      overrides?: CallOverrides
-    ): Promise<{
+    RC_INVALID_DECIMALS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RC_INVALID_DECIMALS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RC_INVALID_DECIMALS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RC_INVALID_LIQ_BONUS(
-      overrides?: CallOverrides
-    ): Promise<{
+    RC_INVALID_LIQ_BONUS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RC_INVALID_LIQ_BONUS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RC_INVALID_LIQ_BONUS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RC_INVALID_LIQ_THRESHOLD(
-      overrides?: CallOverrides
-    ): Promise<{
+    RC_INVALID_LIQ_THRESHOLD(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RC_INVALID_LIQ_THRESHOLD()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RC_INVALID_LIQ_THRESHOLD()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RC_INVALID_LTV(
-      overrides?: CallOverrides
-    ): Promise<{
+    RC_INVALID_LTV(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RC_INVALID_LTV()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RC_INVALID_LTV()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RC_INVALID_RESERVE_FACTOR(
-      overrides?: CallOverrides
-    ): Promise<{
+    RC_INVALID_RESERVE_FACTOR(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RC_INVALID_RESERVE_FACTOR()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RC_INVALID_RESERVE_FACTOR()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RL_LIQUIDITY_INDEX_OVERFLOW(
-      overrides?: CallOverrides
-    ): Promise<{
+    RL_LIQUIDITY_INDEX_OVERFLOW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RL_LIQUIDITY_INDEX_OVERFLOW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RL_LIQUIDITY_INDEX_OVERFLOW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RL_LIQUIDITY_RATE_OVERFLOW(
-      overrides?: CallOverrides
-    ): Promise<{
+    RL_LIQUIDITY_RATE_OVERFLOW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RL_LIQUIDITY_RATE_OVERFLOW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RL_LIQUIDITY_RATE_OVERFLOW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RL_RESERVE_ALREADY_INITIALIZED(
-      overrides?: CallOverrides
-    ): Promise<{
+    RL_RESERVE_ALREADY_INITIALIZED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RL_RESERVE_ALREADY_INITIALIZED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RL_RESERVE_ALREADY_INITIALIZED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RL_STABLE_BORROW_RATE_OVERFLOW(
-      overrides?: CallOverrides
-    ): Promise<{
+    RL_STABLE_BORROW_RATE_OVERFLOW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RL_STABLE_BORROW_RATE_OVERFLOW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RL_STABLE_BORROW_RATE_OVERFLOW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RL_VARIABLE_BORROW_INDEX_OVERFLOW(
-      overrides?: CallOverrides
-    ): Promise<{
+    RL_VARIABLE_BORROW_INDEX_OVERFLOW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RL_VARIABLE_BORROW_INDEX_OVERFLOW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RL_VARIABLE_BORROW_INDEX_OVERFLOW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RL_VARIABLE_BORROW_RATE_OVERFLOW(
-      overrides?: CallOverrides
-    ): Promise<{
+    RL_VARIABLE_BORROW_RATE_OVERFLOW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RL_VARIABLE_BORROW_RATE_OVERFLOW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RL_VARIABLE_BORROW_RATE_OVERFLOW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    SDT_BURN_EXCEEDS_BALANCE(
-      overrides?: CallOverrides
-    ): Promise<{
+    SDT_BURN_EXCEEDS_BALANCE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "SDT_BURN_EXCEEDS_BALANCE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "SDT_BURN_EXCEEDS_BALANCE()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    SDT_STABLE_DEBT_OVERFLOW(
-      overrides?: CallOverrides
-    ): Promise<{
+    SDT_STABLE_DEBT_OVERFLOW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "SDT_STABLE_DEBT_OVERFLOW()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "SDT_STABLE_DEBT_OVERFLOW()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    UL_INVALID_INDEX(
-      overrides?: CallOverrides
-    ): Promise<{
+    UL_INVALID_INDEX(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "UL_INVALID_INDEX()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "UL_INVALID_INDEX()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1482,33 +1292,23 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    VL_BORROWING_NOT_ENABLED(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_BORROWING_NOT_ENABLED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_BORROWING_NOT_ENABLED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_BORROWING_NOT_ENABLED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    VL_COLLATERAL_BALANCE_IS_0(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_COLLATERAL_BALANCE_IS_0(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_COLLATERAL_BALANCE_IS_0()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_COLLATERAL_BALANCE_IS_0()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    VL_COLLATERAL_CANNOT_COVER_NEW_BORROW(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_COLLATERAL_CANNOT_COVER_NEW_BORROW(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1542,15 +1342,11 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    VL_DEPOSIT_ALREADY_IN_USE(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_DEPOSIT_ALREADY_IN_USE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_DEPOSIT_ALREADY_IN_USE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_DEPOSIT_ALREADY_IN_USE()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1566,33 +1362,23 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    VL_INCONSISTENT_FLASHLOAN_PARAMS(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_INCONSISTENT_FLASHLOAN_PARAMS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_INCONSISTENT_FLASHLOAN_PARAMS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_INCONSISTENT_FLASHLOAN_PARAMS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    VL_INVALID_AMOUNT(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_INVALID_AMOUNT(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_INVALID_AMOUNT()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_INVALID_AMOUNT()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    VL_INVALID_INTEREST_RATE_MODE_SELECTED(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_INVALID_INTEREST_RATE_MODE_SELECTED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1602,9 +1388,7 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    VL_NOT_ENOUGH_AVAILABLE_USER_BALANCE(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_NOT_ENOUGH_AVAILABLE_USER_BALANCE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1614,27 +1398,19 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    VL_NO_ACTIVE_RESERVE(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_NO_ACTIVE_RESERVE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_NO_ACTIVE_RESERVE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_NO_ACTIVE_RESERVE()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    VL_NO_DEBT_OF_SELECTED_TYPE(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_NO_DEBT_OF_SELECTED_TYPE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_NO_DEBT_OF_SELECTED_TYPE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_NO_DEBT_OF_SELECTED_TYPE()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1650,21 +1426,15 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    VL_NO_STABLE_RATE_LOAN_IN_RESERVE(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_NO_STABLE_RATE_LOAN_IN_RESERVE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_NO_STABLE_RATE_LOAN_IN_RESERVE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_NO_STABLE_RATE_LOAN_IN_RESERVE()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    VL_NO_VARIABLE_RATE_LOAN_IN_RESERVE(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_NO_VARIABLE_RATE_LOAN_IN_RESERVE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -1674,39 +1444,27 @@ export class Errors extends Contract {
       0: string;
     }>;
 
-    VL_RESERVE_FROZEN(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_RESERVE_FROZEN(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_RESERVE_FROZEN()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_RESERVE_FROZEN()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    VL_STABLE_BORROWING_NOT_ENABLED(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_STABLE_BORROWING_NOT_ENABLED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_STABLE_BORROWING_NOT_ENABLED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_STABLE_BORROWING_NOT_ENABLED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    VL_TRANSFER_NOT_ALLOWED(
-      overrides?: CallOverrides
-    ): Promise<{
+    VL_TRANSFER_NOT_ALLOWED(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "VL_TRANSFER_NOT_ALLOWED()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "VL_TRANSFER_NOT_ALLOWED()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

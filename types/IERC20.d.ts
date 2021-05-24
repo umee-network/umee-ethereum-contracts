@@ -130,15 +130,11 @@ export class IERC20 extends Contract {
       0: BigNumber;
     }>;
 
-    totalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    totalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "totalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "totalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 

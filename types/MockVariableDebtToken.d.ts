@@ -216,39 +216,27 @@ export class MockVariableDebtToken extends Contract {
   interface: MockVariableDebtTokenInterface;
 
   functions: {
-    DEBT_TOKEN_REVISION(
-      overrides?: CallOverrides
-    ): Promise<{
+    DEBT_TOKEN_REVISION(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "DEBT_TOKEN_REVISION()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "DEBT_TOKEN_REVISION()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    POOL(
-      overrides?: CallOverrides
-    ): Promise<{
+    POOL(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "POOL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "POOL()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    UNDERLYING_ASSET_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<{
+    UNDERLYING_ASSET_ADDRESS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "UNDERLYING_ASSET_ADDRESS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "UNDERLYING_ASSET_ADDRESS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -336,15 +324,11 @@ export class MockVariableDebtToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    decimals(
-      overrides?: CallOverrides
-    ): Promise<{
+    decimals(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
-    "decimals()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "decimals()"(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
@@ -360,15 +344,11 @@ export class MockVariableDebtToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    getIncentivesController(
-      overrides?: CallOverrides
-    ): Promise<{
+    getIncentivesController(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getIncentivesController()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getIncentivesController()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -438,15 +418,11 @@ export class MockVariableDebtToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    name(
-      overrides?: CallOverrides
-    ): Promise<{
+    name(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "name()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "name()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -464,39 +440,27 @@ export class MockVariableDebtToken extends Contract {
       0: BigNumber;
     }>;
 
-    scaledTotalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    scaledTotalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "scaledTotalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "scaledTotalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    symbol(
-      overrides?: CallOverrides
-    ): Promise<{
+    symbol(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "symbol()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "symbol()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    totalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    totalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "totalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "totalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 

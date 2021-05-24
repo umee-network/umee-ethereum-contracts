@@ -110,15 +110,11 @@ export class StableAndVariableTokensHelper extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    owner(
-      overrides?: CallOverrides
-    ): Promise<{
+    owner(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "owner()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "owner()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

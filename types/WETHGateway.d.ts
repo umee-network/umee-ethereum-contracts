@@ -198,27 +198,19 @@ export class WETHGateway extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    getWETHAddress(
-      overrides?: CallOverrides
-    ): Promise<{
+    getWETHAddress(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getWETHAddress()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getWETHAddress()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    owner(
-      overrides?: CallOverrides
-    ): Promise<{
+    owner(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "owner()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "owner()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

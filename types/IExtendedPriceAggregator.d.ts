@@ -85,63 +85,43 @@ export class IExtendedPriceAggregator extends Contract {
   interface: IExtendedPriceAggregatorInterface;
 
   functions: {
-    getPlatformId(
-      overrides?: CallOverrides
-    ): Promise<{
+    getPlatformId(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "getPlatformId()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getPlatformId()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    getSubTokens(
-      overrides?: CallOverrides
-    ): Promise<{
+    getSubTokens(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    "getSubTokens()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getSubTokens()"(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    getToken(
-      overrides?: CallOverrides
-    ): Promise<{
+    getToken(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getToken()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getToken()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getTokenType(
-      overrides?: CallOverrides
-    ): Promise<{
+    getTokenType(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "getTokenType()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getTokenType()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    latestAnswer(
-      overrides?: CallOverrides
-    ): Promise<{
+    latestAnswer(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "latestAnswer()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "latestAnswer()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };

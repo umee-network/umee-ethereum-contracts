@@ -1,4 +1,19 @@
-# Umee Contracts v1
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Build pass](https://github.com/AAVE/protocol-v2/actions/workflows/node.js.yml/badge.svg)](https://github.com/aave/protocol-v2/actions/workflows/node.js.yml)
+```
+        .///.                .///.     //.            .//  `/////////////-
+       `++:++`              .++:++`    :++`          `++:  `++:......---.`
+      `/+: -+/`            `++- :+/`    /+/         `/+/   `++.
+      /+/   :+/            /+:   /+/    `/+/        /+/`   `++.
+  -::/++::`  /+:       -::/++::` `/+:    `++:      :++`    `++/:::::::::.
+  -:+++::-`  `/+:      --++/---`  `++-    .++-    -++.     `++/:::::::::.
+   -++.       .++-      -++`       .++.    .++.  .++-      `++.
+  .++-         -++.    .++.         -++.    -++``++-       `++.
+ `++:           :++`  .++-           :++`    :+//+:        `++:----------`
+ -/:             :/-  -/:             :/.     ://:         `/////////////-
+```
+
+# Aave Protocol v2
 
 This repository contains the smart contracts source code and markets configuration for Aave Protocol V2. The repository uses Docker Compose and Hardhat as development enviroment for compilation, testing and deployment tasks.
 

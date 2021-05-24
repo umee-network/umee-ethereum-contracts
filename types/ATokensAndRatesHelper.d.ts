@@ -39,6 +39,7 @@ interface ATokensAndRatesHelperInterface extends ethers.utils.Interface {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[]
     ]
   ): string;
@@ -117,6 +118,7 @@ export class ATokensAndRatesHelper extends Contract {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[],
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -129,6 +131,7 @@ export class ATokensAndRatesHelper extends Contract {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[],
       overrides?: Overrides
     ): Promise<ContractTransaction>;
@@ -163,15 +166,11 @@ export class ATokensAndRatesHelper extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    owner(
-      overrides?: CallOverrides
-    ): Promise<{
+    owner(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "owner()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "owner()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -198,6 +197,7 @@ export class ATokensAndRatesHelper extends Contract {
       liquidationBonus: BigNumberish;
       reserveFactor: BigNumberish;
       stableBorrowingEnabled: boolean;
+      borrowingEnabled: boolean;
     }[],
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -210,6 +210,7 @@ export class ATokensAndRatesHelper extends Contract {
       liquidationBonus: BigNumberish;
       reserveFactor: BigNumberish;
       stableBorrowingEnabled: boolean;
+      borrowingEnabled: boolean;
     }[],
     overrides?: Overrides
   ): Promise<ContractTransaction>;
@@ -271,6 +272,7 @@ export class ATokensAndRatesHelper extends Contract {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[],
       overrides?: CallOverrides
     ): Promise<void>;
@@ -283,6 +285,7 @@ export class ATokensAndRatesHelper extends Contract {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[],
       overrides?: CallOverrides
     ): Promise<void>;
@@ -354,6 +357,7 @@ export class ATokensAndRatesHelper extends Contract {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[],
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -366,6 +370,7 @@ export class ATokensAndRatesHelper extends Contract {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[],
       overrides?: Overrides
     ): Promise<BigNumber>;
@@ -428,6 +433,7 @@ export class ATokensAndRatesHelper extends Contract {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[],
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
@@ -440,6 +446,7 @@ export class ATokensAndRatesHelper extends Contract {
         liquidationBonus: BigNumberish;
         reserveFactor: BigNumberish;
         stableBorrowingEnabled: boolean;
+        borrowingEnabled: boolean;
       }[],
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;

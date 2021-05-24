@@ -118,39 +118,27 @@ export class IChainlinkAggregator extends Contract {
       0: BigNumber;
     }>;
 
-    latestAnswer(
-      overrides?: CallOverrides
-    ): Promise<{
+    latestAnswer(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "latestAnswer()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "latestAnswer()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    latestRound(
-      overrides?: CallOverrides
-    ): Promise<{
+    latestRound(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "latestRound()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "latestRound()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    latestTimestamp(
-      overrides?: CallOverrides
-    ): Promise<{
+    latestTimestamp(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "latestTimestamp()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "latestTimestamp()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };

@@ -131,15 +131,11 @@ export class AaveOracle extends Contract {
   interface: AaveOracleInterface;
 
   functions: {
-    WETH(
-      overrides?: CallOverrides
-    ): Promise<{
+    WETH(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "WETH()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "WETH()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -171,15 +167,11 @@ export class AaveOracle extends Contract {
       0: BigNumber[];
     }>;
 
-    getFallbackOracle(
-      overrides?: CallOverrides
-    ): Promise<{
+    getFallbackOracle(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getFallbackOracle()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getFallbackOracle()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -197,15 +189,11 @@ export class AaveOracle extends Contract {
       0: string;
     }>;
 
-    owner(
-      overrides?: CallOverrides
-    ): Promise<{
+    owner(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "owner()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "owner()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

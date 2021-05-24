@@ -104,15 +104,11 @@ export class ILendingPoolAddressesProviderRegistry extends Contract {
       0: BigNumber;
     }>;
 
-    getAddressesProvidersList(
-      overrides?: CallOverrides
-    ): Promise<{
+    getAddressesProvidersList(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    "getAddressesProvidersList()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getAddressesProvidersList()"(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 

@@ -99,15 +99,11 @@ export class PriceOracle extends Contract {
       0: BigNumber;
     }>;
 
-    getEthUsdPrice(
-      overrides?: CallOverrides
-    ): Promise<{
+    getEthUsdPrice(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "getEthUsdPrice()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getEthUsdPrice()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 

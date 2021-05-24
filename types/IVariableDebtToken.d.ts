@@ -119,15 +119,11 @@ export class IVariableDebtToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    getIncentivesController(
-      overrides?: CallOverrides
-    ): Promise<{
+    getIncentivesController(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getIncentivesController()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getIncentivesController()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -199,15 +195,11 @@ export class IVariableDebtToken extends Contract {
       0: BigNumber;
     }>;
 
-    scaledTotalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    scaledTotalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "scaledTotalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "scaledTotalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };

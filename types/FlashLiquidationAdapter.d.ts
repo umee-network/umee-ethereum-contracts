@@ -172,99 +172,67 @@ export class FlashLiquidationAdapter extends Contract {
   interface: FlashLiquidationAdapterInterface;
 
   functions: {
-    ADDRESSES_PROVIDER(
-      overrides?: CallOverrides
-    ): Promise<{
+    ADDRESSES_PROVIDER(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "ADDRESSES_PROVIDER()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "ADDRESSES_PROVIDER()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    FLASHLOAN_PREMIUM_TOTAL(
-      overrides?: CallOverrides
-    ): Promise<{
+    FLASHLOAN_PREMIUM_TOTAL(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "FLASHLOAN_PREMIUM_TOTAL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "FLASHLOAN_PREMIUM_TOTAL()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    LENDING_POOL(
-      overrides?: CallOverrides
-    ): Promise<{
+    LENDING_POOL(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LENDING_POOL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LENDING_POOL()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    MAX_SLIPPAGE_PERCENT(
-      overrides?: CallOverrides
-    ): Promise<{
+    MAX_SLIPPAGE_PERCENT(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "MAX_SLIPPAGE_PERCENT()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "MAX_SLIPPAGE_PERCENT()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    ORACLE(
-      overrides?: CallOverrides
-    ): Promise<{
+    ORACLE(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "ORACLE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "ORACLE()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    UNISWAP_ROUTER(
-      overrides?: CallOverrides
-    ): Promise<{
+    UNISWAP_ROUTER(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "UNISWAP_ROUTER()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "UNISWAP_ROUTER()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    USD_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<{
+    USD_ADDRESS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "USD_ADDRESS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "USD_ADDRESS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    WETH_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<{
+    WETH_ADDRESS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "WETH_ADDRESS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "WETH_ADDRESS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -338,15 +306,11 @@ export class FlashLiquidationAdapter extends Contract {
       4: string[];
     }>;
 
-    owner(
-      overrides?: CallOverrides
-    ): Promise<{
+    owner(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "owner()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "owner()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

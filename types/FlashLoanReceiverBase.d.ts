@@ -70,27 +70,19 @@ export class FlashLoanReceiverBase extends Contract {
   interface: FlashLoanReceiverBaseInterface;
 
   functions: {
-    ADDRESSES_PROVIDER(
-      overrides?: CallOverrides
-    ): Promise<{
+    ADDRESSES_PROVIDER(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "ADDRESSES_PROVIDER()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "ADDRESSES_PROVIDER()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    LENDING_POOL(
-      overrides?: CallOverrides
-    ): Promise<{
+    LENDING_POOL(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "LENDING_POOL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LENDING_POOL()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

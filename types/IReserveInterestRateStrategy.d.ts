@@ -78,15 +78,11 @@ export class IReserveInterestRateStrategy extends Contract {
   interface: IReserveInterestRateStrategyInterface;
 
   functions: {
-    baseVariableBorrowRate(
-      overrides?: CallOverrides
-    ): Promise<{
+    baseVariableBorrowRate(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "baseVariableBorrowRate()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "baseVariableBorrowRate()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
@@ -123,15 +119,11 @@ export class IReserveInterestRateStrategy extends Contract {
       2: BigNumber;
     }>;
 
-    getMaxVariableBorrowRate(
-      overrides?: CallOverrides
-    ): Promise<{
+    getMaxVariableBorrowRate(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "getMaxVariableBorrowRate()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getMaxVariableBorrowRate()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };

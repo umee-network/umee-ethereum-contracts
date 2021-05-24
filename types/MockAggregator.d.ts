@@ -64,27 +64,19 @@ export class MockAggregator extends Contract {
   interface: MockAggregatorInterface;
 
   functions: {
-    getTokenType(
-      overrides?: CallOverrides
-    ): Promise<{
+    getTokenType(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "getTokenType()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getTokenType()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    latestAnswer(
-      overrides?: CallOverrides
-    ): Promise<{
+    latestAnswer(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "latestAnswer()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "latestAnswer()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };

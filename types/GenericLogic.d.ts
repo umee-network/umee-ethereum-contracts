@@ -51,9 +51,7 @@ export class GenericLogic extends Contract {
   interface: GenericLogicInterface;
 
   functions: {
-    HEALTH_FACTOR_LIQUIDATION_THRESHOLD(
-      overrides?: CallOverrides
-    ): Promise<{
+    HEALTH_FACTOR_LIQUIDATION_THRESHOLD(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 

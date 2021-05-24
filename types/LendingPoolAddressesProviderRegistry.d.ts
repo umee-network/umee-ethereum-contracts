@@ -127,27 +127,19 @@ export class LendingPoolAddressesProviderRegistry extends Contract {
       0: BigNumber;
     }>;
 
-    getAddressesProvidersList(
-      overrides?: CallOverrides
-    ): Promise<{
+    getAddressesProvidersList(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    "getAddressesProvidersList()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getAddressesProvidersList()"(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    owner(
-      overrides?: CallOverrides
-    ): Promise<{
+    owner(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "owner()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "owner()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

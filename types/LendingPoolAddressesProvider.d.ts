@@ -268,111 +268,75 @@ export class LendingPoolAddressesProvider extends Contract {
       0: string;
     }>;
 
-    getEmergencyAdmin(
-      overrides?: CallOverrides
-    ): Promise<{
+    getEmergencyAdmin(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getEmergencyAdmin()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getEmergencyAdmin()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getLendingPool(
-      overrides?: CallOverrides
-    ): Promise<{
+    getLendingPool(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getLendingPool()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getLendingPool()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getLendingPoolCollateralManager(
-      overrides?: CallOverrides
-    ): Promise<{
+    getLendingPoolCollateralManager(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getLendingPoolCollateralManager()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getLendingPoolCollateralManager()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getLendingPoolConfigurator(
-      overrides?: CallOverrides
-    ): Promise<{
+    getLendingPoolConfigurator(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getLendingPoolConfigurator()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getLendingPoolConfigurator()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getLendingRateOracle(
-      overrides?: CallOverrides
-    ): Promise<{
+    getLendingRateOracle(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getLendingRateOracle()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getLendingRateOracle()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getMarketId(
-      overrides?: CallOverrides
-    ): Promise<{
+    getMarketId(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getMarketId()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getMarketId()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getPoolAdmin(
-      overrides?: CallOverrides
-    ): Promise<{
+    getPoolAdmin(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getPoolAdmin()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getPoolAdmin()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getPriceOracle(
-      overrides?: CallOverrides
-    ): Promise<{
+    getPriceOracle(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getPriceOracle()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getPriceOracle()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    owner(
-      overrides?: CallOverrides
-    ): Promise<{
+    owner(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "owner()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "owner()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

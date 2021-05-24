@@ -305,87 +305,59 @@ export class DelegationAwareAToken extends Contract {
   interface: DelegationAwareATokenInterface;
 
   functions: {
-    ATOKEN_REVISION(
-      overrides?: CallOverrides
-    ): Promise<{
+    ATOKEN_REVISION(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "ATOKEN_REVISION()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "ATOKEN_REVISION()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    DOMAIN_SEPARATOR(
-      overrides?: CallOverrides
-    ): Promise<{
+    DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "DOMAIN_SEPARATOR()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "DOMAIN_SEPARATOR()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    EIP712_REVISION(
-      overrides?: CallOverrides
-    ): Promise<{
+    EIP712_REVISION(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "EIP712_REVISION()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "EIP712_REVISION()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    PERMIT_TYPEHASH(
-      overrides?: CallOverrides
-    ): Promise<{
+    PERMIT_TYPEHASH(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "PERMIT_TYPEHASH()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "PERMIT_TYPEHASH()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    POOL(
-      overrides?: CallOverrides
-    ): Promise<{
+    POOL(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "POOL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "POOL()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    RESERVE_TREASURY_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<{
+    RESERVE_TREASURY_ADDRESS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "RESERVE_TREASURY_ADDRESS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "RESERVE_TREASURY_ADDRESS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    UNDERLYING_ASSET_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<{
+    UNDERLYING_ASSET_ADDRESS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "UNDERLYING_ASSET_ADDRESS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "UNDERLYING_ASSET_ADDRESS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -461,15 +433,11 @@ export class DelegationAwareAToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    decimals(
-      overrides?: CallOverrides
-    ): Promise<{
+    decimals(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
-    "decimals()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "decimals()"(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
@@ -495,15 +463,11 @@ export class DelegationAwareAToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    getIncentivesController(
-      overrides?: CallOverrides
-    ): Promise<{
+    getIncentivesController(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getIncentivesController()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getIncentivesController()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -597,15 +561,11 @@ export class DelegationAwareAToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    name(
-      overrides?: CallOverrides
-    ): Promise<{
+    name(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "name()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "name()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -645,39 +605,27 @@ export class DelegationAwareAToken extends Contract {
       0: BigNumber;
     }>;
 
-    scaledTotalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    scaledTotalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "scaledTotalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "scaledTotalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    symbol(
-      overrides?: CallOverrides
-    ): Promise<{
+    symbol(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "symbol()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "symbol()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    totalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    totalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "totalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "totalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 

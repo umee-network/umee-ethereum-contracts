@@ -302,45 +302,31 @@ export class LendingPool extends Contract {
   interface: LendingPoolInterface;
 
   functions: {
-    FLASHLOAN_PREMIUM_TOTAL(
-      overrides?: CallOverrides
-    ): Promise<{
+    FLASHLOAN_PREMIUM_TOTAL(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "FLASHLOAN_PREMIUM_TOTAL()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "FLASHLOAN_PREMIUM_TOTAL()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    LENDINGPOOL_REVISION(
-      overrides?: CallOverrides
-    ): Promise<{
+    LENDINGPOOL_REVISION(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "LENDINGPOOL_REVISION()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "LENDINGPOOL_REVISION()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    MAX_NUMBER_RESERVES(
-      overrides?: CallOverrides
-    ): Promise<{
+    MAX_NUMBER_RESERVES(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "MAX_NUMBER_RESERVES()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "MAX_NUMBER_RESERVES()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    MAX_STABLE_RATE_BORROW_SIZE_PERCENT(
-      overrides?: CallOverrides
-    ): Promise<{
+    MAX_STABLE_RATE_BORROW_SIZE_PERCENT(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
@@ -426,15 +412,11 @@ export class LendingPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    getAddressesProvider(
-      overrides?: CallOverrides
-    ): Promise<{
+    getAddressesProvider(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getAddressesProvider()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getAddressesProvider()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -544,15 +526,11 @@ export class LendingPool extends Contract {
       0: BigNumber;
     }>;
 
-    getReservesList(
-      overrides?: CallOverrides
-    ): Promise<{
+    getReservesList(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    "getReservesList()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getReservesList()"(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
@@ -652,15 +630,11 @@ export class LendingPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    paused(
-      overrides?: CallOverrides
-    ): Promise<{
+    paused(overrides?: CallOverrides): Promise<{
       0: boolean;
     }>;
 
-    "paused()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "paused()"(overrides?: CallOverrides): Promise<{
       0: boolean;
     }>;
 

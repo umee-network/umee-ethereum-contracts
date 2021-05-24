@@ -160,15 +160,11 @@ export class MintableERC20 extends Contract {
       0: BigNumber;
     }>;
 
-    decimals(
-      overrides?: CallOverrides
-    ): Promise<{
+    decimals(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
-    "decimals()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "decimals()"(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
@@ -206,39 +202,27 @@ export class MintableERC20 extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    name(
-      overrides?: CallOverrides
-    ): Promise<{
+    name(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "name()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "name()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    symbol(
-      overrides?: CallOverrides
-    ): Promise<{
+    symbol(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "symbol()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "symbol()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    totalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    totalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "totalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "totalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 

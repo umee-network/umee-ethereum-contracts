@@ -144,27 +144,19 @@ export class IAaveIncentivesController extends Contract {
   interface: IAaveIncentivesControllerInterface;
 
   functions: {
-    PRECISION(
-      overrides?: CallOverrides
-    ): Promise<{
+    PRECISION(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
-    "PRECISION()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "PRECISION()"(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
-    REWARD_TOKEN(
-      overrides?: CallOverrides
-    ): Promise<{
+    REWARD_TOKEN(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "REWARD_TOKEN()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "REWARD_TOKEN()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

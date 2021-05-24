@@ -60,9 +60,7 @@ export class ValidationLogic extends Contract {
   interface: ValidationLogicInterface;
 
   functions: {
-    REBALANCE_UP_LIQUIDITY_RATE_THRESHOLD(
-      overrides?: CallOverrides
-    ): Promise<{
+    REBALANCE_UP_LIQUIDITY_RATE_THRESHOLD(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
@@ -72,15 +70,11 @@ export class ValidationLogic extends Contract {
       0: BigNumber;
     }>;
 
-    REBALANCE_UP_USAGE_RATIO_THRESHOLD(
-      overrides?: CallOverrides
-    ): Promise<{
+    REBALANCE_UP_USAGE_RATIO_THRESHOLD(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "REBALANCE_UP_USAGE_RATIO_THRESHOLD()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "REBALANCE_UP_USAGE_RATIO_THRESHOLD()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };

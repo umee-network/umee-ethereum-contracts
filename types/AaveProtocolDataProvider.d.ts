@@ -105,39 +105,27 @@ export class AaveProtocolDataProvider extends Contract {
   interface: AaveProtocolDataProviderInterface;
 
   functions: {
-    ADDRESSES_PROVIDER(
-      overrides?: CallOverrides
-    ): Promise<{
+    ADDRESSES_PROVIDER(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "ADDRESSES_PROVIDER()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "ADDRESSES_PROVIDER()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getAllATokens(
-      overrides?: CallOverrides
-    ): Promise<{
+    getAllATokens(overrides?: CallOverrides): Promise<{
       0: { symbol: string; tokenAddress: string; 0: string; 1: string }[];
     }>;
 
-    "getAllATokens()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getAllATokens()"(overrides?: CallOverrides): Promise<{
       0: { symbol: string; tokenAddress: string; 0: string; 1: string }[];
     }>;
 
-    getAllReservesTokens(
-      overrides?: CallOverrides
-    ): Promise<{
+    getAllReservesTokens(overrides?: CallOverrides): Promise<{
       0: { symbol: string; tokenAddress: string; 0: string; 1: string }[];
     }>;
 
-    "getAllReservesTokens()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getAllReservesTokens()"(overrides?: CallOverrides): Promise<{
       0: { symbol: string; tokenAddress: string; 0: string; 1: string }[];
     }>;
 

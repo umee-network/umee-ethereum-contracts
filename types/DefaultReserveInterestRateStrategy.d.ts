@@ -142,51 +142,35 @@ export class DefaultReserveInterestRateStrategy extends Contract {
   interface: DefaultReserveInterestRateStrategyInterface;
 
   functions: {
-    EXCESS_UTILIZATION_RATE(
-      overrides?: CallOverrides
-    ): Promise<{
+    EXCESS_UTILIZATION_RATE(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "EXCESS_UTILIZATION_RATE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "EXCESS_UTILIZATION_RATE()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    OPTIMAL_UTILIZATION_RATE(
-      overrides?: CallOverrides
-    ): Promise<{
+    OPTIMAL_UTILIZATION_RATE(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "OPTIMAL_UTILIZATION_RATE()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "OPTIMAL_UTILIZATION_RATE()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    addressesProvider(
-      overrides?: CallOverrides
-    ): Promise<{
+    addressesProvider(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "addressesProvider()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "addressesProvider()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    baseVariableBorrowRate(
-      overrides?: CallOverrides
-    ): Promise<{
+    baseVariableBorrowRate(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "baseVariableBorrowRate()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "baseVariableBorrowRate()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
@@ -220,63 +204,43 @@ export class DefaultReserveInterestRateStrategy extends Contract {
       2: BigNumber;
     }>;
 
-    getMaxVariableBorrowRate(
-      overrides?: CallOverrides
-    ): Promise<{
+    getMaxVariableBorrowRate(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "getMaxVariableBorrowRate()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getMaxVariableBorrowRate()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    stableRateSlope1(
-      overrides?: CallOverrides
-    ): Promise<{
+    stableRateSlope1(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "stableRateSlope1()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "stableRateSlope1()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    stableRateSlope2(
-      overrides?: CallOverrides
-    ): Promise<{
+    stableRateSlope2(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "stableRateSlope2()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "stableRateSlope2()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    variableRateSlope1(
-      overrides?: CallOverrides
-    ): Promise<{
+    variableRateSlope1(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "variableRateSlope1()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "variableRateSlope1()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    variableRateSlope2(
-      overrides?: CallOverrides
-    ): Promise<{
+    variableRateSlope2(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "variableRateSlope2()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "variableRateSlope2()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };

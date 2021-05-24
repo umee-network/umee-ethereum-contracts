@@ -72,15 +72,11 @@ export class UiPoolDataProvider extends Contract {
   interface: UiPoolDataProviderInterface;
 
   functions: {
-    MOCK_USD_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<{
+    MOCK_USD_ADDRESS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "MOCK_USD_ADDRESS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "MOCK_USD_ADDRESS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -318,27 +314,19 @@ export class UiPoolDataProvider extends Contract {
       3: BigNumber;
     }>;
 
-    incentivesController(
-      overrides?: CallOverrides
-    ): Promise<{
+    incentivesController(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "incentivesController()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "incentivesController()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    oracle(
-      overrides?: CallOverrides
-    ): Promise<{
+    oracle(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "oracle()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "oracle()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
   };

@@ -153,71 +153,51 @@ export class IStableDebtToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    getAverageStableRate(
-      overrides?: CallOverrides
-    ): Promise<{
+    getAverageStableRate(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "getAverageStableRate()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getAverageStableRate()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    getIncentivesController(
-      overrides?: CallOverrides
-    ): Promise<{
+    getIncentivesController(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getIncentivesController()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getIncentivesController()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    getSupplyData(
-      overrides?: CallOverrides
-    ): Promise<{
+    getSupplyData(overrides?: CallOverrides): Promise<{
       0: BigNumber;
       1: BigNumber;
       2: BigNumber;
       3: number;
     }>;
 
-    "getSupplyData()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getSupplyData()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
       1: BigNumber;
       2: BigNumber;
       3: number;
     }>;
 
-    getTotalSupplyAndAvgRate(
-      overrides?: CallOverrides
-    ): Promise<{
+    getTotalSupplyAndAvgRate(overrides?: CallOverrides): Promise<{
       0: BigNumber;
       1: BigNumber;
     }>;
 
-    "getTotalSupplyAndAvgRate()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getTotalSupplyAndAvgRate()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
       1: BigNumber;
     }>;
 
-    getTotalSupplyLastUpdated(
-      overrides?: CallOverrides
-    ): Promise<{
+    getTotalSupplyLastUpdated(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
-    "getTotalSupplyLastUpdated()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getTotalSupplyLastUpdated()"(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
 
@@ -322,34 +302,26 @@ export class IStableDebtToken extends Contract {
 
   "getIncentivesController()"(overrides?: CallOverrides): Promise<string>;
 
-  getSupplyData(
-    overrides?: CallOverrides
-  ): Promise<{
+  getSupplyData(overrides?: CallOverrides): Promise<{
     0: BigNumber;
     1: BigNumber;
     2: BigNumber;
     3: number;
   }>;
 
-  "getSupplyData()"(
-    overrides?: CallOverrides
-  ): Promise<{
+  "getSupplyData()"(overrides?: CallOverrides): Promise<{
     0: BigNumber;
     1: BigNumber;
     2: BigNumber;
     3: number;
   }>;
 
-  getTotalSupplyAndAvgRate(
-    overrides?: CallOverrides
-  ): Promise<{
+  getTotalSupplyAndAvgRate(overrides?: CallOverrides): Promise<{
     0: BigNumber;
     1: BigNumber;
   }>;
 
-  "getTotalSupplyAndAvgRate()"(
-    overrides?: CallOverrides
-  ): Promise<{
+  "getTotalSupplyAndAvgRate()"(overrides?: CallOverrides): Promise<{
     0: BigNumber;
     1: BigNumber;
   }>;
@@ -444,34 +416,26 @@ export class IStableDebtToken extends Contract {
 
     "getIncentivesController()"(overrides?: CallOverrides): Promise<string>;
 
-    getSupplyData(
-      overrides?: CallOverrides
-    ): Promise<{
+    getSupplyData(overrides?: CallOverrides): Promise<{
       0: BigNumber;
       1: BigNumber;
       2: BigNumber;
       3: number;
     }>;
 
-    "getSupplyData()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getSupplyData()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
       1: BigNumber;
       2: BigNumber;
       3: number;
     }>;
 
-    getTotalSupplyAndAvgRate(
-      overrides?: CallOverrides
-    ): Promise<{
+    getTotalSupplyAndAvgRate(overrides?: CallOverrides): Promise<{
       0: BigNumber;
       1: BigNumber;
     }>;
 
-    "getTotalSupplyAndAvgRate()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getTotalSupplyAndAvgRate()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
       1: BigNumber;
     }>;

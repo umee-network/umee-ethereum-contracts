@@ -339,15 +339,11 @@ export class ILendingPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    getAddressesProvider(
-      overrides?: CallOverrides
-    ): Promise<{
+    getAddressesProvider(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getAddressesProvider()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getAddressesProvider()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -457,15 +453,11 @@ export class ILendingPool extends Contract {
       0: BigNumber;
     }>;
 
-    getReservesList(
-      overrides?: CallOverrides
-    ): Promise<{
+    getReservesList(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
-    "getReservesList()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getReservesList()"(overrides?: CallOverrides): Promise<{
       0: string[];
     }>;
 
@@ -555,15 +547,11 @@ export class ILendingPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    paused(
-      overrides?: CallOverrides
-    ): Promise<{
+    paused(overrides?: CallOverrides): Promise<{
       0: boolean;
     }>;
 
-    "paused()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "paused()"(overrides?: CallOverrides): Promise<{
       0: boolean;
     }>;
 

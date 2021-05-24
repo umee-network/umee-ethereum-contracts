@@ -204,15 +204,11 @@ export class IAToken extends Contract {
   interface: IATokenInterface;
 
   functions: {
-    UNDERLYING_ASSET_ADDRESS(
-      overrides?: CallOverrides
-    ): Promise<{
+    UNDERLYING_ASSET_ADDRESS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "UNDERLYING_ASSET_ADDRESS()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "UNDERLYING_ASSET_ADDRESS()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -274,15 +270,11 @@ export class IAToken extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    getIncentivesController(
-      overrides?: CallOverrides
-    ): Promise<{
+    getIncentivesController(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "getIncentivesController()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "getIncentivesController()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -378,27 +370,19 @@ export class IAToken extends Contract {
       0: BigNumber;
     }>;
 
-    scaledTotalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    scaledTotalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "scaledTotalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "scaledTotalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    totalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    totalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "totalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "totalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 

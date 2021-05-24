@@ -254,15 +254,11 @@ export class IUniswapV2Router01 extends Contract {
   interface: IUniswapV2Router01Interface;
 
   functions: {
-    WETH(
-      overrides?: CallOverrides
-    ): Promise<{
+    WETH(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "WETH()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "WETH()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -310,15 +306,11 @@ export class IUniswapV2Router01 extends Contract {
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    factory(
-      overrides?: CallOverrides
-    ): Promise<{
+    factory(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    "factory()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "factory()"(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 

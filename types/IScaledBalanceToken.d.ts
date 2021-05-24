@@ -99,15 +99,11 @@ export class IScaledBalanceToken extends Contract {
       0: BigNumber;
     }>;
 
-    scaledTotalSupply(
-      overrides?: CallOverrides
-    ): Promise<{
+    scaledTotalSupply(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
 
-    "scaledTotalSupply()"(
-      overrides?: CallOverrides
-    ): Promise<{
+    "scaledTotalSupply()"(overrides?: CallOverrides): Promise<{
       0: BigNumber;
     }>;
   };

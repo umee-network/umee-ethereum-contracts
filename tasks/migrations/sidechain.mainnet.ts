@@ -44,7 +44,7 @@ task('sidechain:mainnet', 'Deploy market at sidechain')
       console.log('7. Veryfing contracts');
       await DRE.run('verify:general', { all: true, pool: POOL_NAME });
 
-      console.log('8. Veryfing aTokens and debtTokens');
+      console.log('8. Veryfing uTokens and debtTokens');
       await DRE.run('verify:tokens', { pool: POOL_NAME });
     }
 

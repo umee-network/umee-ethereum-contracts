@@ -1,5 +1,5 @@
 import {
-  AavePools,
+  UmeePools,
   iMultiPoolsAssets,
   IReserveParams,
   PoolConfiguration,
@@ -7,10 +7,10 @@ import {
   eNetwork,
 } from './types';
 import { getEthersSignersAddresses, getParamPerPool } from './contracts-helpers';
-import AaveConfig from '../markets/aave';
+import UmeeConfig from '../markets/umee';
 import MaticConfig from '../markets/matic';
 import AmmConfig from '../markets/amm';
-import { CommonsConfig } from '../markets/aave/commons';
+import { CommonsConfig } from '../markets/umee/commons';
 import { DRE, filterMapBy } from './misc-utils';
 import { tEthereumAddress } from './types';
 import { getParamPerNetwork } from './contracts-helpers';
@@ -18,15 +18,15 @@ import { deployWETHMocked } from './contracts-deployments';
 
 export enum ConfigNames {
   Commons = 'Commons',
-  Aave = 'Aave',
+  Umee = 'Umee',
   Matic = 'Matic',
   Amm = 'Amm',
 }
 
 export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
   switch (configName) {
-    case ConfigNames.Aave:
-      return AaveConfig;
+    case ConfigNames.Umee:
+      return UmeeConfig;
     case ConfigNames.Matic:
       return MaticConfig;
     case ConfigNames.Amm:
@@ -42,16 +42,16 @@ export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
 // PROTOCOL PARAMS PER POOL
 // ----------------
 
-export const getReservesConfigByPool = (pool: AavePools): iMultiPoolsAssets<IReserveParams> =>
+export const getReservesConfigByPool = (pool: UmeePools): iMultiPoolsAssets<IReserveParams> =>
   getParamPerPool<iMultiPoolsAssets<IReserveParams>>(
     {
-      [AavePools.proto]: {
-        ...AaveConfig.ReservesConfig,
+      [UmeePools.proto]: {
+        ...UmeeConfig.ReservesConfig,
       },
-      [AavePools.amm]: {
+      [UmeePools.amm]: {
         ...AmmConfig.ReservesConfig,
       },
-      [AavePools.matic]: {
+      [UmeePools.matic]: {
         ...MaticConfig.ReservesConfig,
       },
     },
@@ -91,10 +91,10 @@ export const getTreasuryAddress = async (
   return getParamPerNetwork(config.ReserveFactorTreasuryAddress, <eNetwork>currentNetwork);
 };
 
-export const getATokenDomainSeparatorPerNetwork = (
+export const getUTokenDomainSeparatorPerNetwork = (
   network: eNetwork,
   config: ICommonConfiguration
-): tEthereumAddress => getParamPerNetwork<tEthereumAddress>(config.ATokenDomainSeparator, network);
+): tEthereumAddress => getParamPerNetwork<tEthereumAddress>(config.UTokenDomainSeparator, network);
 
 export const getWethAddress = async (config: ICommonConfiguration) => {
   const currentNetwork = process.env.FORK ? process.env.FORK : DRE.network.name;

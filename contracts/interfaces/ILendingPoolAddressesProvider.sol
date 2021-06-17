@@ -5,8 +5,8 @@ pragma solidity 0.6.12;
  * @title LendingPoolAddressesProvider contract
  * @dev Main registry of addresses part of or connected to the protocol, including permissioned roles
  * - Acting also as factory of proxies and admin of those, so with right to change its implementations
- * - Owned by the Aave Governance
- * @author Aave
+ * - Owned by the Umee Governance
+ * @author Umee
  **/
 interface ILendingPoolAddressesProvider {
   event MarketIdSet(string newMarketId);

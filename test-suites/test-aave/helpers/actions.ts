@@ -19,7 +19,7 @@ import { getReserveAddressFromSymbol, getReserveData, getUserData } from './util
 
 import { convertToCurrencyDecimals } from '../../../helpers/contracts-helpers';
 import {
-  getAToken,
+  getUToken,
   getMintableERC20,
   getStableDebtToken,
   getVariableDebtToken,
@@ -31,7 +31,7 @@ import { advanceTimeAndBlock, DRE, timeLatest, waitForTx } from '../../../helper
 import chai from 'chai';
 import { ReserveData, UserReserveData } from './utils/interfaces';
 import { ContractReceipt } from 'ethers';
-import { AToken } from '../../../types/AToken';
+import { UToken } from '../../../types/UToken';
 import { RateMode, tEthereumAddress } from '../../../helpers/types';
 
 const { expect } = chai;
@@ -48,7 +48,7 @@ const almostEqualOrEqual = function (
       key === 'lastUpdateTimestamp' ||
       key === 'marketStableRate' ||
       key === 'symbol' ||
-      key === 'aTokenAddress' ||
+      key === 'uTokenAddress' ||
       key === 'decimals' ||
       key === 'totalStableDebtLastUpdated'
     ) {
@@ -223,7 +223,7 @@ export const withdraw = async (
   const { pool } = testEnv;
 
   const {
-    aTokenInstance,
+    uTokenInstance,
     reserve,
     userData: userDataBefore,
     reserveData: reserveDataBefore,
@@ -714,7 +714,7 @@ interface ActionData {
   reserve: string;
   reserveData: ReserveData;
   userData: UserReserveData;
-  aTokenInstance: AToken;
+  uTokenInstance: UToken;
 }
 
 const getDataBeforeAction = async (
@@ -725,12 +725,12 @@ const getDataBeforeAction = async (
   const reserve = await getReserveAddressFromSymbol(reserveSymbol);
 
   const { reserveData, userData } = await getContractsData(reserve, user, testEnv);
-  const aTokenInstance = await getAToken(reserveData.aTokenAddress);
+  const uTokenInstance = await getUToken(reserveData.uTokenAddress);
   return {
     reserve,
     reserveData,
     userData,
-    aTokenInstance,
+    uTokenInstance,
   };
 };
 

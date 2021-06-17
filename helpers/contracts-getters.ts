@@ -1,8 +1,8 @@
 import {
-  AaveProtocolDataProviderFactory,
-  ATokenFactory,
-  ATokensAndRatesHelperFactory,
-  AaveOracleFactory,
+  UmeeProtocolDataProviderFactory,
+  UTokenFactory,
+  UTokensAndRatesHelperFactory,
+  UmeeOracleFactory,
   DefaultReserveInterestRateStrategyFactory,
   GenericLogicFactory,
   InitializableAdminUpgradeabilityProxyFactory,
@@ -13,7 +13,7 @@ import {
   LendingPoolFactory,
   LendingRateOracleFactory,
   MintableERC20Factory,
-  MockATokenFactory,
+  MockUTokenFactory,
   MockFlashLoanReceiverFactory,
   MockStableDebtTokenFactory,
   MockVariableDebtTokenFactory,
@@ -69,9 +69,9 @@ export const getPriceOracle = async (address?: tEthereumAddress) =>
     await getFirstSigner()
   );
 
-export const getAToken = async (address?: tEthereumAddress) =>
-  await ATokenFactory.connect(
-    address || (await getDb().get(`${eContractid.AToken}.${DRE.network.name}`).value()).address,
+export const getUToken = async (address?: tEthereumAddress) =>
+  await UTokenFactory.connect(
+    address || (await getDb().get(`${eContractid.UToken}.${DRE.network.name}`).value()).address,
     await getFirstSigner()
   );
 
@@ -103,10 +103,10 @@ export const getIErc20Detailed = async (address: tEthereumAddress) =>
     await getFirstSigner()
   );
 
-export const getAaveProtocolDataProvider = async (address?: tEthereumAddress) =>
-  await AaveProtocolDataProviderFactory.connect(
+export const getUmeeProtocolDataProvider = async (address?: tEthereumAddress) =>
+  await UmeeProtocolDataProviderFactory.connect(
     address ||
-      (await getDb().get(`${eContractid.AaveProtocolDataProvider}.${DRE.network.name}`).value())
+      (await getDb().get(`${eContractid.UmeeProtocolDataProvider}.${DRE.network.name}`).value())
         .address,
     await getFirstSigner()
   );
@@ -230,10 +230,10 @@ export const getStableAndVariableTokensHelper = async (address?: tEthereumAddres
     await getFirstSigner()
   );
 
-export const getATokensAndRatesHelper = async (address?: tEthereumAddress) =>
-  await ATokensAndRatesHelperFactory.connect(
+export const getUTokensAndRatesHelper = async (address?: tEthereumAddress) =>
+  await UTokensAndRatesHelperFactory.connect(
     address ||
-      (await getDb().get(`${eContractid.ATokensAndRatesHelper}.${DRE.network.name}`).value())
+      (await getDb().get(`${eContractid.UTokensAndRatesHelper}.${DRE.network.name}`).value())
         .address,
     await getFirstSigner()
   );
@@ -251,9 +251,9 @@ export const getWETHMocked = async (address?: tEthereumAddress) =>
     await getFirstSigner()
   );
 
-export const getMockAToken = async (address?: tEthereumAddress) =>
-  await MockATokenFactory.connect(
-    address || (await getDb().get(`${eContractid.MockAToken}.${DRE.network.name}`).value()).address,
+export const getMockUToken = async (address?: tEthereumAddress) =>
+  await MockUTokenFactory.connect(
+    address || (await getDb().get(`${eContractid.MockUToken}.${DRE.network.name}`).value()).address,
     await getFirstSigner()
   );
 
@@ -328,9 +328,9 @@ export const getLendingPoolCollateralManager = async (address?: tEthereumAddress
 export const getAddressById = async (id: string): Promise<tEthereumAddress | undefined> =>
   (await getDb().get(`${id}.${DRE.network.name}`).value())?.address || undefined;
 
-export const getAaveOracle = async (address?: tEthereumAddress) =>
-  await AaveOracleFactory.connect(
-    address || (await getDb().get(`${eContractid.AaveOracle}.${DRE.network.name}`).value()).address,
+export const getUmeeOracle = async (address?: tEthereumAddress) =>
+  await UmeeOracleFactory.connect(
+    address || (await getDb().get(`${eContractid.UmeeOracle}.${DRE.network.name}`).value()).address,
     await getFirstSigner()
   );
 

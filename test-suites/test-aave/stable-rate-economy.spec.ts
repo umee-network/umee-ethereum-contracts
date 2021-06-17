@@ -2,10 +2,10 @@
 //   LendingPoolInstance,
 //   LendingPoolCoreInstance,
 //   MintableERC20Instance,
-//   ATokenInstance,
+//   UTokenInstance,
 // } from "../utils/typechain-types/truffle-contracts"
 // import {
-//   iATokenBase,
+//   iUTokenBase,
 //   iAssetsWithoutETH,
 //   ITestEnvWithoutInstances,
 //   RateMode,
@@ -23,7 +23,7 @@
 //   let _testEnvProvider: ITestEnvWithoutInstances
 //   let _lendingPoolInstance: LendingPoolInstance
 //   let _lendingPoolCoreInstance: LendingPoolCoreInstance
-//   let _aTokenInstances: iATokenBase<ATokenInstance>
+//   let _uTokenInstances: iUTokenBase<UTokenInstance>
 //   let _tokenInstances: iAssetsWithoutETH<MintableERC20Instance>
 
 //   let _daiAddress: string
@@ -47,18 +47,18 @@
 //       getFirstDepositorAddressOnTests,
 //       getLendingPoolInstance,
 //       getLendingPoolCoreInstance,
-//       getATokenInstances
+//       getUTokenInstances
 //     } = _testEnvProvider
 
 //     const instances = await Promise.all([
 //       getLendingPoolInstance(),
 //       getLendingPoolCoreInstance(),
-//       getATokenInstances(),
+//       getUTokenInstances(),
 //       getAllAssetsInstances()
 //     ])
 //     _lendingPoolInstance = instances[0]
 //     _lendingPoolCoreInstance = instances[1]
-//     _aTokenInstances = instances[2]
+//     _uTokenInstances = instances[2]
 //     _tokenInstances = instances[3]
 //     _daiAddress = _tokenInstances.DAI.address
 //     _depositorAddress = await getFirstDepositorAddressOnTests()
@@ -69,7 +69,7 @@
 //   })
 
 //   it("BORROW - Test user cannot borrow using the same currency as collateral", async () => {
-//     const {aDAI: aDaiInstance} = _aTokenInstances
+//     const {aDAI: aDaiInstance} = _uTokenInstances
 //     const {DAI: daiInstance} = _tokenInstances
 
 //     //mints DAI to depositor
@@ -120,7 +120,7 @@
 //   })
 
 //   it("BORROW - Test user cannot borrow more than 25% of the liquidity available", async () => {
-//     const {aDAI: aDaiInstance} = _aTokenInstances
+//     const {aDAI: aDaiInstance} = _uTokenInstances
 //     const {DAI: daiInstance} = _tokenInstances
 
 //     //redeem the DAI previously deposited
@@ -150,7 +150,7 @@
 //   })
 
 //   it("BORROW - Test user can still borrow  a currency that he previously deposited as a collateral but he transferred/redeemed", async () => {
-//     const {aDAI: aDaiInstance} = _aTokenInstances
+//     const {aDAI: aDaiInstance} = _uTokenInstances
 //     const {DAI: daiInstance} = _tokenInstances
 
 //     const user = users[2]
@@ -186,7 +186,7 @@
 //     //check the underlying balance is 0
 //     const userData: any = await _lendingPoolInstance.getUserReserveData(daiInstance.address, user)
 
-//     expect(userData.currentATokenBalance.toString()).to.be.equal("0")
+//     expect(userData.currentUTokenBalance.toString()).to.be.equal("0")
 
 //     //user tries to borrow the DAI at a stable rate using the ETH as collateral
 //     const amountDAIToBorrow = await convertToCurrencyDecimals(_daiAddress, "100")

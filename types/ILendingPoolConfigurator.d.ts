@@ -19,7 +19,6 @@ interface ILendingPoolConfiguratorInterface extends ethers.utils.Interface {
   functions: {};
 
   events: {
-    "ATokenUpgraded(address,address,address)": EventFragment;
     "BorrowingDisabledOnReserve(address)": EventFragment;
     "BorrowingEnabledOnReserve(address,bool)": EventFragment;
     "CollateralConfigurationChanged(address,uint256,uint256,uint256)": EventFragment;
@@ -34,10 +33,10 @@ interface ILendingPoolConfiguratorInterface extends ethers.utils.Interface {
     "StableDebtTokenUpgraded(address,address,address)": EventFragment;
     "StableRateDisabledOnReserve(address)": EventFragment;
     "StableRateEnabledOnReserve(address)": EventFragment;
+    "UTokenUpgraded(address,address,address)": EventFragment;
     "VariableDebtTokenUpgraded(address,address,address)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "ATokenUpgraded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "BorrowingDisabledOnReserve"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "BorrowingEnabledOnReserve"): EventFragment;
   getEvent(
@@ -58,6 +57,7 @@ interface ILendingPoolConfiguratorInterface extends ethers.utils.Interface {
     nameOrSignatureOrTopic: "StableRateDisabledOnReserve"
   ): EventFragment;
   getEvent(nameOrSignatureOrTopic: "StableRateEnabledOnReserve"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "UTokenUpgraded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "VariableDebtTokenUpgraded"): EventFragment;
 }
 
@@ -79,12 +79,6 @@ export class ILendingPoolConfigurator extends Contract {
   callStatic: {};
 
   filters: {
-    ATokenUpgraded(
-      asset: string | null,
-      proxy: string | null,
-      implementation: string | null
-    ): EventFilter;
-
     BorrowingDisabledOnReserve(asset: string | null): EventFilter;
 
     BorrowingEnabledOnReserve(
@@ -111,7 +105,7 @@ export class ILendingPoolConfigurator extends Contract {
 
     ReserveInitialized(
       asset: string | null,
-      aToken: string | null,
+      uToken: string | null,
       stableDebtToken: null,
       variableDebtToken: null,
       interestRateStrategyAddress: null
@@ -133,6 +127,12 @@ export class ILendingPoolConfigurator extends Contract {
     StableRateDisabledOnReserve(asset: string | null): EventFilter;
 
     StableRateEnabledOnReserve(asset: string | null): EventFilter;
+
+    UTokenUpgraded(
+      asset: string | null,
+      proxy: string | null,
+      implementation: string | null
+    ): EventFilter;
 
     VariableDebtTokenUpgraded(
       asset: string | null,

@@ -14,10 +14,10 @@ import {DataTypes} from '../protocol/libraries/types/DataTypes.sol';
 
 /**
  * @title WalletBalanceProvider contract
- * @author Aave, influenced by https://github.com/wbobeirne/eth-balance-checker/blob/master/contracts/BalanceChecker.sol
+ * @author Umee, influenced by https://github.com/wbobeirne/eth-balance-checker/blob/master/contracts/BalanceChecker.sol
  * @notice Implements a logic of getting multiple tokens balance for one user address
- * @dev NOTE: THIS CONTRACT IS NOT USED WITHIN THE AAVE PROTOCOL. It's an accessory contract used to reduce the number of calls
- * towards the blockchain from the Aave backend.
+ * @dev NOTE: THIS CONTRACT IS NOT USED WITHIN THE UMEE PROTOCOL. It's an accessory contract used to reduce the number of calls
+ * towards the blockchain from the Umee backend.
  **/
 contract WalletBalanceProvider {
   using Address for address payable;

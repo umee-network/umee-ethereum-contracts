@@ -200,7 +200,7 @@ const _abi = [
     name: "getIncentivesController",
     outputs: [
       {
-        internalType: "contract IAaveIncentivesController",
+        internalType: "contract IUmeeIncentivesController",
         name: "",
         type: "address",
       },
@@ -318,7 +318,7 @@ const _abi = [
         type: "address",
       },
       {
-        internalType: "contract IAaveIncentivesController",
+        internalType: "contract IUmeeIncentivesController",
         name: "incentivesController",
         type: "address",
       },

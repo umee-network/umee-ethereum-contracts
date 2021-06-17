@@ -11,7 +11,7 @@ import {ReserveConfiguration} from '../protocol/libraries/configuration/ReserveC
 import {UserConfiguration} from '../protocol/libraries/configuration/UserConfiguration.sol';
 import {DataTypes} from '../protocol/libraries/types/DataTypes.sol';
 
-contract AaveProtocolDataProvider {
+contract UmeeProtocolDataProvider {
   using ReserveConfiguration for DataTypes.ReserveConfigurationMap;
   using UserConfiguration for DataTypes.UserConfigurationMap;
 
@@ -50,18 +50,18 @@ contract AaveProtocolDataProvider {
     return reservesTokens;
   }
 
-  function getAllATokens() external view returns (TokenData[] memory) {
+  function getAllUTokens() external view returns (TokenData[] memory) {
     ILendingPool pool = ILendingPool(ADDRESSES_PROVIDER.getLendingPool());
     address[] memory reserves = pool.getReservesList();
-    TokenData[] memory aTokens = new TokenData[](reserves.length);
+    TokenData[] memory uTokens = new TokenData[](reserves.length);
     for (uint256 i = 0; i < reserves.length; i++) {
       DataTypes.ReserveData memory reserveData = pool.getReserveData(reserves[i]);
-      aTokens[i] = TokenData({
-        symbol: IERC20Detailed(reserveData.aTokenAddress).symbol(),
-        tokenAddress: reserveData.aTokenAddress
+      uTokens[i] = TokenData({
+        symbol: IERC20Detailed(reserveData.uTokenAddress).symbol(),
+        tokenAddress: reserveData.uTokenAddress
       });
     }
-    return aTokens;
+    return uTokens;
   }
 
   function getReserveConfigurationData(address asset)
@@ -112,7 +112,7 @@ contract AaveProtocolDataProvider {
       ILendingPool(ADDRESSES_PROVIDER.getLendingPool()).getReserveData(asset);
 
     return (
-      IERC20Detailed(asset).balanceOf(reserve.aTokenAddress),
+      IERC20Detailed(asset).balanceOf(reserve.uTokenAddress),
       IERC20Detailed(reserve.stableDebtTokenAddress).totalSupply(),
       IERC20Detailed(reserve.variableDebtTokenAddress).totalSupply(),
       reserve.currentLiquidityRate,
@@ -129,7 +129,7 @@ contract AaveProtocolDataProvider {
     external
     view
     returns (
-      uint256 currentATokenBalance,
+      uint256 currentUTokenBalance,
       uint256 currentStableDebt,
       uint256 currentVariableDebt,
       uint256 principalStableDebt,
@@ -146,7 +146,7 @@ contract AaveProtocolDataProvider {
     DataTypes.UserConfigurationMap memory userConfig =
       ILendingPool(ADDRESSES_PROVIDER.getLendingPool()).getUserConfiguration(user);
 
-    currentATokenBalance = IERC20Detailed(reserve.aTokenAddress).balanceOf(user);
+    currentUTokenBalance = IERC20Detailed(reserve.uTokenAddress).balanceOf(user);
     currentVariableDebt = IERC20Detailed(reserve.variableDebtTokenAddress).balanceOf(user);
     currentStableDebt = IERC20Detailed(reserve.stableDebtTokenAddress).balanceOf(user);
     principalStableDebt = IStableDebtToken(reserve.stableDebtTokenAddress).principalBalanceOf(user);
@@ -163,7 +163,7 @@ contract AaveProtocolDataProvider {
     external
     view
     returns (
-      address aTokenAddress,
+      address uTokenAddress,
       address stableDebtTokenAddress,
       address variableDebtTokenAddress
     )
@@ -172,7 +172,7 @@ contract AaveProtocolDataProvider {
       ILendingPool(ADDRESSES_PROVIDER.getLendingPool()).getReserveData(asset);
 
     return (
-      reserve.aTokenAddress,
+      reserve.uTokenAddress,
       reserve.stableDebtTokenAddress,
       reserve.variableDebtTokenAddress
     );

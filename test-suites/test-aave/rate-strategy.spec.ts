@@ -3,10 +3,10 @@ import { deployDefaultReserveInterestRateStrategy } from '../../helpers/contract
 
 import { APPROVAL_AMOUNT_LENDING_POOL, PERCENTAGE_FACTOR, RAY } from '../../helpers/constants';
 
-import { rateStrategyStableOne } from '../../markets/aave/rateStrategies';
+import { rateStrategyStableOne } from '../../markets/umee/rateStrategies';
 
-import { strategyDAI } from '../../markets/aave/reservesConfigs';
-import { AToken, DefaultReserveInterestRateStrategy, MintableERC20 } from '../../types';
+import { strategyDAI } from '../../markets/umee/reservesConfigs';
+import { UToken, DefaultReserveInterestRateStrategy, MintableERC20 } from '../../types';
 import BigNumber from 'bignumber.js';
 import './helpers/utils/math';
 
@@ -15,7 +15,7 @@ const { expect } = require('chai');
 makeSuite('Interest rate strategy tests', (testEnv: TestEnv) => {
   let strategyInstance: DefaultReserveInterestRateStrategy;
   let dai: MintableERC20;
-  let aDai: AToken;
+  let aDai: UToken;
 
   before(async () => {
     dai = testEnv.dai;

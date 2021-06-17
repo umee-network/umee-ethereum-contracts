@@ -24,10 +24,10 @@ makeSuite('Mainnet Check list', (testEnv: TestEnv) => {
     // Deposit with native ETH
     await wethGateway.connect(user.signer).depositETH(user.address, '0', { value: depositSize });
 
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const uTokensBalance = await aWETH.balanceOf(user.address);
 
-    expect(aTokensBalance).to.be.gt(zero);
-    expect(aTokensBalance).to.be.gte(depositSize);
+    expect(uTokensBalance).to.be.gt(zero);
+    expect(uTokensBalance).to.be.gte(depositSize);
   });
 
   it('Withdraw WETH - Partial', async () => {
@@ -35,14 +35,14 @@ makeSuite('Mainnet Check list', (testEnv: TestEnv) => {
 
     const user = users[1];
     const priorEthersBalance = await user.signer.getBalance();
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const uTokensBalance = await aWETH.balanceOf(user.address);
 
-    expect(aTokensBalance).to.be.gt(zero, 'User should have aTokens.');
+    expect(uTokensBalance).to.be.gt(zero, 'User should have uTokens.');
 
     // Partially withdraw native ETH
     const partialWithdraw = await convertToCurrencyDecimals(aWETH.address, '2');
 
-    // Approve the aTokens to Gateway so Gateway can withdraw and convert to Ether
+    // Approve the uTokens to Gateway so Gateway can withdraw and convert to Ether
     const approveTx = await aWETH
       .connect(user.signer)
       .approve(wethGateway.address, MAX_UINT_AMOUNT);
@@ -54,15 +54,15 @@ makeSuite('Mainnet Check list', (testEnv: TestEnv) => {
     );
 
     const afterPartialEtherBalance = await user.signer.getBalance();
-    const afterPartialATokensBalance = await aWETH.balanceOf(user.address);
+    const afterPartialUTokensBalance = await aWETH.balanceOf(user.address);
     const gasCosts = approveGas.add(withdrawGas).mul(approveTx.gasPrice);
 
     expect(afterPartialEtherBalance).to.be.equal(
       priorEthersBalance.add(partialWithdraw).sub(gasCosts),
       'User ETHER balance should contain the partial withdraw'
     );
-    expect(afterPartialATokensBalance).to.be.equal(
-      aTokensBalance.sub(partialWithdraw),
+    expect(afterPartialUTokensBalance).to.be.equal(
+      uTokensBalance.sub(partialWithdraw),
       'User aWETH balance should be substracted'
     );
   });
@@ -72,11 +72,11 @@ makeSuite('Mainnet Check list', (testEnv: TestEnv) => {
 
     const user = users[1];
     const priorEthersBalance = await user.signer.getBalance();
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const uTokensBalance = await aWETH.balanceOf(user.address);
 
-    expect(aTokensBalance).to.be.gt(zero, 'User should have aTokens.');
+    expect(uTokensBalance).to.be.gt(zero, 'User should have uTokens.');
 
-    // Approve the aTokens to Gateway so Gateway can withdraw and convert to Ether
+    // Approve the uTokens to Gateway so Gateway can withdraw and convert to Ether
     const approveTx = await aWETH
       .connect(user.signer)
       .approve(wethGateway.address, MAX_UINT_AMOUNT);
@@ -88,14 +88,14 @@ makeSuite('Mainnet Check list', (testEnv: TestEnv) => {
     );
 
     const afterFullEtherBalance = await user.signer.getBalance();
-    const afterFullATokensBalance = await aWETH.balanceOf(user.address);
+    const afterFullUTokensBalance = await aWETH.balanceOf(user.address);
     const gasCosts = approveGas.add(withdrawGas).mul(approveTx.gasPrice);
 
     expect(afterFullEtherBalance).to.be.eq(
-      priorEthersBalance.add(aTokensBalance).sub(gasCosts),
+      priorEthersBalance.add(uTokensBalance).sub(gasCosts),
       'User ETHER balance should contain the full withdraw'
     );
-    expect(afterFullATokensBalance).to.be.eq(0, 'User aWETH balance should be zero');
+    expect(afterFullUTokensBalance).to.be.eq(0, 'User aWETH balance should be zero');
   });
 
   it('Borrow stable WETH and Full Repay with ETH', async () => {
@@ -115,10 +115,10 @@ makeSuite('Mainnet Check list', (testEnv: TestEnv) => {
     await dai.connect(user.signer).approve(pool.address, daiSize);
     await pool.connect(user.signer).deposit(dai.address, daiSize, user.address, '0');
 
-    const aTokensBalance = await aDai.balanceOf(user.address);
+    const uTokensBalance = await aDai.balanceOf(user.address);
 
-    expect(aTokensBalance).to.be.gt(zero);
-    expect(aTokensBalance).to.be.gte(daiSize);
+    expect(uTokensBalance).to.be.gt(zero);
+    expect(uTokensBalance).to.be.gte(daiSize);
 
     // Borrow WETH with WETH as collateral
     await waitForTx(
@@ -155,10 +155,10 @@ makeSuite('Mainnet Check list', (testEnv: TestEnv) => {
     // Deposit with native ETH
     await wethGateway.connect(user.signer).depositETH(user.address, '0', { value: depositSize });
 
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const uTokensBalance = await aWETH.balanceOf(user.address);
 
-    expect(aTokensBalance).to.be.gt(zero);
-    expect(aTokensBalance).to.be.gte(depositSize);
+    expect(uTokensBalance).to.be.gt(zero);
+    expect(uTokensBalance).to.be.gte(depositSize);
 
     // Borrow WETH with WETH as collateral
     await waitForTx(
@@ -205,10 +205,10 @@ makeSuite('Mainnet Check list', (testEnv: TestEnv) => {
     // Deposit WETH with native ETH
     await wethGateway.connect(user.signer).depositETH(user.address, '0', { value: depositSize });
 
-    const aTokensBalance = await aWETH.balanceOf(user.address);
+    const uTokensBalance = await aWETH.balanceOf(user.address);
 
-    expect(aTokensBalance).to.be.gt(zero);
-    expect(aTokensBalance).to.be.gte(depositSize);
+    expect(uTokensBalance).to.be.gt(zero);
+    expect(uTokensBalance).to.be.gte(depositSize);
 
     // Delegates borrowing power of WETH to WETHGateway
     await waitForTx(

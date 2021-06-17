@@ -14,9 +14,9 @@ import { ICommonConfiguration, ePolygonNetwork } from '../../helpers/types';
 
 export const CommonsConfig: ICommonConfiguration = {
   MarketId: 'Commons',
-  ATokenNamePrefix: 'Aave Matic Market',
-  StableDebtTokenNamePrefix: 'Aave Matic Market stable debt',
-  VariableDebtTokenNamePrefix: 'Aave Matic Market variable debt',
+  UTokenNamePrefix: 'Umee Matic Market',
+  StableDebtTokenNamePrefix: 'Umee Matic Market stable debt',
+  VariableDebtTokenNamePrefix: 'Umee Matic Market variable debt',
   SymbolPrefix: 'm',
   ProviderId: 0, // Overriden in index.ts
   ProtocolGlobalParams: {
@@ -25,7 +25,7 @@ export const CommonsConfig: ICommonConfiguration = {
     UsdAddress: '0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96',
     NilAddress: '0x0000000000000000000000000000000000000000',
     OneAddress: '0x0000000000000000000000000000000000000001',
-    AaveReferral: '0',
+    UmeeReferral: '0',
   },
 
   // ----------------
@@ -57,7 +57,7 @@ export const CommonsConfig: ICommonConfiguration = {
     WMATIC: {
       borrowRate: oneRay.multipliedBy(0.05).toFixed(),
     },
-    AAVE: {
+    UMEE: {
       borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
   },
@@ -108,7 +108,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [ePolygonNetwork.mumbai]: '',
     [ePolygonNetwork.matic]: '',
   },
-  AaveOracle: {
+  UmeeOracle: {
     [ePolygonNetwork.mumbai]: '',
     [ePolygonNetwork.matic]: '0x0229F777B0fAb107F9591a41d5F02E4e98dB6f2d',
   },
@@ -118,7 +118,7 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   ChainlinkAggregator: {
     [ePolygonNetwork.matic]: {
-      AAVE: '0xbE23a3AA13038CfC28aFd0ECe4FdE379fE7fBfc4',
+      UMEE: '0xbE23a3AA13038CfC28aFd0ECe4FdE379fE7fBfc4',
       DAI: '0xFC539A559e170f848323e19dfD66007520510085',
       USDC: '0xefb7e6be8356cCc6827799B6A7348eE674A80EaE',
       USDT: '0xf9d5AAC6E5572AEFa6bd64108ff86a222F69B64d',
@@ -139,7 +139,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [ePolygonNetwork.mumbai]: {},
   },
   ReservesConfig: {},
-  ATokenDomainSeparator: {
+  UTokenDomainSeparator: {
     [ePolygonNetwork.mumbai]: '',
     [ePolygonNetwork.matic]: '',
   },

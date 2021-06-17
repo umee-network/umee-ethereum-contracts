@@ -4,22 +4,22 @@ pragma solidity 0.6.12;
 import {IERC20} from '../../dependencies/openzeppelin/contracts/IERC20.sol';
 import {SafeERC20} from '../../dependencies/openzeppelin/contracts/SafeERC20.sol';
 import {ILendingPool} from '../../interfaces/ILendingPool.sol';
-import {IAToken} from '../../interfaces/IAToken.sol';
+import {IUToken} from '../../interfaces/IUToken.sol';
 import {WadRayMath} from '../libraries/math/WadRayMath.sol';
 import {Errors} from '../libraries/helpers/Errors.sol';
-import {VersionedInitializable} from '../libraries/aave-upgradeability/VersionedInitializable.sol';
+import {VersionedInitializable} from '../libraries/umee-upgradeability/VersionedInitializable.sol';
 import {IncentivizedERC20} from './IncentivizedERC20.sol';
-import {IAaveIncentivesController} from '../../interfaces/IAaveIncentivesController.sol';
+import {IUmeeIncentivesController} from '../../interfaces/IUmeeIncentivesController.sol';
 
 /**
- * @title Aave ERC20 AToken
- * @dev Implementation of the interest bearing token for the Aave protocol
- * @author Aave
+ * @title Umee ERC20 UToken
+ * @dev Implementation of the interest bearing token for the Umee protocol
+ * @author Umee
  */
-contract AToken is
+contract UToken is
   VersionedInitializable,
   IncentivizedERC20('ATOKEN_IMPL', 'ATOKEN_IMPL', 0),
-  IAToken
+  IUToken
 {
   using WadRayMath for uint256;
   using SafeERC20 for IERC20;
@@ -40,7 +40,7 @@ contract AToken is
   ILendingPool internal _pool;
   address internal _treasury;
   address internal _underlyingAsset;
-  IAaveIncentivesController internal _incentivesController;
+  IUmeeIncentivesController internal _incentivesController;
 
   modifier onlyLendingPool {
     require(_msgSender() == address(_pool), Errors.CT_CALLER_MUST_BE_LENDING_POOL);
@@ -52,23 +52,23 @@ contract AToken is
   }
 
   /**
-   * @dev Initializes the aToken
-   * @param pool The address of the lending pool where this aToken will be used
-   * @param treasury The address of the Aave treasury, receiving the fees on this aToken
-   * @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)
+   * @dev Initializes the uToken
+   * @param pool The address of the lending pool where this uToken will be used
+   * @param treasury The address of the Umee treasury, receiving the fees on this uToken
+   * @param underlyingAsset The address of the underlying asset of this uToken (E.g. WETH for aWETH)
    * @param incentivesController The smart contract managing potential incentives distribution
-   * @param aTokenDecimals The decimals of the aToken, same as the underlying asset's
-   * @param aTokenName The name of the aToken
-   * @param aTokenSymbol The symbol of the aToken
+   * @param uTokenDecimals The decimals of the uToken, same as the underlying asset's
+   * @param uTokenName The name of the uToken
+   * @param uTokenSymbol The symbol of the uToken
    */
   function initialize(
     ILendingPool pool,
     address treasury,
     address underlyingAsset,
-    IAaveIncentivesController incentivesController,
-    uint8 aTokenDecimals,
-    string calldata aTokenName,
-    string calldata aTokenSymbol,
+    IUmeeIncentivesController incentivesController,
+    uint8 uTokenDecimals,
+    string calldata uTokenName,
+    string calldata uTokenSymbol,
     bytes calldata params
   ) external override initializer {
     uint256 chainId;
@@ -81,16 +81,16 @@ contract AToken is
     DOMAIN_SEPARATOR = keccak256(
       abi.encode(
         EIP712_DOMAIN,
-        keccak256(bytes(aTokenName)),
+        keccak256(bytes(uTokenName)),
         keccak256(EIP712_REVISION),
         chainId,
         address(this)
       )
     );
 
-    _setName(aTokenName);
-    _setSymbol(aTokenSymbol);
-    _setDecimals(aTokenDecimals);
+    _setName(uTokenName);
+    _setSymbol(uTokenSymbol);
+    _setDecimals(uTokenDecimals);
 
     _pool = pool;
     _treasury = treasury;
@@ -102,17 +102,17 @@ contract AToken is
       address(pool),
       treasury,
       address(incentivesController),
-      aTokenDecimals,
-      aTokenName,
-      aTokenSymbol,
+      uTokenDecimals,
+      uTokenName,
+      uTokenSymbol,
       params
     );
   }
 
   /**
-   * @dev Burns aTokens from `user` and sends the equivalent amount of underlying to `receiverOfUnderlying`
+   * @dev Burns uTokens from `user` and sends the equivalent amount of underlying to `receiverOfUnderlying`
    * - Only callable by the LendingPool, as extra state updates there need to be managed
-   * @param user The owner of the aTokens, getting them burned
+   * @param user The owner of the uTokens, getting them burned
    * @param receiverOfUnderlying The address that will receive the underlying
    * @param amount The amount being burned
    * @param index The new liquidity index of the reserve
@@ -134,7 +134,7 @@ contract AToken is
   }
 
   /**
-   * @dev Mints `amount` aTokens to `user`
+   * @dev Mints `amount` uTokens to `user`
    * - Only callable by the LendingPool, as extra state updates there need to be managed
    * @param user The address receiving the minted tokens
    * @param amount The amount of tokens getting minted
@@ -159,7 +159,7 @@ contract AToken is
   }
 
   /**
-   * @dev Mints aTokens to the reserve treasury
+   * @dev Mints uTokens to the reserve treasury
    * - Only callable by the LendingPool
    * @param amount The amount of tokens getting minted
    * @param index The new liquidity index of the reserve
@@ -182,9 +182,9 @@ contract AToken is
   }
 
   /**
-   * @dev Transfers aTokens in the event of a borrow being liquidated, in case the liquidators reclaims the aToken
+   * @dev Transfers uTokens in the event of a borrow being liquidated, in case the liquidators reclaims the uToken
    * - Only callable by the LendingPool
-   * @param from The address getting liquidated, current owner of the aTokens
+   * @param from The address getting liquidated, current owner of the uTokens
    * @param to The recipient
    * @param value The amount of tokens getting transferred
    **/
@@ -240,7 +240,7 @@ contract AToken is
   }
 
   /**
-   * @dev calculates the total supply of the specific aToken
+   * @dev calculates the total supply of the specific uToken
    * since the balance of every single user increases over time, the total supply
    * does that too.
    * @return the current total supply
@@ -264,21 +264,21 @@ contract AToken is
   }
 
   /**
-   * @dev Returns the address of the Aave treasury, receiving the fees on this aToken
+   * @dev Returns the address of the Umee treasury, receiving the fees on this uToken
    **/
   function RESERVE_TREASURY_ADDRESS() public view returns (address) {
     return _treasury;
   }
 
   /**
-   * @dev Returns the address of the underlying asset of this aToken (E.g. WETH for aWETH)
+   * @dev Returns the address of the underlying asset of this uToken (E.g. WETH for aWETH)
    **/
   function UNDERLYING_ASSET_ADDRESS() public override view returns (address) {
     return _underlyingAsset;
   }
 
   /**
-   * @dev Returns the address of the lending pool where this aToken is used
+   * @dev Returns the address of the lending pool where this uToken is used
    **/
   function POOL() public view returns (ILendingPool) {
     return _pool;
@@ -287,21 +287,21 @@ contract AToken is
   /**
    * @dev For internal usage in the logic of the parent contract IncentivizedERC20
    **/
-  function _getIncentivesController() internal view override returns (IAaveIncentivesController) {
+  function _getIncentivesController() internal view override returns (IUmeeIncentivesController) {
     return _incentivesController;
   }
 
   /**
    * @dev Returns the address of the incentives controller contract
    **/
-  function getIncentivesController() external view override returns (IAaveIncentivesController) {
+  function getIncentivesController() external view override returns (IUmeeIncentivesController) {
     return _getIncentivesController();
   }
 
   /**
    * @dev Transfers the underlying asset to `target`. Used by the LendingPool to transfer
    * assets in borrow(), withdraw() and flashLoan()
-   * @param target The recipient of the aTokens
+   * @param target The recipient of the uTokens
    * @param amount The amount getting transferred
    * @return The amount transferred
    **/
@@ -316,7 +316,7 @@ contract AToken is
   }
 
   /**
-   * @dev Invoked to execute actions on the aToken side after a repayment.
+   * @dev Invoked to execute actions on the uToken side after a repayment.
    * @param user The user executing the repayment
    * @param amount The amount getting repaid
    **/
@@ -360,7 +360,7 @@ contract AToken is
   }
 
   /**
-   * @dev Transfers the aTokens between two users. Validates the transfer
+   * @dev Transfers the uTokens between two users. Validates the transfer
    * (ie checks for valid HF after the transfer) if required
    * @param from The source address
    * @param to The destination address

@@ -19,7 +19,7 @@ import {IBaseUniswapAdapter} from './interfaces/IBaseUniswapAdapter.sol';
 /**
  * @title BaseUniswapAdapter
  * @notice Implements the logic for performing assets swaps in Uniswap V2
- * @author Aave
+ * @author Umee
  **/
 abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapter, Ownable {
   using SafeMath for uint256;
@@ -257,30 +257,30 @@ abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapt
   }
 
   /**
-   * @dev Get the aToken associated to the asset
-   * @return address of the aToken
+   * @dev Get the uToken associated to the asset
+   * @return address of the uToken
    */
   function _getReserveData(address asset) internal view returns (DataTypes.ReserveData memory) {
     return LENDING_POOL.getReserveData(asset);
   }
 
   /**
-   * @dev Pull the ATokens from the user
+   * @dev Pull the UTokens from the user
    * @param reserve address of the asset
-   * @param reserveAToken address of the aToken of the reserve
+   * @param reserveUToken address of the uToken of the reserve
    * @param user address
    * @param amount of tokens to be transferred to the contract
    * @param permitSignature struct containing the permit signature
    */
-  function _pullAToken(
+  function _pullUToken(
     address reserve,
-    address reserveAToken,
+    address reserveUToken,
     address user,
     uint256 amount,
     PermitSignature memory permitSignature
   ) internal {
     if (_usePermit(permitSignature)) {
-      IERC20WithPermit(reserveAToken).permit(
+      IERC20WithPermit(reserveUToken).permit(
         user,
         address(this),
         permitSignature.amount,
@@ -292,7 +292,7 @@ abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapt
     }
 
     // transfer from user to adapter
-    IERC20(reserveAToken).safeTransferFrom(user, address(this), amount);
+    IERC20(reserveUToken).safeTransferFrom(user, address(this), amount);
 
     // withdraw reserve
     LENDING_POOL.withdraw(reserve, amount, address(this));

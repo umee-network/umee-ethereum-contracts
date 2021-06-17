@@ -446,7 +446,7 @@ export class LendingPool extends Contract {
         currentVariableBorrowRate: BigNumber;
         currentStableBorrowRate: BigNumber;
         lastUpdateTimestamp: number;
-        aTokenAddress: string;
+        uTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
         interestRateStrategyAddress: string;
@@ -478,7 +478,7 @@ export class LendingPool extends Contract {
         currentVariableBorrowRate: BigNumber;
         currentStableBorrowRate: BigNumber;
         lastUpdateTimestamp: number;
-        aTokenAddress: string;
+        uTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
         interestRateStrategyAddress: string;
@@ -586,7 +586,7 @@ export class LendingPool extends Contract {
 
     initReserve(
       asset: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -595,7 +595,7 @@ export class LendingPool extends Contract {
 
     "initReserve(address,address,address,address,address)"(
       asset: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -617,7 +617,7 @@ export class LendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -626,7 +626,7 @@ export class LendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -857,7 +857,7 @@ export class LendingPool extends Contract {
     currentVariableBorrowRate: BigNumber;
     currentStableBorrowRate: BigNumber;
     lastUpdateTimestamp: number;
-    aTokenAddress: string;
+    uTokenAddress: string;
     stableDebtTokenAddress: string;
     variableDebtTokenAddress: string;
     interestRateStrategyAddress: string;
@@ -887,7 +887,7 @@ export class LendingPool extends Contract {
     currentVariableBorrowRate: BigNumber;
     currentStableBorrowRate: BigNumber;
     lastUpdateTimestamp: number;
-    aTokenAddress: string;
+    uTokenAddress: string;
     stableDebtTokenAddress: string;
     variableDebtTokenAddress: string;
     interestRateStrategyAddress: string;
@@ -978,7 +978,7 @@ export class LendingPool extends Contract {
 
   initReserve(
     asset: string,
-    aTokenAddress: string,
+    uTokenAddress: string,
     stableDebtAddress: string,
     variableDebtAddress: string,
     interestRateStrategyAddress: string,
@@ -987,7 +987,7 @@ export class LendingPool extends Contract {
 
   "initReserve(address,address,address,address,address)"(
     asset: string,
-    aTokenAddress: string,
+    uTokenAddress: string,
     stableDebtAddress: string,
     variableDebtAddress: string,
     interestRateStrategyAddress: string,
@@ -1009,7 +1009,7 @@ export class LendingPool extends Contract {
     debtAsset: string,
     user: string,
     debtToCover: BigNumberish,
-    receiveAToken: boolean,
+    receiveUToken: boolean,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1018,7 +1018,7 @@ export class LendingPool extends Contract {
     debtAsset: string,
     user: string,
     debtToCover: BigNumberish,
-    receiveAToken: boolean,
+    receiveUToken: boolean,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1245,7 +1245,7 @@ export class LendingPool extends Contract {
       currentVariableBorrowRate: BigNumber;
       currentStableBorrowRate: BigNumber;
       lastUpdateTimestamp: number;
-      aTokenAddress: string;
+      uTokenAddress: string;
       stableDebtTokenAddress: string;
       variableDebtTokenAddress: string;
       interestRateStrategyAddress: string;
@@ -1275,7 +1275,7 @@ export class LendingPool extends Contract {
       currentVariableBorrowRate: BigNumber;
       currentStableBorrowRate: BigNumber;
       lastUpdateTimestamp: number;
-      aTokenAddress: string;
+      uTokenAddress: string;
       stableDebtTokenAddress: string;
       variableDebtTokenAddress: string;
       interestRateStrategyAddress: string;
@@ -1366,7 +1366,7 @@ export class LendingPool extends Contract {
 
     initReserve(
       asset: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1375,7 +1375,7 @@ export class LendingPool extends Contract {
 
     "initReserve(address,address,address,address,address)"(
       asset: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1394,7 +1394,7 @@ export class LendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1403,7 +1403,7 @@ export class LendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1541,7 +1541,7 @@ export class LendingPool extends Contract {
       debtToCover: null,
       liquidatedCollateralAmount: null,
       liquidator: null,
-      receiveAToken: null
+      receiveUToken: null
     ): EventFilter;
 
     Paused(): EventFilter;
@@ -1760,7 +1760,7 @@ export class LendingPool extends Contract {
 
     initReserve(
       asset: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1769,7 +1769,7 @@ export class LendingPool extends Contract {
 
     "initReserve(address,address,address,address,address)"(
       asset: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1788,7 +1788,7 @@ export class LendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1797,7 +1797,7 @@ export class LendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -2085,7 +2085,7 @@ export class LendingPool extends Contract {
 
     initReserve(
       asset: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -2094,7 +2094,7 @@ export class LendingPool extends Contract {
 
     "initReserve(address,address,address,address,address)"(
       asset: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -2116,7 +2116,7 @@ export class LendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -2125,7 +2125,7 @@ export class LendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

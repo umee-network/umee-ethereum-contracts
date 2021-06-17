@@ -112,7 +112,7 @@
         "loc": {"start": {"line": 92, "column": 2}, "end": {"line": 94, "column": 2}}
       },
       "8": {
-        "name": "setAaveAdmin",
+        "name": "setUmeeAdmin",
         "line": 96,
         "loc": {"start": {"line": 96, "column": 2}, "end": {"line": 99, "column": 2}}
       },
@@ -2310,7 +2310,7 @@
     },
     "fnMap": {
       "1": {
-        "name": "onlyAaveAdmin",
+        "name": "onlyUmeeAdmin",
         "line": 186,
         "loc": {"start": {"line": 186, "column": 2}, "end": {"line": 189, "column": 2}}
       },
@@ -2330,7 +2330,7 @@
         "loc": {"start": {"line": 211, "column": 2}, "end": {"line": 255, "column": 2}}
       },
       "5": {
-        "name": "updateAToken",
+        "name": "updateUToken",
         "line": 262,
         "loc": {"start": {"line": 262, "column": 2}, "end": {"line": 268, "column": 2}}
       },
@@ -5449,7 +5449,7 @@
       }
     }
   },
-  "contracts/misc/AaveProtocolDataProvider.sol": {
+  "contracts/misc/UmeeProtocolDataProvider.sol": {
     "l": {
       "18": 3,
       "22": 1,
@@ -5466,7 +5466,7 @@
       "42": 34,
       "47": 2
     },
-    "path": "/src/contracts/misc/AaveProtocolDataProvider.sol",
+    "path": "/src/contracts/misc/UmeeProtocolDataProvider.sol",
     "s": {
       "1": 3,
       "2": 1,
@@ -5497,7 +5497,7 @@
         "loc": {"start": {"line": 21, "column": 2}, "end": {"line": 34, "column": 2}}
       },
       "3": {
-        "name": "getAllATokens",
+        "name": "getAllUTokens",
         "line": 36,
         "loc": {"start": {"line": 36, "column": 2}, "end": {"line": 48, "column": 2}}
       }
@@ -5565,7 +5565,7 @@
       }
     }
   },
-  "contracts/misc/AaveOracle.sol": {
+  "contracts/misc/UmeeOracle.sol": {
     "l": {
       "37": 3,
       "38": 3,
@@ -5591,7 +5591,7 @@
       "107": 0,
       "113": 0
     },
-    "path": "/src/contracts/misc/AaveOracle.sol",
+    "path": "/src/contracts/misc/UmeeOracle.sol",
     "s": {
       "1": 3,
       "2": 3,
@@ -5966,7 +5966,7 @@
       }
     }
   },
-  "contracts/tokenization/AToken.sol": {
+  "contracts/tokenization/UToken.sol": {
     "l": {
       "45": 211,
       "46": 207,
@@ -6017,7 +6017,7 @@
       "320": 4,
       "327": 0
     },
-    "path": "/src/contracts/tokenization/AToken.sol",
+    "path": "/src/contracts/tokenization/UToken.sol",
     "s": {
       "1": 211,
       "2": 54,
@@ -6819,9 +6819,9 @@
       }
     }
   },
-  "contracts/tokenization/interfaces/IAToken.sol": {
+  "contracts/tokenization/interfaces/IUToken.sol": {
     "l": {},
-    "path": "/src/contracts/tokenization/interfaces/IAToken.sol",
+    "path": "/src/contracts/tokenization/interfaces/IUToken.sol",
     "s": {},
     "b": {},
     "f": {},

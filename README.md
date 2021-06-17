@@ -2,6 +2,47 @@
 
 This repository contains the smart contracts source code and markets configuration for Umee Protocol V1. The repository uses Docker Compose and Hardhat as development enviroment for compilation, testing and deployment tasks.
 
+## Kovan Contract Addresses 
+
+```
+GATEWAY 0x4Df052094BD67D161FAB496cC753f99c42AffDb8
+
+Finished migrations
+Contracts deployed at kovan
+---------------------------------
+N# Contracts: 30
+LendingPoolAddressesProvider: 0x50486d03c8C76BF4570CAe04d0c3534F662fc0b3
+ReserveLogic: 0xB2d63144150A0a5CeBAF56F16Aa7ceD82b8CEE5E
+GenericLogic: 0xB708D38D3B1b77C3F172c6Ad1F22CAd76c69Bb32
+ValidationLogic: 0x9E96F6cDC660A9B40FCa2CAA70396C9067f7fc29
+LendingPoolImpl: 0x7EcCb395fbD1E897bE22cF89e045cCB23b26fD97
+LendingPool: 0x34d8619386aEE1d96F68846a801a5e835f130422
+LendingPoolConfiguratorImpl: 0x290b641999A75331555F6Fa8E246CF4411B92934
+LendingPoolConfigurator: 0x10C044A28EF0Cb10b142B969961429F9c4aEe2dA
+StableAndVariableTokensHelper: 0xE41e3C20f61b4f6D17a2E512107F0a78B2f5aEbd
+UTokensAndRatesHelper: 0xB266D1F2a0C9641BB38cFe749Da53C7428b83e21
+UmeeOracle: 0xfFaE7588bE42A757cF75e75836136d3b3f168F2b
+LendingRateOracle: 0xdCAF6d52C08A391F09F786677c43612602d6FE6f
+UmeeProtocolDataProvider: 0x5ac44e8baed9796fb7bf4c52E431c5e03C8249CF
+WETHGateway: 0x4Df052094BD67D161FAB496cC753f99c42AffDb8
+StableDebtToken: 0xF596364b76e1B70A7Ca6B878f9d454DC1b4A91db
+VariableDebtToken: 0x20A012693cF92AE091471d06Dc7FeCA84cdC3ea0
+UToken: 0xBd806CE812C4b3c72BE87f3784110B46bE7534f2
+uTokenImpl: 0xBd806CE812C4b3c72BE87f3784110B46bE7534f2
+DelegationAwareUToken: 0x9C48b6bCbb4eA2E6AA491Ddace5CC513507eED76
+delegationAwareUTokenImpl: 0x9C48b6bCbb4eA2E6AA491Ddace5CC513507eED76
+DefaultReserveInterestRateStrategy: 0xD0A71Fe7e9A5c03269aEefe3e560C2aCd172B879
+rateStrategyUMEE: 0x06D213dB8a2ad73eA05Da1141B81E77C9f220E92
+rateStrategyVolatileOne: 0xD44e7DA745015B1982eD8988cA749ea1167440fC
+rateStrategyStableOne: 0x849684FA146Ee3dE86174DE22f48C39fC2aA7e93
+rateStrategyStableTwo: 0x40797C1D674AD29992Eb4AcC310610DA93150Ba7
+rateStrategyVolatileTwo: 0xEf7a35D45bCE94a208c70b1686Fd788F8F9D6DBb
+rateStrategyVolatileThree: 0x8204A772D7484602c2d4B756af94Ce5eCdCE444d
+rateStrategyStableThree: 0x78Ae96686E05796C70f5AD4F39ab42f8e4F36817
+rateStrategyWETH: 0xD0A71Fe7e9A5c03269aEefe3e560C2aCd172B879
+WalletBalanceProvider: 0x2B629BF227d5f989d80ECe76388DA6Eb7ffBD657
+```
+
 ## What is Aave?
 
 Aave is a decentralized non-custodial liquidity markets protocol where users can participate as depositors or borrowers. Depositors provide liquidity to the market to earn a passive income, while borrowers are able to borrow in an overcollateralized (perpetually) or undercollateralized (one-block liquidity) fashion.
@@ -208,45 +249,4 @@ await DAI.connect(signer).approve(lendingPool.address, ethers.utils.parseUnits('
 
 // Deposit 100 DAI
 await lendingPool.connect(signer).deposit(DAI.address, ethers.utils.parseUnits('100'), await signer.getAddress(), '0');
-```
-
-## Kovan Contract Addresses 
-
-```
-GATEWAY 0x4Df052094BD67D161FAB496cC753f99c42AffDb8
-
-Finished migrations
-Contracts deployed at kovan
----------------------------------
-N# Contracts: 30
-LendingPoolAddressesProvider: 0x50486d03c8C76BF4570CAe04d0c3534F662fc0b3
-ReserveLogic: 0xB2d63144150A0a5CeBAF56F16Aa7ceD82b8CEE5E
-GenericLogic: 0xB708D38D3B1b77C3F172c6Ad1F22CAd76c69Bb32
-ValidationLogic: 0x9E96F6cDC660A9B40FCa2CAA70396C9067f7fc29
-LendingPoolImpl: 0x7EcCb395fbD1E897bE22cF89e045cCB23b26fD97
-LendingPool: 0x34d8619386aEE1d96F68846a801a5e835f130422
-LendingPoolConfiguratorImpl: 0x290b641999A75331555F6Fa8E246CF4411B92934
-LendingPoolConfigurator: 0x10C044A28EF0Cb10b142B969961429F9c4aEe2dA
-StableAndVariableTokensHelper: 0xE41e3C20f61b4f6D17a2E512107F0a78B2f5aEbd
-UTokensAndRatesHelper: 0xB266D1F2a0C9641BB38cFe749Da53C7428b83e21
-UmeeOracle: 0xfFaE7588bE42A757cF75e75836136d3b3f168F2b
-LendingRateOracle: 0xdCAF6d52C08A391F09F786677c43612602d6FE6f
-UmeeProtocolDataProvider: 0x5ac44e8baed9796fb7bf4c52E431c5e03C8249CF
-WETHGateway: 0x4Df052094BD67D161FAB496cC753f99c42AffDb8
-StableDebtToken: 0xF596364b76e1B70A7Ca6B878f9d454DC1b4A91db
-VariableDebtToken: 0x20A012693cF92AE091471d06Dc7FeCA84cdC3ea0
-UToken: 0xBd806CE812C4b3c72BE87f3784110B46bE7534f2
-uTokenImpl: 0xBd806CE812C4b3c72BE87f3784110B46bE7534f2
-DelegationAwareUToken: 0x9C48b6bCbb4eA2E6AA491Ddace5CC513507eED76
-delegationAwareUTokenImpl: 0x9C48b6bCbb4eA2E6AA491Ddace5CC513507eED76
-DefaultReserveInterestRateStrategy: 0xD0A71Fe7e9A5c03269aEefe3e560C2aCd172B879
-rateStrategyUMEE: 0x06D213dB8a2ad73eA05Da1141B81E77C9f220E92
-rateStrategyVolatileOne: 0xD44e7DA745015B1982eD8988cA749ea1167440fC
-rateStrategyStableOne: 0x849684FA146Ee3dE86174DE22f48C39fC2aA7e93
-rateStrategyStableTwo: 0x40797C1D674AD29992Eb4AcC310610DA93150Ba7
-rateStrategyVolatileTwo: 0xEf7a35D45bCE94a208c70b1686Fd788F8F9D6DBb
-rateStrategyVolatileThree: 0x8204A772D7484602c2d4B756af94Ce5eCdCE444d
-rateStrategyStableThree: 0x78Ae96686E05796C70f5AD4F39ab42f8e4F36817
-rateStrategyWETH: 0xD0A71Fe7e9A5c03269aEefe3e560C2aCd172B879
-WalletBalanceProvider: 0x2B629BF227d5f989d80ECe76388DA6Eb7ffBD657
 ```

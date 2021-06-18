@@ -31,6 +31,7 @@ export const UMEE_REFERRAL = '0';
 
 export const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   UMEE: oneEther.multipliedBy('0.003620948469').toFixed(),
+  ATOM: oneEther.multipliedBy('0.00560147731').toFixed(), // ATOM to ETH ratio as of June 18th, 2021
   BAT: oneEther.multipliedBy('0.00137893825230').toFixed(),
   BUSD: oneEther.multipliedBy('0.00736484').toFixed(),
   DAI: oneEther.multipliedBy('0.00369068412860').toFixed(),

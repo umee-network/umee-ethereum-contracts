@@ -10,6 +10,7 @@ import {
   strategyUSDC,
   strategyUSDT,
   strategyUMEE,
+  strategyATOM,
   strategyBAT,
   strategyZRX,
   strategyKNC,
@@ -36,6 +37,7 @@ export const UmeeConfig: IUmeeConfiguration = {
   ProviderId: 1,
   ReservesConfig: {
     UMEE: strategyUMEE,
+    ATOM: strategyATOM,
     BAT: strategyBAT,
     BUSD: strategyBUSD,
     DAI: strategyDAI,
@@ -62,7 +64,8 @@ export const UmeeConfig: IUmeeConfiguration = {
     [eEthereumNetwork.hardhat]: {},
     [eEthereumNetwork.coverage]: {},
     [eEthereumNetwork.kovan]: {
-      UMEE: '0xB597cd8D3217ea6477232F9217fa70837ff667Af',
+      UMEE: '0xB597cd8D3217ea6477232F9217fa70837ff667Af', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
+      ATOM: '',
       BAT: '0x2d12186Fbb9f9a8C28B3FfdD4c42920f8539D738',
       BUSD: '0x4c6E1EFC12FDfD568186b7BAEc0A43fFfb4bCcCf',
       DAI: '0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD',
@@ -85,6 +88,7 @@ export const UmeeConfig: IUmeeConfiguration = {
     },
     [eEthereumNetwork.ropsten]: {
       UMEE: '',
+      ATOM: '',
       BAT: '0x85B24b3517E3aC7bf72a14516160541A60cFF19d',
       BUSD: '0xFA6adcFf6A90c11f31Bc9bb59eC0a6efB38381C6',
       DAI: '0xf80A32A835F79D7787E8a8ee5721D0fEaFd78108',
@@ -106,7 +110,8 @@ export const UmeeConfig: IUmeeConfiguration = {
       ZRX: '0x02d7055704EfF050323A2E5ee4ba05DB2A588959',
     },
     [eEthereumNetwork.main]: {
-      UMEE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',
+      UMEE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
+      ATOM: '',
       BAT: '0x0d8775f648430679a709e98d2b0cb6250d2887ef',
       BUSD: '0x4Fabb145d64652a948d72533023f6E7A623C7C53',
       DAI: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
@@ -129,7 +134,8 @@ export const UmeeConfig: IUmeeConfiguration = {
       xSUSHI: '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272',
     },
     [eEthereumNetwork.tenderlyMain]: {
-      UMEE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',
+      UMEE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
+      ATOM: '',
       BAT: '0x0d8775f648430679a709e98d2b0cb6250d2887ef',
       BUSD: '0x4Fabb145d64652a948d72533023f6E7A623C7C53',
       DAI: '0x6B175474E89094C44Da98b954EedeAC495271d0F',

@@ -63,6 +63,9 @@ export const CommonsConfig: ICommonConfiguration = {
     UMEE: {
       borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
+    ATOM: {
+      borrowRate: oneRay.multipliedBy(0.03).toFixed(),
+    },
     LINK: {
       borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
@@ -127,46 +130,46 @@ export const CommonsConfig: ICommonConfiguration = {
   },
   EmergencyAdminIndex: 1,
   ProviderRegistry: {
-    [eEthereumNetwork.kovan]: '0x1E40B561EC587036f9789aF83236f057D1ed2A90',
+    [eEthereumNetwork.kovan]: '0x1E40B561EC587036f9789aF83236f057D1ed2A90', // Aave
     [eEthereumNetwork.ropsten]: '',
-    [eEthereumNetwork.main]: '0x52D306e36E3B6B02c153d0266ff0f85d18BCD413',
+    [eEthereumNetwork.main]: '0x52D306e36E3B6B02c153d0266ff0f85d18BCD413', // Aave
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [eEthereumNetwork.tenderlyMain]: '0x52D306e36E3B6B02c153d0266ff0f85d18BCD413',
+    [eEthereumNetwork.tenderlyMain]: '0x52D306e36E3B6B02c153d0266ff0f85d18BCD413', // Aave
   },
   ProviderRegistryOwner: {
-    [eEthereumNetwork.kovan]: '0x85e4A467343c0dc4aDAB74Af84448D9c45D8ae6F',
+    [eEthereumNetwork.kovan]: '0x85e4A467343c0dc4aDAB74Af84448D9c45D8ae6F', // Aave
     [eEthereumNetwork.ropsten]: '',
-    [eEthereumNetwork.main]: '0xB9062896ec3A615a4e4444DF183F0531a77218AE',
+    [eEthereumNetwork.main]: '0xB9062896ec3A615a4e4444DF183F0531a77218AE', // Aave
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [eEthereumNetwork.tenderlyMain]: '0xB9062896ec3A615a4e4444DF183F0531a77218AE',
+    [eEthereumNetwork.tenderlyMain]: '0xB9062896ec3A615a4e4444DF183F0531a77218AE', // Aave
   },
   LendingRateOracle: {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [eEthereumNetwork.kovan]: '', //'0xdCde9Bb6a49e37fA433990832AB541AE2d4FEB4a',
-    [eEthereumNetwork.ropsten]: '0x05dcca805a6562c1bdd0423768754acb6993241b',
-    [eEthereumNetwork.main]: '', //'0x8A32f49FFbA88aba6EFF96F45D8BD1D4b3f35c7D',
-    [eEthereumNetwork.tenderlyMain]: '0x8A32f49FFbA88aba6EFF96F45D8BD1D4b3f35c7D',
+    [eEthereumNetwork.kovan]: '', //'0xdCde9Bb6a49e37fA433990832AB541AE2d4FEB4a', // Aave
+    [eEthereumNetwork.ropsten]: '0x05dcca805a6562c1bdd0423768754acb6993241b', // Aave
+    [eEthereumNetwork.main]: '', //'0x8A32f49FFbA88aba6EFF96F45D8BD1D4b3f35c7D', // Aave
+    [eEthereumNetwork.tenderlyMain]: '0x8A32f49FFbA88aba6EFF96F45D8BD1D4b3f35c7D', // Aave
   },
   LendingPoolCollateralManager: {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [eEthereumNetwork.kovan]: '0x9269b6453d0d75370c4c85e5a42977a53efdb72a',
+    [eEthereumNetwork.kovan]: '0x9269b6453d0d75370c4c85e5a42977a53efdb72a', // Aave
     [eEthereumNetwork.ropsten]: '',
-    [eEthereumNetwork.main]: '0xbd4765210d4167CE2A5b87280D9E8Ee316D5EC7C',
-    [eEthereumNetwork.tenderlyMain]: '0xbd4765210d4167CE2A5b87280D9E8Ee316D5EC7C',
+    [eEthereumNetwork.main]: '0xbd4765210d4167CE2A5b87280D9E8Ee316D5EC7C', // Aave
+    [eEthereumNetwork.tenderlyMain]: '0xbd4765210d4167CE2A5b87280D9E8Ee316D5EC7C', // Aave
   },
   LendingPoolConfigurator: {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [eEthereumNetwork.kovan]: '',
+    [eEthereumNetwork.kovan]: '0x10C044A28EF0Cb10b142B969961429F9c4aEe2dA', // UMEE
     [eEthereumNetwork.ropsten]: '',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.tenderlyMain]: '',
@@ -175,7 +178,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [eEthereumNetwork.kovan]: '',
+    [eEthereumNetwork.kovan]: '0x34d8619386aEE1d96F68846a801a5e835f130422', // UMEE
     [eEthereumNetwork.ropsten]: '',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.tenderlyMain]: '',
@@ -184,7 +187,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [eEthereumNetwork.kovan]: '',
+    [eEthereumNetwork.kovan]: '0x4Df052094BD67D161FAB496cC753f99c42AffDb8', // UMEE
     [eEthereumNetwork.ropsten]: '',
     [eEthereumNetwork.main]: '',
     [eEthereumNetwork.tenderlyMain]: '',
@@ -193,10 +196,10 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.buidlerevm]: '',
     [eEthereumNetwork.hardhat]: '',
-    [eEthereumNetwork.kovan]: '0x971efe90088f21dc6a36f610ffed77fc19710708',
-    [eEthereumNetwork.ropsten]: '0xeba2ea67942b8250d870b12750b594696d02fc9c',
-    [eEthereumNetwork.main]: '0xe3d9988f676457123c5fd01297605efdd0cba1ae',
-    [eEthereumNetwork.tenderlyMain]: '0xe3d9988f676457123c5fd01297605efdd0cba1ae',
+    [eEthereumNetwork.kovan]: '0x971efe90088f21dc6a36f610ffed77fc19710708', // Aave
+    [eEthereumNetwork.ropsten]: '0xeba2ea67942b8250d870b12750b594696d02fc9c', // Aave
+    [eEthereumNetwork.main]: '0xe3d9988f676457123c5fd01297605efdd0cba1ae', // Aave
+    [eEthereumNetwork.tenderlyMain]: '0xe3d9988f676457123c5fd01297605efdd0cba1ae', // Aave
   },
   UmeeOracle: {
     [eEthereumNetwork.coverage]: '',
@@ -205,14 +208,14 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.kovan]: '', //'0xB8bE51E6563BB312Cbb2aa26e352516c25c26ac1',
     [eEthereumNetwork.ropsten]: ZERO_ADDRESS,
     [eEthereumNetwork.main]: '', //'0xA50ba011c48153De246E5192C8f9258A2ba79Ca9',
-    [eEthereumNetwork.tenderlyMain]: '0xA50ba011c48153De246E5192C8f9258A2ba79Ca9',
+    [eEthereumNetwork.tenderlyMain]: '0xA50ba011c48153De246E5192C8f9258A2ba79Ca9', // Aave
   },
   FallbackOracle: {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
-    [eEthereumNetwork.kovan]: '0x50913E8E1c650E790F8a1E741FF9B1B1bB251dfe',
-    [eEthereumNetwork.ropsten]: '0xAD1a978cdbb8175b2eaeC47B01404f8AEC5f4F0d',
+    [eEthereumNetwork.kovan]: '0x50913E8E1c650E790F8a1E741FF9B1B1bB251dfe', // Aave
+    [eEthereumNetwork.ropsten]: '0xAD1a978cdbb8175b2eaeC47B01404f8AEC5f4F0d', // Aave
     [eEthereumNetwork.main]: ZERO_ADDRESS,
     [eEthereumNetwork.tenderlyMain]: ZERO_ADDRESS,
   },
@@ -221,7 +224,9 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.hardhat]: {},
     [eEthereumNetwork.buidlerevm]: {},
     [eEthereumNetwork.kovan]: {
-      UMEE: '0xd04647B7CB523bb9f26730E9B6dE1174db7591Ad',
+      AAVE: '0xd04647B7CB523bb9f26730E9B6dE1174db7591Ad', // Aave EACAggregatorProxy
+      UMEE: '',
+      ATOM: '',
       BAT: '0x0e4fcEC26c9f85c3D714370c98f43C4E02Fc35Ae',
       BUSD: '0xbF7A18ea5DE0501f7559144e702b29c55b055CcB',
       DAI: '0x22B58f1EbEDfCA50feF632bD73368b2FdA96D541',
@@ -243,7 +248,9 @@ export const CommonsConfig: ICommonConfiguration = {
       USD: '0x9326BFA02ADD2366b30bacB125260Af641031331',
     },
     [eEthereumNetwork.ropsten]: {
+      AAVE: ZERO_ADDRESS, // Aave
       UMEE: ZERO_ADDRESS,
+      ATOM: ZERO_ADDRESS,
       BAT: '0xafd8186c962daf599f171b8600f3e19af7b52c92',
       BUSD: '0x0A32D96Ff131cd5c3E0E5AAB645BF009Eda61564',
       DAI: '0x64b8e49baded7bfb2fd5a9235b2440c0ee02971b',
@@ -265,7 +272,9 @@ export const CommonsConfig: ICommonConfiguration = {
       USD: '0x8468b2bDCE073A157E560AA4D9CcF6dB1DB98507',
     },
     [eEthereumNetwork.main]: {
-      UMEE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012',
+      AAVE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012', // Aave
+      UMEE: '',
+      ATOM: '',
       BAT: '0x0d16d4528239e9ee52fa531af613AcdB23D88c94',
       BUSD: '0x614715d2Af89E6EC99A233818275142cE88d1Cfd',
       DAI: '0x773616E4d11A78F511299002da57A0a94577F1f4',
@@ -288,7 +297,9 @@ export const CommonsConfig: ICommonConfiguration = {
       xSUSHI: '0x9b26214bEC078E68a394AaEbfbffF406Ce14893F',
     },
     [eEthereumNetwork.tenderlyMain]: {
-      UMEE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012',
+      AAVE: '0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012', // Aave
+      UMEE: '',
+      ATOM: '',
       BAT: '0x0d16d4528239e9ee52fa531af613AcdB23D88c94',
       BUSD: '0x614715d2Af89E6EC99A233818275142cE88d1Cfd',
       DAI: '0x773616E4d11A78F511299002da57A0a94577F1f4',
@@ -323,11 +334,11 @@ export const CommonsConfig: ICommonConfiguration = {
   ReservesConfig: {},
   UTokenDomainSeparator: {
     [eEthereumNetwork.coverage]:
-      '0x95b73a72c6ecf4ccbbba5178800023260bad8e75cdccdb8e4827a2977a37c820',
+      '0x95b73a72c6ecf4ccbbba5178800023260bad8e75cdccdb8e4827a2977a37c820', // Aave
     [eEthereumNetwork.hardhat]:
-      '0xbae024d959c6a022dc5ed37294cd39c141034b2ae5f02a955cce75c930a81bf5',
+      '0xbae024d959c6a022dc5ed37294cd39c141034b2ae5f02a955cce75c930a81bf5', // Aave
     [eEthereumNetwork.buidlerevm]:
-      '0xbae024d959c6a022dc5ed37294cd39c141034b2ae5f02a955cce75c930a81bf5',
+      '0xbae024d959c6a022dc5ed37294cd39c141034b2ae5f02a955cce75c930a81bf5', // Aave
     [eEthereumNetwork.kovan]: '',
     [eEthereumNetwork.ropsten]: '',
     [eEthereumNetwork.main]: '',
@@ -337,28 +348,28 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.coverage]: '', // deployed in local evm
     [eEthereumNetwork.hardhat]: '', // deployed in local evm
     [eEthereumNetwork.buidlerevm]: '', // deployed in local evm
-    [eEthereumNetwork.kovan]: '0xd0a1e359811322d97991e03f863a0c30c2cf029c',
-    [eEthereumNetwork.ropsten]: '0xc778417e063141139fce010982780140aa0cd5ab',
-    [eEthereumNetwork.main]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-    [eEthereumNetwork.tenderlyMain]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    [eEthereumNetwork.kovan]: '0xd0a1e359811322d97991e03f863a0c30c2cf029c', 
+    [eEthereumNetwork.ropsten]: '0xc778417e063141139fce010982780140aa0cd5ab', 
+    [eEthereumNetwork.main]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', 
+    [eEthereumNetwork.tenderlyMain]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', 
   },
   WrappedNativeToken: {
     [eEthereumNetwork.coverage]: '', // deployed in local evm
     [eEthereumNetwork.hardhat]: '', // deployed in local evm
     [eEthereumNetwork.buidlerevm]: '', // deployed in local evm
-    [eEthereumNetwork.kovan]: '0xd0a1e359811322d97991e03f863a0c30c2cf029c',
-    [eEthereumNetwork.ropsten]: '0xc778417e063141139fce010982780140aa0cd5ab',
-    [eEthereumNetwork.main]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-    [eEthereumNetwork.tenderlyMain]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    [eEthereumNetwork.kovan]: '0xd0a1e359811322d97991e03f863a0c30c2cf029c', // Aave
+    [eEthereumNetwork.ropsten]: '0xc778417e063141139fce010982780140aa0cd5ab', // Aave
+    [eEthereumNetwork.main]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // Aave
+    [eEthereumNetwork.tenderlyMain]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // Aave
   },
   ReserveFactorTreasuryAddress: {
-    [eEthereumNetwork.coverage]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c',
-    [eEthereumNetwork.hardhat]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c',
-    [eEthereumNetwork.buidlerevm]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c',
-    [eEthereumNetwork.kovan]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c',
-    [eEthereumNetwork.ropsten]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c',
-    [eEthereumNetwork.main]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c',
-    [eEthereumNetwork.tenderlyMain]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c',
+    [eEthereumNetwork.coverage]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c', // Aave
+    [eEthereumNetwork.hardhat]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c', // Aave
+    [eEthereumNetwork.buidlerevm]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c', // Aave
+    [eEthereumNetwork.kovan]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c', // Aave
+    [eEthereumNetwork.ropsten]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c', // Aave
+    [eEthereumNetwork.main]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c', // Aave
+    [eEthereumNetwork.tenderlyMain]: '0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c', // Aave
   },
   IncentivesController: {
     [eEthereumNetwork.coverage]: ZERO_ADDRESS,

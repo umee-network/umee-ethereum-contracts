@@ -6,6 +6,7 @@ import {
   rateStrategyStableThree,
   rateStrategyWETH,
   rateStrategyUMEE,
+  rateStrategyATOM,
   rateStrategyVolatileOne,
   rateStrategyVolatileTwo,
   rateStrategyVolatileThree,
@@ -84,8 +85,22 @@ export const strategyUSDT: IReserveParams = {
   reserveFactor: '1000'
 };
 
+// TODO: Figure out the Rate Strategy for UMEE Token
 export const strategyUMEE: IReserveParams = {
   strategy: rateStrategyUMEE,
+  baseLTVAsCollateral: '5000',
+  liquidationThreshold: '6500',
+  liquidationBonus: '11000',
+  borrowingEnabled: false,
+  stableBorrowRateEnabled: false,
+  reserveDecimals: '18',
+  uTokenImpl: eContractid.UToken,
+  reserveFactor: '0'
+};
+
+// TODO: Figure out the Strategy for ATOM Token
+export const strategyATOM: IReserveParams = {
+  strategy: rateStrategyATOM,
   baseLTVAsCollateral: '5000',
   liquidationThreshold: '6500',
   liquidationBonus: '11000',

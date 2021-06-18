@@ -2,7 +2,7 @@
 
 This repository contains the smart contracts source code and markets configuration for Umee Protocol V1. The repository uses Docker Compose and Hardhat as development enviroment for compilation, testing and deployment tasks.
 
-## Kovan Contract Addresses 
+## Kovan Contract Addresses (not final deployment, we still need to reploy some proxy contracts)
 
 ```
 GATEWAY 0x4Df052094BD67D161FAB496cC753f99c42AffDb8

@@ -18,7 +18,7 @@ import { notFalsyOrZeroAddress, waitForTx } from '../../helpers/misc-utils';
 import { initReservesByHelper, configureReservesByHelper } from '../../helpers/init-helpers';
 import { exit } from 'process';
 import {
-  getAaveProtocolDataProvider,
+  getUmeeProtocolDataProvider,
   getLendingPoolAddressesProvider,
 } from '../../helpers/contracts-getters';
 import { ZERO_ADDRESS } from '../../helpers/constants';
@@ -32,7 +32,7 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
       const network = <eNetwork>localBRE.network.name;
       const poolConfig = loadPoolConfig(pool);
       const {
-        ATokenNamePrefix,
+        UTokenNamePrefix,
         StableDebtTokenNamePrefix,
         VariableDebtTokenNamePrefix,
         SymbolPrefix,
@@ -47,7 +47,7 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
       const incentivesController = await getParamPerNetwork(IncentivesController, network);
       const addressesProvider = await getLendingPoolAddressesProvider();
 
-      const testHelpers = await getAaveProtocolDataProvider();
+      const testHelpers = await getUmeeProtocolDataProvider();
 
       const admin = await addressesProvider.getPoolAdmin();
       if (!reserveAssets) {
@@ -59,7 +59,7 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
       await initReservesByHelper(
         ReservesConfig,
         reserveAssets,
-        ATokenNamePrefix,
+        UTokenNamePrefix,
         StableDebtTokenNamePrefix,
         VariableDebtTokenNamePrefix,
         SymbolPrefix,
@@ -89,14 +89,14 @@ task('full:initialize-lending-pool', 'Initialize lending pool configuration.')
       );
 
       console.log(
-        '\tSetting AaveProtocolDataProvider at AddressesProvider at id: 0x01',
+        '\tSetting UmeeProtocolDataProvider at AddressesProvider at id: 0x01',
         collateralManagerAddress
       );
-      const aaveProtocolDataProvider = await getAaveProtocolDataProvider();
+      const umeeProtocolDataProvider = await getUmeeProtocolDataProvider();
       await waitForTx(
         await addressesProvider.setAddress(
           '0x0100000000000000000000000000000000000000000000000000000000000000',
-          aaveProtocolDataProvider.address
+          umeeProtocolDataProvider.address
         )
       );
 

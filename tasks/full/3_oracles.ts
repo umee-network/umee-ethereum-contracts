@@ -1,6 +1,6 @@
 import { task } from 'hardhat/config';
 import { getParamPerNetwork } from '../../helpers/contracts-helpers';
-import { deployAaveOracle, deployLendingRateOracle } from '../../helpers/contracts-deployments';
+import { deployUmeeOracle, deployLendingRateOracle } from '../../helpers/contracts-deployments';
 import { setInitialMarketRatesInRatesOracleByHelper } from '../../helpers/oracles-helpers';
 import { ICommonConfiguration, eNetwork, SymbolMap } from '../../helpers/types';
 import { waitForTx, notFalsyOrZeroAddress } from '../../helpers/misc-utils';
@@ -12,12 +12,12 @@ import {
   getLendingRateOracles,
 } from '../../helpers/configuration';
 import {
-  getAaveOracle,
+  getUmeeOracle,
   getLendingPoolAddressesProvider,
   getLendingRateOracle,
   getPairsTokenAggregator,
 } from '../../helpers/contracts-getters';
-import { AaveOracle, LendingRateOracle } from '../../types';
+import { UmeeOracle, LendingRateOracle } from '../../types';
 
 task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
   .addFlag('verify', 'Verify contracts at Etherscan')
@@ -36,7 +36,7 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
       const lendingRateOracles = getLendingRateOracles(poolConfig);
       const addressesProvider = await getLendingPoolAddressesProvider();
       const admin = await getGenesisPoolAdmin(poolConfig);
-      const aaveOracleAddress = getParamPerNetwork(poolConfig.AaveOracle, network);
+      const umeeOracleAddress = getParamPerNetwork(poolConfig.UmeeOracle, network);
       const lendingRateOracleAddress = getParamPerNetwork(poolConfig.LendingRateOracle, network);
       const fallbackOracleAddress = await getParamPerNetwork(FallbackOracle, network);
       const reserveAssets = await getParamPerNetwork(ReserveAssets, network);
@@ -48,17 +48,17 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
       };
       const [tokens, aggregators] = getPairsTokenAggregator(tokensToWatch, chainlinkAggregators);
 
-      let aaveOracle: AaveOracle;
+      let umeeOracle: UmeeOracle;
       let lendingRateOracle: LendingRateOracle;
 
-      if (notFalsyOrZeroAddress(aaveOracleAddress)) {
-        aaveOracle = await await getAaveOracle(aaveOracleAddress);
+      if (notFalsyOrZeroAddress(umeeOracleAddress)) {
+        umeeOracle = await await getUmeeOracle(umeeOracleAddress);
       } else {
-        aaveOracle = await deployAaveOracle(
+        umeeOracle = await deployUmeeOracle(
           [tokens, aggregators, fallbackOracleAddress, await getWethAddress(poolConfig)],
           verify
         );
-        await waitForTx(await aaveOracle.setAssetSources(tokens, aggregators));
+        await waitForTx(await umeeOracle.setAssetSources(tokens, aggregators));
       }
 
       if (notFalsyOrZeroAddress(lendingRateOracleAddress)) {
@@ -74,11 +74,11 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
         );
       }
 
-      console.log('Aave Oracle: %s', lendingRateOracle.address);
+      console.log('Umee Oracle: %s', lendingRateOracle.address);
       console.log('Lending Rate Oracle: %s', lendingRateOracle.address);
 
       // Register the proxy price provider on the addressesProvider
-      await waitForTx(await addressesProvider.setPriceOracle(aaveOracle.address));
+      await waitForTx(await addressesProvider.setPriceOracle(umeeOracle.address));
       await waitForTx(await addressesProvider.setLendingRateOracle(lendingRateOracle.address));
     } catch (error) {
       if (DRE.network.name.includes('tenderly')) {

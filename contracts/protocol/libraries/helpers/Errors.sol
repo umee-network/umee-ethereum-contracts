@@ -3,13 +3,13 @@ pragma solidity 0.6.12;
 
 /**
  * @title Errors library
- * @author Aave
- * @notice Defines the error messages emitted by the different contracts of the Aave protocol
+ * @author Umee
+ * @notice Defines the error messages emitted by the different contracts of the Umee protocol
  * @dev Error messages prefix glossary:
  *  - VL = ValidationLogic
  *  - MATH = Math libraries
- *  - CT = Common errors between tokens (AToken, VariableDebtToken and StableDebtToken)
- *  - AT = AToken
+ *  - CT = Common errors between tokens (UToken, VariableDebtToken and StableDebtToken)
+ *  - AT = UToken
  *  - SDT = StableDebtToken
  *  - VDT = VariableDebtToken
  *  - LP = LendingPool

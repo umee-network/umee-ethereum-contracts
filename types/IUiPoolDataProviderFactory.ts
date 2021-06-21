@@ -131,7 +131,7 @@ const _abi = [
           },
           {
             internalType: "address",
-            name: "aTokenAddress",
+            name: "uTokenAddress",
             type: "address",
           },
           {
@@ -231,7 +231,7 @@ const _abi = [
           },
           {
             internalType: "uint256",
-            name: "aTokenIncentivesIndex",
+            name: "uTokenIncentivesIndex",
             type: "uint256",
           },
           {
@@ -258,7 +258,7 @@ const _abi = [
           },
           {
             internalType: "uint256",
-            name: "scaledATokenBalance",
+            name: "scaledUTokenBalance",
             type: "uint256",
           },
           {
@@ -288,7 +288,7 @@ const _abi = [
           },
           {
             internalType: "uint256",
-            name: "aTokenincentivesUserIndex",
+            name: "uTokenincentivesUserIndex",
             type: "uint256",
           },
           {

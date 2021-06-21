@@ -1,7 +1,7 @@
 import { task } from 'hardhat/config';
 import { getParamPerNetwork, insertContractAddressInDb } from '../../helpers/contracts-helpers';
 import {
-  deployATokensAndRatesHelper,
+  deployUTokensAndRatesHelper,
   deployLendingPool,
   deployLendingPoolConfigurator,
   deployStableAndVariableTokensHelper,
@@ -74,7 +74,7 @@ task('full:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
         [lendingPoolProxy.address, addressesProvider.address],
         verify
       );
-      await deployATokensAndRatesHelper(
+      await deployUTokensAndRatesHelper(
         [lendingPoolProxy.address, addressesProvider.address, lendingPoolConfiguratorProxy.address],
         verify
       );

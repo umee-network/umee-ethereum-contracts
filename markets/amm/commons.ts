@@ -14,9 +14,9 @@ import { ICommonConfiguration, eEthereumNetwork } from '../../helpers/types';
 
 export const CommonsConfig: ICommonConfiguration = {
   MarketId: 'Commons',
-  ATokenNamePrefix: 'Aave AMM Market',
-  StableDebtTokenNamePrefix: 'Aave AMM Market stable debt',
-  VariableDebtTokenNamePrefix: 'Aave AMM Market variable debt',
+  UTokenNamePrefix: 'Umee AMM Market',
+  StableDebtTokenNamePrefix: 'Umee AMM Market stable debt',
+  VariableDebtTokenNamePrefix: 'Umee AMM Market variable debt',
   SymbolPrefix: 'Amm',
   ProviderId: 0, // Overriden in index.ts
   ProtocolGlobalParams: {
@@ -25,7 +25,7 @@ export const CommonsConfig: ICommonConfiguration = {
     UsdAddress: '0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96',
     NilAddress: '0x0000000000000000000000000000000000000000',
     OneAddress: '0x0000000000000000000000000000000000000001',
-    AaveReferral: '0',
+    UmeeReferral: '0',
   },
 
   // ----------------
@@ -201,7 +201,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.main]: '0xe3d9988f676457123c5fd01297605efdd0cba1ae',
     [eEthereumNetwork.tenderlyMain]: '0xe3d9988f676457123c5fd01297605efdd0cba1ae',
   },
-  AaveOracle: {
+  UmeeOracle: {
     [eEthereumNetwork.coverage]: '',
     [eEthereumNetwork.hardhat]: '',
     [eEthereumNetwork.buidlerevm]: '',
@@ -304,7 +304,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.tenderlyMain]: {},
   },
   ReservesConfig: {},
-  ATokenDomainSeparator: {
+  UTokenDomainSeparator: {
     [eEthereumNetwork.coverage]:
       '0x95b73a72c6ecf4ccbbba5178800023260bad8e75cdccdb8e4827a2977a37c820',
     [eEthereumNetwork.hardhat]:

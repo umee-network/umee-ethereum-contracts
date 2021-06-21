@@ -6,12 +6,12 @@ import {
   IReserveParams,
   tEthereumAddress,
 } from './types';
-import { AaveProtocolDataProvider } from '../types/AaveProtocolDataProvider';
+import { UmeeProtocolDataProvider } from '../types/UmeeProtocolDataProvider';
 import { chunk, DRE, getDb, waitForTx } from './misc-utils';
 import {
-  getAaveProtocolDataProvider,
-  getAToken,
-  getATokensAndRatesHelper,
+  getUmeeProtocolDataProvider,
+  getUToken,
+  getUTokensAndRatesHelper,
   getFirstSigner,
   getLendingPoolAddressesProvider,
   getLendingPoolConfiguratorProxy,
@@ -21,10 +21,10 @@ import { rawInsertContractAddressInDb } from './contracts-helpers';
 import { BigNumber, BigNumberish, Signer } from 'ethers';
 import {
   deployDefaultReserveInterestRateStrategy,
-  deployDelegationAwareAToken,
-  deployDelegationAwareATokenImpl,
-  deployGenericAToken,
-  deployGenericATokenImpl,
+  deployDelegationAwareUToken,
+  deployDelegationAwareUTokenImpl,
+  deployGenericUToken,
+  deployGenericUTokenImpl,
   deployGenericStableDebtToken,
   deployGenericVariableDebtToken,
   deployStableDebtToken,
@@ -32,24 +32,24 @@ import {
 } from './contracts-deployments';
 import { ZERO_ADDRESS } from './constants';
 import { isZeroAddress } from 'ethereumjs-util';
-import { DefaultReserveInterestRateStrategy, DelegationAwareAToken } from '../types';
+import { DefaultReserveInterestRateStrategy, DelegationAwareUToken } from '../types';
 import { config } from 'process';
 
-export const chooseATokenDeployment = (id: eContractid) => {
+export const chooseUTokenDeployment = (id: eContractid) => {
   switch (id) {
-    case eContractid.AToken:
-      return deployGenericAToken;
-    case eContractid.DelegationAwareAToken:
-      return deployDelegationAwareAToken;
+    case eContractid.UToken:
+      return deployGenericUToken;
+    case eContractid.DelegationAwareUToken:
+      return deployDelegationAwareUToken;
     default:
-      throw Error(`Missing aToken deployment script for: ${id}`);
+      throw Error(`Missing uToken deployment script for: ${id}`);
   }
 };
 
 export const initReservesByHelper = async (
   reservesParams: iMultiPoolsAssets<IReserveParams>,
   tokenAddresses: { [symbol: string]: tEthereumAddress },
-  aTokenNamePrefix: string,
+  uTokenNamePrefix: string,
   stableDebtTokenNamePrefix: string,
   variableDebtTokenNamePrefix: string,
   symbolPrefix: string,
@@ -72,7 +72,7 @@ export const initReservesByHelper = async (
   let reserveSymbols: string[] = [];
 
   let initInputParams: {
-    aTokenImpl: string;
+    uTokenImpl: string;
     stableDebtTokenImpl: string;
     variableDebtTokenImpl: string;
     underlyingAssetDecimals: BigNumberish;
@@ -81,8 +81,8 @@ export const initReservesByHelper = async (
     treasury: string;
     incentivesController: string;
     underlyingAssetName: string;
-    aTokenName: string;
-    aTokenSymbol: string;
+    uTokenName: string;
+    uTokenSymbol: string;
     variableDebtTokenName: string;
     variableDebtTokenSymbol: string;
     stableDebtTokenName: string;
@@ -102,9 +102,9 @@ export const initReservesByHelper = async (
   let rateStrategies: Record<string, typeof strategyRates> = {};
   let strategyAddresses: Record<string, tEthereumAddress> = {};
   let strategyAddressPerAsset: Record<string, string> = {};
-  let aTokenType: Record<string, string> = {};
-  let delegationAwareATokenImplementationAddress = '';
-  let aTokenImplementationAddress = '';
+  let uTokenType: Record<string, string> = {};
+  let delegationAwareUTokenImplementationAddress = '';
+  let uTokenImplementationAddress = '';
   let stableDebtTokenImplementationAddress = '';
   let variableDebtTokenImplementationAddress = '';
 
@@ -123,26 +123,26 @@ export const initReservesByHelper = async (
   stableDebtTokenImplementationAddress = await (await deployGenericStableDebtToken()).address;
   variableDebtTokenImplementationAddress = await (await deployGenericVariableDebtToken()).address;
 
-  const aTokenImplementation = await deployGenericATokenImpl(verify);
-  aTokenImplementationAddress = aTokenImplementation.address;
-  rawInsertContractAddressInDb(`aTokenImpl`, aTokenImplementationAddress);
+  const uTokenImplementation = await deployGenericUTokenImpl(verify);
+  uTokenImplementationAddress = uTokenImplementation.address;
+  rawInsertContractAddressInDb(`uTokenImpl`, uTokenImplementationAddress);
 
   const delegatedAwareReserves = Object.entries(reservesParams).filter(
-    ([_, { aTokenImpl }]) => aTokenImpl === eContractid.DelegationAwareAToken
+    ([_, { uTokenImpl }]) => uTokenImpl === eContractid.DelegationAwareUToken
   ) as [string, IReserveParams][];
 
   if (delegatedAwareReserves.length > 0) {
-    const delegationAwareATokenImplementation = await deployDelegationAwareATokenImpl(verify);
-    delegationAwareATokenImplementationAddress = delegationAwareATokenImplementation.address;
+    const delegationAwareUTokenImplementation = await deployDelegationAwareUTokenImpl(verify);
+    delegationAwareUTokenImplementationAddress = delegationAwareUTokenImplementation.address;
     rawInsertContractAddressInDb(
-      `delegationAwareATokenImpl`,
-      delegationAwareATokenImplementationAddress
+      `delegationAwareUTokenImpl`,
+      delegationAwareUTokenImplementationAddress
     );
   }
 
   const reserves = Object.entries(reservesParams).filter(
-    ([_, { aTokenImpl }]) =>
-      aTokenImpl === eContractid.DelegationAwareAToken || aTokenImpl === eContractid.AToken
+    ([_, { uTokenImpl }]) =>
+      uTokenImpl === eContractid.DelegationAwareUToken || uTokenImpl === eContractid.UToken
   ) as [string, IReserveParams][];
 
   for (let [symbol, params] of reserves) {
@@ -150,7 +150,7 @@ export const initReservesByHelper = async (
       console.log(`- Skipping init of ${symbol} due token address is not set at markets config`);
       continue;
     }
-    const { strategy, aTokenImpl, reserveDecimals } = params;
+    const { strategy, uTokenImpl, reserveDecimals } = params;
     const {
       optimalUtilizationRate,
       baseVariableBorrowRate,
@@ -180,10 +180,10 @@ export const initReservesByHelper = async (
     strategyAddressPerAsset[symbol] = strategyAddresses[strategy.name];
     console.log('Strategy address for asset %s: %s', symbol, strategyAddressPerAsset[symbol]);
 
-    if (aTokenImpl === eContractid.AToken) {
-      aTokenType[symbol] = 'generic';
-    } else if (aTokenImpl === eContractid.DelegationAwareAToken) {
-      aTokenType[symbol] = 'delegation aware';
+    if (uTokenImpl === eContractid.UToken) {
+      uTokenType[symbol] = 'generic';
+    } else if (uTokenImpl === eContractid.DelegationAwareUToken) {
+      uTokenType[symbol] = 'delegation aware';
     }
 
     reserveInitDecimals.push(reserveDecimals);
@@ -192,15 +192,15 @@ export const initReservesByHelper = async (
   }
 
   for (let i = 0; i < reserveSymbols.length; i++) {
-    let aTokenToUse: string;
-    if (aTokenType[reserveSymbols[i]] === 'generic') {
-      aTokenToUse = aTokenImplementationAddress;
+    let uTokenToUse: string;
+    if (uTokenType[reserveSymbols[i]] === 'generic') {
+      uTokenToUse = uTokenImplementationAddress;
     } else {
-      aTokenToUse = delegationAwareATokenImplementationAddress;
+      uTokenToUse = delegationAwareUTokenImplementationAddress;
     }
 
     initInputParams.push({
-      aTokenImpl: aTokenToUse,
+      uTokenImpl: uTokenToUse,
       stableDebtTokenImpl: stableDebtTokenImplementationAddress,
       variableDebtTokenImpl: variableDebtTokenImplementationAddress,
       underlyingAssetDecimals: reserveInitDecimals[i],
@@ -209,8 +209,8 @@ export const initReservesByHelper = async (
       treasury: treasuryAddress,
       incentivesController,
       underlyingAssetName: reserveSymbols[i],
-      aTokenName: `${aTokenNamePrefix} ${reserveSymbols[i]}`,
-      aTokenSymbol: `a${symbolPrefix}${reserveSymbols[i]}`,
+      uTokenName: `${uTokenNamePrefix} ${reserveSymbols[i]}`,
+      uTokenSymbol: `a${symbolPrefix}${reserveSymbols[i]}`,
       variableDebtTokenName: `${variableDebtTokenNamePrefix} ${symbolPrefix}${reserveSymbols[i]}`,
       variableDebtTokenSymbol: `variableDebt${symbolPrefix}${reserveSymbols[i]}`,
       stableDebtTokenName: `${stableDebtTokenNamePrefix} ${reserveSymbols[i]}`,
@@ -270,11 +270,11 @@ export const getPairsTokenAggregator = (
 export const configureReservesByHelper = async (
   reservesParams: iMultiPoolsAssets<IReserveParams>,
   tokenAddresses: { [symbol: string]: tEthereumAddress },
-  helpers: AaveProtocolDataProvider,
+  helpers: UmeeProtocolDataProvider,
   admin: tEthereumAddress
 ) => {
   const addressProvider = await getLendingPoolAddressesProvider();
-  const atokenAndRatesDeployer = await getATokensAndRatesHelper();
+  const atokenAndRatesDeployer = await getUTokensAndRatesHelper();
   const tokens: string[] = [];
   const symbols: string[] = [];
 
@@ -337,7 +337,7 @@ export const configureReservesByHelper = async (
     symbols.push(assetSymbol);
   }
   if (tokens.length) {
-    // Set aTokenAndRatesDeployer as temporal admin
+    // Set uTokenAndRatesDeployer as temporal admin
     await waitForTx(await addressProvider.setPoolAdmin(atokenAndRatesDeployer.address));
 
     // Deploy init per chunks
@@ -367,7 +367,7 @@ const getAddressById = async (
 
 // Function deprecated
 const isErc20SymbolCorrect = async (token: tEthereumAddress, symbol: string) => {
-  const erc20 = await getAToken(token); // using aToken for ERC20 interface
+  const erc20 = await getUToken(token); // using uToken for ERC20 interface
   const erc20Symbol = await erc20.symbol();
   return symbol === erc20Symbol;
 };

@@ -5,7 +5,7 @@ import {
   rateStrategyStableTwo,
   rateStrategyStableThree,
   rateStrategyWETH,
-  rateStrategyAAVE,
+  rateStrategyUMEE,
   rateStrategyVolatileOne,
   rateStrategyVolatileTwo,
 } from './rateStrategies';
@@ -18,7 +18,7 @@ export const strategyDAI: IReserveParams = {
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   reserveDecimals: '18',
-  aTokenImpl: eContractid.AToken,
+  uTokenImpl: eContractid.UToken,
   reserveFactor: '1000',
 };
 
@@ -30,7 +30,7 @@ export const strategyUSDC: IReserveParams = {
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   reserveDecimals: '6',
-  aTokenImpl: eContractid.AToken,
+  uTokenImpl: eContractid.UToken,
   reserveFactor: '1000',
 };
 
@@ -42,7 +42,7 @@ export const strategyUSDT: IReserveParams = {
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   reserveDecimals: '6',
-  aTokenImpl: eContractid.AToken,
+  uTokenImpl: eContractid.UToken,
   reserveFactor: '1000',
 };
 
@@ -54,7 +54,7 @@ export const strategyWETH: IReserveParams = {
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   reserveDecimals: '18',
-  aTokenImpl: eContractid.AToken,
+  uTokenImpl: eContractid.UToken,
   reserveFactor: '1000',
 };
 
@@ -66,7 +66,7 @@ export const strategyWBTC: IReserveParams = {
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   reserveDecimals: '8',
-  aTokenImpl: eContractid.AToken,
+  uTokenImpl: eContractid.UToken,
   reserveFactor: '2000',
 };
 
@@ -78,18 +78,18 @@ export const strategyMATIC: IReserveParams = {
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   reserveDecimals: '18',
-  aTokenImpl: eContractid.AToken,
+  uTokenImpl: eContractid.UToken,
   reserveFactor: '2000',
 };
 
-export const strategyAAVE: IReserveParams = {
-  strategy: rateStrategyAAVE,
+export const strategyUMEE: IReserveParams = {
+  strategy: rateStrategyUMEE,
   baseLTVAsCollateral: '5000',
   liquidationThreshold: '6500',
   liquidationBonus: '11000',
   borrowingEnabled: false,
   stableBorrowRateEnabled: false,
   reserveDecimals: '18',
-  aTokenImpl: eContractid.AToken,
+  uTokenImpl: eContractid.UToken,
   reserveFactor: '0',
 };

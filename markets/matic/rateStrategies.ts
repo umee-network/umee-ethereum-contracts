@@ -46,9 +46,9 @@ export const rateStrategyWETH: IInterestRateStrategyParams = {
   stableRateSlope2: new BigNumber(1).multipliedBy(oneRay).toFixed(),
 }
 
-// AAVE
-export const rateStrategyAAVE: IInterestRateStrategyParams = {
-  name: "rateStrategyAAVE",
+// UMEE
+export const rateStrategyUMEE: IInterestRateStrategyParams = {
+  name: "rateStrategyUMEE",
   optimalUtilizationRate: new BigNumber(0.45).multipliedBy(oneRay).toFixed(),
   baseVariableBorrowRate: '0',
   variableRateSlope1: '0',

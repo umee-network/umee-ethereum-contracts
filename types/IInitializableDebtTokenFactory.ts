@@ -83,7 +83,7 @@ const _abi = [
         type: "address",
       },
       {
-        internalType: "contract IAaveIncentivesController",
+        internalType: "contract IUmeeIncentivesController",
         name: "incentivesController",
         type: "address",
       },

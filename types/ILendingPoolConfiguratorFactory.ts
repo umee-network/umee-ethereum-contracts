@@ -30,31 +30,6 @@ const _abi = [
         name: "asset",
         type: "address",
       },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "proxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "implementation",
-        type: "address",
-      },
-    ],
-    name: "ATokenUpgraded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
     ],
     name: "BorrowingDisabledOnReserve",
     type: "event",
@@ -198,7 +173,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "aToken",
+        name: "uToken",
         type: "address",
       },
       {
@@ -304,6 +279,31 @@ const _abi = [
       },
     ],
     name: "StableRateEnabledOnReserve",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "asset",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "proxy",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "implementation",
+        type: "address",
+      },
+    ],
+    name: "UTokenUpgraded",
     type: "event",
   },
   {

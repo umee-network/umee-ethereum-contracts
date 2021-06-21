@@ -9,7 +9,7 @@ import {
 } from '../../helpers/configuration';
 import { ZERO_ADDRESS } from '../../helpers/constants';
 import {
-  getAaveProtocolDataProvider,
+  getUmeeProtocolDataProvider,
   getAddressById,
   getLendingPool,
   getLendingPoolAddressesProvider,
@@ -51,11 +51,11 @@ task('verify:general', 'Verify contracts at Etherscan')
     const addressesProviderRegistry = notFalsyOrZeroAddress(registryAddress)
       ? await getLendingPoolAddressesProviderRegistry(registryAddress)
       : await getLendingPoolAddressesProviderRegistry();
-    const lendingPoolAddress = await addressesProvider.getLendingPool();
+    const lendingPoolAddress = await addressesProvider.getLendingPool(); // TODO: URGENT
     const lendingPoolConfiguratorAddress = await addressesProvider.getLendingPoolConfigurator(); //getLendingPoolConfiguratorProxy();
     const lendingPoolCollateralManagerAddress = await addressesProvider.getLendingPoolCollateralManager();
 
-    const lendingPoolProxy = await getProxy(lendingPoolAddress);
+    const lendingPoolProxy = await getProxy(lendingPoolAddress); // TODO: URGENT
     const lendingPoolConfiguratorProxy = await getProxy(lendingPoolConfiguratorAddress);
     const lendingPoolCollateralManagerProxy = await getProxy(lendingPoolCollateralManagerAddress);
 
@@ -83,7 +83,7 @@ task('verify:general', 'Verify contracts at Etherscan')
         ? await getLendingPoolCollateralManagerImpl(lendingPoolCollateralManagerImplAddress)
         : await getLendingPoolCollateralManagerImpl();
 
-      const dataProvider = await getAaveProtocolDataProvider();
+      const dataProvider = await getUmeeProtocolDataProvider();
       const walletProvider = await getWalletProvider();
 
       const wethGatewayAddress = getParamPerNetwork(WethGateway, network);
@@ -120,8 +120,8 @@ task('verify:general', 'Verify contracts at Etherscan')
       );
 
       // Test helpers
-      console.log('\n- Verifying  Aave  Provider Helpers...\n');
-      await verifyContract(eContractid.AaveProtocolDataProvider, dataProvider, [
+      console.log('\n- Verifying  Umee  Provider Helpers...\n');
+      await verifyContract(eContractid.UmeeProtocolDataProvider, dataProvider, [
         addressesProvider.address,
       ]);
 

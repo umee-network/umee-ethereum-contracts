@@ -8,7 +8,7 @@ import {
 import { ZERO_ADDRESS } from '../../helpers/constants';
 import {
   getAddressById,
-  getAToken,
+  getUToken,
   getFirstSigner,
   getInterestRateStrategy,
   getLendingPoolAddressesProvider,
@@ -47,7 +47,7 @@ task('verify:tokens', 'Deploy oracles for dev enviroment')
       const {
         stableDebtTokenAddress,
         variableDebtTokenAddress,
-        aTokenAddress,
+        uTokenAddress,
         interestRateStrategyAddress,
       } = await lendingPoolProxy.getReserveData(tokenAddress);
 
@@ -82,11 +82,11 @@ task('verify:tokens', 'Deploy oracles for dev enviroment')
         [lendingPoolConfigurator.address]
       );
 
-      // Proxy aToken
-      console.log('\n- Verifying aToken proxy...\n');
+      // Proxy uToken
+      console.log('\n- Verifying uToken proxy...\n');
       await verifyContract(
         eContractid.InitializableAdminUpgradeabilityProxy,
-        await getProxy(aTokenAddress),
+        await getProxy(uTokenAddress),
         [lendingPoolConfigurator.address]
       );
 
@@ -108,27 +108,27 @@ task('verify:tokens', 'Deploy oracles for dev enviroment')
 
       const stableDebt = await getAddressById(`stableDebt${token}`);
       const variableDebt = await getAddressById(`variableDebt${token}`);
-      const aToken = await getAddressById(`a${token}`);
+      const uToken = await getAddressById(`a${token}`);
 
-      if (aToken) {
-        console.log('\n- Verifying aToken...\n');
-        await verifyContract(eContractid.AToken, await getAToken(aToken), [
+      if (uToken) {
+        console.log('\n- Verifying uToken...\n');
+        await verifyContract(eContractid.UToken, await getUToken(uToken), [
           lendingPoolProxy.address,
           tokenAddress,
           treasuryAddress,
-          `Aave interest bearing ${token}`,
+          `Umee interest bearing ${token}`,
           `a${token}`,
           ZERO_ADDRESS,
         ]);
       } else {
-        console.error(`Skipping aToken verify for ${token}. Missing address at JSON DB.`);
+        console.error(`Skipping uToken verify for ${token}. Missing address at JSON DB.`);
       }
       if (stableDebt) {
         console.log('\n- Verifying StableDebtToken...\n');
         await verifyContract(eContractid.StableDebtToken, await getStableDebtToken(stableDebt), [
           lendingPoolProxy.address,
           tokenAddress,
-          `Aave stable debt bearing ${token}`,
+          `Umee stable debt bearing ${token}`,
           `stableDebt${token}`,
           ZERO_ADDRESS,
         ]);
@@ -143,7 +143,7 @@ task('verify:tokens', 'Deploy oracles for dev enviroment')
           [
             lendingPoolProxy.address,
             tokenAddress,
-            `Aave variable debt bearing ${token}`,
+            `Umee variable debt bearing ${token}`,
             `variableDebt${token}`,
             ZERO_ADDRESS,
           ]

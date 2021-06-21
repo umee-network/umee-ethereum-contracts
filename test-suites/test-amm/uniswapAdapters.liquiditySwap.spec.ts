@@ -14,7 +14,7 @@
 // import { DRE, evmRevert, evmSnapshot } from '../../helpers/misc-utils';
 // import { ethers } from 'ethers';
 // import { eContractid } from '../../helpers/types';
-// import { AToken } from '../../types/AToken';
+// import { UToken } from '../../types/UToken';
 // import { BUIDLEREVM_CHAINID } from '../../helpers/buidler-constants';
 // import { MAX_UINT_AMOUNT } from '../../helpers/constants';
 // const { parseEther } = ethers.utils;
@@ -205,7 +205,7 @@
 //         await pool.connect(user).deposit(usdc.address, amountUSDCtoSwap, userAddress, 0);
 
 //         const aUsdcData = await pool.getReserveData(usdc.address);
-//         const aUsdc = await getContract<AToken>(eContractid.AToken, aUsdcData.aTokenAddress);
+//         const aUsdc = await getContract<UToken>(eContractid.UToken, aUsdcData.uTokenAddress);
 
 //         await mockUniswapRouter.setAmountToReturn(weth.address, expectedDaiAmountForEth);
 //         await mockUniswapRouter.setAmountToReturn(usdc.address, expectedDaiAmountForUsdc);
@@ -327,7 +327,7 @@
 //         await pool.connect(user).deposit(usdc.address, amountUSDCtoSwap, userAddress, 0);
 
 //         const aUsdcData = await pool.getReserveData(usdc.address);
-//         const aUsdc = await getContract<AToken>(eContractid.AToken, aUsdcData.aTokenAddress);
+//         const aUsdc = await getContract<UToken>(eContractid.UToken, aUsdcData.uTokenAddress);
 
 //         await mockUniswapRouter.setAmountToReturn(weth.address, expectedDaiAmountForEth);
 //         await mockUniswapRouter.setAmountToReturn(usdc.address, expectedDaiAmountForUsdc);
@@ -877,7 +877,7 @@
 //         await mockUniswapRouter.connect(user).setAmountToReturn(usdc.address, expectedDaiAmount);
 
 //         const aUsdcData = await pool.getReserveData(usdc.address);
-//         const aUsdc = await getContract<AToken>(eContractid.AToken, aUsdcData.aTokenAddress);
+//         const aUsdc = await getContract<UToken>(eContractid.UToken, aUsdcData.uTokenAddress);
 //         const aUsdcBalance = await aUsdc.balanceOf(userAddress);
 //         await aUsdc.connect(user).approve(uniswapLiquiditySwapAdapter.address, aUsdcBalance);
 //         // Subtract the FL fee from the amount to be swapped 0,09%
@@ -1020,7 +1020,7 @@
 //           [false]
 //         );
 
-//         // Flashloan + premium > aToken balance. Then it will only swap the balance - premium
+//         // Flashloan + premium > uToken balance. Then it will only swap the balance - premium
 //         const flashloanFee = liquidityToSwap.mul(9).div(10000);
 //         const swappedAmount = liquidityToSwap.sub(flashloanFee);
 
@@ -1123,7 +1123,7 @@
 //           [false]
 //         );
 
-//         // Flashloan + premium > aToken balance. Then it will only swap the balance - premium
+//         // Flashloan + premium > uToken balance. Then it will only swap the balance - premium
 //         const flashloanFee = liquidityToSwap.mul(9).div(10000);
 //         const swappedAmount = liquidityToSwap.sub(flashloanFee);
 
@@ -1502,7 +1502,7 @@
 //         await pool.connect(user).deposit(usdc.address, amountUSDCtoSwap, userAddress, 0);
 
 //         const aUsdcData = await pool.getReserveData(usdc.address);
-//         const aUsdc = await getContract<AToken>(eContractid.AToken, aUsdcData.aTokenAddress);
+//         const aUsdc = await getContract<UToken>(eContractid.UToken, aUsdcData.uTokenAddress);
 
 //         await mockUniswapRouter.setAmountToReturn(weth.address, expectedDaiAmountForEth);
 //         await mockUniswapRouter.setAmountToReturn(usdc.address, expectedDaiAmountForUsdc);
@@ -1610,7 +1610,7 @@
 //         await pool.connect(user).deposit(usdc.address, amountUSDCtoSwap, userAddress, 0);
 
 //         const aUsdcData = await pool.getReserveData(usdc.address);
-//         const aUsdc = await getContract<AToken>(eContractid.AToken, aUsdcData.aTokenAddress);
+//         const aUsdc = await getContract<UToken>(eContractid.UToken, aUsdcData.uTokenAddress);
 
 //         await mockUniswapRouter.setAmountToReturn(weth.address, expectedDaiAmountForEth);
 //         await mockUniswapRouter.setAmountToReturn(usdc.address, expectedDaiAmountForUsdc);

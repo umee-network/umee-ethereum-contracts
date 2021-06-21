@@ -70,7 +70,7 @@ export class ILendingPoolCollateralManager extends Contract {
       principal: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -79,7 +79,7 @@ export class ILendingPoolCollateralManager extends Contract {
       principal: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
   };
@@ -89,7 +89,7 @@ export class ILendingPoolCollateralManager extends Contract {
     principal: string,
     user: string,
     debtToCover: BigNumberish,
-    receiveAToken: boolean,
+    receiveUToken: boolean,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -98,7 +98,7 @@ export class ILendingPoolCollateralManager extends Contract {
     principal: string,
     user: string,
     debtToCover: BigNumberish,
-    receiveAToken: boolean,
+    receiveUToken: boolean,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -108,7 +108,7 @@ export class ILendingPoolCollateralManager extends Contract {
       principal: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: CallOverrides
     ): Promise<{
       0: BigNumber;
@@ -120,7 +120,7 @@ export class ILendingPoolCollateralManager extends Contract {
       principal: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: CallOverrides
     ): Promise<{
       0: BigNumber;
@@ -136,7 +136,7 @@ export class ILendingPoolCollateralManager extends Contract {
       debtToCover: null,
       liquidatedCollateralAmount: null,
       liquidator: null,
-      receiveAToken: null
+      receiveUToken: null
     ): EventFilter;
 
     ReserveUsedAsCollateralDisabled(
@@ -156,7 +156,7 @@ export class ILendingPoolCollateralManager extends Contract {
       principal: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -165,7 +165,7 @@ export class ILendingPoolCollateralManager extends Contract {
       principal: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<BigNumber>;
   };
@@ -176,7 +176,7 @@ export class ILendingPoolCollateralManager extends Contract {
       principal: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -185,7 +185,7 @@ export class ILendingPoolCollateralManager extends Contract {
       principal: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
   };

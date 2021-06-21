@@ -4,17 +4,17 @@ import {
   getLendingRateOracle,
   getIErc20Detailed,
   getMintableERC20,
-  getAToken,
+  getUToken,
   getStableDebtToken,
   getVariableDebtToken,
 } from '../../../../helpers/contracts-getters';
 import { tEthereumAddress } from '../../../../helpers/types';
 import BigNumber from 'bignumber.js';
 import { getDb, DRE } from '../../../../helpers/misc-utils';
-import { AaveProtocolDataProvider } from '../../../../types/AaveProtocolDataProvider';
+import { UmeeProtocolDataProvider } from '../../../../types/UmeeProtocolDataProvider';
 
 export const getReserveData = async (
-  helper: AaveProtocolDataProvider,
+  helper: UmeeProtocolDataProvider,
   reserve: tEthereumAddress
 ): Promise<ReserveData> => {
   const [reserveData, tokenAddresses, rateOracle, token] = await Promise.all([
@@ -65,7 +65,7 @@ export const getReserveData = async (
     principalStableDebt: new BigNumber(principalStableDebt.toString()),
     scaledVariableDebt: new BigNumber(scaledVariableDebt.toString()),
     address: reserve,
-    aTokenAddress: tokenAddresses.aTokenAddress,
+    uTokenAddress: tokenAddresses.uTokenAddress,
     symbol,
     decimals,
     marketStableRate: new BigNumber(rate),
@@ -74,22 +74,22 @@ export const getReserveData = async (
 
 export const getUserData = async (
   pool: LendingPool,
-  helper: AaveProtocolDataProvider,
+  helper: UmeeProtocolDataProvider,
   reserve: string,
   user: tEthereumAddress,
   sender?: tEthereumAddress
 ): Promise<UserReserveData> => {
-  const [userData, scaledATokenBalance] = await Promise.all([
+  const [userData, scaledUTokenBalance] = await Promise.all([
     helper.getUserReserveData(reserve, user),
-    getATokenUserData(reserve, user, helper),
+    getUTokenUserData(reserve, user, helper),
   ]);
 
   const token = await getMintableERC20(reserve);
   const walletBalance = new BigNumber((await token.balanceOf(sender || user)).toString());
 
   return {
-    scaledATokenBalance: new BigNumber(scaledATokenBalance),
-    currentATokenBalance: new BigNumber(userData.currentATokenBalance.toString()),
+    scaledUTokenBalance: new BigNumber(scaledUTokenBalance),
+    currentUTokenBalance: new BigNumber(userData.currentUTokenBalance.toString()),
     currentStableDebt: new BigNumber(userData.currentStableDebt.toString()),
     currentVariableDebt: new BigNumber(userData.currentVariableDebt.toString()),
     principalStableDebt: new BigNumber(userData.principalStableDebt.toString()),
@@ -114,16 +114,16 @@ export const getReserveAddressFromSymbol = async (symbol: string) => {
   return token.address;
 };
 
-const getATokenUserData = async (
+const getUTokenUserData = async (
   reserve: string,
   user: string,
-  helpersContract: AaveProtocolDataProvider
+  helpersContract: UmeeProtocolDataProvider
 ) => {
-  const aTokenAddress: string = (await helpersContract.getReserveTokensAddresses(reserve))
-    .aTokenAddress;
+  const uTokenAddress: string = (await helpersContract.getReserveTokensAddresses(reserve))
+    .uTokenAddress;
 
-  const aToken = await getAToken(aTokenAddress);
+  const uToken = await getUToken(uTokenAddress);
 
-  const scaledBalance = await aToken.scaledBalanceOf(user);
+  const scaledBalance = await uToken.scaledBalanceOf(user);
   return scaledBalance.toString();
 };

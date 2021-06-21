@@ -1,33 +1,73 @@
 # Umee Contracts v1
 
-This repository contains the smart contracts source code and markets configuration for Aave Protocol V2. The repository uses Docker Compose and Hardhat as development enviroment for compilation, testing and deployment tasks.
+This repository contains the smart contracts source code and markets configuration for Umee Protocol V1. The repository uses Docker Compose and Hardhat as development enviroment for compilation, testing and deployment tasks.
 
-## What is Aave?
+## Kovan Contract Addresses (not final deployment, we still need to reploy some proxy contracts)
 
-Aave is a decentralized non-custodial liquidity markets protocol where users can participate as depositors or borrowers. Depositors provide liquidity to the market to earn a passive income, while borrowers are able to borrow in an overcollateralized (perpetually) or undercollateralized (one-block liquidity) fashion.
+```
+GATEWAY 0x4Df052094BD67D161FAB496cC753f99c42AffDb8
 
-## Documentation
+Finished migrations
+Contracts deployed at kovan
+---------------------------------
+N# Contracts: 33
+MockAtomERC20: 0x907c51E2B6cBdd3994e442Ee39C724259196BFB7
 
-The documentation of Aave V2 is in the following [Aave V2 documentation](https://docs.aave.com/developers/v/2.0/) link. At the documentation you can learn more about the protocol, see the contract interfaces, integration guides and audits.
+LendingPoolAddressesProvider: 0x185c388abC5a0AdAe826790a208140E96aCC1dba
+ReserveLogic: 0x56e4134b64c0dCca1Eee353A8C9E1771112f5cA7
+GenericLogic: 0xAf4d1BE4Bb4d0067B5535f172CF62869A2161530
+ValidationLogic: 0x55255ac8ABd5B2B83961024e8913Ee24393e131a
+LendingPoolImpl: 0xa89ae918484741Bab402560f15a7BDdf5570A73e
+LendingPool: 0xfeb4AE79b2e9480d6c5DB8B13e8CfEA02309b4d2
+LendingPoolConfiguratorImpl: 0xDb8Eb32773b50333e946251D2266986a0B0bA874
+LendingPoolConfigurator: 0xbA72181f7F265bCA0b0AAFf181AC1517Fdc07E9c
+StableAndVariableTokensHelper: 0x645D76adC99281C0825Aa13F14886ebB756B023B
+UTokensAndRatesHelper: 0xdEFA1Bd1135Bd05165a2330751a2F34Dd7203291
+UmeeOracle: 0x696590f2b133aAb8CbD76cb09A9B4251FBd117E0
+LendingRateOracle: 0x5037442655E56F06077B7BA914e60e8C7c4c6535
+UmeeProtocolDataProvider: 0x9113B5620CF727f90b39a0732FeB596A3CEC8F50
+WETHGateway: 0x2D508B573853542c7593319d3FEC27Db4d4Add4A
+StableDebtToken: 0x1F0e731c12Eff18Be4bEEbc93dc879c13f9Fba15
+VariableDebtToken: 0xd71D9116b61c75B59e9E19bfdfA351b710830CBF
+UToken: 0xAe285C7E5B148Ff69DFC36c1A3c798A6e8099Cb0
+uTokenImpl: 0xAe285C7E5B148Ff69DFC36c1A3c798A6e8099Cb0
+DelegationAwareUToken: 0xb7b0F062C0abFa869D2ede7f6d8A41120C781b73
+delegationAwareUTokenImpl: 0xb7b0F062C0abFa869D2ede7f6d8A41120C781b73
+DefaultReserveInterestRateStrategy: 0xc3dcef94cd62e53b8b04B8D504610E94FB13A00C
+rateStrategyUMEE: 0x0CDF4EfaCD7f2b2f00a51842fFD3056c4f587C84
+rateStrategyVolatileOne: 0xD40DCEf287188ba788d840550F9188B9eaA680Cc
+rateStrategyStableOne: 0x97965A545782FFcB389420FE0a751B93837c787f
+rateStrategyStableTwo: 0xdc6F58CD8934096ef5132C308C1b94E5FA5BEAB4
+rateStrategyVolatileTwo: 0xebbDb2168cFdc3c2a12D33231E5C6Bc4a5E6d79c
+rateStrategyVolatileThree: 0x11CeE3E9Dae38f50F86118Aa2fde97eEbd7c585E
+rateStrategyStableThree: 0x22A7CDB62AC962bb992Cf4599cA41209fdd87d37
+rateStrategyWETH: 0xc3dcef94cd62e53b8b04B8D504610E94FB13A00C
+WalletBalanceProvider: 0x471777aDdAB25B6F97EDa488f35A5ae57E21EE09
+LendingPoolAddressesProviderRegistry: 0x664FA716E3b586746d86960f64360698a1AFB821
+rateStrategyATOM: 0x2169CdCd1eFfcd72acF40DbC7a6508a109a55a20
+rateStrategyAAVE: 0x75c57F1ddB4cb1c894956980B3f33018e0c89C66
+```
+
+## What is Umee?
+
+Umee is a cross-chain decentralized non-custodial liquidity markets protocol where users can participate as depositors or borrowers. Depositors provide liquidity to the market to earn a passive income, while borrowers are able to borrow in an overcollateralized (perpetually) or undercollateralized (one-block liquidity) fashion.
+
+## Documentation (links are still resolving to Aave links)
+
+The documentation of Umee V1 is in the following [Umee V1 documentation](https://docs.aave.com/developers/v/2.0/) link. At the documentation you can learn more about the protocol, see the contract interfaces, integration guides and audits.
 
 For getting the latest contracts addresses, please check the [Deployed contracts](https://docs.aave.com/developers/v/2.0/deployed-contracts/deployed-contracts) page at the documentation to stay up to date.
 
 A more detailed and technical description of the protocol can be found in this repository, [here](./aave-v2-whitepaper.pdf)
 
 ## Audits
-
-- MixBytes (16/09/2020 - 03/12/2020): [report](./audits/Mixbytes-aave-v2-03-12-2020.pdf)
-- PeckShield (29/09/2020 - 03/12/2020) : [report](./audits/Peckshield-aave-v2-03-12-2020-EN.pdf) (Also available in Chinese in the same folder)
-- CertiK (28/09/2020 - 02/12/2020): [report](./audits/Certik-aave-v2-03-12-2020.pdf)
-- Consensys Diligence (09/09/2020 - 09/10/2020): [report](https://consensys.net/diligence/audits/2020/09/aave-protocol-v2/)
-- Certora, formal verification (02/08/2020 - 29/10/2020): [report](./audits/Certora-FV-aave-v2-03-12-2020.pdf)
-- SigmaPrime (January 2021): [report](./audits/SigmaPrime-aave-v2-01-2021.pdf)
+-
 
 ## Connect with the community
 
-You can join at the [Discord](http://aave.com/discord) channel or at the [Governance Forum](https://governance.aave.com/) for asking questions about the protocol or talk about Aave with other peers.
+You can join at the Umee [Discord](https://discord.gg/7JsEGaW4kW) channel for asking questions about the protocol or talk about Umee with other peers.
 
-## Getting Started
+## Getting Started (this is for Aave protocol not Umee)
 
 You can install `@aave/protocol-v2` as an NPM package in your Hardhat, Buidler or Truffle project to import the contracts and interfaces:
 
@@ -87,7 +127,7 @@ TENDERLY_USERNAME=""
 
 ## Markets configuration
 
-The configurations related with the Aave Markets are located at `markets` directory. You can follow the `IAaveConfiguration` interface to create new Markets configuration or extend the current Aave configuration.
+The configurations related with the Umee Markets are located at `markets` directory. You can follow the `IUmeeConfiguration` interface to create new Markets configuration or extend the current Umee configuration.
 
 Each market should have his own Market configuration file, and their own set of deployment tasks, using the Aave market config and tasks as a reference.
 
@@ -108,7 +148,7 @@ npm run test
 
 ## Deployments
 
-For deploying Aave Protocol V2, you can use the available scripts located at `package.json`. For a complete list, run `npm run` to see all the tasks.
+For deploying Umee Protocol V1, you can use the available scripts located at `package.json`. For a complete list, run `npm run` to see all the tasks.
 
 ### Kovan deployment
 
@@ -120,20 +160,20 @@ docker-compose up
 docker-compose exec contracts-env bash
 
 # A new Bash terminal is prompted, connected to the container
-npm run aave:kovan:full:migration
+npm run umee:kovan:full:migration
 ```
 
 ### Mainnet fork deployment
 
-You can deploy Aave Protocol v2 in a forked Mainnet chain using Hardhat built-in fork feature:
+You can deploy Umee Protocol V1 in a forked Mainnet chain using Hardhat built-in fork feature:
 
 ```
-docker-compose run contracts-env npm run aave:fork:main
+docker-compose run contracts-env npm run umee:fork:main
 ```
 
-### Deploy Aave into a Mainnet Fork via console
+### Deploy UMEE into a Mainnet Fork via console (not configured yet)
 
-You can deploy Aave into the Hardhat console in fork mode, to interact with the protocol inside the fork or for testing purposes.
+You can deploy Umee into the Hardhat console in fork mode, to interact with the protocol inside the fork or for testing purposes.
 
 Run the console in Mainnet fork mode:
 
@@ -141,11 +181,11 @@ Run the console in Mainnet fork mode:
 docker-compose run contracts-env npm run console:fork
 ```
 
-At the Hardhat console, interact with the Aave protocol in Mainnet fork mode:
+At the Hardhat console, interact with the Umee protocol in Mainnet fork mode:
 
 ```
 // Deploy the Aave protocol in fork mode
-await run('aave:mainnet')
+await run('umee:mainnet')
 
 // Or your custom Hardhat task
 await run('your-custom-task');
@@ -157,7 +197,7 @@ run('set-DRE');
 const contractGetters = require('./helpers/contracts-getters'); // Import a TS/JS file
 
 // Lending pool instance
-const lendingPool = await contractGetters.getLendingPool("LendingPool address from 'aave:mainnet' task");
+const lendingPool = await contractGetters.getLendingPool("LendingPool address from 'umee:mainnet' task");
 
 // You can impersonate any Ethereum address
 await network.provider.request({ method: "hardhat_impersonateAccount",  params: ["0xb1adceddb2941033a090dd166a462fe1c2029484"]});
@@ -175,9 +215,9 @@ await lendingPool.connect(signer).deposit(DAI.address, ethers.utils.parseUnits('
 
 ```
 
-## Interact with Aave in Mainnet via console
+## Interact with Umee in Mainnet via console (NOT DEPLOYED ON MAINNET YET)
 
-You can interact with Aave at Mainnet network using the Hardhat console, in the scenario where the frontend is down or you want to interact directly. You can check the deployed addresses at https://docs.aave.com/developers/deployed-contracts.
+You can interact with Umee at Mainnet network using the Hardhat console, in the scenario where the frontend is down or you want to interact directly. You can check the deployed addresses at https://docs.aave.com/developers/deployed-contracts.
 
 Run the Hardhat console pointing to the Mainnet network:
 

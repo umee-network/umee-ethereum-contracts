@@ -49,19 +49,19 @@ export const calcExpectedUserDataAfterDeposit = (
 
   expectedUserData.liquidityRate = reserveDataAfterAction.liquidityRate;
 
-  expectedUserData.scaledATokenBalance = calcExpectedScaledATokenBalance(
+  expectedUserData.scaledUTokenBalance = calcExpectedScaledUTokenBalance(
     userDataBeforeAction,
     reserveDataAfterAction.liquidityIndex,
     new BigNumber(amountDeposited),
     new BigNumber(0)
   );
-  expectedUserData.currentATokenBalance = calcExpectedATokenBalance(
+  expectedUserData.currentUTokenBalance = calcExpectedUTokenBalance(
     reserveDataBeforeAction,
     userDataBeforeAction,
     txTimestamp
   ).plus(amountDeposited);
 
-  if (userDataBeforeAction.currentATokenBalance.eq(0)) {
+  if (userDataBeforeAction.currentUTokenBalance.eq(0)) {
     expectedUserData.usageAsCollateralEnabled = true;
   } else {
     expectedUserData.usageAsCollateralEnabled = userDataBeforeAction.usageAsCollateralEnabled;
@@ -97,24 +97,24 @@ export const calcExpectedUserDataAfterWithdraw = (
 ): UserReserveData => {
   const expectedUserData = <UserReserveData>{};
 
-  const aTokenBalance = calcExpectedATokenBalance(
+  const uTokenBalance = calcExpectedUTokenBalance(
     reserveDataBeforeAction,
     userDataBeforeAction,
     txTimestamp
   );
 
   if (amountWithdrawn == MAX_UINT_AMOUNT) {
-    amountWithdrawn = aTokenBalance.toFixed(0);
+    amountWithdrawn = uTokenBalance.toFixed(0);
   }
 
-  expectedUserData.scaledATokenBalance = calcExpectedScaledATokenBalance(
+  expectedUserData.scaledUTokenBalance = calcExpectedScaledUTokenBalance(
     userDataBeforeAction,
     reserveDataAfterAction.liquidityIndex,
     new BigNumber(0),
     new BigNumber(amountWithdrawn)
   );
 
-  expectedUserData.currentATokenBalance = aTokenBalance.minus(amountWithdrawn);
+  expectedUserData.currentUTokenBalance = uTokenBalance.minus(amountWithdrawn);
 
   expectedUserData.principalStableDebt = userDataBeforeAction.principalStableDebt;
   expectedUserData.scaledVariableDebt = userDataBeforeAction.scaledVariableDebt;
@@ -138,11 +138,11 @@ export const calcExpectedUserDataAfterWithdraw = (
 
   expectedUserData.liquidityRate = reserveDataAfterAction.liquidityRate;
 
-  if (userDataBeforeAction.currentATokenBalance.eq(0)) {
+  if (userDataBeforeAction.currentUTokenBalance.eq(0)) {
     expectedUserData.usageAsCollateralEnabled = true;
   } else {
     //if the user is withdrawing everything, usageAsCollateralEnabled must be false
-    if (expectedUserData.currentATokenBalance.eq(0)) {
+    if (expectedUserData.currentUTokenBalance.eq(0)) {
       expectedUserData.usageAsCollateralEnabled = false;
     } else {
       expectedUserData.usageAsCollateralEnabled = userDataBeforeAction.usageAsCollateralEnabled;
@@ -225,7 +225,7 @@ export const calcExpectedReserveDataAfterWithdraw = (
   expectedReserveData.address = reserveDataBeforeAction.address;
 
   if (amountWithdrawn == MAX_UINT_AMOUNT) {
-    amountWithdrawn = calcExpectedATokenBalance(
+    amountWithdrawn = calcExpectedUTokenBalance(
       reserveDataBeforeAction,
       userDataBeforeAction,
       txTimestamp
@@ -663,13 +663,13 @@ export const calcExpectedUserDataAfterBorrow = (
 
   expectedUserData.usageAsCollateralEnabled = userDataBeforeAction.usageAsCollateralEnabled;
 
-  expectedUserData.currentATokenBalance = calcExpectedATokenBalance(
+  expectedUserData.currentUTokenBalance = calcExpectedUTokenBalance(
     expectedDataAfterAction,
     userDataBeforeAction,
     currentTimestamp
   );
 
-  expectedUserData.scaledATokenBalance = userDataBeforeAction.scaledATokenBalance;
+  expectedUserData.scaledUTokenBalance = userDataBeforeAction.scaledUTokenBalance;
 
   expectedUserData.walletBalance = userDataBeforeAction.walletBalance.plus(amountBorrowed);
 
@@ -742,12 +742,12 @@ export const calcExpectedUserDataAfterRepay = (
 
   expectedUserData.usageAsCollateralEnabled = userDataBeforeAction.usageAsCollateralEnabled;
 
-  expectedUserData.currentATokenBalance = calcExpectedATokenBalance(
+  expectedUserData.currentUTokenBalance = calcExpectedUTokenBalance(
     reserveDataBeforeAction,
     userDataBeforeAction,
     txTimestamp
   );
-  expectedUserData.scaledATokenBalance = userDataBeforeAction.scaledATokenBalance;
+  expectedUserData.scaledUTokenBalance = userDataBeforeAction.scaledUTokenBalance;
 
   if (user === onBehalfOf) {
     expectedUserData.walletBalance = userDataBeforeAction.walletBalance.minus(totalRepaidBN);
@@ -907,7 +907,7 @@ export const calcExpectedUserDataAfterSwapRateMode = (
     txTimestamp
   );
 
-  expectedUserData.currentATokenBalance = calcExpectedATokenBalance(
+  expectedUserData.currentUTokenBalance = calcExpectedUTokenBalance(
     reserveDataBeforeAction,
     userDataBeforeAction,
     txTimestamp
@@ -1072,7 +1072,7 @@ export const calcExpectedUserDataAfterStableRateRebalance = (
   expectedUserData.stableBorrowRate = expectedDataAfterAction.averageStableBorrowRate;
   expectedUserData.liquidityRate = expectedDataAfterAction.liquidityRate;
 
-  expectedUserData.currentATokenBalance = calcExpectedATokenBalance(
+  expectedUserData.currentUTokenBalance = calcExpectedUTokenBalance(
     reserveDataBeforeAction,
     userDataBeforeAction,
     txTimestamp
@@ -1081,25 +1081,25 @@ export const calcExpectedUserDataAfterStableRateRebalance = (
   return expectedUserData;
 };
 
-const calcExpectedScaledATokenBalance = (
+const calcExpectedScaledUTokenBalance = (
   userDataBeforeAction: UserReserveData,
   index: BigNumber,
   amountAdded: BigNumber,
   amountTaken: BigNumber
 ) => {
-  return userDataBeforeAction.scaledATokenBalance
+  return userDataBeforeAction.scaledUTokenBalance
     .plus(amountAdded.rayDiv(index))
     .minus(amountTaken.rayDiv(index));
 };
 
-export const calcExpectedATokenBalance = (
+export const calcExpectedUTokenBalance = (
   reserveData: ReserveData,
   userData: UserReserveData,
   currentTimestamp: BigNumber
 ) => {
   const index = calcExpectedReserveNormalizedIncome(reserveData, currentTimestamp);
 
-  const { scaledATokenBalance: scaledBalanceBeforeAction } = userData;
+  const { scaledUTokenBalance: scaledBalanceBeforeAction } = userData;
 
   return scaledBalanceBeforeAction.rayMul(index);
 };

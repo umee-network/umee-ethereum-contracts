@@ -3,7 +3,7 @@ import {
   deployLendingPoolCollateralManager,
   deployMockFlashLoanReceiver,
   deployWalletBalancerProvider,
-  deployAaveProtocolDataProvider,
+  deployUmeeProtocolDataProvider,
   authorizeWETHGateway,
 } from '../../helpers/contracts-deployments';
 import { getParamPerNetwork } from '../../helpers/contracts-helpers';
@@ -15,7 +15,7 @@ import {
   loadPoolConfig,
 } from '../../helpers/configuration';
 
-import { tEthereumAddress, AavePools, eContractid } from '../../helpers/types';
+import { tEthereumAddress, UmeePools, eContractid } from '../../helpers/types';
 import { waitForTx, filterMapBy, notFalsyOrZeroAddress } from '../../helpers/misc-utils';
 import { configureReservesByHelper, initReservesByHelper } from '../../helpers/init-helpers';
 import { getAllTokenAddresses } from '../../helpers/mock-helpers';
@@ -35,7 +35,7 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
     const network = <eNetwork>localBRE.network.name;
     const poolConfig = loadPoolConfig(pool);
     const {
-      ATokenNamePrefix,
+      UTokenNamePrefix,
       StableDebtTokenNamePrefix,
       VariableDebtTokenNamePrefix,
       SymbolPrefix,
@@ -50,9 +50,9 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
       filterMapBy(allTokenAddresses, (key: string) => !key.includes('UNI_'))
     );
 
-    const testHelpers = await deployAaveProtocolDataProvider(addressesProvider.address, verify);
+    const testHelpers = await deployUmeeProtocolDataProvider(addressesProvider.address, verify);
 
-    const reservesParams = getReservesConfigByPool(AavePools.proto);
+    const reservesParams = getReservesConfigByPool(UmeePools.proto);
 
     const admin = await addressesProvider.getPoolAdmin();
 
@@ -61,7 +61,7 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
     await initReservesByHelper(
       reservesParams,
       protoPoolReservesAddresses,
-      ATokenNamePrefix,
+      UTokenNamePrefix,
       StableDebtTokenNamePrefix,
       VariableDebtTokenNamePrefix,
       SymbolPrefix,
@@ -88,7 +88,7 @@ task('dev:initialize-lending-pool', 'Initialize lending pool configuration.')
 
     await deployWalletBalancerProvider(verify);
 
-    await insertContractAddressInDb(eContractid.AaveProtocolDataProvider, testHelpers.address);
+    await insertContractAddressInDb(eContractid.UmeeProtocolDataProvider, testHelpers.address);
 
     const lendingPoolAddress = await addressesProvider.getLendingPool();
 

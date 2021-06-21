@@ -1,8 +1,8 @@
-// import {iATokenBase, iAssetsWithoutETH, ITestEnvWithoutInstances, RateMode} from '../utils/types';
+// import {iUTokenBase, iAssetsWithoutETH, ITestEnvWithoutInstances, RateMode} from '../utils/types';
 // import {
 //   LendingPoolConfiguratorInstance,
 //   LendingPoolInstance,
-//   ATokenInstance,
+//   UTokenInstance,
 //   LendingPoolCoreInstance,
 //   MintableERC20Instance,
 // } from '../utils/typechain-types/truffle-contracts';
@@ -17,7 +17,7 @@
 //   let _lendingPoolConfiguratorInstance: LendingPoolConfiguratorInstance;
 //   let _lendingPoolInstance: LendingPoolInstance;
 //   let _lendingPoolCoreInstance: LendingPoolCoreInstance;
-//   let _aTokenInstances: iATokenBase<ATokenInstance>;
+//   let _uTokenInstances: iUTokenBase<UTokenInstance>;
 //   let _tokenInstances: iAssetsWithoutETH<MintableERC20Instance>;
 
 //   before('Initializing LendingPool test variables', async () => {
@@ -29,13 +29,13 @@
 //       getLendingPoolInstance,
 //       getLendingPoolCoreInstance,
 //       getLendingPoolConfiguratorInstance,
-//       getATokenInstances,
+//       getUTokenInstances,
 //     } = _testEnvProvider;
 //     const instances = await Promise.all([
 //       getLendingPoolInstance(),
 //       getLendingPoolCoreInstance(),
 //       getLendingPoolConfiguratorInstance(),
-//       getATokenInstances(),
+//       getUTokenInstances(),
 //       getAllAssetsInstances(),
 //     ]);
 
@@ -43,7 +43,7 @@
 //     _lendingPoolCoreInstance = instances[1];
 //     _lendingPoolConfiguratorInstance = instances[2];
 
-//     _aTokenInstances = instances[3];
+//     _uTokenInstances = instances[3];
 //     _tokenInstances = instances[4];
 //     console.timeEnd('setup-test');
 //   });
@@ -56,10 +56,10 @@
 //     );
 //   });
 
-//   it('Tries to invoke redeemUnderlying on an reserve, from a non-aToken address', async () => {
+//   it('Tries to invoke redeemUnderlying on an reserve, from a non-uToken address', async () => {
 //     await expectRevert(
 //       _lendingPoolInstance.redeemUnderlying(ETHEREUM_ADDRESS, deployer, '1', '0'),
-//       'The caller of this function can only be the aToken contract of this reserve'
+//       'The caller of this function can only be the uToken contract of this reserve'
 //     );
 //   });
 
@@ -152,7 +152,7 @@
 //   });
 
 //   it('unfreezes the reserve, user deposits 1 ETH, freezes the reserve, check that the user can redeem', async () => {
-//     const {aWETH} = _aTokenInstances;
+//     const {aWETH} = _uTokenInstances;
 
 //     //unfreezes the reserve
 //     await _lendingPoolConfiguratorInstance.unfreezeReserve(ETHEREUM_ADDRESS);
@@ -171,7 +171,7 @@
 //   });
 
 //   it('unfreezes the reserve, user 0 deposits 100 DAI, user 1 deposits 1 ETH and borrows 50 DAI, freezes the reserve, checks that the user 1 can repay', async () => {
-//     const {aWETH, aDAI} = _aTokenInstances;
+//     const {aWETH, aDAI} = _uTokenInstances;
 //     const {DAI} = _tokenInstances;
 
 //     //unfreezes the reserve
@@ -209,7 +209,7 @@
 //   });
 
 //   it('Check that liquidationCall can be executed on a freezed reserve', async () => {
-//     const {aWETH, aDAI} = _aTokenInstances;
+//     const {aWETH, aDAI} = _uTokenInstances;
 //     const {DAI} = _tokenInstances;
 
 //     //user 2 tries to liquidate
@@ -228,7 +228,7 @@
 //   });
 
 //   it('Check that rebalanceStableBorrowRate can be executed on a freezed reserve', async () => {
-//     const {aWETH, aDAI} = _aTokenInstances;
+//     const {aWETH, aDAI} = _uTokenInstances;
 //     const {DAI} = _tokenInstances;
 
 //     //user 2 tries to liquidate

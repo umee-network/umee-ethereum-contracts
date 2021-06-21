@@ -3,7 +3,7 @@ pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
 import {ILendingPoolAddressesProvider} from '../../interfaces/ILendingPoolAddressesProvider.sol';
-import {IAaveIncentivesController} from '../../interfaces/IAaveIncentivesController.sol';
+import {IUmeeIncentivesController} from '../../interfaces/IUmeeIncentivesController.sol';
 
 interface IUiPoolDataProvider {
   struct AggregatedReserveData {
@@ -27,7 +27,7 @@ interface IUiPoolDataProvider {
     uint128 variableBorrowRate;
     uint128 stableBorrowRate;
     uint40 lastUpdateTimestamp;
-    address aTokenAddress;
+    address uTokenAddress;
     address stableDebtTokenAddress;
     address variableDebtTokenAddress;
     address interestRateStrategyAddress;
@@ -49,21 +49,21 @@ interface IUiPoolDataProvider {
     uint256 aIncentivesLastUpdateTimestamp;
     uint256 vIncentivesLastUpdateTimestamp;
     uint256 sIncentivesLastUpdateTimestamp;
-    uint256 aTokenIncentivesIndex;
+    uint256 uTokenIncentivesIndex;
     uint256 vTokenIncentivesIndex;
     uint256 sTokenIncentivesIndex;
   }
 
   struct UserReserveData {
     address underlyingAsset;
-    uint256 scaledATokenBalance;
+    uint256 scaledUTokenBalance;
     bool usageAsCollateralEnabledOnUser;
     uint256 stableBorrowRate;
     uint256 scaledVariableDebt;
     uint256 principalStableDebt;
     uint256 stableBorrowLastUpdateTimestamp;
     // incentives
-    uint256 aTokenincentivesUserIndex;
+    uint256 uTokenincentivesUserIndex;
     uint256 vTokenincentivesUserIndex;
     uint256 sTokenincentivesUserIndex;
   }

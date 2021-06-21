@@ -10,7 +10,7 @@ import {IERC20} from '../dependencies/openzeppelin/contracts/IERC20.sol';
 /**
  * @title UniswapLiquiditySwapAdapter
  * @notice Uniswap V2 Adapter to swap liquidity.
- * @author Aave
+ * @author Umee
  **/
 contract UniswapLiquiditySwapAdapter is BaseUniswapAdapter {
   struct PermitParams {
@@ -38,7 +38,7 @@ contract UniswapLiquiditySwapAdapter is BaseUniswapAdapter {
   /**
    * @dev Swaps the received reserve amount from the flash loan into the asset specified in the params.
    * The received funds from the swap are then deposited into the protocol on behalf of the user.
-   * The user should give this contract allowance to pull the ATokens in order to withdraw the underlying asset and
+   * The user should give this contract allowance to pull the UTokens in order to withdraw the underlying asset and
    * repay the flash loan.
    * @param assets Address of asset to be swapped
    * @param amounts Amount of the asset to be swapped
@@ -103,17 +103,17 @@ contract UniswapLiquiditySwapAdapter is BaseUniswapAdapter {
 
   struct SwapAndDepositLocalVars {
     uint256 i;
-    uint256 aTokenInitiatorBalance;
+    uint256 uTokenInitiatorBalance;
     uint256 amountToSwap;
     uint256 receivedAmount;
-    address aToken;
+    address uToken;
   }
 
   /**
    * @dev Swaps an amount of an asset to another and deposits the new asset amount on behalf of the user without using
    * a flash loan. This method can be used when the temporary transfer of the collateral asset to this contract
    * does not affect the user position.
-   * The user should give this contract allowance to pull the ATokens in order to withdraw the underlying asset and
+   * The user should give this contract allowance to pull the UTokens in order to withdraw the underlying asset and
    * perform the swap.
    * @param assetToSwapFromList List of addresses of the underlying asset to be swap from
    * @param assetToSwapToList List of addresses of the underlying asset to be swap to and deposited
@@ -146,16 +146,16 @@ contract UniswapLiquiditySwapAdapter is BaseUniswapAdapter {
     SwapAndDepositLocalVars memory vars;
 
     for (vars.i = 0; vars.i < assetToSwapFromList.length; vars.i++) {
-      vars.aToken = _getReserveData(assetToSwapFromList[vars.i]).aTokenAddress;
+      vars.uToken = _getReserveData(assetToSwapFromList[vars.i]).uTokenAddress;
 
-      vars.aTokenInitiatorBalance = IERC20(vars.aToken).balanceOf(msg.sender);
-      vars.amountToSwap = amountToSwapList[vars.i] > vars.aTokenInitiatorBalance
-        ? vars.aTokenInitiatorBalance
+      vars.uTokenInitiatorBalance = IERC20(vars.uToken).balanceOf(msg.sender);
+      vars.amountToSwap = amountToSwapList[vars.i] > vars.uTokenInitiatorBalance
+        ? vars.uTokenInitiatorBalance
         : amountToSwapList[vars.i];
 
-      _pullAToken(
+      _pullUToken(
         assetToSwapFromList[vars.i],
-        vars.aToken,
+        vars.uToken,
         msg.sender,
         vars.amountToSwap,
         permitParams[vars.i]
@@ -189,8 +189,8 @@ contract UniswapLiquiditySwapAdapter is BaseUniswapAdapter {
    */
 
   struct SwapLiquidityLocalVars {
-    address aToken;
-    uint256 aTokenInitiatorBalance;
+    address uToken;
+    uint256 uTokenInitiatorBalance;
     uint256 amountToSwap;
     uint256 receivedAmount;
     uint256 flashLoanDebt;
@@ -210,11 +210,11 @@ contract UniswapLiquiditySwapAdapter is BaseUniswapAdapter {
   ) internal {
     SwapLiquidityLocalVars memory vars;
 
-    vars.aToken = _getReserveData(assetFrom).aTokenAddress;
+    vars.uToken = _getReserveData(assetFrom).uTokenAddress;
 
-    vars.aTokenInitiatorBalance = IERC20(vars.aToken).balanceOf(initiator);
-    vars.amountToSwap = swapAllBalance && vars.aTokenInitiatorBalance.sub(premium) <= amount
-      ? vars.aTokenInitiatorBalance.sub(premium)
+    vars.uTokenInitiatorBalance = IERC20(vars.uToken).balanceOf(initiator);
+    vars.amountToSwap = swapAllBalance && vars.uTokenInitiatorBalance.sub(premium) <= amount
+      ? vars.uTokenInitiatorBalance.sub(premium)
       : amount;
 
     vars.receivedAmount = _swapExactTokensForTokens(
@@ -233,7 +233,7 @@ contract UniswapLiquiditySwapAdapter is BaseUniswapAdapter {
     vars.flashLoanDebt = amount.add(premium);
     vars.amountToPull = vars.amountToSwap.add(premium);
 
-    _pullAToken(assetFrom, vars.aToken, initiator, vars.amountToPull, permitSignature);
+    _pullUToken(assetFrom, vars.uToken, initiator, vars.amountToPull, permitSignature);
 
     // Repay flash loan
     IERC20(assetFrom).safeApprove(address(LENDING_POOL), 0);

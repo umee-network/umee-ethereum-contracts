@@ -373,7 +373,7 @@ export class ILendingPool extends Contract {
         currentVariableBorrowRate: BigNumber;
         currentStableBorrowRate: BigNumber;
         lastUpdateTimestamp: number;
-        aTokenAddress: string;
+        uTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
         interestRateStrategyAddress: string;
@@ -405,7 +405,7 @@ export class ILendingPool extends Contract {
         currentVariableBorrowRate: BigNumber;
         currentStableBorrowRate: BigNumber;
         lastUpdateTimestamp: number;
-        aTokenAddress: string;
+        uTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
         interestRateStrategyAddress: string;
@@ -513,7 +513,7 @@ export class ILendingPool extends Contract {
 
     initReserve(
       reserve: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -522,7 +522,7 @@ export class ILendingPool extends Contract {
 
     "initReserve(address,address,address,address,address)"(
       reserve: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -534,7 +534,7 @@ export class ILendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -543,7 +543,7 @@ export class ILendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -754,7 +754,7 @@ export class ILendingPool extends Contract {
     currentVariableBorrowRate: BigNumber;
     currentStableBorrowRate: BigNumber;
     lastUpdateTimestamp: number;
-    aTokenAddress: string;
+    uTokenAddress: string;
     stableDebtTokenAddress: string;
     variableDebtTokenAddress: string;
     interestRateStrategyAddress: string;
@@ -784,7 +784,7 @@ export class ILendingPool extends Contract {
     currentVariableBorrowRate: BigNumber;
     currentStableBorrowRate: BigNumber;
     lastUpdateTimestamp: number;
-    aTokenAddress: string;
+    uTokenAddress: string;
     stableDebtTokenAddress: string;
     variableDebtTokenAddress: string;
     interestRateStrategyAddress: string;
@@ -875,7 +875,7 @@ export class ILendingPool extends Contract {
 
   initReserve(
     reserve: string,
-    aTokenAddress: string,
+    uTokenAddress: string,
     stableDebtAddress: string,
     variableDebtAddress: string,
     interestRateStrategyAddress: string,
@@ -884,7 +884,7 @@ export class ILendingPool extends Contract {
 
   "initReserve(address,address,address,address,address)"(
     reserve: string,
-    aTokenAddress: string,
+    uTokenAddress: string,
     stableDebtAddress: string,
     variableDebtAddress: string,
     interestRateStrategyAddress: string,
@@ -896,7 +896,7 @@ export class ILendingPool extends Contract {
     debtAsset: string,
     user: string,
     debtToCover: BigNumberish,
-    receiveAToken: boolean,
+    receiveUToken: boolean,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -905,7 +905,7 @@ export class ILendingPool extends Contract {
     debtAsset: string,
     user: string,
     debtToCover: BigNumberish,
-    receiveAToken: boolean,
+    receiveUToken: boolean,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1112,7 +1112,7 @@ export class ILendingPool extends Contract {
       currentVariableBorrowRate: BigNumber;
       currentStableBorrowRate: BigNumber;
       lastUpdateTimestamp: number;
-      aTokenAddress: string;
+      uTokenAddress: string;
       stableDebtTokenAddress: string;
       variableDebtTokenAddress: string;
       interestRateStrategyAddress: string;
@@ -1142,7 +1142,7 @@ export class ILendingPool extends Contract {
       currentVariableBorrowRate: BigNumber;
       currentStableBorrowRate: BigNumber;
       lastUpdateTimestamp: number;
-      aTokenAddress: string;
+      uTokenAddress: string;
       stableDebtTokenAddress: string;
       variableDebtTokenAddress: string;
       interestRateStrategyAddress: string;
@@ -1233,7 +1233,7 @@ export class ILendingPool extends Contract {
 
     initReserve(
       reserve: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1242,7 +1242,7 @@ export class ILendingPool extends Contract {
 
     "initReserve(address,address,address,address,address)"(
       reserve: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1254,7 +1254,7 @@ export class ILendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1263,7 +1263,7 @@ export class ILendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1401,7 +1401,7 @@ export class ILendingPool extends Contract {
       debtToCover: null,
       liquidatedCollateralAmount: null,
       liquidator: null,
-      receiveAToken: null
+      receiveUToken: null
     ): EventFilter;
 
     Paused(): EventFilter;
@@ -1600,7 +1600,7 @@ export class ILendingPool extends Contract {
 
     initReserve(
       reserve: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1609,7 +1609,7 @@ export class ILendingPool extends Contract {
 
     "initReserve(address,address,address,address,address)"(
       reserve: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1621,7 +1621,7 @@ export class ILendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1630,7 +1630,7 @@ export class ILendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1886,7 +1886,7 @@ export class ILendingPool extends Contract {
 
     initReserve(
       reserve: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1895,7 +1895,7 @@ export class ILendingPool extends Contract {
 
     "initReserve(address,address,address,address,address)"(
       reserve: string,
-      aTokenAddress: string,
+      uTokenAddress: string,
       stableDebtAddress: string,
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
@@ -1907,7 +1907,7 @@ export class ILendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -1916,7 +1916,7 @@ export class ILendingPool extends Contract {
       debtAsset: string,
       user: string,
       debtToCover: BigNumberish,
-      receiveAToken: boolean,
+      receiveUToken: boolean,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

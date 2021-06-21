@@ -26,7 +26,7 @@ export const MaticConfig: IMaticConfiguration = {
     WBTC: strategyWBTC,
     WETH: strategyWETH,
     WMATIC: strategyMATIC,
-    UMEE: strategyUMEE,
+    AAVE: strategyUMEE,
   },
   ReserveAssets: {
     [ePolygonNetwork.matic]: {
@@ -36,7 +36,7 @@ export const MaticConfig: IMaticConfiguration = {
       WBTC: '0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6',
       WETH: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
       WMATIC: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
-      UMEE: '0xD6DF932A45C0f255f85145f286eA0b292B21C90B',
+      AAVE: '0xD6DF932A45C0f255f85145f286eA0b292B21C90B',
     },
     [ePolygonNetwork.mumbai]: {
       // Mock tokens with a simple "mint" external function, except wmatic

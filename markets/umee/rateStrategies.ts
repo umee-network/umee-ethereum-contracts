@@ -57,6 +57,17 @@ export const rateStrategyUMEE: IInterestRateStrategyParams = {
   stableRateSlope2: '0',
 }
 
+// UMEE
+export const rateStrategyAAVE: IInterestRateStrategyParams = {
+  name: "rateStrategyAAVE",
+  optimalUtilizationRate: new BigNumber(0.45).multipliedBy(oneRay).toFixed(),
+  baseVariableBorrowRate: '0',
+  variableRateSlope1: '0',
+  variableRateSlope2: '0',
+  stableRateSlope1: '0',
+  stableRateSlope2: '0',
+}
+
 // TODO: Figure out the Rate Strategy for the ATOM Token (or we can use one of the Volatile strategies below)
 export const rateStrategyATOM: IInterestRateStrategyParams = {
   name: "rateStrategyATOM",

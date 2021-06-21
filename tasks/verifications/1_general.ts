@@ -51,11 +51,11 @@ task('verify:general', 'Verify contracts at Etherscan')
     const addressesProviderRegistry = notFalsyOrZeroAddress(registryAddress)
       ? await getLendingPoolAddressesProviderRegistry(registryAddress)
       : await getLendingPoolAddressesProviderRegistry();
-    const lendingPoolAddress = await addressesProvider.getLendingPool();
+    const lendingPoolAddress = await addressesProvider.getLendingPool(); // TODO: URGENT
     const lendingPoolConfiguratorAddress = await addressesProvider.getLendingPoolConfigurator(); //getLendingPoolConfiguratorProxy();
     const lendingPoolCollateralManagerAddress = await addressesProvider.getLendingPoolCollateralManager();
 
-    const lendingPoolProxy = await getProxy(lendingPoolAddress);
+    const lendingPoolProxy = await getProxy(lendingPoolAddress); // TODO: URGENT
     const lendingPoolConfiguratorProxy = await getProxy(lendingPoolConfiguratorAddress);
     const lendingPoolCollateralManagerProxy = await getProxy(lendingPoolCollateralManagerAddress);
 

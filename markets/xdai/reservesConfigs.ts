@@ -7,6 +7,7 @@ import {
   rateStrategyStableThree,
   rateStrategyWETH,
   rateStrategyUMEE,
+  rateStrategyAAVE,
   rateStrategyVolatileOne,
   rateStrategyVolatileTwo,
   rateStrategyVolatileThree,

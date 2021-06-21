@@ -205,8 +205,9 @@ export interface iAssetBase<T> {
   USDC: T;
   USDT: T;
   SUSD: T;
-  UMEE: T;
-  ATOM: T;
+  AAVE: T;
+  //UMEE: T;
+  //ATOM: T;
   BAT: T;
   MKR: T;
   LINK: T;
@@ -223,7 +224,7 @@ export interface iAssetBase<T> {
   ENJ: T;
   UniDAIWETH: T;
   UniWBTCWETH: T;
-  UniUMEEWETH: T;
+  UniAAVEWETH: T;
   UniBATWETH: T;
   UniDAIUSDC: T;
   UniCRVWETH: T;
@@ -246,6 +247,7 @@ export type iAssetsWithoutETH<T> = Omit<iAssetBase<T>, 'ETH'>;
 
 export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 
+// TODO: Add ATOM + UMEE
 export type iUmeePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
   | 'DAI'
@@ -253,8 +255,7 @@ export type iUmeePoolAssets<T> = Pick<
   | 'USDC'
   | 'USDT'
   | 'SUSD'
-  | 'UMEE'
-  | 'ATOM'
+  | 'AAVE'
   | 'BAT'
   | 'MKR'
   | 'LINK'
@@ -272,6 +273,7 @@ export type iUmeePoolAssets<T> = Pick<
   | 'xSUSHI'
 >;
 
+// TODO: Add UniUMEEWETH
 export type iLpPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
   | 'DAI'
@@ -281,7 +283,7 @@ export type iLpPoolAssets<T> = Pick<
   | 'WETH'
   | 'UniDAIWETH'
   | 'UniWBTCWETH'
-  | 'UniUMEEWETH'
+  | 'UniAAVEWETH'
   | 'UniBATWETH'
   | 'UniDAIUSDC'
   | 'UniCRVWETH'
@@ -299,7 +301,7 @@ export type iLpPoolAssets<T> = Pick<
 
 export type iMaticPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH' | 'WMATIC' | 'UMEE'
+  'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH' | 'WMATIC' | 'AAVE'
 >;
 
 export type iXDAIPoolAssets<T> = Pick<
@@ -313,10 +315,11 @@ export type iUmeePoolTokens<T> = Omit<iUmeePoolAssets<T>, 'ETH'>;
 
 export type iAssetAggregatorBase<T> = iAssetsWithoutETH<T>;
 
+// TODO: Add ATOM
 export enum TokenContractId {
   DAI = 'DAI',
-  UMEE = 'UMEE',
-  ATOM = 'ATOM',
+  AAVE = 'AAVE',
+  //ATOM = 'ATOM',
   TUSD = 'TUSD',
   BAT = 'BAT',
   WETH = 'WETH',
@@ -338,7 +341,8 @@ export enum TokenContractId {
   ENJ = 'ENJ',
   UniDAIWETH = 'UniDAIWETH',
   UniWBTCWETH = 'UniWBTCWETH',
-  UniUMEEWETH = 'UniUMEEWETH',
+  //UniUMEEWETH = 'UniUMEEWETH',
+  UniAAVEWETH = 'UniAAVEWETH',
   UniBATWETH = 'UniBATWETH',
   UniDAIUSDC = 'UniDAIUSDC',
   UniCRVWETH = 'UniCRVWETH',

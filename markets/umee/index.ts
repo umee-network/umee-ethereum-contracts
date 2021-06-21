@@ -10,6 +10,7 @@ import {
   strategyUSDC,
   strategyUSDT,
   strategyUMEE,
+  strategyAAVE,
   strategyATOM,
   strategyBAT,
   strategyZRX,
@@ -35,9 +36,10 @@ export const UmeeConfig: IUmeeConfiguration = {
   ...CommonsConfig,
   MarketId: 'Umee genesis market',
   ProviderId: 1,
-  ReservesConfig: {
-    UMEE: strategyUMEE,
-    ATOM: strategyATOM,
+  ReservesConfig: { // TODO: Add ATOM + UMEE strat
+    AAVE: strategyAAVE,
+    //UMEE: strategyUMEE,
+    //ATOM: strategyATOM,
     BAT: strategyBAT,
     BUSD: strategyBUSD,
     DAI: strategyDAI,
@@ -63,9 +65,10 @@ export const UmeeConfig: IUmeeConfiguration = {
     [eEthereumNetwork.buidlerevm]: {},
     [eEthereumNetwork.hardhat]: {},
     [eEthereumNetwork.coverage]: {},
-    [eEthereumNetwork.kovan]: {
-      UMEE: '0xB597cd8D3217ea6477232F9217fa70837ff667Af', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
-      ATOM: '',
+    [eEthereumNetwork.kovan]: { // TODO: Add ATOM Token Address + UMEE
+      AAVE: '0xB597cd8D3217ea6477232F9217fa70837ff667Af', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
+      //ATOM: ZERO_ADDRESS,
+      //UMEE: ZERO_ADDRESS,
       BAT: '0x2d12186Fbb9f9a8C28B3FfdD4c42920f8539D738',
       BUSD: '0x4c6E1EFC12FDfD568186b7BAEc0A43fFfb4bCcCf',
       DAI: '0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD',
@@ -86,9 +89,10 @@ export const UmeeConfig: IUmeeConfiguration = {
       YFI: '0xb7c325266ec274fEb1354021D27FA3E3379D840d',
       ZRX: '0xD0d76886cF8D952ca26177EB7CfDf83bad08C00C',
     },
-    [eEthereumNetwork.ropsten]: {
-      UMEE: '',
-      ATOM: '',
+    [eEthereumNetwork.ropsten]: { // TODO: Add ATOM Token Address + UMEE
+      AAVE: ZERO_ADDRESS,
+      //ATOM: ZERO_ADDRESS,
+      //UMEE: ZERO_ADDRESS,
       BAT: '0x85B24b3517E3aC7bf72a14516160541A60cFF19d',
       BUSD: '0xFA6adcFf6A90c11f31Bc9bb59eC0a6efB38381C6',
       DAI: '0xf80A32A835F79D7787E8a8ee5721D0fEaFd78108',
@@ -109,9 +113,10 @@ export const UmeeConfig: IUmeeConfiguration = {
       YFI: ZERO_ADDRESS,
       ZRX: '0x02d7055704EfF050323A2E5ee4ba05DB2A588959',
     },
-    [eEthereumNetwork.main]: {
-      UMEE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
-      ATOM: '',
+    [eEthereumNetwork.main]: { // TODO: Add ATOM Token Address + UMEE
+      AAVE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
+      //ATOM: ZERO_ADDRESS,
+      //UMEE: ZERO_ADDRESS,
       BAT: '0x0d8775f648430679a709e98d2b0cb6250d2887ef',
       BUSD: '0x4Fabb145d64652a948d72533023f6E7A623C7C53',
       DAI: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
@@ -133,9 +138,10 @@ export const UmeeConfig: IUmeeConfiguration = {
       ZRX: '0xE41d2489571d322189246DaFA5ebDe1F4699F498',
       xSUSHI: '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272',
     },
-    [eEthereumNetwork.tenderlyMain]: {
-      UMEE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
-      ATOM: '',
+    [eEthereumNetwork.tenderlyMain]: { // TODO: Add ATOM Token Address + UMEE
+      AAVE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9', // TODO: CHANGE AAVE ADDRESS to UMEE (Rn the address is the contract address for AAVE)
+      //ATOM: ZERO_ADDRESS,
+      //UMEE: ZERO_ADDRESS,
       BAT: '0x0d8775f648430679a709e98d2b0cb6250d2887ef',
       BUSD: '0x4Fabb145d64652a948d72533023f6E7A623C7C53',
       DAI: '0x6B175474E89094C44Da98b954EedeAC495271d0F',

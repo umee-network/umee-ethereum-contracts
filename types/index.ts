@@ -55,6 +55,8 @@ export { MintableDelegationERC20Factory } from "./MintableDelegationERC20Factory
 export type { MintableDelegationERC20 } from "./MintableDelegationERC20";
 export { MintableERC20Factory } from "./MintableERC20Factory";
 export type { MintableERC20 } from "./MintableERC20";
+export { MockAtomERC20Factory } from "./MockAtomERC20Factory";
+export type { MockAtomERC20 } from "./MockAtomERC20";
 export { WETH9MockedFactory } from "./WETH9MockedFactory";
 export type { WETH9Mocked } from "./WETH9Mocked";
 export { MockStableDebtTokenFactory } from "./MockStableDebtTokenFactory";

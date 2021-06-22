@@ -1,7 +1,7 @@
 import { task } from 'hardhat/config';
 import { ConfigNames, loadPoolConfig } from '../../helpers/configuration';
 import {
-  getAaveProtocolDataProvider,
+  getUmeeProtocolDataProvider,
   getLendingPoolAddressesProvider,
   getLendingPoolAddressesProviderRegistry,
 } from '../../helpers/contracts-getters';
@@ -10,7 +10,7 @@ import { DRE } from '../../helpers/misc-utils';
 import { eEthereumNetwork, eNetwork, ePolygonNetwork, eXDaiNetwork } from '../../helpers/types';
 
 task('print-config', 'Inits the DRE, to have access to all the plugins')
-  .addParam('dataProvider', 'Address of AaveProtocolDataProvider')
+  .addParam('dataProvider', 'Address of UmeeProtocolDataProvider')
   .addParam('pool', `Pool name to retrieve configuration, supported: ${Object.values(ConfigNames)}`)
   .setAction(async ({ pool, dataProvider }, localBRE) => {
     await localBRE.run('set-DRE');
@@ -44,7 +44,7 @@ task('print-config', 'Inits the DRE, to have access to all the plugins')
     console.log('Price Oracle', await addressesProvider.getPriceOracle());
     console.log('Lending Rate Oracle', await addressesProvider.getLendingRateOracle());
     console.log('Lending Pool Data Provider', dataProvider);
-    const protocolDataProvider = await getAaveProtocolDataProvider(dataProvider);
+    const protocolDataProvider = await getUmeeProtocolDataProvider(dataProvider);
 
     const fields = [
       'decimals',
@@ -58,7 +58,7 @@ task('print-config', 'Inits the DRE, to have access to all the plugins')
       'isActive',
       'isFrozen',
     ];
-    const tokensFields = ['aToken', 'stableDebtToken', 'variableDebtToken'];
+    const tokensFields = ['uToken', 'stableDebtToken', 'variableDebtToken'];
     for (const [symbol, address] of Object.entries(
       getParamPerNetwork(poolConfig.ReserveAssets, network as eNetwork)
     )) {

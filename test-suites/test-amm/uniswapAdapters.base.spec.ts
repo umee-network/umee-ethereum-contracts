@@ -78,13 +78,13 @@
 //         expect(result['3']).to.be.eq(daiUsdValue);
 //       });
 //       it('should work correctly with different decimals', async () => {
-//         const { aave, usdc, uniswapLiquiditySwapAdapter, oracle } = testEnv;
+//         const { umee, usdc, uniswapLiquiditySwapAdapter, oracle } = testEnv;
 
 //         const amountIn = parseEther('10');
 //         const flashloanPremium = amountIn.mul(9).div(10000);
 //         const amountToSwap = amountIn.sub(flashloanPremium);
 
-//         const aavePrice = await oracle.getAssetPrice(aave.address);
+//         const umeePrice = await oracle.getAssetPrice(umee.address);
 //         const usdcPrice = await oracle.getAssetPrice(usdc.address);
 //         const usdPrice = await oracle.getAssetPrice(USD_ADDRESS);
 
@@ -98,8 +98,8 @@
 //           .mul('1000000') // usdc 6 decimals
 //           .div(expectedUSDCAmount.mul(parseEther('1')));
 
-//         const aaveUsdValue = amountIn
-//           .mul(aavePrice)
+//         const umeeUsdValue = amountIn
+//           .mul(umeePrice)
 //           .div(parseEther('1'))
 //           .mul(usdPrice)
 //           .div(parseEther('1'));
@@ -112,20 +112,20 @@
 
 //         await mockUniswapRouter.setAmountOut(
 //           amountToSwap,
-//           aave.address,
+//           umee.address,
 //           usdc.address,
 //           expectedUSDCAmount
 //         );
 
 //         const result = await uniswapLiquiditySwapAdapter.getAmountsOut(
 //           amountIn,
-//           aave.address,
+//           umee.address,
 //           usdc.address
 //         );
 
 //         expect(result['0']).to.be.eq(expectedUSDCAmount);
 //         expect(result['1']).to.be.eq(outPerInPrice);
-//         expect(result['2']).to.be.eq(aaveUsdValue);
+//         expect(result['2']).to.be.eq(umeeUsdValue);
 //         expect(result['3']).to.be.eq(usdcUsdValue);
 //       });
 //     });
@@ -177,13 +177,13 @@
 //         expect(result['3']).to.be.eq(daiUsdValue);
 //       });
 //       it('should work correctly with different decimals', async () => {
-//         const { aave, usdc, uniswapLiquiditySwapAdapter, oracle } = testEnv;
+//         const { umee, usdc, uniswapLiquiditySwapAdapter, oracle } = testEnv;
 
 //         const amountIn = parseEther('10');
 //         const flashloanPremium = amountIn.mul(9).div(10000);
 //         const amountToSwap = amountIn.add(flashloanPremium);
 
-//         const aavePrice = await oracle.getAssetPrice(aave.address);
+//         const umeePrice = await oracle.getAssetPrice(umee.address);
 //         const usdcPrice = await oracle.getAssetPrice(usdc.address);
 //         const usdPrice = await oracle.getAssetPrice(USD_ADDRESS);
 
@@ -197,8 +197,8 @@
 //           .mul(parseEther('1'))
 //           .div(amountToSwap.mul('1000000')); // usdc 6 decimals
 
-//         const aaveUsdValue = amountToSwap
-//           .mul(aavePrice)
+//         const umeeUsdValue = amountToSwap
+//           .mul(umeePrice)
 //           .div(parseEther('1'))
 //           .mul(usdPrice)
 //           .div(parseEther('1'));
@@ -209,17 +209,17 @@
 //           .mul(usdPrice)
 //           .div(parseEther('1'));
 
-//         await mockUniswapRouter.setAmountIn(amountOut, aave.address, usdc.address, amountIn);
+//         await mockUniswapRouter.setAmountIn(amountOut, umee.address, usdc.address, amountIn);
 
 //         const result = await uniswapLiquiditySwapAdapter.getAmountsIn(
 //           amountOut,
-//           aave.address,
+//           umee.address,
 //           usdc.address
 //         );
 
 //         expect(result['0']).to.be.eq(amountToSwap);
 //         expect(result['1']).to.be.eq(inPerOutPrice);
-//         expect(result['2']).to.be.eq(aaveUsdValue);
+//         expect(result['2']).to.be.eq(umeeUsdValue);
 //         expect(result['3']).to.be.eq(usdcUsdValue);
 //       });
 //     });

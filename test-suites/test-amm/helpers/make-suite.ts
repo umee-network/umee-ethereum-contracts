@@ -3,8 +3,8 @@ import { Signer } from 'ethers';
 import {
   getLendingPool,
   getLendingPoolAddressesProvider,
-  getAaveProtocolDataProvider,
-  getAToken,
+  getUmeeProtocolDataProvider,
+  getUToken,
   getMintableERC20,
   getLendingPoolConfiguratorProxy,
   getPriceOracle,
@@ -17,9 +17,9 @@ import {
 } from '../../../helpers/contracts-getters';
 import { eEthereumNetwork, eNetwork, tEthereumAddress } from '../../../helpers/types';
 import { LendingPool } from '../../../types/LendingPool';
-import { AaveProtocolDataProvider } from '../../../types/AaveProtocolDataProvider';
+import { UmeeProtocolDataProvider } from '../../../types/UmeeProtocolDataProvider';
 import { MintableERC20 } from '../../../types/MintableERC20';
-import { AToken } from '../../../types/AToken';
+import { UToken } from '../../../types/UToken';
 import { LendingPoolConfigurator } from '../../../types/LendingPoolConfigurator';
 
 import chai from 'chai';
@@ -55,13 +55,13 @@ export interface TestEnv {
   pool: LendingPool;
   configurator: LendingPoolConfigurator;
   oracle: PriceOracle;
-  helpersContract: AaveProtocolDataProvider;
+  helpersContract: UmeeProtocolDataProvider;
   weth: WETH9Mocked;
-  aWETH: AToken;
+  aWETH: UToken;
   dai: MintableERC20;
-  aDai: AToken;
+  aDai: UToken;
   usdc: MintableERC20;
-  aave: MintableERC20;
+  umee: MintableERC20;
   addressesProvider: LendingPoolAddressesProvider;
   uniswapLiquiditySwapAdapter: UniswapLiquiditySwapAdapter;
   uniswapRepayAdapter: UniswapRepayAdapter;
@@ -80,14 +80,14 @@ const testEnv: TestEnv = {
   users: [] as SignerWithAddress[],
   pool: {} as LendingPool,
   configurator: {} as LendingPoolConfigurator,
-  helpersContract: {} as AaveProtocolDataProvider,
+  helpersContract: {} as UmeeProtocolDataProvider,
   oracle: {} as PriceOracle,
   weth: {} as WETH9Mocked,
-  aWETH: {} as AToken,
+  aWETH: {} as UToken,
   dai: {} as MintableERC20,
-  aDai: {} as AToken,
+  aDai: {} as UToken,
   usdc: {} as MintableERC20,
-  aave: {} as MintableERC20,
+  umee: {} as MintableERC20,
   addressesProvider: {} as LendingPoolAddressesProvider,
   uniswapLiquiditySwapAdapter: {} as UniswapLiquiditySwapAdapter,
   uniswapRepayAdapter: {} as UniswapRepayAdapter,
@@ -125,33 +125,33 @@ export async function initializeMakeSuite() {
     testEnv.oracle = await getPriceOracle();
   }
 
-  testEnv.helpersContract = await getAaveProtocolDataProvider();
+  testEnv.helpersContract = await getUmeeProtocolDataProvider();
 
-  const allTokens = await testEnv.helpersContract.getAllATokens();
-  const aDaiAddress = allTokens.find((aToken) => aToken.symbol === 'aAmmDAI')?.tokenAddress;
+  const allTokens = await testEnv.helpersContract.getAllUTokens();
+  const aDaiAddress = allTokens.find((uToken) => uToken.symbol === 'aAmmDAI')?.tokenAddress;
 
-  const aWEthAddress = allTokens.find((aToken) => aToken.symbol === 'aAmmWETH')?.tokenAddress;
+  const aWEthAddress = allTokens.find((uToken) => uToken.symbol === 'aAmmWETH')?.tokenAddress;
 
   const reservesTokens = await testEnv.helpersContract.getAllReservesTokens();
 
   const daiAddress = reservesTokens.find((token) => token.symbol === 'DAI')?.tokenAddress;
   const usdcAddress = reservesTokens.find((token) => token.symbol === 'USDC')?.tokenAddress;
-  const aaveAddress = reservesTokens.find((token) => token.symbol === 'UniAAVEWETH')?.tokenAddress;
+  const umeeAddress = reservesTokens.find((token) => token.symbol === 'UniUMEEWETH')?.tokenAddress;
   const wethAddress = reservesTokens.find((token) => token.symbol === 'WETH')?.tokenAddress;
 
   if (!aDaiAddress || !aWEthAddress) {
     process.exit(1);
   }
-  if (!daiAddress || !usdcAddress || !aaveAddress || !wethAddress) {
+  if (!daiAddress || !usdcAddress || !umeeAddress || !wethAddress) {
     process.exit(1);
   }
 
-  testEnv.aDai = await getAToken(aDaiAddress);
-  testEnv.aWETH = await getAToken(aWEthAddress);
+  testEnv.aDai = await getUToken(aDaiAddress);
+  testEnv.aWETH = await getUToken(aWEthAddress);
 
   testEnv.dai = await getMintableERC20(daiAddress);
   testEnv.usdc = await getMintableERC20(usdcAddress);
-  testEnv.aave = await getMintableERC20(aaveAddress);
+  testEnv.umee = await getMintableERC20(umeeAddress);
   testEnv.weth = await getWETHMocked(wethAddress);
   testEnv.wethGateway = await getWETHGateway();
 

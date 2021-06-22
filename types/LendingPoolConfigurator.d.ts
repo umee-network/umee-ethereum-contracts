@@ -36,8 +36,8 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
     "setReserveFactor(address,uint256)": FunctionFragment;
     "setReserveInterestRateStrategyAddress(address,address)": FunctionFragment;
     "unfreezeReserve(address)": FunctionFragment;
-    "updateAToken(tuple)": FunctionFragment;
     "updateStableDebtToken(tuple)": FunctionFragment;
+    "updateUToken(tuple)": FunctionFragment;
     "updateVariableDebtToken(tuple)": FunctionFragment;
   };
 
@@ -49,7 +49,7 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
     functionFragment: "batchInitReserve",
     values: [
       {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -58,8 +58,8 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -114,11 +114,10 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "updateAToken",
+    functionFragment: "updateStableDebtToken",
     values: [
       {
         asset: string;
-        treasury: string;
         incentivesController: string;
         name: string;
         symbol: string;
@@ -128,10 +127,11 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
     ]
   ): string;
   encodeFunctionData(
-    functionFragment: "updateStableDebtToken",
+    functionFragment: "updateUToken",
     values: [
       {
         asset: string;
+        treasury: string;
         incentivesController: string;
         name: string;
         symbol: string;
@@ -208,11 +208,11 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "updateAToken",
+    functionFragment: "updateStableDebtToken",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "updateStableDebtToken",
+    functionFragment: "updateUToken",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -221,7 +221,6 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
   ): Result;
 
   events: {
-    "ATokenUpgraded(address,address,address)": EventFragment;
     "BorrowingDisabledOnReserve(address)": EventFragment;
     "BorrowingEnabledOnReserve(address,bool)": EventFragment;
     "CollateralConfigurationChanged(address,uint256,uint256,uint256)": EventFragment;
@@ -236,10 +235,10 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
     "StableDebtTokenUpgraded(address,address,address)": EventFragment;
     "StableRateDisabledOnReserve(address)": EventFragment;
     "StableRateEnabledOnReserve(address)": EventFragment;
+    "UTokenUpgraded(address,address,address)": EventFragment;
     "VariableDebtTokenUpgraded(address,address,address)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "ATokenUpgraded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "BorrowingDisabledOnReserve"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "BorrowingEnabledOnReserve"): EventFragment;
   getEvent(
@@ -260,6 +259,7 @@ interface LendingPoolConfiguratorInterface extends ethers.utils.Interface {
     nameOrSignatureOrTopic: "StableRateDisabledOnReserve"
   ): EventFragment;
   getEvent(nameOrSignatureOrTopic: "StableRateEnabledOnReserve"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "UTokenUpgraded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "VariableDebtTokenUpgraded"): EventFragment;
 }
 
@@ -289,7 +289,7 @@ export class LendingPoolConfigurator extends Contract {
 
     batchInitReserve(
       input: {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -298,8 +298,8 @@ export class LendingPoolConfigurator extends Contract {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -311,7 +311,7 @@ export class LendingPoolConfigurator extends Contract {
 
     "batchInitReserve(tuple[])"(
       input: {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -320,8 +320,8 @@ export class LendingPoolConfigurator extends Contract {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -463,32 +463,6 @@ export class LendingPoolConfigurator extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    updateAToken(
-      input: {
-        asset: string;
-        treasury: string;
-        incentivesController: string;
-        name: string;
-        symbol: string;
-        implementation: string;
-        params: BytesLike;
-      },
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
-    "updateAToken((address,address,address,string,string,address,bytes))"(
-      input: {
-        asset: string;
-        treasury: string;
-        incentivesController: string;
-        name: string;
-        symbol: string;
-        implementation: string;
-        params: BytesLike;
-      },
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
     updateStableDebtToken(
       input: {
         asset: string;
@@ -504,6 +478,32 @@ export class LendingPoolConfigurator extends Contract {
     "updateStableDebtToken((address,address,string,string,address,bytes))"(
       input: {
         asset: string;
+        incentivesController: string;
+        name: string;
+        symbol: string;
+        implementation: string;
+        params: BytesLike;
+      },
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    updateUToken(
+      input: {
+        asset: string;
+        treasury: string;
+        incentivesController: string;
+        name: string;
+        symbol: string;
+        implementation: string;
+        params: BytesLike;
+      },
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "updateUToken((address,address,address,string,string,address,bytes))"(
+      input: {
+        asset: string;
+        treasury: string;
         incentivesController: string;
         name: string;
         symbol: string;
@@ -550,7 +550,7 @@ export class LendingPoolConfigurator extends Contract {
 
   batchInitReserve(
     input: {
-      aTokenImpl: string;
+      uTokenImpl: string;
       stableDebtTokenImpl: string;
       variableDebtTokenImpl: string;
       underlyingAssetDecimals: BigNumberish;
@@ -559,8 +559,8 @@ export class LendingPoolConfigurator extends Contract {
       treasury: string;
       incentivesController: string;
       underlyingAssetName: string;
-      aTokenName: string;
-      aTokenSymbol: string;
+      uTokenName: string;
+      uTokenSymbol: string;
       variableDebtTokenName: string;
       variableDebtTokenSymbol: string;
       stableDebtTokenName: string;
@@ -572,7 +572,7 @@ export class LendingPoolConfigurator extends Contract {
 
   "batchInitReserve(tuple[])"(
     input: {
-      aTokenImpl: string;
+      uTokenImpl: string;
       stableDebtTokenImpl: string;
       variableDebtTokenImpl: string;
       underlyingAssetDecimals: BigNumberish;
@@ -581,8 +581,8 @@ export class LendingPoolConfigurator extends Contract {
       treasury: string;
       incentivesController: string;
       underlyingAssetName: string;
-      aTokenName: string;
-      aTokenSymbol: string;
+      uTokenName: string;
+      uTokenSymbol: string;
       variableDebtTokenName: string;
       variableDebtTokenSymbol: string;
       stableDebtTokenName: string;
@@ -724,32 +724,6 @@ export class LendingPoolConfigurator extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  updateAToken(
-    input: {
-      asset: string;
-      treasury: string;
-      incentivesController: string;
-      name: string;
-      symbol: string;
-      implementation: string;
-      params: BytesLike;
-    },
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
-  "updateAToken((address,address,address,string,string,address,bytes))"(
-    input: {
-      asset: string;
-      treasury: string;
-      incentivesController: string;
-      name: string;
-      symbol: string;
-      implementation: string;
-      params: BytesLike;
-    },
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
   updateStableDebtToken(
     input: {
       asset: string;
@@ -765,6 +739,32 @@ export class LendingPoolConfigurator extends Contract {
   "updateStableDebtToken((address,address,string,string,address,bytes))"(
     input: {
       asset: string;
+      incentivesController: string;
+      name: string;
+      symbol: string;
+      implementation: string;
+      params: BytesLike;
+    },
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  updateUToken(
+    input: {
+      asset: string;
+      treasury: string;
+      incentivesController: string;
+      name: string;
+      symbol: string;
+      implementation: string;
+      params: BytesLike;
+    },
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "updateUToken((address,address,address,string,string,address,bytes))"(
+    input: {
+      asset: string;
+      treasury: string;
       incentivesController: string;
       name: string;
       symbol: string;
@@ -808,7 +808,7 @@ export class LendingPoolConfigurator extends Contract {
 
     batchInitReserve(
       input: {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -817,8 +817,8 @@ export class LendingPoolConfigurator extends Contract {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -830,7 +830,7 @@ export class LendingPoolConfigurator extends Contract {
 
     "batchInitReserve(tuple[])"(
       input: {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -839,8 +839,8 @@ export class LendingPoolConfigurator extends Contract {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -967,32 +967,6 @@ export class LendingPoolConfigurator extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    updateAToken(
-      input: {
-        asset: string;
-        treasury: string;
-        incentivesController: string;
-        name: string;
-        symbol: string;
-        implementation: string;
-        params: BytesLike;
-      },
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    "updateAToken((address,address,address,string,string,address,bytes))"(
-      input: {
-        asset: string;
-        treasury: string;
-        incentivesController: string;
-        name: string;
-        symbol: string;
-        implementation: string;
-        params: BytesLike;
-      },
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     updateStableDebtToken(
       input: {
         asset: string;
@@ -1008,6 +982,32 @@ export class LendingPoolConfigurator extends Contract {
     "updateStableDebtToken((address,address,string,string,address,bytes))"(
       input: {
         asset: string;
+        incentivesController: string;
+        name: string;
+        symbol: string;
+        implementation: string;
+        params: BytesLike;
+      },
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    updateUToken(
+      input: {
+        asset: string;
+        treasury: string;
+        incentivesController: string;
+        name: string;
+        symbol: string;
+        implementation: string;
+        params: BytesLike;
+      },
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "updateUToken((address,address,address,string,string,address,bytes))"(
+      input: {
+        asset: string;
+        treasury: string;
         incentivesController: string;
         name: string;
         symbol: string;
@@ -1043,12 +1043,6 @@ export class LendingPoolConfigurator extends Contract {
   };
 
   filters: {
-    ATokenUpgraded(
-      asset: string | null,
-      proxy: string | null,
-      implementation: string | null
-    ): EventFilter;
-
     BorrowingDisabledOnReserve(asset: string | null): EventFilter;
 
     BorrowingEnabledOnReserve(
@@ -1075,7 +1069,7 @@ export class LendingPoolConfigurator extends Contract {
 
     ReserveInitialized(
       asset: string | null,
-      aToken: string | null,
+      uToken: string | null,
       stableDebtToken: null,
       variableDebtToken: null,
       interestRateStrategyAddress: null
@@ -1098,6 +1092,12 @@ export class LendingPoolConfigurator extends Contract {
 
     StableRateEnabledOnReserve(asset: string | null): EventFilter;
 
+    UTokenUpgraded(
+      asset: string | null,
+      proxy: string | null,
+      implementation: string | null
+    ): EventFilter;
+
     VariableDebtTokenUpgraded(
       asset: string | null,
       proxy: string | null,
@@ -1115,7 +1115,7 @@ export class LendingPoolConfigurator extends Contract {
 
     batchInitReserve(
       input: {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -1124,8 +1124,8 @@ export class LendingPoolConfigurator extends Contract {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -1137,7 +1137,7 @@ export class LendingPoolConfigurator extends Contract {
 
     "batchInitReserve(tuple[])"(
       input: {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -1146,8 +1146,8 @@ export class LendingPoolConfigurator extends Contract {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -1274,32 +1274,6 @@ export class LendingPoolConfigurator extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    updateAToken(
-      input: {
-        asset: string;
-        treasury: string;
-        incentivesController: string;
-        name: string;
-        symbol: string;
-        implementation: string;
-        params: BytesLike;
-      },
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
-    "updateAToken((address,address,address,string,string,address,bytes))"(
-      input: {
-        asset: string;
-        treasury: string;
-        incentivesController: string;
-        name: string;
-        symbol: string;
-        implementation: string;
-        params: BytesLike;
-      },
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
     updateStableDebtToken(
       input: {
         asset: string;
@@ -1315,6 +1289,32 @@ export class LendingPoolConfigurator extends Contract {
     "updateStableDebtToken((address,address,string,string,address,bytes))"(
       input: {
         asset: string;
+        incentivesController: string;
+        name: string;
+        symbol: string;
+        implementation: string;
+        params: BytesLike;
+      },
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    updateUToken(
+      input: {
+        asset: string;
+        treasury: string;
+        incentivesController: string;
+        name: string;
+        symbol: string;
+        implementation: string;
+        params: BytesLike;
+      },
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "updateUToken((address,address,address,string,string,address,bytes))"(
+      input: {
+        asset: string;
+        treasury: string;
         incentivesController: string;
         name: string;
         symbol: string;
@@ -1362,7 +1362,7 @@ export class LendingPoolConfigurator extends Contract {
 
     batchInitReserve(
       input: {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -1371,8 +1371,8 @@ export class LendingPoolConfigurator extends Contract {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -1384,7 +1384,7 @@ export class LendingPoolConfigurator extends Contract {
 
     "batchInitReserve(tuple[])"(
       input: {
-        aTokenImpl: string;
+        uTokenImpl: string;
         stableDebtTokenImpl: string;
         variableDebtTokenImpl: string;
         underlyingAssetDecimals: BigNumberish;
@@ -1393,8 +1393,8 @@ export class LendingPoolConfigurator extends Contract {
         treasury: string;
         incentivesController: string;
         underlyingAssetName: string;
-        aTokenName: string;
-        aTokenSymbol: string;
+        uTokenName: string;
+        uTokenSymbol: string;
         variableDebtTokenName: string;
         variableDebtTokenSymbol: string;
         stableDebtTokenName: string;
@@ -1536,32 +1536,6 @@ export class LendingPoolConfigurator extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    updateAToken(
-      input: {
-        asset: string;
-        treasury: string;
-        incentivesController: string;
-        name: string;
-        symbol: string;
-        implementation: string;
-        params: BytesLike;
-      },
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
-    "updateAToken((address,address,address,string,string,address,bytes))"(
-      input: {
-        asset: string;
-        treasury: string;
-        incentivesController: string;
-        name: string;
-        symbol: string;
-        implementation: string;
-        params: BytesLike;
-      },
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
     updateStableDebtToken(
       input: {
         asset: string;
@@ -1577,6 +1551,32 @@ export class LendingPoolConfigurator extends Contract {
     "updateStableDebtToken((address,address,string,string,address,bytes))"(
       input: {
         asset: string;
+        incentivesController: string;
+        name: string;
+        symbol: string;
+        implementation: string;
+        params: BytesLike;
+      },
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    updateUToken(
+      input: {
+        asset: string;
+        treasury: string;
+        incentivesController: string;
+        name: string;
+        symbol: string;
+        implementation: string;
+        params: BytesLike;
+      },
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "updateUToken((address,address,address,string,string,address,bytes))"(
+      input: {
+        asset: string;
+        treasury: string;
         incentivesController: string;
         name: string;
         symbol: string;

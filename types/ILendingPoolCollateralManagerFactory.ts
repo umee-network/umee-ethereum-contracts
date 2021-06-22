@@ -63,7 +63,7 @@ const _abi = [
       {
         indexed: false,
         internalType: "bool",
-        name: "receiveAToken",
+        name: "receiveUToken",
         type: "bool",
       },
     ],
@@ -132,7 +132,7 @@ const _abi = [
       },
       {
         internalType: "bool",
-        name: "receiveAToken",
+        name: "receiveUToken",
         type: "bool",
       },
     ],

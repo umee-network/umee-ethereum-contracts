@@ -1,9 +1,9 @@
 import { task } from 'hardhat/config';
 import { eEthereumNetwork } from '../../helpers/types';
 import { getTreasuryAddress } from '../../helpers/configuration';
-import * as marketConfigs from '../../markets/aave';
-import * as reserveConfigs from '../../markets/aave/reservesConfigs';
-import { chooseATokenDeployment } from '../../helpers/init-helpers';
+import * as marketConfigs from '../../markets/umee';
+import * as reserveConfigs from '../../markets/umee/reservesConfigs';
+import { chooseUTokenDeployment } from '../../helpers/init-helpers';
 import { getLendingPoolAddressesProvider } from './../../helpers/contracts-getters';
 import {
   deployDefaultReserveInterestRateStrategy,
@@ -20,8 +20,8 @@ const LENDING_POOL_ADDRESS_PROVIDER = {
 
 const isSymbolValid = (symbol: string, network: eEthereumNetwork) =>
   Object.keys(reserveConfigs).includes('strategy' + symbol) &&
-  marketConfigs.AaveConfig.ReserveAssets[network][symbol] &&
-  marketConfigs.AaveConfig.ReservesConfig[symbol] === reserveConfigs['strategy' + symbol];
+  marketConfigs.UmeeConfig.ReserveAssets[network][symbol] &&
+  marketConfigs.UmeeConfig.ReservesConfig[symbol] === reserveConfigs['strategy' + symbol];
 
 task('external:deploy-new-asset', 'Deploy A token, Debt Tokens, Risk Parameters')
   .addParam('symbol', `Asset symbol, needs to have configuration ready`)
@@ -33,28 +33,28 @@ task('external:deploy-new-asset', 'Deploy A token, Debt Tokens, Risk Parameters'
         `
 WRONG RESERVE ASSET SETUP:
         The symbol ${symbol} has no reserve Config and/or reserve Asset setup.
-        update /markets/aave/index.ts and add the asset address for ${network} network
-        update /markets/aave/reservesConfigs.ts and add parameters for ${symbol}
+        update /markets/umee/index.ts and add the asset address for ${network} network
+        update /markets/umee/reservesConfigs.ts and add parameters for ${symbol}
         `
       );
     }
     setDRE(localBRE);
     const strategyParams = reserveConfigs['strategy' + symbol];
     const reserveAssetAddress =
-      marketConfigs.AaveConfig.ReserveAssets[localBRE.network.name][symbol];
-    const deployCustomAToken = chooseATokenDeployment(strategyParams.aTokenImpl);
+      marketConfigs.UmeeConfig.ReserveAssets[localBRE.network.name][symbol];
+    const deployCustomUToken = chooseUTokenDeployment(strategyParams.uTokenImpl);
     const addressProvider = await getLendingPoolAddressesProvider(
       LENDING_POOL_ADDRESS_PROVIDER[network]
     );
     const poolAddress = await addressProvider.getLendingPool();
-    const treasuryAddress = await getTreasuryAddress(marketConfigs.AaveConfig);
-    const aToken = await deployCustomAToken(
+    const treasuryAddress = await getTreasuryAddress(marketConfigs.UmeeConfig);
+    const uToken = await deployCustomUToken(
       [
         poolAddress,
         reserveAssetAddress,
         treasuryAddress,
         ZERO_ADDRESS, // Incentives Controller
-        `Aave interest bearing ${symbol}`,
+        `Umee interest bearing ${symbol}`,
         `a${symbol}`,
       ],
       verify
@@ -64,7 +64,7 @@ WRONG RESERVE ASSET SETUP:
         poolAddress,
         reserveAssetAddress,
         ZERO_ADDRESS, // Incentives Controller
-        `Aave stable debt bearing ${symbol}`,
+        `Umee stable debt bearing ${symbol}`,
         `stableDebt${symbol}`,
       ],
       verify
@@ -74,7 +74,7 @@ WRONG RESERVE ASSET SETUP:
         poolAddress,
         reserveAssetAddress,
         ZERO_ADDRESS, // Incentives Controller
-        `Aave variable debt bearing ${symbol}`,
+        `Umee variable debt bearing ${symbol}`,
         `variableDebt${symbol}`,
       ],
       verify
@@ -93,7 +93,7 @@ WRONG RESERVE ASSET SETUP:
     );
     console.log(`
     New interest bearing asset deployed on ${network}:
-    Interest bearing a${symbol} address: ${aToken.address}
+    Interest bearing a${symbol} address: ${uToken.address}
     Variable Debt variableDebt${symbol} address: ${variableDebt.address}
     Stable Debt stableDebt${symbol} address: ${stableDebt.address}
     Strategy Implementation for ${symbol} address: ${rates.address}

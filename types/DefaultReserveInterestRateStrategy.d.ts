@@ -176,7 +176,7 @@ export class DefaultReserveInterestRateStrategy extends Contract {
 
     "calculateInterestRates(address,address,uint256,uint256,uint256,uint256,uint256,uint256)"(
       reserve: string,
-      aToken: string,
+      uToken: string,
       liquidityAdded: BigNumberish,
       liquidityTaken: BigNumberish,
       totalStableDebt: BigNumberish,
@@ -263,7 +263,7 @@ export class DefaultReserveInterestRateStrategy extends Contract {
 
   "calculateInterestRates(address,address,uint256,uint256,uint256,uint256,uint256,uint256)"(
     reserve: string,
-    aToken: string,
+    uToken: string,
     liquidityAdded: BigNumberish,
     liquidityTaken: BigNumberish,
     totalStableDebt: BigNumberish,
@@ -330,7 +330,7 @@ export class DefaultReserveInterestRateStrategy extends Contract {
 
     "calculateInterestRates(address,address,uint256,uint256,uint256,uint256,uint256,uint256)"(
       reserve: string,
-      aToken: string,
+      uToken: string,
       liquidityAdded: BigNumberish,
       liquidityTaken: BigNumberish,
       totalStableDebt: BigNumberish,
@@ -400,7 +400,7 @@ export class DefaultReserveInterestRateStrategy extends Contract {
 
     "calculateInterestRates(address,address,uint256,uint256,uint256,uint256,uint256,uint256)"(
       reserve: string,
-      aToken: string,
+      uToken: string,
       liquidityAdded: BigNumberish,
       liquidityTaken: BigNumberish,
       totalStableDebt: BigNumberish,
@@ -474,7 +474,7 @@ export class DefaultReserveInterestRateStrategy extends Contract {
 
     "calculateInterestRates(address,address,uint256,uint256,uint256,uint256,uint256,uint256)"(
       reserve: string,
-      aToken: string,
+      uToken: string,
       liquidityAdded: BigNumberish,
       liquidityTaken: BigNumberish,
       totalStableDebt: BigNumberish,

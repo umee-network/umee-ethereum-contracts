@@ -105,7 +105,7 @@ export class UiPoolDataProvider extends Contract {
         variableBorrowRate: BigNumber;
         stableBorrowRate: BigNumber;
         lastUpdateTimestamp: number;
-        aTokenAddress: string;
+        uTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
         interestRateStrategyAddress: string;
@@ -125,7 +125,7 @@ export class UiPoolDataProvider extends Contract {
         aIncentivesLastUpdateTimestamp: BigNumber;
         vIncentivesLastUpdateTimestamp: BigNumber;
         sIncentivesLastUpdateTimestamp: BigNumber;
-        aTokenIncentivesIndex: BigNumber;
+        uTokenIncentivesIndex: BigNumber;
         vTokenIncentivesIndex: BigNumber;
         sTokenIncentivesIndex: BigNumber;
         0: string;
@@ -173,13 +173,13 @@ export class UiPoolDataProvider extends Contract {
       }[];
       1: {
         underlyingAsset: string;
-        scaledATokenBalance: BigNumber;
+        scaledUTokenBalance: BigNumber;
         usageAsCollateralEnabledOnUser: boolean;
         stableBorrowRate: BigNumber;
         scaledVariableDebt: BigNumber;
         principalStableDebt: BigNumber;
         stableBorrowLastUpdateTimestamp: BigNumber;
-        aTokenincentivesUserIndex: BigNumber;
+        uTokenincentivesUserIndex: BigNumber;
         vTokenincentivesUserIndex: BigNumber;
         sTokenincentivesUserIndex: BigNumber;
         0: string;
@@ -222,7 +222,7 @@ export class UiPoolDataProvider extends Contract {
         variableBorrowRate: BigNumber;
         stableBorrowRate: BigNumber;
         lastUpdateTimestamp: number;
-        aTokenAddress: string;
+        uTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
         interestRateStrategyAddress: string;
@@ -242,7 +242,7 @@ export class UiPoolDataProvider extends Contract {
         aIncentivesLastUpdateTimestamp: BigNumber;
         vIncentivesLastUpdateTimestamp: BigNumber;
         sIncentivesLastUpdateTimestamp: BigNumber;
-        aTokenIncentivesIndex: BigNumber;
+        uTokenIncentivesIndex: BigNumber;
         vTokenIncentivesIndex: BigNumber;
         sTokenIncentivesIndex: BigNumber;
         0: string;
@@ -290,13 +290,13 @@ export class UiPoolDataProvider extends Contract {
       }[];
       1: {
         underlyingAsset: string;
-        scaledATokenBalance: BigNumber;
+        scaledUTokenBalance: BigNumber;
         usageAsCollateralEnabledOnUser: boolean;
         stableBorrowRate: BigNumber;
         scaledVariableDebt: BigNumber;
         principalStableDebt: BigNumber;
         stableBorrowLastUpdateTimestamp: BigNumber;
-        aTokenincentivesUserIndex: BigNumber;
+        uTokenincentivesUserIndex: BigNumber;
         vTokenincentivesUserIndex: BigNumber;
         sTokenincentivesUserIndex: BigNumber;
         0: string;
@@ -360,7 +360,7 @@ export class UiPoolDataProvider extends Contract {
       variableBorrowRate: BigNumber;
       stableBorrowRate: BigNumber;
       lastUpdateTimestamp: number;
-      aTokenAddress: string;
+      uTokenAddress: string;
       stableDebtTokenAddress: string;
       variableDebtTokenAddress: string;
       interestRateStrategyAddress: string;
@@ -380,7 +380,7 @@ export class UiPoolDataProvider extends Contract {
       aIncentivesLastUpdateTimestamp: BigNumber;
       vIncentivesLastUpdateTimestamp: BigNumber;
       sIncentivesLastUpdateTimestamp: BigNumber;
-      aTokenIncentivesIndex: BigNumber;
+      uTokenIncentivesIndex: BigNumber;
       vTokenIncentivesIndex: BigNumber;
       sTokenIncentivesIndex: BigNumber;
       0: string;
@@ -428,13 +428,13 @@ export class UiPoolDataProvider extends Contract {
     }[];
     1: {
       underlyingAsset: string;
-      scaledATokenBalance: BigNumber;
+      scaledUTokenBalance: BigNumber;
       usageAsCollateralEnabledOnUser: boolean;
       stableBorrowRate: BigNumber;
       scaledVariableDebt: BigNumber;
       principalStableDebt: BigNumber;
       stableBorrowLastUpdateTimestamp: BigNumber;
-      aTokenincentivesUserIndex: BigNumber;
+      uTokenincentivesUserIndex: BigNumber;
       vTokenincentivesUserIndex: BigNumber;
       sTokenincentivesUserIndex: BigNumber;
       0: string;
@@ -477,7 +477,7 @@ export class UiPoolDataProvider extends Contract {
       variableBorrowRate: BigNumber;
       stableBorrowRate: BigNumber;
       lastUpdateTimestamp: number;
-      aTokenAddress: string;
+      uTokenAddress: string;
       stableDebtTokenAddress: string;
       variableDebtTokenAddress: string;
       interestRateStrategyAddress: string;
@@ -497,7 +497,7 @@ export class UiPoolDataProvider extends Contract {
       aIncentivesLastUpdateTimestamp: BigNumber;
       vIncentivesLastUpdateTimestamp: BigNumber;
       sIncentivesLastUpdateTimestamp: BigNumber;
-      aTokenIncentivesIndex: BigNumber;
+      uTokenIncentivesIndex: BigNumber;
       vTokenIncentivesIndex: BigNumber;
       sTokenIncentivesIndex: BigNumber;
       0: string;
@@ -545,13 +545,13 @@ export class UiPoolDataProvider extends Contract {
     }[];
     1: {
       underlyingAsset: string;
-      scaledATokenBalance: BigNumber;
+      scaledUTokenBalance: BigNumber;
       usageAsCollateralEnabledOnUser: boolean;
       stableBorrowRate: BigNumber;
       scaledVariableDebt: BigNumber;
       principalStableDebt: BigNumber;
       stableBorrowLastUpdateTimestamp: BigNumber;
-      aTokenincentivesUserIndex: BigNumber;
+      uTokenincentivesUserIndex: BigNumber;
       vTokenincentivesUserIndex: BigNumber;
       sTokenincentivesUserIndex: BigNumber;
       0: string;
@@ -607,7 +607,7 @@ export class UiPoolDataProvider extends Contract {
         variableBorrowRate: BigNumber;
         stableBorrowRate: BigNumber;
         lastUpdateTimestamp: number;
-        aTokenAddress: string;
+        uTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
         interestRateStrategyAddress: string;
@@ -627,7 +627,7 @@ export class UiPoolDataProvider extends Contract {
         aIncentivesLastUpdateTimestamp: BigNumber;
         vIncentivesLastUpdateTimestamp: BigNumber;
         sIncentivesLastUpdateTimestamp: BigNumber;
-        aTokenIncentivesIndex: BigNumber;
+        uTokenIncentivesIndex: BigNumber;
         vTokenIncentivesIndex: BigNumber;
         sTokenIncentivesIndex: BigNumber;
         0: string;
@@ -675,13 +675,13 @@ export class UiPoolDataProvider extends Contract {
       }[];
       1: {
         underlyingAsset: string;
-        scaledATokenBalance: BigNumber;
+        scaledUTokenBalance: BigNumber;
         usageAsCollateralEnabledOnUser: boolean;
         stableBorrowRate: BigNumber;
         scaledVariableDebt: BigNumber;
         principalStableDebt: BigNumber;
         stableBorrowLastUpdateTimestamp: BigNumber;
-        aTokenincentivesUserIndex: BigNumber;
+        uTokenincentivesUserIndex: BigNumber;
         vTokenincentivesUserIndex: BigNumber;
         sTokenincentivesUserIndex: BigNumber;
         0: string;
@@ -724,7 +724,7 @@ export class UiPoolDataProvider extends Contract {
         variableBorrowRate: BigNumber;
         stableBorrowRate: BigNumber;
         lastUpdateTimestamp: number;
-        aTokenAddress: string;
+        uTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
         interestRateStrategyAddress: string;
@@ -744,7 +744,7 @@ export class UiPoolDataProvider extends Contract {
         aIncentivesLastUpdateTimestamp: BigNumber;
         vIncentivesLastUpdateTimestamp: BigNumber;
         sIncentivesLastUpdateTimestamp: BigNumber;
-        aTokenIncentivesIndex: BigNumber;
+        uTokenIncentivesIndex: BigNumber;
         vTokenIncentivesIndex: BigNumber;
         sTokenIncentivesIndex: BigNumber;
         0: string;
@@ -792,13 +792,13 @@ export class UiPoolDataProvider extends Contract {
       }[];
       1: {
         underlyingAsset: string;
-        scaledATokenBalance: BigNumber;
+        scaledUTokenBalance: BigNumber;
         usageAsCollateralEnabledOnUser: boolean;
         stableBorrowRate: BigNumber;
         scaledVariableDebt: BigNumber;
         principalStableDebt: BigNumber;
         stableBorrowLastUpdateTimestamp: BigNumber;
-        aTokenincentivesUserIndex: BigNumber;
+        uTokenincentivesUserIndex: BigNumber;
         vTokenincentivesUserIndex: BigNumber;
         sTokenincentivesUserIndex: BigNumber;
         0: string;

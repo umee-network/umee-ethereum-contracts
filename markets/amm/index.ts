@@ -31,7 +31,7 @@ import {
 
 export const AmmConfig: IAmmConfiguration = {
   ...CommonsConfig,
-  MarketId: 'Aave AMM market',
+  MarketId: 'Umee AMM market',
   ProviderId: 2,
   ReservesConfig: {
     WETH: strategyWETH,

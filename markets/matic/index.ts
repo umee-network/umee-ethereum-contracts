@@ -8,7 +8,7 @@ import {
   strategyWBTC,
   strategyWETH,
   strategyMATIC,
-  strategyAAVE,
+  strategyUMEE,
 } from './reservesConfigs';
 
 // ----------------
@@ -26,7 +26,7 @@ export const MaticConfig: IMaticConfiguration = {
     WBTC: strategyWBTC,
     WETH: strategyWETH,
     WMATIC: strategyMATIC,
-    AAVE: strategyAAVE,
+    AAVE: strategyUMEE,
   },
   ReserveAssets: {
     [ePolygonNetwork.matic]: {

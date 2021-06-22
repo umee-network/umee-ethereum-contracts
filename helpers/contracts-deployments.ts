@@ -4,7 +4,7 @@ import {
   tEthereumAddress,
   eContractid,
   tStringTokenSmallUnits,
-  AavePools,
+  UmeePools,
   TokenContractId,
   iMultiPoolsAssets,
   IReserveParams,
@@ -17,12 +17,12 @@ import { getReservesConfigByPool } from './configuration';
 import { getFirstSigner } from './contracts-getters';
 import { ZERO_ADDRESS } from './constants';
 import {
-  AaveProtocolDataProviderFactory,
-  ATokenFactory,
-  ATokensAndRatesHelperFactory,
-  AaveOracleFactory,
+  UmeeProtocolDataProviderFactory,
+  UTokenFactory,
+  UTokensAndRatesHelperFactory,
+  UmeeOracleFactory,
   DefaultReserveInterestRateStrategyFactory,
-  DelegationAwareATokenFactory,
+  DelegationAwareUTokenFactory,
   InitializableAdminUpgradeabilityProxyFactory,
   LendingPoolAddressesProviderFactory,
   LendingPoolAddressesProviderRegistryFactory,
@@ -33,7 +33,7 @@ import {
   MintableDelegationERC20Factory,
   MintableERC20Factory,
   MockAggregatorFactory,
-  MockATokenFactory,
+  MockUTokenFactory,
   MockFlashLoanReceiverFactory,
   MockStableDebtTokenFactory,
   MockVariableDebtTokenFactory,
@@ -66,11 +66,11 @@ import { LendingPoolLibraryAddresses } from '../types/LendingPoolFactory';
 import { UiPoolDataProvider } from '../types';
 
 export const deployUiPoolDataProvider = async (
-  [incentivesController, aaveOracle]: [tEthereumAddress, tEthereumAddress],
+  [incentivesController, umeeOracle]: [tEthereumAddress, tEthereumAddress],
   verify?: boolean
 ) => {
   const id = eContractid.UiPoolDataProvider;
-  const args: string[] = [incentivesController, aaveOracle];
+  const args: string[] = [incentivesController, umeeOracle];
   const instance = await deployContract<UiPoolDataProvider>(id, args);
   if (verify) {
     await verifyContract(id, instance, args);
@@ -167,7 +167,7 @@ export const deployValidationLogic = async (
   return withSaveAndVerify(validationLogic, eContractid.ValidationLogic, [], verify);
 };
 
-export const deployAaveLibraries = async (
+export const deployUmeeLibraries = async (
   verify?: boolean
 ): Promise<LendingPoolLibraryAddresses> => {
   const reserveLogic = await deployReserveLogicLibrary(verify);
@@ -192,7 +192,7 @@ export const deployAaveLibraries = async (
 };
 
 export const deployLendingPool = async (verify?: boolean) => {
-  const libraries = await deployAaveLibraries(verify);
+  const libraries = await deployUmeeLibraries(verify);
   const lendingPoolImpl = await new LendingPoolFactory(libraries, await getFirstSigner()).deploy();
   await insertContractAddressInDb(eContractid.LendingPoolImpl, lendingPoolImpl.address);
   return withSaveAndVerify(lendingPoolImpl, eContractid.LendingPool, [], verify);
@@ -222,13 +222,13 @@ export const deployMockAggregator = async (price: tStringTokenSmallUnits, verify
     verify
   );
 
-export const deployAaveOracle = async (
+export const deployUmeeOracle = async (
   args: [tEthereumAddress[], tEthereumAddress[], tEthereumAddress, tEthereumAddress],
   verify?: boolean
 ) =>
   withSaveAndVerify(
-    await new AaveOracleFactory(await getFirstSigner()).deploy(...args),
-    eContractid.AaveOracle,
+    await new UmeeOracleFactory(await getFirstSigner()).deploy(...args),
+    eContractid.UmeeOracle,
     args,
     verify
   );
@@ -276,13 +276,13 @@ export const deployWalletBalancerProvider = async (verify?: boolean) =>
     verify
   );
 
-export const deployAaveProtocolDataProvider = async (
+export const deployUmeeProtocolDataProvider = async (
   addressesProvider: tEthereumAddress,
   verify?: boolean
 ) =>
   withSaveAndVerify(
-    await new AaveProtocolDataProviderFactory(await getFirstSigner()).deploy(addressesProvider),
-    eContractid.AaveProtocolDataProvider,
+    await new UmeeProtocolDataProviderFactory(await getFirstSigner()).deploy(addressesProvider),
+    eContractid.UmeeProtocolDataProvider,
     [addressesProvider],
     verify
   );
@@ -367,7 +367,7 @@ export const deployGenericVariableDebtToken = async () =>
     false
   );
 
-export const deployGenericAToken = async (
+export const deployGenericUToken = async (
   [poolAddress, underlyingAssetAddress, treasuryAddress, incentivesController, name, symbol]: [
     tEthereumAddress,
     tEthereumAddress,
@@ -379,8 +379,8 @@ export const deployGenericAToken = async (
   verify: boolean
 ) => {
   const instance = await withSaveAndVerify(
-    await new ATokenFactory(await getFirstSigner()).deploy(),
-    eContractid.AToken,
+    await new UTokenFactory(await getFirstSigner()).deploy(),
+    eContractid.UToken,
     [],
     verify
   );
@@ -399,15 +399,15 @@ export const deployGenericAToken = async (
   return instance;
 };
 
-export const deployGenericATokenImpl = async (verify: boolean) =>
+export const deployGenericUTokenImpl = async (verify: boolean) =>
   withSaveAndVerify(
-    await new ATokenFactory(await getFirstSigner()).deploy(),
-    eContractid.AToken,
+    await new UTokenFactory(await getFirstSigner()).deploy(),
+    eContractid.UToken,
     [],
     verify
   );
 
-export const deployDelegationAwareAToken = async (
+export const deployDelegationAwareUToken = async (
   [pool, underlyingAssetAddress, treasuryAddress, incentivesController, name, symbol]: [
     tEthereumAddress,
     tEthereumAddress,
@@ -419,8 +419,8 @@ export const deployDelegationAwareAToken = async (
   verify: boolean
 ) => {
   const instance = await withSaveAndVerify(
-    await new DelegationAwareATokenFactory(await getFirstSigner()).deploy(),
-    eContractid.DelegationAwareAToken,
+    await new DelegationAwareUTokenFactory(await getFirstSigner()).deploy(),
+    eContractid.DelegationAwareUToken,
     [],
     verify
   );
@@ -439,10 +439,10 @@ export const deployDelegationAwareAToken = async (
   return instance;
 };
 
-export const deployDelegationAwareATokenImpl = async (verify: boolean) =>
+export const deployDelegationAwareUTokenImpl = async (verify: boolean) =>
   withSaveAndVerify(
-    await new DelegationAwareATokenFactory(await getFirstSigner()).deploy(),
-    eContractid.DelegationAwareAToken,
+    await new DelegationAwareUTokenFactory(await getFirstSigner()).deploy(),
+    eContractid.DelegationAwareUToken,
     [],
     verify
   );
@@ -450,7 +450,7 @@ export const deployDelegationAwareATokenImpl = async (verify: boolean) =>
 export const deployAllMockTokens = async (verify?: boolean) => {
   const tokens: { [symbol: string]: MockContract | MintableERC20 } = {};
 
-  const protoConfigData = getReservesConfigByPool(AavePools.proto);
+  const protoConfigData = getReservesConfigByPool(UmeePools.proto);
 
   for (const tokenSymbol of Object.keys(TokenContractId)) {
     let decimals = '18';
@@ -498,13 +498,13 @@ export const deployStableAndVariableTokensHelper = async (
     verify
   );
 
-export const deployATokensAndRatesHelper = async (
+export const deployUTokensAndRatesHelper = async (
   args: [tEthereumAddress, tEthereumAddress, tEthereumAddress],
   verify?: boolean
 ) =>
   withSaveAndVerify(
-    await new ATokensAndRatesHelperFactory(await getFirstSigner()).deploy(...args),
-    eContractid.ATokensAndRatesHelper,
+    await new UTokensAndRatesHelperFactory(await getFirstSigner()).deploy(...args),
+    eContractid.UTokensAndRatesHelper,
     args,
     verify
   );
@@ -565,7 +565,7 @@ export const deployMockVariableDebtToken = async (
   return instance;
 };
 
-export const deployMockAToken = async (
+export const deployMockUToken = async (
   args: [
     tEthereumAddress,
     tEthereumAddress,
@@ -578,8 +578,8 @@ export const deployMockAToken = async (
   verify?: boolean
 ) => {
   const instance = await withSaveAndVerify(
-    await new MockATokenFactory(await getFirstSigner()).deploy(),
-    eContractid.MockAToken,
+    await new MockUTokenFactory(await getFirstSigner()).deploy(),
+    eContractid.MockUToken,
     [],
     verify
   );

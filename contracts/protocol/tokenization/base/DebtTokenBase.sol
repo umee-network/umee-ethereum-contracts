@@ -5,14 +5,14 @@ import {ILendingPool} from '../../../interfaces/ILendingPool.sol';
 import {ICreditDelegationToken} from '../../../interfaces/ICreditDelegationToken.sol';
 import {
   VersionedInitializable
-} from '../../libraries/aave-upgradeability/VersionedInitializable.sol';
+} from '../../libraries/umee-upgradeability/VersionedInitializable.sol';
 import {IncentivizedERC20} from '../IncentivizedERC20.sol';
 import {Errors} from '../../libraries/helpers/Errors.sol';
 
 /**
  * @title DebtTokenBase
  * @notice Base contract for different types of debt tokens, like StableDebtToken or VariableDebtToken
- * @author Aave
+ * @author Umee
  */
 
 abstract contract DebtTokenBase is

@@ -27,10 +27,13 @@ export const APPROVAL_AMOUNT_LENDING_POOL = '1000000000000000000000000000';
 export const TOKEN_DISTRIBUTOR_PERCENTAGE_BASE = '10000';
 export const MOCK_USD_PRICE_IN_WEI = '5848466240000000';
 export const USD_ADDRESS = '0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96';
-export const AAVE_REFERRAL = '0';
+export const UMEE_REFERRAL = '0';
 
+// TODO: 
 export const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   AAVE: oneEther.multipliedBy('0.003620948469').toFixed(),
+  //UMEE: oneEther.multipliedBy('0.003620948469').toFixed(),
+  ATOM: oneEther.multipliedBy('0.00560147731').toFixed(), // ATOM to ETH ratio as of June 18th, 2021
   BAT: oneEther.multipliedBy('0.00137893825230').toFixed(),
   BUSD: oneEther.multipliedBy('0.00736484').toFixed(),
   DAI: oneEther.multipliedBy('0.00369068412860').toFixed(),
@@ -53,6 +56,7 @@ export const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   UniDAIWETH: oneEther.multipliedBy('22.407436').toFixed(),
   UniWBTCWETH: oneEther.multipliedBy('22.407436').toFixed(),
   UniAAVEWETH: oneEther.multipliedBy('0.003620948469').toFixed(),
+  //UniUMEEWETH: oneEther.multipliedBy('0.003620948469').toFixed(),
   UniBATWETH: oneEther.multipliedBy('22.407436').toFixed(),
   UniDAIUSDC: oneEther.multipliedBy('22.407436').toFixed(),
   UniCRVWETH: oneEther.multipliedBy('22.407436').toFixed(),

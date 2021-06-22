@@ -36,7 +36,7 @@ export const UmeeConfig: IUmeeConfiguration = {
   ...CommonsConfig,
   MarketId: 'Umee genesis market',
   ProviderId: 1,
-  ReservesConfig: { // TODO: Add ATOM + UMEE strat
+  ReservesConfig: { // TODO: Add UMEE strat
     AAVE: strategyAAVE,
     //UMEE: strategyUMEE,
     ATOM: strategyATOM,

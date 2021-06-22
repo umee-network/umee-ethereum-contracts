@@ -114,9 +114,9 @@ export const strategyAAVE: IReserveParams = {
 // TODO: Figure out the Strategy for ATOM Token
 export const strategyATOM: IReserveParams = {
   strategy: rateStrategyATOM,
-  baseLTVAsCollateral: '5000',
-  liquidationThreshold: '6500',
-  liquidationBonus: '11000',
+  baseLTVAsCollateral: '8000',
+  liquidationThreshold: '8200',
+  liquidationBonus: '10500',
   borrowingEnabled: false,
   stableBorrowRateEnabled: false,
   reserveDecimals: '18',

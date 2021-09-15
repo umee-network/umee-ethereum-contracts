@@ -224,6 +224,7 @@ export interface iAssetBase<T> {
   ENJ: T;
   UniDAIWETH: T;
   UniWBTCWETH: T;
+  UniATOMWETH: T;
   UniAAVEWETH: T;
   UniBATWETH: T;
   UniDAIUSDC: T;
@@ -296,6 +297,7 @@ export type iLpPoolAssets<T> = Pick<
   | 'UniUSDCWETH'
   | 'UniWBTCUSDC'
   | 'UniYFIWETH'
+  | 'UniATOMWETH'
   | 'BptWBTCWETH'
   | 'BptBALWETH'
 >;
@@ -320,7 +322,7 @@ export type iAssetAggregatorBase<T> = iAssetsWithoutETH<T>;
 export enum TokenContractId {
   DAI = 'DAI',
   AAVE = 'AAVE',
-  //ATOM = 'ATOM',
+  ATOM = 'ATOM',
   TUSD = 'TUSD',
   BAT = 'BAT',
   WETH = 'WETH',
@@ -342,7 +344,7 @@ export enum TokenContractId {
   ENJ = 'ENJ',
   UniDAIWETH = 'UniDAIWETH',
   UniWBTCWETH = 'UniWBTCWETH',
-  //UniUMEEWETH = 'UniUMEEWETH',
+  UniATOMWETH = 'UniATOMWETH',
   UniAAVEWETH = 'UniAAVEWETH',
   UniBATWETH = 'UniBATWETH',
   UniDAIUSDC = 'UniDAIUSDC',

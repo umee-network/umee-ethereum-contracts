@@ -10,6 +10,7 @@ import { getUserData } from './helpers/utils/helpers';
 import { CommonsConfig } from '../../markets/umee/commons';
 
 import { parseEther } from 'ethers/lib/utils';
+import { LOADIPHLPAPI } from 'dns';
 
 const chai = require('chai');
 
@@ -378,31 +379,31 @@ makeSuite('LendingPool liquidation - liquidator receiving the underlying asset',
     );
   });
 
-  it('User 4 deposits 10 UMEE - drops HF, liquidates the UMEE, which results on a lower amount being liquidated', async () => {
-    const { umee, usdc, users, pool, oracle, helpersContract } = testEnv;
+  it('User 4 deposits 10 ATOM - drops HF, liquidates the ATOM, which results on a lower amount being liquidated', async () => {
+    const { atom, usdc, users, pool, oracle, helpersContract } = testEnv;
 
     const depositor = users[3];
     const borrower = users[4];
     const liquidator = users[5];
 
-    //mints UMEE to borrower
-    await umee.connect(borrower.signer).mint(await convertToCurrencyDecimals(umee.address, '10'));
+    //mints ATOM to borrower
+    await atom.connect(borrower.signer).mint(await convertToCurrencyDecimals(atom.address, '10'));
 
     //approve protocol to access the borrower wallet
-    await umee.connect(borrower.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
+    await atom.connect(borrower.signer).approve(pool.address, APPROVAL_AMOUNT_LENDING_POOL);
 
-    //borrower deposits 10 UMEE
-    const amountToDeposit = await convertToCurrencyDecimals(umee.address, '10');
+    //borrower deposits 10 ATOM
+    const amountToDeposit = await convertToCurrencyDecimals(atom.address, '10');
 
     await pool
       .connect(borrower.signer)
-      .deposit(umee.address, amountToDeposit, borrower.address, '0');
+      .deposit(atom.address, amountToDeposit, borrower.address, '0');
     const usdcPrice = await oracle.getAssetPrice(usdc.address);
 
     //drops HF below 1
     await oracle.setAssetPrice(
       usdc.address,
-      new BigNumber(usdcPrice.toString()).multipliedBy(1.14).toFixed(0)
+      new BigNumber(usdcPrice.toString()).multipliedBy(1.2).toFixed(0)
     );
 
     //mints usdc to the liquidator
@@ -419,19 +420,19 @@ makeSuite('LendingPool liquidation - liquidator receiving the underlying asset',
     );
 
     const usdcReserveDataBefore = await helpersContract.getReserveData(usdc.address);
-    const umeeReserveDataBefore = await helpersContract.getReserveData(umee.address);
+    const atomReserveDataBefore = await helpersContract.getReserveData(atom.address);
 
     const amountToLiquidate = new BigNumber(userReserveDataBefore.currentStableDebt.toString())
       .div(2)
       .decimalPlaces(0, BigNumber.ROUND_DOWN)
       .toFixed(0);
 
-    const collateralPrice = await oracle.getAssetPrice(umee.address);
+    const collateralPrice = await oracle.getAssetPrice(atom.address);
     const principalPrice = await oracle.getAssetPrice(usdc.address);
 
     await pool
       .connect(liquidator.signer)
-      .liquidationCall(umee.address, usdc.address, borrower.address, amountToLiquidate, false);
+      .liquidationCall(atom.address, usdc.address, borrower.address, amountToLiquidate, false);
 
     const userReserveDataAfter = await helpersContract.getUserReserveData(
       usdc.address,
@@ -441,11 +442,11 @@ makeSuite('LendingPool liquidation - liquidator receiving the underlying asset',
     const userGlobalDataAfter = await pool.getUserAccountData(borrower.address);
 
     const usdcReserveDataAfter = await helpersContract.getReserveData(usdc.address);
-    const umeeReserveDataAfter = await helpersContract.getReserveData(umee.address);
+    const atomReserveDataAfter = await helpersContract.getReserveData(atom.address);
 
-    const umeeConfiguration = await helpersContract.getReserveConfigurationData(umee.address);
-    const collateralDecimals = umeeConfiguration.decimals.toString();
-    const liquidationBonus = umeeConfiguration.liquidationBonus.toString();
+    const atomConfiguration = await helpersContract.getReserveConfigurationData(atom.address);
+    const collateralDecimals = atomConfiguration.decimals.toString();
+    const liquidationBonus = atomConfiguration.liquidationBonus.toString();
 
     const principalDecimals = (
       await helpersContract.getReserveConfigurationData(usdc.address)
@@ -482,8 +483,8 @@ makeSuite('LendingPool liquidation - liquidator receiving the underlying asset',
       'Invalid principal available liquidity'
     );
 
-    expect(umeeReserveDataAfter.availableLiquidity.toString()).to.be.bignumber.almostEqual(
-      new BigNumber(umeeReserveDataBefore.availableLiquidity.toString())
+    expect(atomReserveDataAfter.availableLiquidity.toString()).to.be.bignumber.almostEqual(
+      new BigNumber(atomReserveDataBefore.availableLiquidity.toString())
         .minus(expectedCollateralLiquidated)
         .toFixed(0),
       'Invalid collateral available liquidity'

@@ -61,7 +61,7 @@ export interface TestEnv {
   dai: MintableERC20;
   aDai: UToken;
   usdc: MintableERC20;
-  umee: MintableERC20;
+  atom: MintableERC20;
   addressesProvider: LendingPoolAddressesProvider;
   uniswapLiquiditySwapAdapter: UniswapLiquiditySwapAdapter;
   uniswapRepayAdapter: UniswapRepayAdapter;
@@ -87,7 +87,7 @@ const testEnv: TestEnv = {
   dai: {} as MintableERC20,
   aDai: {} as UToken,
   usdc: {} as MintableERC20,
-  umee: {} as MintableERC20,
+  atom: {} as MintableERC20,
   addressesProvider: {} as LendingPoolAddressesProvider,
   uniswapLiquiditySwapAdapter: {} as UniswapLiquiditySwapAdapter,
   uniswapRepayAdapter: {} as UniswapRepayAdapter,
@@ -136,13 +136,13 @@ export async function initializeMakeSuite() {
 
   const daiAddress = reservesTokens.find((token) => token.symbol === 'DAI')?.tokenAddress;
   const usdcAddress = reservesTokens.find((token) => token.symbol === 'USDC')?.tokenAddress;
-  const umeeAddress = reservesTokens.find((token) => token.symbol === 'UMEE')?.tokenAddress;
+  const atomAddress = reservesTokens.find((token) => token.symbol === 'ATOM')?.tokenAddress;
   const wethAddress = reservesTokens.find((token) => token.symbol === 'WETH')?.tokenAddress;
 
   if (!aDaiAddress || !aWEthAddress) {
     process.exit(1);
   }
-  if (!daiAddress || !usdcAddress || !umeeAddress || !wethAddress) {
+  if (!daiAddress || !usdcAddress || !atomAddress || !wethAddress) {
     process.exit(1);
   }
 
@@ -151,7 +151,7 @@ export async function initializeMakeSuite() {
 
   testEnv.dai = await getMintableERC20(daiAddress);
   testEnv.usdc = await getMintableERC20(usdcAddress);
-  testEnv.umee = await getMintableERC20(umeeAddress);
+  testEnv.atom = await getMintableERC20(atomAddress);
   testEnv.weth = await getWETHMocked(wethAddress);
   testEnv.wethGateway = await getWETHGateway();
 

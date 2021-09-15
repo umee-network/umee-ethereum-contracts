@@ -227,7 +227,7 @@ export const CommonsConfig: ICommonConfiguration = {
     [eEthereumNetwork.buidlerevm]: {},
     [eEthereumNetwork.kovan]: {
       AAVE: '0xd04647B7CB523bb9f26730E9B6dE1174db7591Ad', // Aave EACAggregatorProxy not UMEE (replace)
-      ATOM: ZERO_ADDRESS, // TODO: Add  
+      ATOM: '0xd04647B7CB523bb9f26730E9B6dE1174db7591Ad', // TODO: Add  
       BAT: '0x0e4fcEC26c9f85c3D714370c98f43C4E02Fc35Ae',
       BUSD: '0xbF7A18ea5DE0501f7559144e702b29c55b055CcB',
       DAI: '0x22B58f1EbEDfCA50feF632bD73368b2FdA96D541',

@@ -44,7 +44,7 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
 
       const tokensToWatch: SymbolMap<string> = {
         ...reserveAssets,
-        USD: UsdAddress,
+        // USD: UsdAddress,
       };
       const [tokens, aggregators] = getPairsTokenAggregator(tokensToWatch, chainlinkAggregators);
 

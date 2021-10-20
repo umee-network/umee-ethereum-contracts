@@ -8,7 +8,6 @@ import {
 } from './types';
 import { getEthersSignersAddresses, getParamPerPool } from './contracts-helpers';
 import UmeeConfig from '../markets/umee';
-import CosmosConfig from '../markets/cosmos';
 import MaticConfig from '../markets/matic';
 import AmmConfig from '../markets/amm';
 import { CommonsConfig } from '../markets/umee/commons';
@@ -22,15 +21,12 @@ export enum ConfigNames {
   Umee = 'Umee',
   Matic = 'Matic',
   Amm = 'Amm',
-  Cosmos = 'Cosmos',
 }
 
 export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
   switch (configName) {
     case ConfigNames.Umee:
       return UmeeConfig;
-    case ConfigNames.Cosmos:
-      return CosmosConfig;
     case ConfigNames.Matic:
       return MaticConfig;
     case ConfigNames.Amm:
@@ -51,9 +47,6 @@ export const getReservesConfigByPool = (pool: UmeePools): iMultiPoolsAssets<IRes
     {
       [UmeePools.proto]: {
         ...UmeeConfig.ReservesConfig,
-      },
-      [UmeePools.cosmos]: {
-        ...CosmosConfig.ReservesConfig,
       },
       [UmeePools.amm]: {
         ...AmmConfig.ReservesConfig,

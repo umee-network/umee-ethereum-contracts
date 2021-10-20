@@ -70,10 +70,10 @@ export const rawInsertContractAddressInDb = async (id: string, address: tEthereu
 export const getEthersSigners = async (): Promise<Signer[]> => {
   const ethersSigners = await Promise.all(await DRE.ethers.getSigners());
 
-  // if (usingDefender()) {
-  //   const [, ...users] = ethersSigners;
-  //   return [await getDefenderRelaySigner(), ...users];
-  // }
+  if (usingDefender()) {
+    const [, ...users] = ethersSigners;
+    return [await getDefenderRelaySigner(), ...users];
+  }
   return ethersSigners;
 };
 
@@ -142,8 +142,14 @@ export const linkBytecode = (artifact: BuidlerArtifact | Artifact, libraries: an
 };
 
 export const getParamPerNetwork = <T>(param: iParamsPerNetwork<T>, network: eNetwork) => {
-  const { main, ropsten, kovan, rinkeby, coverage, buidlerevm, tenderlyMain } =
-    param as iEthereumParamsPerNetwork<T>;
+  const {
+    main,
+    ropsten,
+    kovan,
+    coverage,
+    buidlerevm,
+    tenderlyMain,
+  } = param as iEthereumParamsPerNetwork<T>;
   const { matic, mumbai } = param as iPolygonParamsPerNetwork<T>;
   const { xdai } = param as iXDaiParamsPerNetwork<T>;
   if (process.env.FORK) {
@@ -161,8 +167,6 @@ export const getParamPerNetwork = <T>(param: iParamsPerNetwork<T>, network: eNet
       return kovan;
     case eEthereumNetwork.ropsten:
       return ropsten;
-    case eEthereumNetwork.rinkeby:
-      return rinkeby;
     case eEthereumNetwork.main:
       return main;
     case eEthereumNetwork.tenderlyMain:

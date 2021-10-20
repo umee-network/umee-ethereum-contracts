@@ -1,8 +1,8 @@
 # Umee Contracts v1
 
-This repository contains the smart contracts source code and markets configuration for Umee Protocol V1. The repository uses Docker Compose and Hardhat as development enviroment for compilation, testing and deployment tasks.
+This repository contains the smart contracts source code and markets configuration for Umee Protocol V1. The repository uses Docker Compose and Hardhat as development enviorment for compilation, testing and deployment tasks.
 
-## Kovan Contract Addresses (not final deployment, we still need to reploy some proxy contracts)
+## Kovan Contract Addresses (not final deployment, we still need to redeploy some proxy contracts)
 
 ```
 GATEWAY 0xE40C9719b770Ad3a8f1D239ADE8AB2B6654592D3
@@ -43,6 +43,45 @@ WalletBalanceProvider: 0xfE737771c0d547bb12EabA0074603e12f045613B
 rateStrategyATOM: 0x126559404173481e081a53a3De045E012b4a38b2
 LendingPoolCollateralManagerImpl: 0x6f2E90C777973f02D3A4856fA7D21Ff346756769
 LendingPoolCollateralManager: 0x6f2E90C777973f02D3A4856fA7D21Ff346756769
+```
+## Rinkeby Contract Addresses (not final deployment, we still need to reploy some proxy contracts)
+```
+Contracts deployed at rinkeby
+---------------------------------
+N# Contracts: 33
+LendingPoolAddressesProvider: 0x25eB6bd3E717b1Ec1940264172bfCd2fe81B06B9
+ReserveLogic: 0x060B5127Ebf9aCEFA3246325a0336082e4A9Bf4f
+GenericLogic: 0xd1f4ddcEf11b62b93257Dbe9fA62A939ef6af866
+ValidationLogic: 0x72d888b7CCe734D2187e364793942E6cF1Cdd5f3
+LendingPoolImpl: 0x340537B805773321Ec6b47A1B93d2c515c20c601
+LendingPool: 0x24AcbF87Df6DFA3F891dC2B0c1FBF7f5DD9F77D6
+LendingPoolConfiguratorImpl: 0xf3FcD8307e89e41c90494858b9Fbaa5F67f378A3
+LendingPoolConfigurator: 0xc989383653591B4Ce492E280174d29F07B5FdCD5
+StableAndVariableTokensHelper: 0xAC7c412292A893ad0E89b74B91e66FAe965050aF
+UTokensAndRatesHelper: 0xf16AAcC6Fc2392736164e630428D864186Ca5F75
+UmeeOracle: 0xaA2b1f1C7833Be0bd6BEBB3C41b8aEE605A877d9
+LendingRateOracle: 0x29eB6a83DBd1d7cF07dd9d5bC211caE63610D07F
+UmeeProtocolDataProvider: 0xB91B3860bBbfe1eEEcC7Dca333836345dBBcf68e
+WETHGateway: 0x570e76E1E5B8A035e690F94CdC583633FA77DCb8
+StableDebtToken: 0x818E6529e6701cdd1D07d5bAF9D3C771c6235d86
+VariableDebtToken: 0xCc231A34997cCD595ac8944db29ac0f2B7740ADd
+UToken: 0x24B62929A5ff816A6972018B6628C854De0e2e26
+uTokenImpl: 0x24B62929A5ff816A6972018B6628C854De0e2e26
+DelegationAwareUToken: 0x1e5CB74A9cD5c66D71d7cf38166F553aB68004e0
+delegationAwareUTokenImpl: 0x1e5CB74A9cD5c66D71d7cf38166F553aB68004e0
+DefaultReserveInterestRateStrategy: 0xdB3E9074a703E0F1160ebB71076db2e7359da707
+rateStrategyAAVE: 0xB03767bE6D452ECc8D4747Ec0929Ba682E3BD3b4
+rateStrategyATOM: 0x32958A725f13517203763E897898C26967CA0041
+rateStrategyVolatileOne: 0x7ff8009887c2f8b5f61d7a4a796563E0E3A5782C
+rateStrategyStableOne: 0x6548D6923F9eF98b2f688258cc51cA4F9e147F32
+rateStrategyStableTwo: 0xe93D94e0aF146aB824736Ce7cA3c0F815018a053
+rateStrategyVolatileTwo: 0xBe1Ec0869fC803fd0F730187ef4e4788C44d9B4a
+rateStrategyVolatileThree: 0xb0De6e861A20Eaf193c6b0a7113341af384E4C02
+rateStrategyStableThree: 0xfe0552C31025393A47cFa1CF29aE711a84085352
+rateStrategyWETH: 0xdB3E9074a703E0F1160ebB71076db2e7359da707
+LendingPoolCollateralManagerImpl: 0x86C80d04447093182098aeF8657Ad957d27E26Fa
+LendingPoolCollateralManager: 0x86C80d04447093182098aeF8657Ad957d27E26Fa
+WalletBalanceProvider: 0x49348a0943B46A01c9617aB3CBe79031Fc24D852 
 ```
 
 ## What is Umee?
@@ -159,6 +198,56 @@ docker-compose exec contracts-env bash
 # A new Bash terminal is prompted, connected to the container
 npm run umee:kovan:full:migration
 ```
+
+### Creating A Market
+```
+1. Duplicate the Umee Market folder
+- Update Commons Addresses
+- Update Index strategies, reserves, reserveConfigs
+- Update ratestrategies and reserveconfigs, if needed
+
+2. Update helpers/configuration file
+- import market config
+- Update confignames, loadpoolconfig, and getreservesconfigbypool
+
+3. Duplicate umee:mainnet task 
+- Update folder
+- Add migration script in package.json
+```
+
+### Adding Network 
+```
+Update Following Files to include name + Update Helper-hardhat-config to appropriate gas
+modified:   buidler.config.ts
+modified:   hardhat.config.ts
+modified:   helper-hardhat-config.ts
+modified:   helpers/contracts-helpers.ts
+modified:   helpers/etherscan-verification.ts
+modified:   helpers/types.ts
+modified:   markets/amm/commons.ts
+modified:   markets/amm/index.ts
+modified:   markets/umee/commons.ts
+modified:   markets/umee/index.ts
+modified:   package.json
+modified:   tasks/deployments/deploy-UiPoolDataProvider.ts
+modified:   tasks/helpers/deploy-new-asset.ts
+```
+
+### Local Fork Testing
+```
+1. Run npx hardhat node --fork https://eth-rinkeby.alchemyapi.io/v2/your-key
+- Create another terminal
+
+2. Update hardhat config file
+- Uncomment URL and comment out network URL
+- Change chain ID to localhost
+- Comment out hardhat account:field
+
+3. Update .env mnemonic to test account
+
+4. Run Migration 
+```
+
 
 ### Mainnet fork deployment
 

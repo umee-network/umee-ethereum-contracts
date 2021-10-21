@@ -10,6 +10,7 @@ export enum eEthereumNetwork {
   buidlerevm = 'buidlerevm',
   kovan = 'kovan',
   ropsten = 'ropsten',
+  rinkeby = 'rinkeby',
   main = 'main',
   coverage = 'coverage',
   hardhat = 'hardhat',
@@ -28,6 +29,7 @@ export enum eXDaiNetwork {
 export enum EthereumNetworkNames {
   kovan = 'kovan',
   ropsten = 'ropsten',
+  rinkeby = 'rinkeby',
   main = 'main',
   matic = 'matic',
   mumbai = 'mumbai',
@@ -36,6 +38,7 @@ export enum EthereumNetworkNames {
 
 export enum UmeePools {
   proto = 'proto',
+  cosmos = 'cosmos',
   matic = 'matic',
   amm = 'amm',
 }
@@ -275,6 +278,11 @@ export type iUmeePoolAssets<T> = Pick<
   | 'xSUSHI'
 >;
 
+export type iCosmosPoolAssets<T> = Pick<
+  iAssetsWithoutUSD<T>,
+  'DAI' | 'USDC' | 'USDT' | 'ATOM' | 'WETH'
+>;
+
 // TODO: Add UniATOMWETH nad UniUMEEWETH
 export type iLpPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
@@ -416,6 +424,7 @@ export interface iEthereumParamsPerNetwork<T> {
   [eEthereumNetwork.buidlerevm]: T;
   [eEthereumNetwork.kovan]: T;
   [eEthereumNetwork.ropsten]: T;
+  [eEthereumNetwork.rinkeby]: T;
   [eEthereumNetwork.main]: T;
   [eEthereumNetwork.hardhat]: T;
   [eEthereumNetwork.tenderlyMain]: T;
@@ -432,6 +441,7 @@ export interface iXDaiParamsPerNetwork<T> {
 
 export interface iParamsPerPool<T> {
   [UmeePools.proto]: T;
+  [UmeePools.cosmos]: T;
   [UmeePools.matic]: T;
   [UmeePools.amm]: T;
 }
@@ -508,6 +518,10 @@ export interface ICommonConfiguration {
 
 export interface IUmeeConfiguration extends ICommonConfiguration {
   ReservesConfig: iUmeePoolAssets<IReserveParams>;
+}
+
+export interface ICosmosConfiguration extends ICommonConfiguration {
+  ReservesConfig: iCosmosPoolAssets<IReserveParams>;
 }
 
 export interface IAmmConfiguration extends ICommonConfiguration {

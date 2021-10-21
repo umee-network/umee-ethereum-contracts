@@ -14,7 +14,7 @@ const okErrors = [`Contract source code already verified`];
 
 const unableVerifyError = 'Fail - Unable to verify';
 
-export const SUPPORTED_ETHERSCAN_NETWORKS = ['main', 'ropsten', 'kovan'];
+export const SUPPORTED_ETHERSCAN_NETWORKS = ['main', 'ropsten', 'kovan', 'rinkeby'];
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -84,7 +84,7 @@ export const runTaskWithRetry = async (
         '[ETHERSCAN][ERROR] Errors after all the retries, check the logs for more information.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     counter--;
 
     if (okErrors.some((okReason) => error.message.includes(okReason))) {

@@ -144,7 +144,6 @@ export const linkBytecode = (artifact: BuidlerArtifact | Artifact, libraries: an
 export const getParamPerNetwork = <T>(param: iParamsPerNetwork<T>, network: eNetwork) => {
   const { main, ropsten, kovan, rinkeby, coverage, buidlerevm, tenderlyMain } =
     param as iEthereumParamsPerNetwork<T>;
-  const { matic, mumbai } = param as iPolygonParamsPerNetwork<T>;
   const { xdai } = param as iXDaiParamsPerNetwork<T>;
   if (process.env.FORK) {
     return param[process.env.FORK as eNetwork] as T;
@@ -167,23 +166,17 @@ export const getParamPerNetwork = <T>(param: iParamsPerNetwork<T>, network: eNet
       return main;
     case eEthereumNetwork.tenderlyMain:
       return tenderlyMain;
-    case ePolygonNetwork.matic:
-      return matic;
-    case ePolygonNetwork.mumbai:
-      return mumbai;
     case eXDaiNetwork.xdai:
       return xdai;
   }
 };
 
-export const getParamPerPool = <T>({ proto, amm, matic }: iParamsPerPool<T>, pool: UmeePools) => {
+export const getParamPerPool = <T>({ proto, amm }: iParamsPerPool<T>, pool: UmeePools) => {
   switch (pool) {
     case UmeePools.proto:
       return proto;
     case UmeePools.amm:
       return amm;
-    case UmeePools.matic:
-      return matic;
     default:
       return proto;
   }

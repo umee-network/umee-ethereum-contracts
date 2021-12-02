@@ -41,7 +41,6 @@ export enum EthereumNetworkNames {
 export enum UmeePools {
   proto = 'proto',
   cosmos = 'cosmos',
-  matic = 'matic',
   amm = 'amm',
 }
 
@@ -445,7 +444,6 @@ export interface iXDaiParamsPerNetwork<T> {
 export interface iParamsPerPool<T> {
   [UmeePools.proto]: T;
   [UmeePools.cosmos]: T;
-  [UmeePools.matic]: T;
   [UmeePools.amm]: T;
 }
 

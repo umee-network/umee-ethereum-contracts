@@ -4,13 +4,13 @@ pragma solidity 0.6.12;
 import {ERC20} from '../../dependencies/openzeppelin/contracts/ERC20.sol';
 
 /**
- * @title Mock Atom ERC20
- * @dev Atom ERC20
+ * @title Mock DAI ERC20
+ * @dev DAI ERC20
  */
-contract MockAtomERC20 is ERC20 {
+contract MockDAI is ERC20 {
   uint256 constant MAX_AMOUNT = 2 ^ (256 - 1);
 
-  constructor() public ERC20('ATOM', 'ATOM') {
+  constructor() public ERC20('DAI', 'DAI') {
     _setupDecimals(18);
   }
 

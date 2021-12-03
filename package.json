@@ -23,6 +23,8 @@
     "test": "npm run compile && TS_NODE_TRANSPILE_ONLY=1 hardhat test ./test-suites/test-umee/*.spec.ts",
     "test-amm": "npm run compile && TS_NODE_TRANSPILE_ONLY=1 hardhat test ./test-suites/test-amm/*.spec.ts",
     "test-amm-scenarios": "npm run compile && TS_NODE_TRANSPILE_ONLY=1 hardhat test ./test-suites/test-amm/__setup.spec.ts test-suites/test-amm/scenario.spec.ts",
+    "test-cosmos": "npm run compile && TS_NODE_TRANSPILE_ONLY=1 hardhat test ./test-suites/test-cosmos/*.spec.ts",
+    "test-cosmos-scenarios": "npm run compile && TS_NODE_TRANSPILE_ONLY=1 hardhat test ./test-suites/test-cosmos/__setup.spec.ts test-suites/test-cosmos/scenario.spec.ts",
     "test-scenarios": "npm run compile && npx hardhat test test-suites/test-umee/__setup.spec.ts test-suites/test-umee/scenario.spec.ts",
     "test-subgraph:scenarios": "npm run compile && hardhat --network hardhatevm_docker test test-suites/test-umee/__setup.spec.ts test-suites/test-umee/subgraph-scenarios.spec.ts",
     "test:main:check-list": "npm run compile && FORK=main TS_NODE_TRANSPILE_ONLY=1 hardhat test  test-suites/test-umee/__setup.spec.ts test-suites/test-umee/mainnet/check-list.spec.ts",

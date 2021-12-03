@@ -27,6 +27,7 @@ import { getFirstSigner, getIErc20Detailed } from './contracts-getters';
 import { usingTenderly, verifyAtTenderly } from './tenderly-utils';
 import { usingPolygon, verifyAtPolygon } from './polygon-utils';
 import { getDefenderRelaySigner, usingDefender } from './defender-utils';
+import { getLendingPool } from './contracts-getters';
 
 export type MockTokenMap = { [symbol: string]: MintableERC20 };
 
@@ -51,6 +52,13 @@ export const registerContractInJsonDb = async (contractId: string, contractInsta
       deployer: contractInstance.deployTransaction.from,
     })
     .write();
+};
+
+export const getCurrentUserAccountData = async (
+  lendingPoolAddress: tEthereumAddress,
+  userAddress: tEthereumAddress
+) => {
+  return await (await getLendingPool(lendingPoolAddress)).getUserAccountData(userAddress);
 };
 
 export const insertContractAddressInDb = async (id: eContractid, address: tEthereumAddress) =>

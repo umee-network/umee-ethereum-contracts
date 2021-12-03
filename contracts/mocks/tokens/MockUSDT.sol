@@ -8,10 +8,8 @@ import {ERC20} from '../../dependencies/openzeppelin/contracts/ERC20.sol';
  * @dev USDT ERC20
  */
 contract MockUSDT is ERC20 {
-  uint256 constant MAX_AMOUNT = 2 ^ (256 - 1);
-
   constructor() public ERC20('USDT', 'USDT') {
-    _setupDecimals(18);
+    _setupDecimals(6);
   }
 
   /**

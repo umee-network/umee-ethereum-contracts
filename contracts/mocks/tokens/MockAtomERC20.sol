@@ -8,10 +8,8 @@ import {ERC20} from '../../dependencies/openzeppelin/contracts/ERC20.sol';
  * @dev Atom ERC20
  */
 contract MockAtomERC20 is ERC20 {
-  uint256 constant MAX_AMOUNT = 2 ^ (256 - 1);
-
   constructor() public ERC20('ATOM', 'ATOM') {
-    _setupDecimals(18);
+    _setupDecimals(0);
   }
 
   /**

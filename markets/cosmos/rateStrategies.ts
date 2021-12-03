@@ -11,7 +11,7 @@ export const rateStrategyStableOne: IInterestRateStrategyParams = {
   variableRateSlope2: new BigNumber(1).multipliedBy(oneRay).toFixed(),
   stableRateSlope1: '0',
   stableRateSlope2: '0',
-};
+}
 
 // DAI TUSD
 export const rateStrategyStableTwo: IInterestRateStrategyParams = {

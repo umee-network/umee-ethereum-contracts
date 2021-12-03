@@ -8,8 +8,6 @@ import {ERC20} from '../../dependencies/openzeppelin/contracts/ERC20.sol';
  * @dev DAI ERC20
  */
 contract MockDAI is ERC20 {
-  uint256 constant MAX_AMOUNT = 2 ^ (256 - 1);
-
   constructor() public ERC20('DAI', 'DAI') {
     _setupDecimals(18);
   }

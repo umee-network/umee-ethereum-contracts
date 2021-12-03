@@ -48,8 +48,8 @@ if (!SKIP_LOAD) {
 require(`${path.join(__dirname, 'tasks/misc')}/set-bre.ts`);
 
 const getCommonNetworkConfig = (networkName: eNetwork, networkId: number) => ({
-  //url: NETWORKS_RPC_URL[networkName],
-  url: "http://127.0.0.1:8545",
+  url: NETWORKS_RPC_URL[networkName],
+  //url: "http://127.0.0.1:8545",
   hardfork: HARDFORK,
   blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
   gasMultiplier: DEFAULT_GAS_MUL,
@@ -96,7 +96,7 @@ const buidlerConfig: HardhatUserConfig = {
     kovan: getCommonNetworkConfig(eEthereumNetwork.kovan, 42),
     ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
     rinkeby: getCommonNetworkConfig(eEthereumNetwork.rinkeby, 4),
-    goerli: getCommonNetworkConfig(eEthereumNetwork.goerli, 31337),
+    goerli: getCommonNetworkConfig(eEthereumNetwork.goerli, 5),
     main: getCommonNetworkConfig(eEthereumNetwork.main, 1),
     tenderlyMain: getCommonNetworkConfig(eEthereumNetwork.tenderlyMain, 3030),
     matic: getCommonNetworkConfig(ePolygonNetwork.matic, 137),
@@ -110,10 +110,10 @@ const buidlerConfig: HardhatUserConfig = {
       chainId: BUIDLEREVM_CHAINID,
       throwOnTransactionFailures: true,
       throwOnCallFailures: true,
-      // accounts: accounts.map(({ secretKey, balance }: { secretKey: string; balance: string }) => ({
-      //   privateKey: secretKey,
-      //   balance,
-      // })),
+      accounts: accounts.map(({ secretKey, balance }: { secretKey: string; balance: string }) => ({
+        privateKey: secretKey,
+        balance,
+      })),
       forking: buildForkConfig(),
     },
     buidlerevm_docker: {

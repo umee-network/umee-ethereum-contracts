@@ -22,7 +22,7 @@ export const CommonsConfig: ICommonConfiguration = {
   ProtocolGlobalParams: {
     TokenDistributorPercentageBase: '10000',
     MockUsdPriceInWei: '5848466240000000',
-    UsdAddress: '0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96',
+    UsdAddress: '0x251F24dd29D446931f23C827286467b01A1Cbd0c',
     NilAddress: '0x0000000000000000000000000000000000000000',
     OneAddress: '0x0000000000000000000000000000000000000001',
     UmeeReferral: '0',
@@ -270,7 +270,8 @@ export const CommonsConfig: ICommonConfiguration = {
       BptBALWETH: '0x5699302154A020FB1DE2B1d39f4c73785A235d8F',
       USD: '0x9326BFA02ADD2366b30bacB125260Af641031331',
     },
-    [eEthereumNetwork.rinkeby]: { // change
+    [eEthereumNetwork.rinkeby]: {
+      // change
       USDT: '0x0bF499444525a23E7Bb61997539725cA2e928138',
       WBTC: '0xF7904a295A029a3aBDFFB6F12755974a958C7C25',
       USDC: '0x64EaC61A2DFda2c3Fa04eED49AA33D021AeC8838',

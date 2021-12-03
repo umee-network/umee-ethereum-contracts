@@ -2,8 +2,7 @@
 
 This repository contains the smart contracts source code and markets configuration for Umee Protocol V1. The repository uses Docker Compose and Hardhat as development enviorment for compilation, testing and deployment tasks.
 
-## Kovan Contract Addresses (not final deployment, we still need to redeploy some proxy contracts)
-
+## Kovan Contract Addresses
 ```
 GATEWAY 0xE40C9719b770Ad3a8f1D239ADE8AB2B6654592D3
 Contracts deployed at kovan
@@ -44,7 +43,7 @@ rateStrategyATOM: 0x126559404173481e081a53a3De045E012b4a38b2
 LendingPoolCollateralManagerImpl: 0x6f2E90C777973f02D3A4856fA7D21Ff346756769
 LendingPoolCollateralManager: 0x6f2E90C777973f02D3A4856fA7D21Ff346756769
 ```
-## Rinkeby Contract Addresses (not final deployment, we still need to reploy some proxy contracts)
+## Rinkeby Contract Addresses
 ```
 Contracts deployed at rinkeby
 ---------------------------------
@@ -82,6 +81,41 @@ rateStrategyWETH: 0xdB3E9074a703E0F1160ebB71076db2e7359da707
 LendingPoolCollateralManagerImpl: 0x86C80d04447093182098aeF8657Ad957d27E26Fa
 LendingPoolCollateralManager: 0x86C80d04447093182098aeF8657Ad957d27E26Fa
 WalletBalanceProvider: 0x49348a0943B46A01c9617aB3CBe79031Fc24D852 
+```
+
+## Goerli Contract Addresses
+```
+GATEWAY 0xcE3A7826A08d1a2d97026b82803F3aC69ed19de1
+Contracts deployed at goerli
+---------------------------------
+N# Contracts: 27
+LendingPoolAddressesProvider: 0x6ca6669c5d634bAceAf167E7Bf0655653308f0db
+ReserveLogic: 0x50c028f15E00f0631C09a4876b2e11289a319E34
+GenericLogic: 0x6342c447B900FA61Bc4794EE7996C0b532427091
+ValidationLogic: 0x1Ae9dFF4145307cE78450F82b1B76B4EF4461635
+LendingPoolImpl: 0xDb266095929c889A54f756952552Fe67B02F00a8
+LendingPool: 0x8a5b6D136546Bf8B586E7D05823fFA0947E395fC
+LendingPoolConfiguratorImpl: 0x0B1D11af46F06A41e211E4745AEA73A9Ac10D231
+LendingPoolConfigurator: 0xB6D3D9ea7016Dd62a0e3f98F77492193225E1792
+StableAndVariableTokensHelper: 0x6b9e24Fa93a887596a21ab3d4624342556230E72
+UTokensAndRatesHelper: 0xb0499cE118Cb838EDbB4859bbb3b02C15Ab94ecb
+WETHMocked: 0xD42912755319665397FF090fBB63B1a31aE87Cee
+UmeeOracle: 0x846C95AEdc205c613b8fF98242d38b844f6a0329
+LendingRateOracle: 0xEA0ED62595b2a2467D151944503EC33724Dc0be4
+UmeeProtocolDataProvider: 0xBF4743209A7afdbD9Dc2C638E5Ad28A7fC1e7010
+WETHGateway: 0xcE3A7826A08d1a2d97026b82803F3aC69ed19de1
+StableDebtToken: 0x026D5cBD2418f57fc5a0e0e18a3AcCF771028255
+VariableDebtToken: 0xF7878ADEc0FccdEF97985C42d46822F78c2c838D
+UToken: 0xa4fd46ad817c4B2F266dF1309cd28062d987aA4c
+uTokenImpl: 0xa4fd46ad817c4B2F266dF1309cd28062d987aA4c
+DefaultReserveInterestRateStrategy: 0x18d439E96E91472cCa2fb95467d6B0b2b442DEAc
+rateStrategyATOM: 0xB0EBd197Fc3e1beB7521D6f0F38866F9183B31Cb
+rateStrategyStableTwo: 0xECac588862B188286432B7A6083AF3c83D590F70
+rateStrategyStableThree: 0x31f627849103D1ae2f55bf589B9F9D412cA60e34
+rateStrategyWETH: 0x18d439E96E91472cCa2fb95467d6B0b2b442DEAc
+LendingPoolCollateralManagerImpl: 0x589c7dE4277C0d4eE9a4F47a9c08B1F62dbf6D54
+LendingPoolCollateralManager: 0x589c7dE4277C0d4eE9a4F47a9c08B1F62dbf6D54
+WalletBalanceProvider: 0xCF63f734b6Bd913EF4CDaB1E48dEb8Ddbd0Dcc4a
 ```
 
 ## What is Umee?

@@ -19,7 +19,7 @@ export const strategyDAI: IReserveParams = {
   liquidationThreshold: '8000',
   liquidationBonus: '10500',
   borrowingEnabled: true,
-  stableBorrowRateEnabled: false,
+  stableBorrowRateEnabled: true,
   reserveDecimals: '18',
   uTokenImpl: eContractid.UToken,
   reserveFactor: '1000'
@@ -31,7 +31,7 @@ export const strategyUSDC: IReserveParams = {
   liquidationThreshold: '8500',
   liquidationBonus: '10500',
   borrowingEnabled: true,
-  stableBorrowRateEnabled: false,
+  stableBorrowRateEnabled: true,
   reserveDecimals: '6',
   uTokenImpl: eContractid.UToken,
   reserveFactor: '1000'
@@ -39,26 +39,26 @@ export const strategyUSDC: IReserveParams = {
 
 export const strategyUSDT: IReserveParams = {
   strategy: rateStrategyStableThree,
-  baseLTVAsCollateral: '8000',
-  liquidationThreshold: '8500',
-  liquidationBonus: '10500',
+  baseLTVAsCollateral: '0',
+  liquidationThreshold: '0',
+  liquidationBonus: '0',
   borrowingEnabled: true,
-  stableBorrowRateEnabled: false,
-  reserveDecimals: '18',
+  stableBorrowRateEnabled: true,
+  reserveDecimals: '6',
   uTokenImpl: eContractid.UToken,
-  reserveFactor: '1000'
+  reserveFactor: '1000',
 };
 
 
 // TODO: Figure out the Strategy for ATOM Token
 export const strategyATOM: IReserveParams = {
   strategy: rateStrategyATOM,
-  baseLTVAsCollateral: '2500',
-  liquidationThreshold: '4500',
+  baseLTVAsCollateral: '8000',
+  liquidationThreshold: '8250',
   liquidationBonus: '10500',
   borrowingEnabled: true,
-  stableBorrowRateEnabled: false,
-  reserveDecimals: '0',
+  stableBorrowRateEnabled: true,
+  reserveDecimals: '18',
   uTokenImpl: eContractid.UToken,
   reserveFactor: '1000'
 };
@@ -69,7 +69,7 @@ export const strategyWETH: IReserveParams = {
   liquidationThreshold: '8250',
   liquidationBonus: '10500',
   borrowingEnabled: true,
-  stableBorrowRateEnabled: false,
+  stableBorrowRateEnabled: true,
   reserveDecimals: '18',
   uTokenImpl: eContractid.UToken,
   reserveFactor: '1000'

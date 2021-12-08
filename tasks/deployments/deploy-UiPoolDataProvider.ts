@@ -21,7 +21,7 @@ task(`deploy-${eContractid.UiPoolDataProvider}`, `Deploys the UiPoolDataProvider
       },
       [eEthereumNetwork.goerli]: {
         incentivesController: '0x0000000000000000000000000000000000000000',
-        umeeOracle: '',
+        umeeOracle: '0x12c4452B2Ce6538AB38eBFfc2a6Ca28FA8142D68',
       },
       [eEthereumNetwork.main]: {
         incentivesController: '0xd784927Ff2f95ba542BfC824c8a8a98F3495f6b5',

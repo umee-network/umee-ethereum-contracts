@@ -56,7 +56,7 @@ export const strategyATOM: IReserveParams = {
   liquidationBonus: '10500',
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
-  reserveDecimals: '0',
+  reserveDecimals: '18',
   uTokenImpl: eContractid.UToken,
   reserveFactor: '1000'
 };

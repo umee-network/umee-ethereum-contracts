@@ -1,5 +1,6 @@
 import {
   UmeeProtocolDataProviderFactory,
+  UiPoolDataProviderFactory,
   UTokenFactory,
   UTokensAndRatesHelperFactory,
   UmeeOracleFactory,
@@ -52,6 +53,16 @@ export const getLendingPoolConfiguratorProxy = async (address?: tEthereumAddress
     address ||
       (
         await getDb().get(`${eContractid.LendingPoolConfigurator}.${DRE.network.name}`).value()
+      ).address,
+    await getFirstSigner()
+  );
+};
+
+export const getUiPoolDataProvider = async (address?: tEthereumAddress) => {
+  return await UiPoolDataProviderFactory.connect(
+    address ||
+      (
+        await getDb().get(`${eContractid.UiPoolDataProvider}.${DRE.network.name}`).value()
       ).address,
     await getFirstSigner()
   );

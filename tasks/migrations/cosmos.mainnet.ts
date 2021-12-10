@@ -6,7 +6,8 @@ import { usingTenderly } from '../../helpers/tenderly-utils';
 
 task('cosmos:mainnet', 'Deploy development enviroment')
   .addFlag('verify', 'Verify contracts at Etherscan')
-  .setAction(async ({ verify }, DRE) => {
+  .addFlag('skipRegistry', 'Skip addresses provider registration at Addresses Provider Registry')
+  .setAction(async ({ verify, skipRegistry }, DRE) => {
     const POOL_NAME = ConfigNames.Cosmos;
     await DRE.run('set-DRE');
 
@@ -21,7 +22,7 @@ task('cosmos:mainnet', 'Deploy development enviroment')
     // await DRE.run('full:deploy-address-provider-registry', { pool: POOL_NAME });
 
     console.log('1. Deploy address provider');
-    await DRE.run('full:deploy-address-provider', { pool: POOL_NAME });
+    await DRE.run('full:deploy-address-provider', { pool: POOL_NAME, skipRegistry });
 
     console.log('2. Deploy lending pool');
     await DRE.run('full:deploy-lending-pool', { pool: POOL_NAME });

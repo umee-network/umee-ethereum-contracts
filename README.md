@@ -3,6 +3,7 @@
 This repository contains the smart contracts source code and markets configuration for Umee Protocol V1. The repository uses Docker Compose and Hardhat as development enviorment for compilation, testing and deployment tasks.
 
 ## Kovan Contract Addresses
+
 ```
 GATEWAY 0xE40C9719b770Ad3a8f1D239ADE8AB2B6654592D3
 Contracts deployed at kovan
@@ -43,7 +44,9 @@ rateStrategyATOM: 0x126559404173481e081a53a3De045E012b4a38b2
 LendingPoolCollateralManagerImpl: 0x6f2E90C777973f02D3A4856fA7D21Ff346756769
 LendingPoolCollateralManager: 0x6f2E90C777973f02D3A4856fA7D21Ff346756769
 ```
+
 ## Rinkeby Contract Addresses
+
 ```
 Contracts deployed at rinkeby
 ---------------------------------
@@ -80,43 +83,44 @@ rateStrategyStableThree: 0xfe0552C31025393A47cFa1CF29aE711a84085352
 rateStrategyWETH: 0xdB3E9074a703E0F1160ebB71076db2e7359da707
 LendingPoolCollateralManagerImpl: 0x86C80d04447093182098aeF8657Ad957d27E26Fa
 LendingPoolCollateralManager: 0x86C80d04447093182098aeF8657Ad957d27E26Fa
-WalletBalanceProvider: 0x49348a0943B46A01c9617aB3CBe79031Fc24D852 
+WalletBalanceProvider: 0x49348a0943B46A01c9617aB3CBe79031Fc24D852
 ```
 
 ## Goerli Contract Addresses
+
 ```
-GATEWAY 0xbB5D09D481C91787f0c6860682E1a95A1F3A7853
+GATEWAY 0x977bBe52507279AFf19dD894B8aA20aaa0c5b147
 Contracts deployed at goerli
 ---------------------------------
 N# Contracts: 29
-LendingPoolAddressesProvider: 0x3Aab215f02B609Add96672D7254BE469a3AF2621
-ReserveLogic: 0xE98aB07c3a679bcb91318f149C5f5906CA279779
-GenericLogic: 0xfD9FcF2F6986D165A76FB8598a0D68Bef82c37c4
-ValidationLogic: 0xb7313b474aB5301b369aAC973817b3Ab8686560b
-LendingPoolImpl: 0x04de21602F7666d76123ed1ac32E2ed0EFE291BC
-LendingPool: 0x1d166a56D9c616C79cA22e20CC22417f788B13b5
-LendingPoolConfiguratorImpl: 0xF6e738926933C3C55c191C0b3033f588A3b9111c
-LendingPoolConfigurator: 0xB53D07Cd9061cc36DD15030bC346a24dCc18261a
-StableAndVariableTokensHelper: 0x5A4aC859f94926e513308E2bC0bc8C5275E5B74d
-UTokensAndRatesHelper: 0xD30e8f5E194b4E9819aA68Ab5Cef0275aB7591f7
+LendingPoolAddressesProvider: 0x06E59447259E9f5F66380A2F39ba5AE278CbfE42
+ReserveLogic: 0x85bC28e4A30e17c3e641819A27E2712f1621E98b
+GenericLogic: 0x7167062872EcC7062d0B2E32d2e76CfC92554590
+ValidationLogic: 0x1dcc96F49e668E7274B83Ba00d04593DA0077b9B
+LendingPoolImpl: 0x8a182C4a417489d52c96BE958C074cefcaFD62e1
+LendingPool: 0x2ee86b2D8759a69b541FF79aE22FF7885C543FD1
+LendingPoolConfiguratorImpl: 0x03742d30326203035c0e03913843D11c9E97b099
+LendingPoolConfigurator: 0x9F48bfC52E4BfeE42E1545474313fFbfD8e5dC32
+StableAndVariableTokensHelper: 0x0e0003fA4E548F35e97ABbB70668CD9A3cF73a5b
+UTokensAndRatesHelper: 0x85Bdb2c44f349D3d5113ACA52D401c0294F7bDFe
 WETHMocked: 0xD42912755319665397FF090fBB63B1a31aE87Cee
-UmeeOracle: 0x12c4452B2Ce6538AB38eBFfc2a6Ca28FA8142D68
-LendingRateOracle: 0x84B5DeCE37f01e3Fbcd2e8330f86aAa0e8e9F9d4
-UmeeProtocolDataProvider: 0xF4C0c7034181bC686F60B374cF28FBfd66A174D0
-WETHGateway: 0xbB5D09D481C91787f0c6860682E1a95A1F3A7853
-StableDebtToken: 0xCae2c19b9092F6D0A9A73f0E733BD56670caa56c
-VariableDebtToken: 0x0028D9b97Cdb390aAb5009fdf695f24dc1ebaA1b
-UToken: 0x2631daF281cE0EB1C30B8a695d0885B8a32BB36E
-uTokenImpl: 0x2631daF281cE0EB1C30B8a695d0885B8a32BB36E
-DefaultReserveInterestRateStrategy: 0x3B630C0Af281D13B75C7389b8088BA8c4ef8Ad10
-rateStrategyATOM: 0xed7325A1055B43B2c62FA5924e303e098E5a410E
-rateStrategyStableTwo: 0xb22A0EF65Dc825f39216e4c90129b6ae0aE64BAB
-rateStrategyStableThree: 0x47F80097cB472E1aA1BC0749C007912a9f0d87BB
-rateStrategyWETH: 0x3B630C0Af281D13B75C7389b8088BA8c4ef8Ad10
-LendingPoolCollateralManagerImpl: 0x5A22f0Fa756ECF45B893C5CAcB34cbf27982e07b
-LendingPoolCollateralManager: 0x5A22f0Fa756ECF45B893C5CAcB34cbf27982e07b
-WalletBalanceProvider: 0x63dD7B531020457AF0Facd63e46ce69ff417413a
-LendingPoolAddressesProviderRegistry: 0xfA220B0C868b4043fc3491fbC43160c4e5F11172
+UmeeOracle: 0x26e51F243234c07c1A860bd4be00C32E2a3dc4Ac
+LendingRateOracle: 0x61E72C1126b3532Ec53fd5Fc5ae07A7390dC6ad6
+UmeeProtocolDataProvider: 0xC893CE887b825B2d48De60ab14bAED1922261B0d
+WETHGateway: 0x977bBe52507279AFf19dD894B8aA20aaa0c5b147
+StableDebtToken: 0xeA499E6B74F066883F42CDA6E78f155E591347CF
+VariableDebtToken: 0xDB68D50efC6E2F9E656C3f7A9e8392cC1ADbeb6B
+UToken: 0x1b8361e106710DB9672ff7f5106309887D79C5Fa
+uTokenImpl: 0x1b8361e106710DB9672ff7f5106309887D79C5Fa
+DefaultReserveInterestRateStrategy: 0xfE730339DE4fEECB57B1C9d2cFd41bCc2f240443
+rateStrategyATOM: 0x547D70BE745C80c0F8CEb68eE4AC6fAd8275472b
+rateStrategyStableTwo: 0xdAaE6aCD7B3C4b7CF8cEdbF5Cb98FfAeBBe5636C
+rateStrategyStableThree: 0xDcCB2A03B83b4ebeF6BB5d02d34b240a886d2edA
+rateStrategyWETH: 0xfE730339DE4fEECB57B1C9d2cFd41bCc2f240443
+LendingPoolCollateralManagerImpl: 0x2ad46e028Ef35F15f43be5Fec973F7e37F62E0C8
+LendingPoolCollateralManager: 0x2ad46e028Ef35F15f43be5Fec973F7e37F62E0C8
+WalletBalanceProvider: 0x49f4D87AB42F668c55AafC8D53fB932D57d71e79
+LendingPoolAddressesProviderRegistry: 0x25f50D9D15acDc79E25989769773B3a0E8Be34Fb
 UiPoolDataProvider: 0x89a0055F9a96B23bE97e3f3E323b828623D38057
 ```
 
@@ -133,6 +137,7 @@ For getting the latest contracts addresses, please check the [Deployed contracts
 A more detailed and technical description of the protocol can be found in this repository, [here](./aave-v2-whitepaper.pdf)
 
 ## Audits
+
 -
 
 ## Connect with the community
@@ -236,6 +241,7 @@ npm run umee:kovan:full:migration
 ```
 
 ### Creating A Market
+
 ```
 1. Duplicate the Umee Market folder
 - Update Commons Addresses
@@ -246,12 +252,13 @@ npm run umee:kovan:full:migration
 - import market config
 - Update confignames, loadpoolconfig, and getreservesconfigbypool
 
-3. Duplicate umee:mainnet task 
+3. Duplicate umee:mainnet task
 - Update folder
 - Add migration script in package.json
 ```
 
-### Adding Network 
+### Adding Network
+
 ```
 Update Following Files to include name + Update Helper-hardhat-config to appropriate gas
 modified:   buidler.config.ts
@@ -270,6 +277,7 @@ modified:   tasks/helpers/deploy-new-asset.ts
 ```
 
 ### Local Fork Testing
+
 ```
 1. Run npx hardhat node --fork https://eth-rinkeby.alchemyapi.io/v2/your-key
 - Create another terminal
@@ -281,9 +289,8 @@ modified:   tasks/helpers/deploy-new-asset.ts
 
 3. Update .env mnemonic to test account
 
-4. Run Migration 
+4. Run Migration
 ```
-
 
 ### Mainnet fork deployment
 

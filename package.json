@@ -32,7 +32,7 @@
     "umee:evm:dev:migration": "npm run compile && hardhat umee:dev",
     "umee:docker:full:migration": "npm run compile && npm run hardhat:docker -- umee:mainnet --skip-registry",
     "umee:kovan:full:migration": "npm run compile && npm run hardhat:kovan -- umee:mainnet --skip-registry --verify",
-    "cosmos:goerli:full:migration": "npm run compile && npm run hardhat:goerli -- cosmos:mainnet --verify",
+    "cosmos:goerli:full:migration": "npm run compile && npm run hardhat:goerli -- cosmos:mainnet --skip-registry --verify",
     "cosmos:rinkeby:full:migration": "npm run compile && npm run hardhat:rinkeby -- cosmos:mainnet --skip-registry --verify",
     "umee:rinkeby:full:migration": "npm run compile && npm run hardhat:rinkeby -- umee:mainnet --skip-registry --verify",
     "matic:mumbai:full:migration": "npm run compile && npm run hardhat:mumbai sidechain:mainnet -- --pool Matic --skip-registry",

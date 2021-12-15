@@ -39,9 +39,9 @@ export const strategyUSDC: IReserveParams = {
 
 export const strategyUSDT: IReserveParams = {
   strategy: rateStrategyStableThree,
-  baseLTVAsCollateral: '0',
-  liquidationThreshold: '0',
-  liquidationBonus: '0',
+  baseLTVAsCollateral: '7500',
+  liquidationThreshold: '8000',
+  liquidationBonus: '10500',
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
   reserveDecimals: '6',
@@ -51,8 +51,8 @@ export const strategyUSDT: IReserveParams = {
 
 export const strategyATOM: IReserveParams = {
   strategy: rateStrategyATOM,
-  baseLTVAsCollateral: '2500',
-  liquidationThreshold: '4500',
+  baseLTVAsCollateral: '4500',
+  liquidationThreshold: '6000',
   liquidationBonus: '10500',
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,

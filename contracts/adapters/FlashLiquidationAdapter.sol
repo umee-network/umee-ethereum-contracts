@@ -120,7 +120,8 @@ contract FlashLiquidationAdapter is BaseUniswapAdapter {
     vars.flashLoanDebt = flashBorrowedAmount.add(premium);
 
     // Approve LendingPool to use debt token for liquidation
-    IERC20(borrowedAsset).approve(address(LENDING_POOL), debtToCover);
+    IERC20(borrowedAsset).safeApprove(address(LENDING_POOL), 0);
+    IERC20(borrowedAsset).safeApprove(address(LENDING_POOL), debtToCover);
 
     // Liquidate the user position and release the underlying collateral
     LENDING_POOL.liquidationCall(collateralAsset, borrowedAsset, user, debtToCover, false);
@@ -152,11 +153,12 @@ contract FlashLiquidationAdapter is BaseUniswapAdapter {
     }
 
     // Allow repay of flash loan
-    IERC20(borrowedAsset).approve(address(LENDING_POOL), vars.flashLoanDebt);
+    IERC20(borrowedAsset).safeApprove(address(LENDING_POOL), 0);
+    IERC20(borrowedAsset).safeApprove(address(LENDING_POOL), vars.flashLoanDebt);
 
     // Transfer remaining tokens to initiator
     if (vars.remainingTokens > 0) {
-      IERC20(collateralAsset).transfer(initiator, vars.remainingTokens);
+      IERC20(collateralAsset).safeTransfer(initiator, vars.remainingTokens);
     }
   }
 

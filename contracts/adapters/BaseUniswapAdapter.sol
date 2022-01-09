@@ -561,6 +561,6 @@ abstract contract BaseUniswapAdapter is FlashLoanReceiverBase, IBaseUniswapAdapt
    * - Only callable by the owner
    **/
   function rescueTokens(IERC20 token) external onlyOwner {
-    token.transfer(owner(), token.balanceOf(address(this)));
+    token.safeTransfer(owner(), token.balanceOf(address(this)));
   }
 }

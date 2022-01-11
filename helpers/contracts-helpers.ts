@@ -27,6 +27,7 @@ import { getFirstSigner, getIErc20Detailed } from './contracts-getters';
 import { usingTenderly, verifyAtTenderly } from './tenderly-utils';
 import { usingPolygon, verifyAtPolygon } from './polygon-utils';
 import { getDefenderRelaySigner, usingDefender } from './defender-utils';
+import { getLendingPool } from './contracts-getters';
 
 export type MockTokenMap = { [symbol: string]: MintableERC20 };
 
@@ -51,6 +52,13 @@ export const registerContractInJsonDb = async (contractId: string, contractInsta
       deployer: contractInstance.deployTransaction.from,
     })
     .write();
+};
+
+export const getCurrentUserAccountData = async (
+  lendingPoolAddress: tEthereumAddress,
+  userAddress: tEthereumAddress
+) => {
+  return await (await getLendingPool(lendingPoolAddress)).getUserAccountData(userAddress);
 };
 
 export const insertContractAddressInDb = async (id: eContractid, address: tEthereumAddress) =>
@@ -142,10 +150,8 @@ export const linkBytecode = (artifact: BuidlerArtifact | Artifact, libraries: an
 };
 
 export const getParamPerNetwork = <T>(param: iParamsPerNetwork<T>, network: eNetwork) => {
-  const { main, ropsten, kovan, rinkeby, coverage, buidlerevm, tenderlyMain } =
+  const { main, ropsten, kovan, goerli, rinkeby, coverage, buidlerevm, tenderlyMain } =
     param as iEthereumParamsPerNetwork<T>;
-  const { matic, mumbai } = param as iPolygonParamsPerNetwork<T>;
-  const { xdai } = param as iXDaiParamsPerNetwork<T>;
   if (process.env.FORK) {
     return param[process.env.FORK as eNetwork] as T;
   }
@@ -163,27 +169,21 @@ export const getParamPerNetwork = <T>(param: iParamsPerNetwork<T>, network: eNet
       return ropsten;
     case eEthereumNetwork.rinkeby:
       return rinkeby;
+    case eEthereumNetwork.goerli:
+      return goerli;
     case eEthereumNetwork.main:
       return main;
     case eEthereumNetwork.tenderlyMain:
       return tenderlyMain;
-    case ePolygonNetwork.matic:
-      return matic;
-    case ePolygonNetwork.mumbai:
-      return mumbai;
-    case eXDaiNetwork.xdai:
-      return xdai;
   }
 };
 
-export const getParamPerPool = <T>({ proto, amm, matic }: iParamsPerPool<T>, pool: UmeePools) => {
+export const getParamPerPool = <T>({ proto, amm }: iParamsPerPool<T>, pool: UmeePools) => {
   switch (pool) {
     case UmeePools.proto:
       return proto;
     case UmeePools.amm:
       return amm;
-    case UmeePools.matic:
-      return matic;
     default:
       return proto;
   }

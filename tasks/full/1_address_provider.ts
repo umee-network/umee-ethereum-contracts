@@ -10,6 +10,12 @@ import {
 import { getParamPerNetwork } from '../../helpers/contracts-helpers';
 import { eNetwork } from '../../helpers/types';
 
+import {
+  getFirstSigner,
+  getLendingPoolAddressesProvider,
+  getLendingPoolAddressesProviderRegistry,
+} from '../../helpers/contracts-getters';
+
 task(
   'full:deploy-address-provider',
   'Deploy address provider, registry and fee provider for dev enviroment'
@@ -21,6 +27,7 @@ task(
     await DRE.run('set-DRE');
     const poolConfig = loadPoolConfig(pool);
     const { MarketId } = poolConfig;
+    const { ProviderId } = poolConfig;
 
     // 1. Deploy address provider and set genesis manager
     const addressesProvider = await deployLendingPoolAddressesProvider(MarketId, verify);
@@ -38,6 +45,7 @@ task(
         deployRegistry: !notFalsyOrZeroAddress(providerRegistryAddress),
       });
     }
+
     // 3. Set pool admins
     await waitForTx(await addressesProvider.setPoolAdmin(await getGenesisPoolAdmin(poolConfig)));
     await waitForTx(await addressesProvider.setEmergencyAdmin(await getEmergencyAdmin(poolConfig)));

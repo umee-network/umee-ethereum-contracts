@@ -39,22 +39,20 @@ export const strategyUSDC: IReserveParams = {
 
 export const strategyUSDT: IReserveParams = {
   strategy: rateStrategyStableThree,
-  baseLTVAsCollateral: '8000',
-  liquidationThreshold: '8500',
+  baseLTVAsCollateral: '7500',
+  liquidationThreshold: '8000',
   liquidationBonus: '10500',
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,
-  reserveDecimals: '18',
+  reserveDecimals: '6',
   uTokenImpl: eContractid.UToken,
-  reserveFactor: '1000'
+  reserveFactor: '1000',
 };
 
-
-// TODO: Figure out the Strategy for ATOM Token
 export const strategyATOM: IReserveParams = {
   strategy: rateStrategyATOM,
-  baseLTVAsCollateral: '2500',
-  liquidationThreshold: '4500',
+  baseLTVAsCollateral: '4500',
+  liquidationThreshold: '6000',
   liquidationBonus: '10500',
   borrowingEnabled: true,
   stableBorrowRateEnabled: false,

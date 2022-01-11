@@ -11,6 +11,7 @@ export enum eEthereumNetwork {
   kovan = 'kovan',
   ropsten = 'ropsten',
   rinkeby = 'rinkeby',
+  goerli = 'goerli',
   main = 'main',
   coverage = 'coverage',
   hardhat = 'hardhat',
@@ -30,6 +31,7 @@ export enum EthereumNetworkNames {
   kovan = 'kovan',
   ropsten = 'ropsten',
   rinkeby = 'rinkeby',
+  goerli = 'goerli',
   main = 'main',
   matic = 'matic',
   mumbai = 'mumbai',
@@ -39,7 +41,6 @@ export enum EthereumNetworkNames {
 export enum UmeePools {
   proto = 'proto',
   cosmos = 'cosmos',
-  matic = 'matic',
   amm = 'amm',
 }
 
@@ -425,6 +426,7 @@ export interface iEthereumParamsPerNetwork<T> {
   [eEthereumNetwork.kovan]: T;
   [eEthereumNetwork.ropsten]: T;
   [eEthereumNetwork.rinkeby]: T;
+  [eEthereumNetwork.goerli]: T;
   [eEthereumNetwork.main]: T;
   [eEthereumNetwork.hardhat]: T;
   [eEthereumNetwork.tenderlyMain]: T;
@@ -442,7 +444,6 @@ export interface iXDaiParamsPerNetwork<T> {
 export interface iParamsPerPool<T> {
   [UmeePools.proto]: T;
   [UmeePools.cosmos]: T;
-  [UmeePools.matic]: T;
   [UmeePools.amm]: T;
 }
 

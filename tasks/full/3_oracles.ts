@@ -26,6 +26,7 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
     try {
       await DRE.run('set-DRE');
       const network = <eNetwork>DRE.network.name;
+      console.log(network);
       const poolConfig = loadPoolConfig(pool);
       const {
         ProtocolGlobalParams: { UsdAddress },
@@ -44,8 +45,9 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
 
       const tokensToWatch: SymbolMap<string> = {
         ...reserveAssets,
-        // USD: UsdAddress,
+        //USD: UsdAddress,
       };
+
       const [tokens, aggregators] = getPairsTokenAggregator(tokensToWatch, chainlinkAggregators);
 
       let umeeOracle: UmeeOracle;

@@ -51,6 +51,12 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 
   uint256 public constant LENDINGPOOL_REVISION = 0x2;
 
+  /// @dev asset address => user address => user deposit amount of asset
+  mapping(address => mapping(address => uint256)) public depositAmount;
+
+  /// @dev asset address => user address => user withdraw amount of asset
+  mapping(address => mapping(address => uint256)) public withdrawAmount;
+
   modifier whenNotPaused() {
     _whenNotPaused();
     _;
@@ -125,6 +131,8 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
       emit ReserveUsedAsCollateralEnabled(asset, onBehalfOf);
     }
 
+    depositAmount[asset][msg.sender] += amount;
+
     emit Deposit(asset, msg.sender, onBehalfOf, amount, referralCode);
   }
 
@@ -178,9 +186,27 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 
     IUToken(uToken).burn(msg.sender, to, amountToWithdraw, reserve.liquidityIndex);
 
+    withdrawAmount[asset][msg.sender] += amountToWithdraw;
+
     emit Withdraw(asset, msg.sender, to, amountToWithdraw);
 
     return amountToWithdraw;
+  }
+
+  /**
+   * @dev Calculates interest generated for `asset` and `userAddr`
+   * @param asset The address of underlying asset to calculate
+   * @param userAddr The address of user to calculate
+   * @return The interest generated from deposition
+   */
+  function interestGenerated(address asset, address userAddr) external view returns (uint256) {
+    DataTypes.ReserveData storage reserve = _reserves[asset];
+
+    address uToken = reserve.uTokenAddress;
+
+    return (IUToken(uToken).balanceOf(msg.sender) +
+      withdrawAmount[asset][msg.sender] -
+      depositAmount[asset][msg.sender]);
   }
 
   /**
@@ -713,7 +739,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   }
 
   /**
-   * @dev Returns the fee on flash loans 
+   * @dev Returns the fee on flash loans
    */
   function FLASHLOAN_PREMIUM_TOTAL() public view returns (uint256) {
     return _flashLoanPremiumTotal;

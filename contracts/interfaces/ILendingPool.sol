@@ -226,6 +226,14 @@ interface ILendingPool {
   ) external;
 
   /**
+   * @dev Calculates interest generated for `asset` and `user`
+   * @param asset The address of underlying asset to calculate
+   * @param user The address of user to calculate
+   * @return The interest generated from deposition
+   */
+  function interestGenerated(address asset, address user) external view returns (uint256);
+
+  /**
    * @notice Repays a borrowed `amount` on a specific reserve, burning the equivalent debt tokens owned
    * - E.g. User repays 100 USDC, burning 100 variable/stable debt tokens of the `onBehalfOf` address
    * @param asset The address of the borrowed underlying asset previously borrowed

@@ -194,19 +194,19 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   }
 
   /**
-   * @dev Calculates interest generated for `asset` and `userAddr`
+   * @dev Calculates interest generated for `asset` and `user`
    * @param asset The address of underlying asset to calculate
-   * @param userAddr The address of user to calculate
+   * @param user The address of user to calculate
    * @return The interest generated from deposition
    */
-  function interestGenerated(address asset, address userAddr) external view returns (uint256) {
+  function interestGenerated(address asset, address user) external view override returns (uint256) {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     address uToken = reserve.uTokenAddress;
 
-    return (IUToken(uToken).balanceOf(msg.sender) +
-      withdrawAmount[asset][msg.sender] -
-      depositAmount[asset][msg.sender]);
+    return (IUToken(uToken).balanceOf(user) +
+      withdrawAmount[asset][user] -
+      depositAmount[asset][user]);
   }
 
   /**

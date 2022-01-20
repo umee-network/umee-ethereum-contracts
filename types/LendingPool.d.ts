@@ -657,7 +657,7 @@ export class LendingPool extends Contract {
 
     interestGenerated(
       asset: string,
-      userAddr: string,
+      user: string,
       overrides?: CallOverrides
     ): Promise<{
       0: BigNumber;
@@ -665,7 +665,7 @@ export class LendingPool extends Contract {
 
     "interestGenerated(address,address)"(
       asset: string,
-      userAddr: string,
+      user: string,
       overrides?: CallOverrides
     ): Promise<{
       0: BigNumber;
@@ -1093,13 +1093,13 @@ export class LendingPool extends Contract {
 
   interestGenerated(
     asset: string,
-    userAddr: string,
+    user: string,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
   "interestGenerated(address,address)"(
     asset: string,
-    userAddr: string,
+    user: string,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
@@ -1514,13 +1514,13 @@ export class LendingPool extends Contract {
 
     interestGenerated(
       asset: string,
-      userAddr: string,
+      user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     "interestGenerated(address,address)"(
       asset: string,
-      userAddr: string,
+      user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1944,13 +1944,13 @@ export class LendingPool extends Contract {
 
     interestGenerated(
       asset: string,
-      userAddr: string,
+      user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     "interestGenerated(address,address)"(
       asset: string,
-      userAddr: string,
+      user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -2308,13 +2308,13 @@ export class LendingPool extends Contract {
 
     interestGenerated(
       asset: string,
-      userAddr: string,
+      user: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     "interestGenerated(address,address)"(
       asset: string,
-      userAddr: string,
+      user: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 

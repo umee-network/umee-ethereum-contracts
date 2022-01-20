@@ -35,6 +35,7 @@ interface ILendingPoolInterface extends ethers.utils.Interface {
     "getUserAccountData(address)": FunctionFragment;
     "getUserConfiguration(address)": FunctionFragment;
     "initReserve(address,address,address,address,address)": FunctionFragment;
+    "interestGenerated(address,address)": FunctionFragment;
     "liquidationCall(address,address,address,uint256,bool)": FunctionFragment;
     "paused()": FunctionFragment;
     "rebalanceStableBorrowRate(address,address)": FunctionFragment;
@@ -106,6 +107,10 @@ interface ILendingPoolInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "initReserve",
     values: [string, string, string, string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "interestGenerated",
+    values: [string, string]
   ): string;
   encodeFunctionData(
     functionFragment: "liquidationCall",
@@ -183,6 +188,10 @@ interface ILendingPoolInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "initReserve",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "interestGenerated",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -528,6 +537,22 @@ export class ILendingPool extends Contract {
       interestRateStrategyAddress: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    interestGenerated(
+      asset: string,
+      user: string,
+      overrides?: CallOverrides
+    ): Promise<{
+      0: BigNumber;
+    }>;
+
+    "interestGenerated(address,address)"(
+      asset: string,
+      user: string,
+      overrides?: CallOverrides
+    ): Promise<{
+      0: BigNumber;
+    }>;
 
     liquidationCall(
       collateralAsset: string,
@@ -891,6 +916,18 @@ export class ILendingPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  interestGenerated(
+    asset: string,
+    user: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "interestGenerated(address,address)"(
+    asset: string,
+    user: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   liquidationCall(
     collateralAsset: string,
     debtAsset: string,
@@ -1248,6 +1285,18 @@ export class ILendingPool extends Contract {
       interestRateStrategyAddress: string,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    interestGenerated(
+      asset: string,
+      user: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "interestGenerated(address,address)"(
+      asset: string,
+      user: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     liquidationCall(
       collateralAsset: string,
@@ -1616,6 +1665,18 @@ export class ILendingPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
+    interestGenerated(
+      asset: string,
+      user: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "interestGenerated(address,address)"(
+      asset: string,
+      user: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     liquidationCall(
       collateralAsset: string,
       debtAsset: string,
@@ -1900,6 +1961,18 @@ export class ILendingPool extends Contract {
       variableDebtAddress: string,
       interestRateStrategyAddress: string,
       overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    interestGenerated(
+      asset: string,
+      user: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "interestGenerated(address,address)"(
+      asset: string,
+      user: string,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     liquidationCall(

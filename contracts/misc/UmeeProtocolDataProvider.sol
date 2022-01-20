@@ -136,6 +136,7 @@ contract UmeeProtocolDataProvider {
       uint256 scaledVariableDebt,
       uint256 stableBorrowRate,
       uint256 liquidityRate,
+      uint256 interestGenerated,
       uint40 stableRateLastUpdated,
       bool usageAsCollateralEnabled
     )
@@ -152,6 +153,10 @@ contract UmeeProtocolDataProvider {
     principalStableDebt = IStableDebtToken(reserve.stableDebtTokenAddress).principalBalanceOf(user);
     scaledVariableDebt = IVariableDebtToken(reserve.variableDebtTokenAddress).scaledBalanceOf(user);
     liquidityRate = reserve.currentLiquidityRate;
+    interestGenerated = ILendingPool(ADDRESSES_PROVIDER.getLendingPool()).interestGenerated(
+      asset,
+      user
+    );
     stableBorrowRate = IStableDebtToken(reserve.stableDebtTokenAddress).getUserStableRate(user);
     stableRateLastUpdated = IStableDebtToken(reserve.stableDebtTokenAddress).getUserLastUpdated(
       user

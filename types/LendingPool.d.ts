@@ -28,6 +28,7 @@ interface LendingPoolInterface extends ethers.utils.Interface {
     "MAX_STABLE_RATE_BORROW_SIZE_PERCENT()": FunctionFragment;
     "borrow(address,uint256,uint256,uint16,address)": FunctionFragment;
     "deposit(address,uint256,address,uint16)": FunctionFragment;
+    "depositAmount(address,address)": FunctionFragment;
     "finalizeTransfer(address,address,address,uint256,uint256,uint256)": FunctionFragment;
     "flashLoan(address,address[],uint256[],uint256[],address,bytes,uint16)": FunctionFragment;
     "getAddressesProvider()": FunctionFragment;
@@ -40,6 +41,7 @@ interface LendingPoolInterface extends ethers.utils.Interface {
     "getUserConfiguration(address)": FunctionFragment;
     "initReserve(address,address,address,address,address)": FunctionFragment;
     "initialize(address)": FunctionFragment;
+    "interestGenerated(address,address)": FunctionFragment;
     "liquidationCall(address,address,address,uint256,bool)": FunctionFragment;
     "paused()": FunctionFragment;
     "rebalanceStableBorrowRate(address,address)": FunctionFragment;
@@ -50,6 +52,7 @@ interface LendingPoolInterface extends ethers.utils.Interface {
     "setUserUseReserveAsCollateral(address,bool)": FunctionFragment;
     "swapBorrowRateMode(address,uint256)": FunctionFragment;
     "withdraw(address,uint256,address)": FunctionFragment;
+    "withdrawAmount(address,address)": FunctionFragment;
   };
 
   encodeFunctionData(
@@ -75,6 +78,10 @@ interface LendingPoolInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "deposit",
     values: [string, BigNumberish, string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "depositAmount",
+    values: [string, string]
   ): string;
   encodeFunctionData(
     functionFragment: "finalizeTransfer",
@@ -130,6 +137,10 @@ interface LendingPoolInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "initialize", values: [string]): string;
   encodeFunctionData(
+    functionFragment: "interestGenerated",
+    values: [string, string]
+  ): string;
+  encodeFunctionData(
     functionFragment: "liquidationCall",
     values: [string, string, string, BigNumberish, boolean]
   ): string;
@@ -163,6 +174,10 @@ interface LendingPoolInterface extends ethers.utils.Interface {
     functionFragment: "withdraw",
     values: [string, BigNumberish, string]
   ): string;
+  encodeFunctionData(
+    functionFragment: "withdrawAmount",
+    values: [string, string]
+  ): string;
 
   decodeFunctionResult(
     functionFragment: "FLASHLOAN_PREMIUM_TOTAL",
@@ -182,6 +197,10 @@ interface LendingPoolInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "borrow", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "depositAmount",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "finalizeTransfer",
     data: BytesLike
@@ -225,6 +244,10 @@ interface LendingPoolInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "interestGenerated",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "liquidationCall",
     data: BytesLike
   ): Result;
@@ -252,6 +275,10 @@ interface LendingPoolInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "withdrawAmount",
+    data: BytesLike
+  ): Result;
 
   events: {
     "Borrow(address,address,address,uint256,uint256,uint256,uint16)": EventFragment;
@@ -369,6 +396,22 @@ export class LendingPool extends Contract {
       referralCode: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    depositAmount(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<{
+      0: BigNumber;
+    }>;
+
+    "depositAmount(address,address)"(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<{
+      0: BigNumber;
+    }>;
 
     finalizeTransfer(
       asset: string,
@@ -612,6 +655,22 @@ export class LendingPool extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
+    interestGenerated(
+      asset: string,
+      userAddr: string,
+      overrides?: CallOverrides
+    ): Promise<{
+      0: BigNumber;
+    }>;
+
+    "interestGenerated(address,address)"(
+      asset: string,
+      userAddr: string,
+      overrides?: CallOverrides
+    ): Promise<{
+      0: BigNumber;
+    }>;
+
     liquidationCall(
       collateralAsset: string,
       debtAsset: string,
@@ -734,6 +793,22 @@ export class LendingPool extends Contract {
       to: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    withdrawAmount(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<{
+      0: BigNumber;
+    }>;
+
+    "withdrawAmount(address,address)"(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<{
+      0: BigNumber;
+    }>;
   };
 
   FLASHLOAN_PREMIUM_TOTAL(overrides?: CallOverrides): Promise<BigNumber>;
@@ -789,6 +864,18 @@ export class LendingPool extends Contract {
     referralCode: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
+
+  depositAmount(
+    arg0: string,
+    arg1: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "depositAmount(address,address)"(
+    arg0: string,
+    arg1: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   finalizeTransfer(
     asset: string,
@@ -1004,6 +1091,18 @@ export class LendingPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  interestGenerated(
+    asset: string,
+    userAddr: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "interestGenerated(address,address)"(
+    asset: string,
+    userAddr: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   liquidationCall(
     collateralAsset: string,
     debtAsset: string,
@@ -1123,6 +1222,18 @@ export class LendingPool extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  withdrawAmount(
+    arg0: string,
+    arg1: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "withdrawAmount(address,address)"(
+    arg0: string,
+    arg1: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   callStatic: {
     FLASHLOAN_PREMIUM_TOTAL(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1177,6 +1288,18 @@ export class LendingPool extends Contract {
       referralCode: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    depositAmount(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "depositAmount(address,address)"(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     finalizeTransfer(
       asset: string,
@@ -1389,6 +1512,18 @@ export class LendingPool extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    interestGenerated(
+      asset: string,
+      userAddr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "interestGenerated(address,address)"(
+      asset: string,
+      userAddr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     liquidationCall(
       collateralAsset: string,
       debtAsset: string,
@@ -1502,6 +1637,18 @@ export class LendingPool extends Contract {
       asset: string,
       amount: BigNumberish,
       to: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    withdrawAmount(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "withdrawAmount(address,address)"(
+      arg0: string,
+      arg1: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
@@ -1648,6 +1795,18 @@ export class LendingPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
+    depositAmount(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "depositAmount(address,address)"(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     finalizeTransfer(
       asset: string,
       from: string,
@@ -1783,6 +1942,18 @@ export class LendingPool extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
+    interestGenerated(
+      asset: string,
+      userAddr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "interestGenerated(address,address)"(
+      asset: string,
+      userAddr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     liquidationCall(
       collateralAsset: string,
       debtAsset: string,
@@ -1898,6 +2069,18 @@ export class LendingPool extends Contract {
       to: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
+
+    withdrawAmount(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "withdrawAmount(address,address)"(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -1965,6 +2148,18 @@ export class LendingPool extends Contract {
       onBehalfOf: string,
       referralCode: BigNumberish,
       overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    depositAmount(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "depositAmount(address,address)"(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     finalizeTransfer(
@@ -2111,6 +2306,18 @@ export class LendingPool extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
+    interestGenerated(
+      asset: string,
+      userAddr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "interestGenerated(address,address)"(
+      asset: string,
+      userAddr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     liquidationCall(
       collateralAsset: string,
       debtAsset: string,
@@ -2231,6 +2438,18 @@ export class LendingPool extends Contract {
       amount: BigNumberish,
       to: string,
       overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    withdrawAmount(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "withdrawAmount(address,address)"(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };
 }

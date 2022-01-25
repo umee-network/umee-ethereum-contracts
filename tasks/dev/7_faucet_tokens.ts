@@ -8,26 +8,26 @@ task('dev:deploy-faucet-tokens', 'Deploy faucet tokens for dev enviroment').setA
     await localBRE.run('set-DRE');
 
     const faucetUSDC = await new FaucetERC20Factory(await getFirstSigner()).deploy(
-      'USDC',
+      'USD Coin',
       'USDC',
       6,
-      BigNumber.from(10).pow(6),
+      BigNumber.from(10).pow(6).mul(2), // 2 coins
       3600 * 24
     );
 
     const faucetUSDT = await new FaucetERC20Factory(await getFirstSigner()).deploy(
-      'USDT',
+      'Tether USD',
       'USDT',
       6,
-      BigNumber.from(10).pow(6),
+      BigNumber.from(10).pow(6).mul(2), // 2 coins
       3600 * 24
     );
 
     const faucetDAI = await new FaucetERC20Factory(await getFirstSigner()).deploy(
+      'DAI Stablecoin',
       'DAI',
-      'DAI',
-      6,
-      BigNumber.from(10).pow(18),
+      18,
+      BigNumber.from(10).pow(18).mul(2), // 2 coins
       3600 * 24
     );
 

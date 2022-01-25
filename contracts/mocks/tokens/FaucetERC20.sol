@@ -37,10 +37,10 @@ contract FaucetERC20 is ERC20, Ownable {
    */
   function mint(uint256 value) external returns (bool) {
     if (lastMintTime[msg.sender] > 0) {
-      require(block.timestamp > lastMintTime[msg.sender] + minMintFrequency, 'Frequent mint');
+      require(block.timestamp >= lastMintTime[msg.sender] + minMintFrequency, 'Frequent mint');
     }
 
-    require(value < maxAmountPerMint, 'Too much mint amount');
+    require(value <= maxAmountPerMint, 'Too much mint amount');
 
     lastMintTime[msg.sender] = block.timestamp;
 
@@ -50,7 +50,7 @@ contract FaucetERC20 is ERC20, Ownable {
   }
 
   /**
-   * @dev Sets `_maxAmountPerMint` and `_minMintFrequency`. Zero values will be ignored. Only callable by owner.
+   * @dev Sets `_maxAmountPerMint` and `_minMintFrequency`. Only callable by owner.
    * @param _maxAmountPerMint amount per mint
    * @param _minMintFrequency min mint frequency
    * @return boolean
@@ -60,12 +60,9 @@ contract FaucetERC20 is ERC20, Ownable {
     onlyOwner
     returns (bool)
   {
-    if (_maxAmountPerMint > 0) {
-      maxAmountPerMint = _maxAmountPerMint;
-    }
-    if (_minMintFrequency > 0) {
-      minMintFrequency = _minMintFrequency;
-    }
+    maxAmountPerMint = _maxAmountPerMint;
+    minMintFrequency = _minMintFrequency;
+
     return true;
   }
 }

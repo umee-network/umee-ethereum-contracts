@@ -26,6 +26,8 @@ contract FaucetERC20 is ERC20, Ownable {
 
     maxAmountPerMint = _maxAmountPerMint;
     minMintFrequency = _minMintFrequency;
+
+    _mint(msg.sender, 50000 * (10**decimals));
   }
 
   /**

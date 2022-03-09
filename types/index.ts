@@ -113,5 +113,7 @@ export { StableDebtTokenFactory } from "./StableDebtTokenFactory";
 export type { StableDebtToken } from "./StableDebtToken";
 export { UTokenFactory } from "./UTokenFactory";
 export type { UToken } from "./UToken";
+export { UTokenWrapperFactory } from "./UTokenWrapperFactory";
+export type { UTokenWrapper } from "./UTokenWrapper";
 export { VariableDebtTokenFactory } from "./VariableDebtTokenFactory";
 export type { VariableDebtToken } from "./VariableDebtToken";

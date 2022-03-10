@@ -21,13 +21,13 @@ contract UTokenWrapper is ERC20Upgradeable, ReentrancyGuardUpgradeable, Initiali
   /// @dev uToken => uTokenWrapper minted
   mapping(address => uint256) public wrapperMinted;
 
-  function _initialize(string memory name, string memory symbol) internal {
+  function __UTokenWrapper_init(string memory name, string memory symbol) internal {
     __ERC20_init(name, symbol);
     __ReentrancyGuard_init();
   }
 
   function initialize(string calldata name, string calldata symbol) external virtual initializer {
-    _initialize(name, symbol);
+    __UTokenWrapper_init(name, symbol);
   }
 
   /**

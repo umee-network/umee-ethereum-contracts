@@ -3,7 +3,9 @@ pragma solidity 0.6.12;
 
 import '../../dependencies/openzeppelin/contracts/SafeERC20.sol';
 import '../../dependencies/openzeppelin/contracts/IERC20.sol';
-import '../../dependencies/openzeppelin/contracts/ERC20.sol';
+import '../../dependencies/openzeppelin/upgradeability/ERC20Upgradeable.sol';
+import '../../dependencies/openzeppelin/upgradeability/ReentrancyGuardUpgradeable.sol';
+import '../../dependencies/openzeppelin/upgradeability/Initializable.sol';
 
 /**
  * @title Umee uToken wrapper
@@ -11,7 +13,7 @@ import '../../dependencies/openzeppelin/contracts/ERC20.sol';
  * @author Umee
  */
 
-contract UTokenWrapper is ERC20 {
+contract UTokenWrapper is ERC20Upgradeable, ReentrancyGuardUpgradeable, Initializable {
   using SafeERC20 for IERC20;
 
   uint256 constant BASE_UNIT = 10**18;
@@ -19,23 +21,30 @@ contract UTokenWrapper is ERC20 {
   /// @dev uToken => uTokenWrapper minted
   mapping(address => uint256) public wrapperMinted;
 
-  /**
-   * @dev constructor
-   * @param name token name
-   * @param symbol token symbol
-   */
-  constructor(string memory name, string memory symbol) public ERC20(name, symbol) {}
+  function _initialize(string memory name, string memory symbol) internal {
+    __ERC20_init(name, symbol);
+    __ReentrancyGuard_init();
+  }
+
+  function initialize(string calldata name, string calldata symbol) external virtual initializer {
+    _initialize(name, symbol);
+  }
 
   /**
    * @dev Deposits uToken and mints wrapper token in return
    * @param uToken uToken address
    * @param amount deposit amount of uToken
    */
-  function deposit(IERC20 uToken, uint256 amount) external {
-    uint256 mintAmount = (amount * BASE_UNIT) / exchangeRatio(uToken);
+  function deposit(IERC20 uToken, uint256 amount) external virtual nonReentrant {
+    uint256 mintAmount = amount;
+    uint256 wrapperMintedAmount = wrapperMinted[address(uToken)];
+
+    if (wrapperMintedAmount > 0) {
+      mintAmount = (amount * wrapperMintedAmount) / uToken.balanceOf(address(this));
+    }
 
     _mint(msg.sender, mintAmount);
-    uToken.safeTransferFrom(msg.sender, address(this), amount);
+    uToken.safeTransferFrom(msg.sender, address(this), mintAmount);
 
     wrapperMinted[address(uToken)] += mintAmount;
   }
@@ -45,16 +54,25 @@ contract UTokenWrapper is ERC20 {
    * @param wrapperAmount wrapper token amount to exchange
    * @param uToken uToken address to exchange wrapper token for
    */
-  function exchange(uint256 wrapperAmount, IERC20 uToken) external {
+  function exchange(uint256 wrapperAmount, IERC20 uToken) external virtual nonReentrant {
+    uint256 uTokenAmount = wrapperAmount;
+    uint256 wrapperMintedAmount = wrapperMinted[address(uToken)];
+
+    if (wrapperMintedAmount > 0) {
+      uTokenAmount = (wrapperAmount * uToken.balanceOf(address(this))) / wrapperMintedAmount;
+    }
+
     _transfer(msg.sender, address(this), wrapperAmount);
-    uToken.safeTransfer(msg.sender, (wrapperAmount * exchangeRatio(uToken)) / BASE_UNIT);
+    uToken.safeTransfer(msg.sender, uTokenAmount);
+
+    wrapperMinted[address(uToken)] -= wrapperAmount;
   }
 
   /**
    * @dev Returns current exchange ratio of uToken / wrapper
    * @param uToken uToken address
    */
-  function exchangeRatio(IERC20 uToken) public view returns (uint256) {
+  function exchangeRatio(IERC20 uToken) external view virtual returns (uint256) {
     uint256 wrapperAmount = wrapperMinted[address(uToken)];
 
     if (wrapperAmount == 0) {
@@ -63,4 +81,6 @@ contract UTokenWrapper is ERC20 {
       return (uToken.balanceOf(address(this)) * BASE_UNIT) / wrapperAmount;
     }
   }
+
+  uint256[45] private __gap;
 }

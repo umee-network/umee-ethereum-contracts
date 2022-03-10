@@ -27,6 +27,8 @@ export { BaseAdminUpgradeabilityProxyFactory } from "./BaseAdminUpgradeabilityPr
 export type { BaseAdminUpgradeabilityProxy } from "./BaseAdminUpgradeabilityProxy";
 export { BaseUpgradeabilityProxyFactory } from "./BaseUpgradeabilityProxyFactory";
 export type { BaseUpgradeabilityProxy } from "./BaseUpgradeabilityProxy";
+export { ERC20UpgradeableFactory } from "./ERC20UpgradeableFactory";
+export type { ERC20Upgradeable } from "./ERC20Upgradeable";
 export { InitializableAdminUpgradeabilityProxyFactory } from "./InitializableAdminUpgradeabilityProxyFactory";
 export type { InitializableAdminUpgradeabilityProxy } from "./InitializableAdminUpgradeabilityProxy";
 export { InitializableUpgradeabilityProxyFactory } from "./InitializableUpgradeabilityProxyFactory";

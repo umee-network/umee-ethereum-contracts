@@ -2,90 +2,6 @@
 
 This repository contains the smart contracts source code and markets configuration for Umee Protocol V1. The repository uses Docker Compose and Hardhat as development enviorment for compilation, testing and deployment tasks.
 
-## Kovan Contract Addresses
-
-```
-GATEWAY 0xE40C9719b770Ad3a8f1D239ADE8AB2B6654592D3
-Contracts deployed at kovan
----------------------------------
-N# Contracts: 33
-MockAtomERC20: 0xaE6738D2f6b9B92B763dfb3F8D793589d8792522
-LendingPoolAddressesProvider: 0xf8038072dC44454A6318aE40832323bfC3085299
-ReserveLogic: 0x609aAEc0A0CB732C6b82FBe2A41841f9fD3eab5A
-GenericLogic: 0x590a14a2F210D4333D3422020eD569384A930287
-ValidationLogic: 0x823703CF952A9069e559C0E9BE8a9263Ec8f67e2
-LendingPoolImpl: 0x0cf80168fd89FEA2FE29a00CdCeA3702e6893d50
-LendingPool: 0x3526a2fe5dA32d0f0814086848628bF12A1E4417
-LendingPoolConfiguratorImpl: 0xdb3F692051b5a8341084F169Fd73fB7C892E3000
-LendingPoolConfigurator: 0x4310d799000D09B72CEa0D9eFF481734EE2ced0a
-StableAndVariableTokensHelper: 0x3229E8f7a306387AC2f8581AFf690e7e1A35C337
-UTokensAndRatesHelper: 0x2343E5Ea41d72afe797848e4f33121D08268C20C
-UmeeOracle: 0x96A2F421D0E1626C0728CaEd5F05cD629D9867dA
-LendingRateOracle: 0xAbD4F545Ef563D5aB1F150dB257a67F44bB33B99
-UmeeProtocolDataProvider: 0x0A749FE5a66e4B3607bD27E6255232f70495C75c
-WETHGateway: 0x8001A1356E268cb79ADb23CbaB1340229958e385
-StableDebtToken: 0xED4eAB9039B85cDb615cfDFC20f3812D21E43C8c
-VariableDebtToken: 0x88378A6da922ceE9E1cAe48B1E45DAbA93AB48bC
-UToken: 0x9b25CB4d2314eebC6e00A9871ec0106Ad8742f39
-uTokenImpl: 0x9b25CB4d2314eebC6e00A9871ec0106Ad8742f39
-DelegationAwareUToken: 0x7519905a428FBD813547BF94bc9Ed876CAD9FAF6
-delegationAwareUTokenImpl: 0x7519905a428FBD813547BF94bc9Ed876CAD9FAF6
-DefaultReserveInterestRateStrategy: 0xff47Ba93B1e0d5c253F8101aF64F0C3C948ED92D
-rateStrategyAAVE: 0x5B7c7f98E96A205c40B31C9d2a136146fCf07c50
-rateStrategyVolatileOne: 0x621DC7862DDC48B9b63568Eee6a5B98586Eef913
-rateStrategyStableOne: 0xe63B39Ce4ef9fcd778519855D417765448E01d76
-rateStrategyStableTwo: 0xa450153227ed26b7b57a1C9D95D30FFA450f7e05
-rateStrategyVolatileTwo: 0x5D5bA9a433337f99234a5ec1b76191B00F14fEF5
-rateStrategyVolatileThree: 0x09f2765d5ca06C796E1B45F7DfF58EaC17dcBA29
-rateStrategyStableThree: 0x173D1A5C0d9a55b5bF3A6cD24acF28a2f1C94301
-rateStrategyWETH: 0xff47Ba93B1e0d5c253F8101aF64F0C3C948ED92D
-WalletBalanceProvider: 0xfE737771c0d547bb12EabA0074603e12f045613B
-rateStrategyATOM: 0x126559404173481e081a53a3De045E012b4a38b2
-LendingPoolCollateralManagerImpl: 0x6f2E90C777973f02D3A4856fA7D21Ff346756769
-LendingPoolCollateralManager: 0x6f2E90C777973f02D3A4856fA7D21Ff346756769
-```
-
-## Rinkeby Contract Addresses
-
-```
-Contracts deployed at rinkeby
----------------------------------
-N# Contracts: 33
-LendingPoolAddressesProvider: 0x25eB6bd3E717b1Ec1940264172bfCd2fe81B06B9
-ReserveLogic: 0x060B5127Ebf9aCEFA3246325a0336082e4A9Bf4f
-GenericLogic: 0xd1f4ddcEf11b62b93257Dbe9fA62A939ef6af866
-ValidationLogic: 0x72d888b7CCe734D2187e364793942E6cF1Cdd5f3
-LendingPoolImpl: 0x340537B805773321Ec6b47A1B93d2c515c20c601
-LendingPool: 0x24AcbF87Df6DFA3F891dC2B0c1FBF7f5DD9F77D6
-LendingPoolConfiguratorImpl: 0xf3FcD8307e89e41c90494858b9Fbaa5F67f378A3
-LendingPoolConfigurator: 0xc989383653591B4Ce492E280174d29F07B5FdCD5
-StableAndVariableTokensHelper: 0xAC7c412292A893ad0E89b74B91e66FAe965050aF
-UTokensAndRatesHelper: 0xf16AAcC6Fc2392736164e630428D864186Ca5F75
-UmeeOracle: 0xaA2b1f1C7833Be0bd6BEBB3C41b8aEE605A877d9
-LendingRateOracle: 0x29eB6a83DBd1d7cF07dd9d5bC211caE63610D07F
-UmeeProtocolDataProvider: 0xB91B3860bBbfe1eEEcC7Dca333836345dBBcf68e
-WETHGateway: 0x570e76E1E5B8A035e690F94CdC583633FA77DCb8
-StableDebtToken: 0x818E6529e6701cdd1D07d5bAF9D3C771c6235d86
-VariableDebtToken: 0xCc231A34997cCD595ac8944db29ac0f2B7740ADd
-UToken: 0x24B62929A5ff816A6972018B6628C854De0e2e26
-uTokenImpl: 0x24B62929A5ff816A6972018B6628C854De0e2e26
-DelegationAwareUToken: 0x1e5CB74A9cD5c66D71d7cf38166F553aB68004e0
-delegationAwareUTokenImpl: 0x1e5CB74A9cD5c66D71d7cf38166F553aB68004e0
-DefaultReserveInterestRateStrategy: 0xdB3E9074a703E0F1160ebB71076db2e7359da707
-rateStrategyAAVE: 0xB03767bE6D452ECc8D4747Ec0929Ba682E3BD3b4
-rateStrategyATOM: 0x32958A725f13517203763E897898C26967CA0041
-rateStrategyVolatileOne: 0x7ff8009887c2f8b5f61d7a4a796563E0E3A5782C
-rateStrategyStableOne: 0x6548D6923F9eF98b2f688258cc51cA4F9e147F32
-rateStrategyStableTwo: 0xe93D94e0aF146aB824736Ce7cA3c0F815018a053
-rateStrategyVolatileTwo: 0xBe1Ec0869fC803fd0F730187ef4e4788C44d9B4a
-rateStrategyVolatileThree: 0xb0De6e861A20Eaf193c6b0a7113341af384E4C02
-rateStrategyStableThree: 0xfe0552C31025393A47cFa1CF29aE711a84085352
-rateStrategyWETH: 0xdB3E9074a703E0F1160ebB71076db2e7359da707
-LendingPoolCollateralManagerImpl: 0x86C80d04447093182098aeF8657Ad957d27E26Fa
-LendingPoolCollateralManager: 0x86C80d04447093182098aeF8657Ad957d27E26Fa
-WalletBalanceProvider: 0x49348a0943B46A01c9617aB3CBe79031Fc24D852
-```
-
 ## Goerli Contract Addresses
 
 ```
@@ -128,23 +44,17 @@ UiPoolDataProvider: 0x89a0055F9a96B23bE97e3f3E323b828623D38057
 
 Umee is a cross-chain decentralized non-custodial liquidity markets protocol where users can participate as depositors or borrowers. Depositors provide liquidity to the market to earn a passive income, while borrowers are able to borrow in an overcollateralized (perpetually) or undercollateralized (one-block liquidity) fashion.
 
-## Documentation (links are still resolving to Aave links)
+## Documentation
 
-The documentation of Umee V1 is in the following [Umee V1 documentation](https://docs.aave.com/developers/v/2.0/) link. At the documentation you can learn more about the protocol, see the contract interfaces, integration guides and audits.
+The documentation of Umee V1 is in the following [Umee V1 documentation](https://umeeversity.umee.cc/developers/ethereum-contracts.html) link. At the documentation you can learn more about the protocol, see the contract interfaces, integration guides and audits.
 
-For getting the latest contracts addresses, please check the [Deployed contracts](https://docs.aave.com/developers/v/2.0/deployed-contracts/deployed-contracts) page at the documentation to stay up to date.
-
-A more detailed and technical description of the protocol can be found in this repository, [here](./aave-v2-whitepaper.pdf)
-
-## Audits
-
--
+For getting the latest contracts addresses, please check the [Deployed contracts](https://umeeversity.umee.cc/developers/ethereum-contracts.html) page at the documentation to stay up to date.
 
 ## Connect with the community
 
-You can join at the Umee [Discord](https://discord.gg/7JsEGaW4kW) channel for asking questions about the protocol or talk about Umee with other peers.
+You can join at the Umee [Discord](https://discord.gg/Umee) channel for asking questions about the protocol or talk about Umee with other peers.
 
-## Getting Started (this is for Aave protocol not Umee)
+## Getting Started (this is for protocol not Umee)
 
 You can install `@aave/protocol-v2` as an NPM package in your Hardhat, Buidler or Truffle project to import the contracts and interfaces:
 
